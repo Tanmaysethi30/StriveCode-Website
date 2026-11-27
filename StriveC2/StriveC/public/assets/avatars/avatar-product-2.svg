@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Mr. Mohit Bansal Client Avatar">
+  <rect width="128" height="128" rx="64" fill="#FDECEC"/>
+  <circle cx="64" cy="64" r="61" fill="none" stroke="#DA1212" stroke-opacity="0.14" stroke-width="2"/>
+  <!-- Executive Slate Jacket & Sky Collar -->
+  <path d="M20 128c3-24 19-38 44-38s41 14 44 38H20Z" fill="#23304C"/>
+  <path d="M51 90l13 18 13-18H51Z" fill="#DBEAFE"/>
+  <!-- Neck -->
+  <rect x="55" y="73" width="18" height="19" rx="8" fill="#D89E79"/>
+  <!-- Ears -->
+  <circle cx="40" cy="56" r="5.5" fill="#D89E79"/>
+  <circle cx="88" cy="56" r="5.5" fill="#D89E79"/>
+  <!-- Head -->
+  <rect x="42" y="30" width="44" height="49" rx="22" fill="#E6B392"/>
+  <!-- Modern Quiff Hair -->
+  <path d="M42 48c-1-14 9-26 23-26 15 0 23 11 22 26-4-8-11-12-22-12-10 0-17 4-23 12Z" fill="#1F2437"/>
+  <!-- Eyes & Brows -->
+  <path d="M49 48c2.5-1.3 5.5-1.3 8 0" stroke="#1F2437" stroke-width="2.3" stroke-linecap="round" fill="none"/>
+  <path d="M71 48c2.5-1.3 5.5-1.3 8 0" stroke="#1F2437" stroke-width="2.3" stroke-linecap="round" fill="none"/>
+  <circle cx="53" cy="54" r="2.5" fill="#1F2437"/>
+  <circle cx="75" cy="54" r="2.5" fill="#1F2437"/>
+  <!-- Mustache & Smile -->
+  <path d="M55 63c3-2 15-2 18 0" stroke="#1F2437" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+  <path d="M57 68c4 3 10 3 14 0" stroke="#8C4A3A" stroke-width="2.3" stroke-linecap="round" fill="none"/>
+</svg>
