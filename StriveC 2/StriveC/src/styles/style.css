@@ -1,0 +1,91 @@
+/* ==========================================================================
+   StriveCode Unified Stylesheet
+   - Dot-Matrix Background Layer
+   - Smooth Scrolling
+   - Slow, Clean Motion & Page Transitions
+   - Accessibility & Reduced Motion Support
+   ========================================================================== */
+
+/* Smooth Anchor Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ==========================================================================
+   Interactive Grid Matrix Background Layer (sc-grid-matrix)
+   Applied to Homepage, Product, Services, Careers, Aboutus, Contact.
+   NOT applied to Courses and Mentorship.
+   ========================================================================== */
+#sc-grid-matrix {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Allow grid to show through light sections while cards/navy/hero/footer keep solid backgrounds */
+body.has-grid-matrix section.bg-\[\#EEEEEE\],
+body.has-grid-matrix section.bg-surface-container,
+body.has-grid-matrix main.bg-surface-container {
+  background-color: transparent !important;
+}
+
+/* ==========================================================================
+   TASK 3: Motion & Animation Layer
+   Slow, gentle, GPU-friendly transitions
+   Easing: cubic-bezier(0.22, 1, 0.36, 1)
+   Respects prefers-reduced-motion
+   ========================================================================== */
+
+/* Default state for reduced motion or when JS is disabled */
+body {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Page Load: Smooth fade-in over 0.9s */
+  body {
+    opacity: 0;
+    transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  body.site-loaded {
+    opacity: 1;
+  }
+
+  /* Page Transition: Smooth fade-out over 500ms */
+  body.site-unloading {
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+  }
+
+  /* Scroll Reveal: Fade in and rise 24px over 1s */
+  .site-reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1), transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+
+  .site-reveal.site-revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Subtle card and button lift on hover without overriding existing hover effects */
+  .site-subtle-lift:not([class*="hover:-translate"]):not([class*="hover:scale"]):not([class*="hover:translate"]) {
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .site-subtle-lift:not([class*="hover:-translate"]):not([class*="hover:scale"]):not([class*="hover:translate"]):hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px -6px rgba(4, 21, 98, 0.08);
+  }
+}
+
+/* Fallback for noscript */
+noscript body,
+.no-js body {
+  opacity: 1 !important;
+}

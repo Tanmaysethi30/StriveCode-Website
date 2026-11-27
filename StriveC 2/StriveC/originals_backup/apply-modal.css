@@ -1,0 +1,660 @@
+/* ==========================================================================
+   StriveCode Interactive Apply Now Modal Stylesheet (apply-modal.css)
+   - Unique prefix: sc-apply-
+   - Smooth, slow cubic-bezier(0.22, 1, 0.36, 1) animations
+   - Deep navy / StriveCode red color palette matching existing site
+   - Responsive two-column desktop / one-column mobile layout
+   - Accessible dialog & focus states
+   ========================================================================== */
+
+/* Prevent scroll jump when modal opens */
+html.sc-apply-scroll-locked,
+body.sc-apply-scroll-locked {
+  overflow: hidden !important;
+  touch-action: none;
+}
+
+/* Backdrop */
+.sc-apply-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(4, 21, 98, 0.48);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              visibility 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  box-sizing: border-box;
+}
+
+.sc-apply-backdrop.sc-apply-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Modal Container & Dialog */
+.sc-apply-container {
+  width: 100%;
+  max-width: 720px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Main Card */
+.sc-apply-card {
+  position: relative;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 25px 60px -15px rgba(4, 21, 98, 0.28),
+              0 0 0 1px rgba(4, 21, 98, 0.08);
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: translateY(24px) scale(0.96);
+  opacity: 0;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  box-sizing: border-box;
+}
+
+.sc-apply-backdrop.sc-apply-open .sc-apply-card {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+/* Closing transition */
+.sc-apply-backdrop.sc-apply-closing .sc-apply-card {
+  transform: translateY(20px) scale(0.97);
+  opacity: 0;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sc-apply-backdrop.sc-apply-closing {
+  opacity: 0;
+  transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Close Button (X) */
+.sc-apply-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #F1F5F9;
+  border: 1px solid rgba(4, 21, 98, 0.08);
+  color: #041562;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 20;
+  transition: background-color 0.2s ease, transform 0.2s ease, color 0.2s ease;
+  padding: 0;
+}
+
+.sc-apply-close-btn:hover {
+  background: #DA1212;
+  color: #ffffff;
+  transform: scale(1.06);
+}
+
+.sc-apply-close-btn:focus-visible {
+  outline: 2px solid #041562;
+  outline-offset: 2px;
+}
+
+/* Modal Body / Scrollable Area */
+.sc-apply-body {
+  padding: 32px 36px 36px 36px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  max-height: calc(90vh - 10px);
+  box-sizing: border-box;
+}
+
+@media (max-width: 640px) {
+  .sc-apply-body {
+    padding: 24px 20px 28px 20px;
+  }
+}
+
+/* Header within Card */
+.sc-apply-header {
+  margin-bottom: 24px;
+  padding-right: 40px;
+}
+
+.sc-apply-badge {
+  display: inline-block;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #DA1212;
+  margin-bottom: 6px;
+}
+
+.sc-apply-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  color: #041562;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+  margin: 0 0 8px 0;
+}
+
+@media (max-width: 640px) {
+  .sc-apply-title {
+    font-size: 22px;
+  }
+}
+
+.sc-apply-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  color: #64748B;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Form Grid */
+.sc-apply-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.sc-apply-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 20px;
+}
+
+@media (max-width: 640px) {
+  .sc-apply-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
+.sc-apply-col-span-2 {
+  grid-column: span 2 / span 2;
+}
+
+@media (max-width: 640px) {
+  .sc-apply-col-span-2 {
+    grid-column: span 1 / span 1;
+  }
+}
+
+/* Staggered entrance for fields */
+.sc-apply-stagger {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sc-apply-open .sc-apply-stagger {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Form Fields & Labels */
+.sc-apply-field {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.sc-apply-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #041562;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.sc-apply-required {
+  color: #DA1212;
+  font-weight: bold;
+}
+
+.sc-apply-optional {
+  font-weight: 400;
+  color: #94A3B8;
+  font-size: 11.5px;
+}
+
+/* Inputs, Selects & Textarea */
+.sc-apply-input,
+.sc-apply-select,
+.sc-apply-textarea {
+  width: 100%;
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  color: #041562;
+  background-color: #F8FAFC;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 10px 14px;
+  box-sizing: border-box;
+  transition: border-color 0.25s ease,
+              background-color 0.25s ease,
+              box-shadow 0.25s ease;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.sc-apply-input::placeholder,
+.sc-apply-textarea::placeholder {
+  color: #94A3B8;
+  opacity: 1;
+}
+
+.sc-apply-input:focus,
+.sc-apply-select:focus,
+.sc-apply-textarea:focus {
+  outline: none;
+  background-color: #FFFFFF;
+  border-color: #041562;
+  box-shadow: 0 0 0 3px rgba(4, 21, 98, 0.12);
+}
+
+/* Phone input with +91 prefix container */
+.sc-apply-phone-wrap {
+  display: flex;
+  align-items: center;
+  position: relative;
+  background-color: #F8FAFC;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 12px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+.sc-apply-phone-wrap:focus-within {
+  background-color: #FFFFFF;
+  border-color: #041562;
+  box-shadow: 0 0 0 3px rgba(4, 21, 98, 0.12);
+}
+
+.sc-apply-phone-prefix {
+  padding: 10px 10px 10px 14px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #041562;
+  user-select: none;
+  border-right: 1px solid #CBD5E1;
+  background: #F1F5F9;
+  border-radius: 10px 0 0 10px;
+}
+
+.sc-apply-phone-input {
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 10px 10px 0 !important;
+  padding-left: 10px !important;
+}
+
+/* Custom Select Dropdown Arrow */
+.sc-apply-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23041562' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 16px;
+  padding-right: 38px;
+  cursor: pointer;
+}
+
+/* Field 5 Soft Fade Animation on category change */
+.sc-apply-select-fading {
+  opacity: 0.3;
+  transform: translateY(-2px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+/* Textarea */
+.sc-apply-textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+/* Checkbox */
+.sc-apply-checkbox-wrap {
+  margin-top: 4px;
+}
+
+.sc-apply-checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.sc-apply-checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.sc-apply-checkbox-custom {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid #CBD5E1;
+  border-radius: 5px;
+  background-color: #F8FAFC;
+  margin-top: 2px;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.sc-apply-checkbox:checked ~ .sc-apply-checkbox-custom {
+  background-color: #DA1212;
+  border-color: #DA1212;
+}
+
+.sc-apply-checkbox:checked ~ .sc-apply-checkbox-custom::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.sc-apply-checkbox:focus-visible ~ .sc-apply-checkbox-custom {
+  box-shadow: 0 0 0 3px rgba(218, 18, 18, 0.25);
+  border-color: #DA1212;
+}
+
+.sc-apply-checkbox-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 12.5px;
+  color: #334155;
+  line-height: 1.45;
+}
+
+/* Validation Errors */
+.sc-apply-error {
+  font-family: 'Inter', sans-serif;
+  font-size: 11.5px;
+  color: #DA1212;
+  font-weight: 500;
+  margin-top: 4px;
+  display: block;
+  min-height: 16px;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.sc-apply-error.sc-apply-error-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sc-apply-field.sc-apply-field-invalid .sc-apply-input,
+.sc-apply-field.sc-apply-field-invalid .sc-apply-select,
+.sc-apply-field.sc-apply-field-invalid .sc-apply-phone-wrap {
+  border-color: #DA1212 !important;
+  background-color: #FFF5F5 !important;
+}
+
+/* Subtle error shake */
+@keyframes sc-apply-shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-4px); }
+  40%, 80% { transform: translateX(4px); }
+}
+
+.sc-apply-field-shake {
+  animation: sc-apply-shake 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Actions: Submit & Cancel Buttons */
+.sc-apply-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+@media (max-width: 480px) {
+  .sc-apply-actions {
+    flex-direction: column-reverse;
+    gap: 10px;
+  }
+}
+
+.sc-apply-submit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: #DA1212;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 28px;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px -3px rgba(218, 18, 18, 0.4);
+  transition: background-color 0.25s ease,
+              transform 0.25s ease,
+              box-shadow 0.25s ease,
+              opacity 0.25s ease;
+  position: relative;
+}
+
+.sc-apply-submit-btn:hover:not(:disabled) {
+  background-color: #b80f0f;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px -5px rgba(218, 18, 18, 0.5);
+}
+
+.sc-apply-submit-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.sc-apply-cancel-btn {
+  background: transparent;
+  color: #64748B;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 12px 20px;
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.sc-apply-cancel-btn:hover {
+  color: #041562;
+  background-color: #F1F5F9;
+}
+
+@media (max-width: 480px) {
+  .sc-apply-submit-btn,
+  .sc-apply-cancel-btn {
+    width: 100%;
+  }
+}
+
+/* Loading spinner inside button */
+.sc-apply-spinner {
+  display: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: sc-apply-spin 0.75s linear infinite;
+}
+
+@keyframes sc-apply-spin {
+  to { transform: rotate(360deg); }
+}
+
+.sc-apply-submitting .sc-apply-btn-text {
+  opacity: 0.85;
+}
+
+.sc-apply-submitting .sc-apply-spinner {
+  display: inline-block;
+}
+
+/* Footer note */
+.sc-apply-footer-note {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: #64748B;
+  margin-top: 14px;
+  justify-content: flex-start;
+}
+
+.sc-apply-footer-note svg {
+  color: #94A3B8;
+  flex-shrink: 0;
+}
+
+/* Success State Screen */
+.sc-apply-success {
+  padding: 48px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.sc-apply-success-icon-wrap {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: #F0FDF4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.sc-apply-checkmark-svg {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  stroke-width: 2.5;
+  stroke: #16A34A;
+  stroke-miterlimit: 10;
+}
+
+.sc-apply-checkmark-circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-width: 2.5;
+  stroke-miterlimit: 10;
+  stroke: #16A34A;
+  fill: none;
+  animation: sc-apply-stroke 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.sc-apply-checkmark-check {
+  transform-origin: 50% 50%;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: sc-apply-stroke 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards;
+}
+
+@keyframes sc-apply-stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.sc-apply-success-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #041562;
+  margin: 0 0 10px 0;
+}
+
+.sc-apply-success-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 14.5px;
+  color: #475569;
+  max-width: 440px;
+  line-height: 1.55;
+  margin: 0 0 24px 0;
+}
+
+.sc-apply-success-close-btn {
+  background-color: #041562;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 32px;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.sc-apply-success-close-btn:hover {
+  background-color: #DA1212;
+  transform: translateY(-1px);
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  .sc-apply-backdrop,
+  .sc-apply-card,
+  .sc-apply-stagger,
+  .sc-apply-select-fading,
+  .sc-apply-submit-btn,
+  .sc-apply-close-btn,
+  .sc-apply-error {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .sc-apply-checkmark-circle,
+  .sc-apply-checkmark-check {
+    stroke-dashoffset: 0 !important;
+    animation: none !important;
+  }
+}

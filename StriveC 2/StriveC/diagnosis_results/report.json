@@ -1,0 +1,206 @@
+{
+  "404": {
+    "errors": [],
+    "failedReqs": []
+  },
+  "Homepage": {
+    "errors": [
+      "[Orig Console Error]: Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ],
+    "failedReqs": [
+      "[Astro Request Failed]: https://lh3.googleusercontent.com/aida/ALJJyrCwq8ggAZnwBuabvcZdww6WT_31vAEhl3_4apzZ_u3FFunAcVxZ70OTPPCx3D16dkqoQ9rC4dK0eyYwfw3O4a1bx4d7fPl80qvdVckcKV7K7pGEtZZQhh_J04S-wTQd2uLRCZtJw_WiNFlx2xuGjf3GePlD5Y2gXh1eQe_QNJ6h9auEHcTLqTug8d86L40Ncv2aKVew2I1zqAzqS5VTfCNMWhshDfY8cUhafYee36iJUA (net::ERR_BLOCKED_BY_ORB)",
+      "[Astro Request Failed]: https://lh3.googleusercontent.com/aida/AEtjO1Wa5S2Y2X0h1BBTVKduH7dzRqWMO8wjS0dddzHqa-WngRmtAke-zI0MD2LysC65LkRbnEgR1ZgLS_onde74pcg4vNEJm0bjFMG1QB5JdKeOTrIR5OQknkysnn8EgHbDeO0z9EC9moXmDdY2uLXvOC9-t6VCRT9KGcPbsSKzWyvfJ55g0VPXJzGspKE8UFiRTBCltWsNtu0rhPk9bwT4mArd-MIGSAqxAQz1J1vs4FEZTg (net::ERR_BLOCKED_BY_ORB)",
+      "[Astro Request Failed]: https://lh3.googleusercontent.com/aida/AEtjO1XUadDEMbwEao3UrDCX8Q2CZgBlDpRErK-s10bT3x3rVOncsOkkF7ZK9-DIdajVxGZ7LPZBOBZ5HhR7XJMsDjd0y0LzjYZ2LRFGmrjM3n341uNhO1RblaCssf9dMWdblcoAt6ZTO3-Fm4BHCH_1clkujM_37So13klSaDR_9PqTY4_SuYNyEwY0hQnTnPoJPlO5IYdN9ay0OlTJe44wEj7G_ci2G4KduNfzmvuO2vg-pA (net::ERR_BLOCKED_BY_ORB)",
+      "[Orig Request Failed]: https://lh3.googleusercontent.com/aida/ALJJyrCwq8ggAZnwBuabvcZdww6WT_31vAEhl3_4apzZ_u3FFunAcVxZ70OTPPCx3D16dkqoQ9rC4dK0eyYwfw3O4a1bx4d7fPl80qvdVckcKV7K7pGEtZZQhh_J04S-wTQd2uLRCZtJw_WiNFlx2xuGjf3GePlD5Y2gXh1eQe_QNJ6h9auEHcTLqTug8d86L40Ncv2aKVew2I1zqAzqS5VTfCNMWhshDfY8cUhafYee36iJUA (net::ERR_BLOCKED_BY_ORB)",
+      "[Orig Request Failed]: https://lh3.googleusercontent.com/aida/AEtjO1XUadDEMbwEao3UrDCX8Q2CZgBlDpRErK-s10bT3x3rVOncsOkkF7ZK9-DIdajVxGZ7LPZBOBZ5HhR7XJMsDjd0y0LzjYZ2LRFGmrjM3n341uNhO1RblaCssf9dMWdblcoAt6ZTO3-Fm4BHCH_1clkujM_37So13klSaDR_9PqTY4_SuYNyEwY0hQnTnPoJPlO5IYdN9ay0OlTJe44wEj7G_ci2G4KduNfzmvuO2vg-pA (net::ERR_BLOCKED_BY_ORB)",
+      "[Orig Request Failed]: https://lh3.googleusercontent.com/aida/AEtjO1Wa5S2Y2X0h1BBTVKduH7dzRqWMO8wjS0dddzHqa-WngRmtAke-zI0MD2LysC65LkRbnEgR1ZgLS_onde74pcg4vNEJm0bjFMG1QB5JdKeOTrIR5OQknkysnn8EgHbDeO0z9EC9moXmDdY2uLXvOC9-t6VCRT9KGcPbsSKzWyvfJ55g0VPXJzGspKE8UFiRTBCltWsNtu0rhPk9bwT4mArd-MIGSAqxAQz1J1vs4FEZTg (net::ERR_BLOCKED_BY_ORB)"
+    ],
+    "diagAstro": {
+      "leftCol": {
+        "classes": "lg:col-span-7 flex flex-col gap-6 reveal revealed",
+        "opacity": "1",
+        "transform": "none",
+        "display": "flex",
+        "visibility": "visible",
+        "rect": {
+          "x": 128,
+          "y": 4630.25,
+          "width": 667.328125,
+          "height": 435.78125,
+          "top": 4630.25,
+          "right": 795.328125,
+          "bottom": 5066.03125,
+          "left": 128
+        }
+      },
+      "h1": {
+        "text": "Engineering Digital Excellence",
+        "opacity": "1",
+        "color": "rgb(4, 21, 98)",
+        "fontSize": "56px",
+        "fontFamily": "\"Plus Jakarta Sans\", sans-serif",
+        "rect": {
+          "x": 128,
+          "y": 4684.25,
+          "width": 667.328125,
+          "height": 188.15625,
+          "top": 4684.25,
+          "right": 795.328125,
+          "bottom": 4872.40625,
+          "left": 128
+        }
+      },
+      "overlay": {
+        "display": "none",
+        "opacity": "0",
+        "zIndex": "9999999"
+      },
+      "pageContent": {
+        "opacity": "1",
+        "transform": "none",
+        "classes": "sc-loader-content flex flex-col flex-grow min-h-screen sc-loader-revealed"
+      },
+      "gridCanvas": {
+        "display": "block",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900,
+          "top": 0,
+          "right": 1440,
+          "bottom": 900,
+          "left": 0
+        },
+        "zIndex": "-1"
+      },
+      "homeNav": {
+        "classes": "text-[#041562] font-bold border-b-2 border-[#DA1212] pb-0.5 transition-all duration-200",
+        "rect": {
+          "x": 575.21875,
+          "y": 23.5,
+          "width": 40.15625,
+          "height": 25,
+          "top": 23.5,
+          "right": 615.375,
+          "bottom": 48.5,
+          "left": 575.21875
+        },
+        "paddingBottom": "2px",
+        "borderBottom": "2px solid rgb(218, 18, 18)"
+      },
+      "statsStrip": null
+    },
+    "diagOrig": {
+      "leftCol": {
+        "classes": "lg:col-span-7 flex flex-col gap-6 reveal revealed",
+        "opacity": "1",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "rect": {
+          "x": 128,
+          "y": 318.8125,
+          "width": 667.328125,
+          "height": 435.78125,
+          "top": 318.8125,
+          "right": 795.328125,
+          "bottom": 754.59375,
+          "left": 128
+        }
+      },
+      "h1": {
+        "fontSize": "56px",
+        "fontFamily": "\"Plus Jakarta Sans\", sans-serif",
+        "rect": {
+          "x": 128,
+          "y": 372.8125,
+          "width": 667.328125,
+          "height": 188.15625,
+          "top": 372.8125,
+          "right": 795.328125,
+          "bottom": 560.96875,
+          "left": 128
+        }
+      },
+      "gridCanvas": {
+        "display": "block",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900,
+          "top": 0,
+          "right": 1440,
+          "bottom": 900,
+          "left": 0
+        },
+        "zIndex": "-1"
+      },
+      "homeNav": {
+        "rect": {
+          "x": 567.21875,
+          "y": 23.5,
+          "width": 40.15625,
+          "height": 25,
+          "top": 23.5,
+          "right": 607.375,
+          "bottom": 48.5,
+          "left": 567.21875
+        },
+        "paddingBottom": "2px",
+        "borderBottom": "2px solid rgb(218, 18, 18)"
+      },
+      "statsStrip": null
+    }
+  },
+  "Product": {
+    "errors": [],
+    "failedReqs": [
+      "[Astro Request Failed]: https://lh3.googleusercontent.com/aida/AEtjO1UgEa_nEWXrjjXa3kSXVIeMPhlY5pqZXR0T1ms1JAh6HsuQHWZkKLbQOWSsmkQboU_g3BuzFpg-PSwRT-T6KsIGTRCuD-b6rUgM8YEu4m7Gf13e6eTNuy2GJ7bGwYuxqLt1INp62WepMNCLKRM2Z1lO4FbKsDuXFKXBYFyYOuxK56wZM8Lk85t6Fdz91Q7O4p5GUuHR8ynNBdlxWCP1xn5SBrQf-Gt5YM7WerlPne6Veg (net::ERR_BLOCKED_BY_ORB)",
+      "[Astro Request Failed]: https://lh3.googleusercontent.com/aida/AEtjO1VawBiYaYDJdwNn-W9E0phBQ9_QiAN0OIuLFbmYyvg3MBKeTOTVeRgCHtAQrxRDwejQpRYJjdfvU9fdXgJiucNj4coeIoky8-KTts21sFngKzu_ZJ9TdbQzsCKVezQzJNfnfcar7M1r8V_vz1V0-rTqz5obZ-UW3XqwHIsckABHPPZXLb1wt-HDFtJVCzE_nWHhr61MZzWYcc91vszRaEjkdd05oiLVo0u0OAhWs055hA (net::ERR_BLOCKED_BY_ORB)",
+      "[Astro Request Failed]: https://lh3.googleusercontent.com/aida/AEtjO1Vk3yUG1TDfmBoXkvixcrtk3R8Tpgs_eZ7BnO4g9BNO0f3CQQhfpzBaVeCs7raxkEo3iN1QoZ8DQVmUN4HtI-lRSTOABRkIiOrD_uDg7Mt6bFpdJfFCIS86r98KseE3uJLMKjE0WQGazqJqfALI69H3VChsGBtiNhpYjUOfiPPw7IAqg13p0I57aEQk-SSBf0umDuNMSd4MDXWswVGVQ5y9JeScZ7Uu5xlglRevVZvDaA (net::ERR_BLOCKED_BY_ORB)",
+      "[Orig Request Failed]: https://lh3.googleusercontent.com/aida/AEtjO1Vk3yUG1TDfmBoXkvixcrtk3R8Tpgs_eZ7BnO4g9BNO0f3CQQhfpzBaVeCs7raxkEo3iN1QoZ8DQVmUN4HtI-lRSTOABRkIiOrD_uDg7Mt6bFpdJfFCIS86r98KseE3uJLMKjE0WQGazqJqfALI69H3VChsGBtiNhpYjUOfiPPw7IAqg13p0I57aEQk-SSBf0umDuNMSd4MDXWswVGVQ5y9JeScZ7Uu5xlglRevVZvDaA (net::ERR_BLOCKED_BY_ORB)",
+      "[Orig Request Failed]: https://lh3.googleusercontent.com/aida/AEtjO1UgEa_nEWXrjjXa3kSXVIeMPhlY5pqZXR0T1ms1JAh6HsuQHWZkKLbQOWSsmkQboU_g3BuzFpg-PSwRT-T6KsIGTRCuD-b6rUgM8YEu4m7Gf13e6eTNuy2GJ7bGwYuxqLt1INp62WepMNCLKRM2Z1lO4FbKsDuXFKXBYFyYOuxK56wZM8Lk85t6Fdz91Q7O4p5GUuHR8ynNBdlxWCP1xn5SBrQf-Gt5YM7WerlPne6Veg (net::ERR_BLOCKED_BY_ORB)",
+      "[Orig Request Failed]: https://lh3.googleusercontent.com/aida/AEtjO1VawBiYaYDJdwNn-W9E0phBQ9_QiAN0OIuLFbmYyvg3MBKeTOTVeRgCHtAQrxRDwejQpRYJjdfvU9fdXgJiucNj4coeIoky8-KTts21sFngKzu_ZJ9TdbQzsCKVezQzJNfnfcar7M1r8V_vz1V0-rTqz5obZ-UW3XqwHIsckABHPPZXLb1wt-HDFtJVCzE_nWHhr61MZzWYcc91vszRaEjkdd05oiLVo0u0OAhWs055hA (net::ERR_BLOCKED_BY_ORB)"
+    ]
+  },
+  "Services": {
+    "errors": [],
+    "failedReqs": []
+  },
+  "Courses": {
+    "errors": [],
+    "failedReqs": [
+      "[Astro Request Failed]: https://lh3.googleusercontent.com/aida/AEtjO1WxYUJyOEZkQ-le1ED_cyx-2emV65IaXnC-DqRLBWD9Yk11U04G4ESAEOqavNoI1QN6QI1-_II__toKNZhMlvWvBI_fYdjxaeVTCIQ7cwWUeYVW9K4-qbwQ8b-4b0XYxcmX-jjYGNlA7gVRkt1F04ZtqW5AdWKDhy1r2Ii46HKW6LM0j12UaW_XnOpJJrVRG_kYWem7cIdmWl6x7WNBE7KyPjUhA2zHMrttvjEmNDA1rw (net::ERR_BLOCKED_BY_ORB)",
+      "[Astro Request Failed]: https://lh3.googleusercontent.com/aida/AEtjO1VUwKmyYsVKaIUu36Aa4FjIUgVfbcULYGtguAZDkA-hIsTyCK4DlDRgnIIFRLztP2Zk-FGd3z4AasMzlaD3Rr32UHWtfLtH68ojgDfdYpl5gjjW-h-xpGHVFfxhBm_q3_OsgMX0fWTyqrpqgnw9ZKcdf4OSse3jl4YNMys07SyBCatqI1iJwhenAc356mh1sY0M0KDtJI51E8rY2z4KBThNuO4AcNW0bCgR6E38AMbvnw (net::ERR_BLOCKED_BY_ORB)",
+      "[Astro Request Failed]: https://lh3.googleusercontent.com/aida/AEtjO1WjSFqK4lWvnPvvIax64w6XIhlmeGI4ljKpUBX5he032L8_HQCnVagQeJvcUzW5dDx_vmGXwwke5Bw9lJ6nQyvQfiuO44pAzVMnbPr2E6LRd7aBumNFftUxoclKtCqrPdWljTbEf98f9LLFteZE2G9HZGQaU4CUkHyp63E43feRyUooEXvgwhKnu80RVrjTKRlRT3Lem8XmUNHnADuhITeJBpy4bOj9yq7JrVan9GCAjA (net::ERR_BLOCKED_BY_ORB)",
+      "[Astro Request Failed]: https://lh3.googleusercontent.com/aida/AEtjO1XYyd4gMkbW3zpWgjuVBoKrHi5PyhKYfTBEyXSTV8q9Ilux88-8J9s6Ttoia7p4HBIuzLQV-C_kaMq158gb-PlTHfZbH4X190qvcVGiwnMEL0dk6kDXJB0cVGj590vCONo7luwRrGzDsriwhVRPfZQLS_9M4UA7TxMCc8TNQdsyzC_vsK0N5DMbDITQ0t4mTLGJmAKK-kpTRngT-6PQmUwna6LrFZ11BbrepZ0AG3bM2Q (net::ERR_BLOCKED_BY_ORB)",
+      "[Orig Request Failed]: https://lh3.googleusercontent.com/aida/AEtjO1VUwKmyYsVKaIUu36Aa4FjIUgVfbcULYGtguAZDkA-hIsTyCK4DlDRgnIIFRLztP2Zk-FGd3z4AasMzlaD3Rr32UHWtfLtH68ojgDfdYpl5gjjW-h-xpGHVFfxhBm_q3_OsgMX0fWTyqrpqgnw9ZKcdf4OSse3jl4YNMys07SyBCatqI1iJwhenAc356mh1sY0M0KDtJI51E8rY2z4KBThNuO4AcNW0bCgR6E38AMbvnw (net::ERR_BLOCKED_BY_ORB)",
+      "[Orig Request Failed]: https://lh3.googleusercontent.com/aida/AEtjO1WxYUJyOEZkQ-le1ED_cyx-2emV65IaXnC-DqRLBWD9Yk11U04G4ESAEOqavNoI1QN6QI1-_II__toKNZhMlvWvBI_fYdjxaeVTCIQ7cwWUeYVW9K4-qbwQ8b-4b0XYxcmX-jjYGNlA7gVRkt1F04ZtqW5AdWKDhy1r2Ii46HKW6LM0j12UaW_XnOpJJrVRG_kYWem7cIdmWl6x7WNBE7KyPjUhA2zHMrttvjEmNDA1rw (net::ERR_BLOCKED_BY_ORB)",
+      "[Orig Request Failed]: https://lh3.googleusercontent.com/aida/AEtjO1WjSFqK4lWvnPvvIax64w6XIhlmeGI4ljKpUBX5he032L8_HQCnVagQeJvcUzW5dDx_vmGXwwke5Bw9lJ6nQyvQfiuO44pAzVMnbPr2E6LRd7aBumNFftUxoclKtCqrPdWljTbEf98f9LLFteZE2G9HZGQaU4CUkHyp63E43feRyUooEXvgwhKnu80RVrjTKRlRT3Lem8XmUNHnADuhITeJBpy4bOj9yq7JrVan9GCAjA (net::ERR_BLOCKED_BY_ORB)",
+      "[Orig Request Failed]: https://lh3.googleusercontent.com/aida/AEtjO1XYyd4gMkbW3zpWgjuVBoKrHi5PyhKYfTBEyXSTV8q9Ilux88-8J9s6Ttoia7p4HBIuzLQV-C_kaMq158gb-PlTHfZbH4X190qvcVGiwnMEL0dk6kDXJB0cVGj590vCONo7luwRrGzDsriwhVRPfZQLS_9M4UA7TxMCc8TNQdsyzC_vsK0N5DMbDITQ0t4mTLGJmAKK-kpTRngT-6PQmUwna6LrFZ11BbrepZ0AG3bM2Q (net::ERR_BLOCKED_BY_ORB)",
+      "[Orig Request Failed]: https://lh3.googleusercontent.com/aida/AEtjO1WjSFqK4lWvnPvvIax64w6XIhlmeGI4ljKpUBX5he032L8_HQCnVagQeJvcUzW5dDx_vmGXwwke5Bw9lJ6nQyvQfiuO44pAzVMnbPr2E6LRd7aBumNFftUxoclKtCqrPdWljTbEf98f9LLFteZE2G9HZGQaU4CUkHyp63E43feRyUooEXvgwhKnu80RVrjTKRlRT3Lem8XmUNHnADuhITeJBpy4bOj9yq7JrVan9GCAjA (net::ERR_BLOCKED_BY_ORB)",
+      "[Orig Request Failed]: https://lh3.googleusercontent.com/aida/AEtjO1WxYUJyOEZkQ-le1ED_cyx-2emV65IaXnC-DqRLBWD9Yk11U04G4ESAEOqavNoI1QN6QI1-_II__toKNZhMlvWvBI_fYdjxaeVTCIQ7cwWUeYVW9K4-qbwQ8b-4b0XYxcmX-jjYGNlA7gVRkt1F04ZtqW5AdWKDhy1r2Ii46HKW6LM0j12UaW_XnOpJJrVRG_kYWem7cIdmWl6x7WNBE7KyPjUhA2zHMrttvjEmNDA1rw (net::ERR_BLOCKED_BY_ORB)",
+      "[Orig Request Failed]: https://lh3.googleusercontent.com/aida/AEtjO1VUwKmyYsVKaIUu36Aa4FjIUgVfbcULYGtguAZDkA-hIsTyCK4DlDRgnIIFRLztP2Zk-FGd3z4AasMzlaD3Rr32UHWtfLtH68ojgDfdYpl5gjjW-h-xpGHVFfxhBm_q3_OsgMX0fWTyqrpqgnw9ZKcdf4OSse3jl4YNMys07SyBCatqI1iJwhenAc356mh1sY0M0KDtJI51E8rY2z4KBThNuO4AcNW0bCgR6E38AMbvnw (net::ERR_BLOCKED_BY_ORB)"
+    ]
+  },
+  "Careers": {
+    "errors": [],
+    "failedReqs": [
+      "[Orig Request Failed]: https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100..900&display=swap (net::ERR_BLOCKED_BY_ORB)"
+    ]
+  },
+  "Mentorship": {
+    "errors": [],
+    "failedReqs": [
+      "[Orig Request Failed]: https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100..900&display=swap (net::ERR_BLOCKED_BY_ORB)"
+    ]
+  },
+  "Aboutus": {
+    "errors": [],
+    "failedReqs": []
+  },
+  "Contact": {
+    "errors": [],
+    "failedReqs": []
+  }
+}

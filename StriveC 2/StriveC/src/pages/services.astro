@@ -1,0 +1,1127 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="StriveCode - Enterprise Engineering Services (Navy &amp; Crimson Theme)"
+  description="StriveCode Technology - Enterprise Tech, Training & Career Acceleration"
+  currentRoute="/services"
+  hasGridMatrix={true}
+  isHome={false}
+>
+  <Fragment slot="head">
+    <style is:inline>
+.material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .grid-pattern {
+      background-size: 32px 32px;
+      background-image: 
+        linear-gradient(to right, rgba(4, 21, 98, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(4, 21, 98, 0.05) 1px, transparent 1px);
+    }
+    .dark-grid-pattern {
+      background-size: 24px 24px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    }
+
+    @keyframes marquee-forward {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    @keyframes marquee-reverse {
+      0% { transform: translateX(-50%); }
+      100% { transform: translateX(0%); }
+    }
+    .animate-marquee-forward {
+      display: flex;
+      width: max-content;
+      animation: marquee-forward 36s linear infinite;
+    }
+    .animate-marquee-reverse {
+      display: flex;
+      width: max-content;
+      animation: marquee-reverse 36s linear infinite;
+    }
+    .marquee-container:hover .animate-marquee-forward,
+    .marquee-container:hover .animate-marquee-reverse {
+      animation-play-state: paused;
+    }
+
+    /* Hero section responsive viewport height & vertical alignment */
+    .services-hero {
+      min-height: auto;
+    }
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .services-hero {
+        min-height: 75vh;
+        min-height: 75svh;
+      }
+    }
+    @media (min-width: 1024px) {
+      .services-hero {
+        min-height: calc(100vh - 70px);
+        min-height: calc(100svh - 70px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
+    </style>
+  </Fragment>
+
+  <!-- Hero Section -->
+<section class="services-hero relative bg-[#EEEEEE] grid-pattern border-b border-slate-300/70 pt-12 sm:pt-14 pb-8 sm:pb-10 md:pt-14 md:pb-10 md:min-h-[75vh] md:min-h-[75svh] lg:pt-0 lg:pb-0 lg:min-h-[calc(100vh-70px)] lg:min-h-[calc(100svh-70px)] lg:flex lg:flex-col lg:justify-center overflow-hidden">
+<div class="max-w-7xl mx-auto px-6 lg:px-12 w-full">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+<!-- Left Column: Copy & CTAs -->
+<div class="lg:col-span-7 space-y-8">
+<!-- Pill Badge -->
+<div class="inline-flex items-center gap-2.5 bg-white border border-slate-200/80 px-4 py-1.5 rounded-full shadow-sm">
+<span class="font-label-sm uppercase tracking-wider text-xs font-bold text-[#DA1212]">ENTERPRISE ARCHITECTURE &amp; DELIVERY</span>
+</div>
+<!-- Headline -->
+<h1 class="font-headline-lg text-4xl sm:text-5xl lg:text-[46px] leading-[1.12] font-bold text-[#041562] tracking-tight">
+            Engineer Resilient Systems That Scale Without Limits
+          </h1>
+<!-- Subheadline -->
+<p class="font-body-lg text-base sm:text-lg text-slate-700 max-w-2xl leading-relaxed">
+            StriveCode partners with high-growth technology teams to architect, build, and deploy mission-critical distributed systems, AI agent workflows, and sovereign cloud infrastructure.
+          </p>
+<!-- Stat Row -->
+<div class="pt-6 border-t border-slate-300/80 grid grid-cols-3 gap-6 max-w-xl">
+<div>
+<div class="text-3xl lg:text-4xl font-bold font-headline-md text-[#041562]">250+</div>
+<div class="font-label-sm text-xs uppercase tracking-wider text-slate-600 mt-1">Production Releases</div>
+</div>
+<div class="border-l border-slate-300/80 pl-6">
+<div class="text-3xl lg:text-4xl font-bold font-headline-md text-[#041562]">99.99%</div>
+<div class="font-label-sm text-xs uppercase tracking-wider text-slate-600 mt-1">Uptime SLA</div>
+</div>
+<div class="border-l border-slate-300/80 pl-6">
+<div class="text-3xl lg:text-4xl font-bold font-headline-md text-[#041562]">&lt;15ms</div>
+<div class="font-label-sm text-xs uppercase tracking-wider text-slate-600 mt-1">Avg API Latency</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Control Plane Dashboard -->
+<div class="lg:col-span-5">
+<div class="bg-[#020b2d] border border-white/10 rounded-2xl p-6 shadow-2xl text-white relative">
+<!-- Terminal Header -->
+<div class="flex items-center justify-between pb-4 border-b border-white/10 text-xs font-mono">
+<div class="flex items-center gap-2">
+<span class="text-slate-300 font-semibold">CLUSTER: PROD-AP-SOUTH-1</span>
+</div>
+<span class="text-[#DA1212] bg-[#DA1212]/10 px-2 py-0.5 rounded border border-[#DA1212]/20 font-bold">ALL 9 PRACTICE AREAS ONLINE</span>
+</div>
+<!-- Bento 3x3 Practice Area Matrix -->
+<div class="grid grid-cols-3 gap-3 my-5">
+<div class="bg-white/5 border border-white/10 rounded-xl p-3 text-center">
+<span class="material-symbols-outlined text-slate-300 text-xl">hub</span>
+<div class="text-[11px] font-mono font-bold mt-1 text-white">Distributed</div>
+<div class="text-[9px] text-[#DA1212] font-mono mt-0.5">99.99% Up</div>
+</div>
+<div class="bg-white/5 border border-white/10 rounded-xl p-3 text-center">
+<span class="material-symbols-outlined text-slate-300 text-xl">psychology</span>
+<div class="text-[11px] font-mono font-bold mt-1 text-white">AI Agents</div>
+<div class="text-[9px] text-[#DA1212] font-mono mt-0.5">14 Active</div>
+</div>
+<div class="bg-white/5 border border-white/10 rounded-xl p-3 text-center">
+<span class="material-symbols-outlined text-slate-300 text-xl">cloud_sync</span>
+<div class="text-[11px] font-mono font-bold mt-1 text-white">K8s Mesh</div>
+<div class="text-[9px] text-[#DA1212] font-mono mt-0.5">Synced</div>
+</div>
+<div class="bg-white/5 border border-white/10 rounded-xl p-3 text-center">
+<span class="material-symbols-outlined text-slate-300 text-xl">database</span>
+<div class="text-[11px] font-mono font-bold mt-1 text-white">Lakehouse</div>
+<div class="text-[9px] text-[#DA1212] font-mono mt-0.5">1.2 TB/s</div>
+</div>
+<div class="bg-white/5 border border-white/10 rounded-xl p-3 text-center">
+<span class="material-symbols-outlined text-slate-300 text-xl">security</span>
+<div class="text-[11px] font-mono font-bold mt-1 text-white">Zero-Trust</div>
+<div class="text-[9px] text-[#DA1212] font-mono mt-0.5">Enforced</div>
+</div>
+<div class="bg-white/5 border border-white/10 rounded-xl p-3 text-center">
+<span class="material-symbols-outlined text-slate-300 text-xl">devices</span>
+<div class="text-[11px] font-mono font-bold mt-1 text-white">Edge Web</div>
+<div class="text-[9px] text-[#DA1212] font-mono mt-0.5">Optimized</div>
+</div>
+<div class="bg-white/5 border border-white/10 rounded-xl p-3 text-center">
+<span class="material-symbols-outlined text-slate-300 text-xl">smartphone</span>
+<div class="text-[11px] font-mono font-bold mt-1 text-white">Mobile Core</div>
+<div class="text-[9px] text-[#DA1212] font-mono mt-0.5">Native</div>
+</div>
+<div class="bg-white/5 border border-white/10 rounded-xl p-3 text-center">
+<span class="material-symbols-outlined text-slate-300 text-xl">rocket_launch</span>
+<div class="text-[11px] font-mono font-bold mt-1 text-white">MVP Pod</div>
+<div class="text-[9px] text-[#DA1212] font-mono mt-0.5">Rapid CI</div>
+</div>
+<div class="bg-white/5 border border-white/10 rounded-xl p-3 text-center">
+<span class="material-symbols-outlined text-slate-300 text-xl">sync_alt</span>
+<div class="text-[11px] font-mono font-bold mt-1 text-white">Legacy Strangler</div>
+<div class="text-[9px] text-[#DA1212] font-mono mt-0.5">Phase 4</div>
+</div>
+</div>
+<!-- Floating Glass Status Bar -->
+<div class="bg-white/10 backdrop-blur-md rounded-xl p-3.5 border border-white/10 flex items-center justify-between text-xs font-mono">
+<span class="text-slate-200">Active Enterprise Pods: <strong class="text-white">42</strong></span>
+<span class="text-[#DA1212] flex items-center gap-1.5 font-bold">
+ Zero Security Incidents
+              </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 2. 'Enterprise Technology Solutions' Section (3x3 Bento Grid) -->
+<section class="bg-[#EEEEEE] pt-6 sm:pt-8 md:pt-8 lg:pt-4 pb-20 md:pb-24 border-b border-slate-300" id="solutions">
+<div class="max-w-7xl mx-auto px-6 lg:px-12">
+<!-- Section Header -->
+<div class="text-center max-w-3xl mx-auto mb-16">
+<div class="inline-flex items-center gap-2 bg-white border border-slate-200/80 px-4 py-1.5 rounded-full shadow-sm mb-4">
+<span class="font-label-sm uppercase tracking-wider text-xs font-bold text-[#DA1212]">PRACTICE AREAS &amp; CAPABILITIES</span>
+</div>
+<h2 class="font-headline-lg text-3xl sm:text-4xl lg:text-5xl font-bold text-[#041562] tracking-tight mb-4">
+          Enterprise Technology Solutions
+        </h2>
+<p class="font-body-lg text-slate-600 leading-relaxed">
+          Rigorous architecture frameworks, dedicated staff-level engineering pods, and production delivery guaranteed under institutional service-level agreements.
+        </p>
+</div>
+<!-- 9 Solutions Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Card 01 -->
+<div class="bg-white rounded-2xl p-8 border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col justify-between group">
+<div>
+<div class="flex items-center justify-between">
+<div class="bg-[#EEEEEE] rounded-xl p-3 text-[#041562]">
+<span class="material-symbols-outlined text-2xl">hub</span>
+</div>
+<span class="font-mono text-3xl font-bold text-slate-300">01</span>
+</div>
+<h3 class="font-title-lg text-xl font-bold text-[#041562] mt-6">Custom Software &amp; Microservices</h3>
+<p class="font-body-md text-slate-600 mt-2 leading-relaxed">
+              Resilient distributed services with low latency, event-driven backbones, and zero-downtime rolling orchestrations.
+            </p>
+<div class="flex flex-wrap gap-2 mt-5">
+<span class="bg-[#EEEEEE] text-[#041562] font-mono text-xs px-2.5 py-1 rounded-md">Spring Boot</span>
+<span class="bg-[#EEEEEE] text-[#041562] font-mono text-xs px-2.5 py-1 rounded-md">Go</span>
+<span class="bg-[#EEEEEE] text-[#041562] font-mono text-xs px-2.5 py-1 rounded-md">gRPC</span>
+</div>
+</div>
+<div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
+<span class="text-sm font-semibold text-[#041562] group-hover:text-[#DA1212] transition-colors">Explore Architecture</span>
+<div class="w-9 h-9 rounded-lg bg-[#EEEEEE] text-[#041562] group-hover:bg-[#DA1212] group-hover:text-white flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Card 02 -->
+<div class="bg-white rounded-2xl p-8 border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col justify-between group">
+<div>
+<div class="flex items-center justify-between">
+<div class="bg-[#EEEEEE] rounded-xl p-3 text-[#041562]">
+<span class="material-symbols-outlined text-2xl">psychology</span>
+</div>
+<span class="font-mono text-3xl font-bold text-slate-300">02</span>
+</div>
+<h3 class="font-title-lg text-xl font-bold text-[#041562] mt-6">Applied AI, LLM &amp; Agentic Systems</h3>
+<p class="font-body-md text-slate-600 mt-2 leading-relaxed">
+              Multi-agent reasoning graphs, retrieval-augmented generation pipelines, and dedicated on-premise model serving clusters.
+            </p>
+<div class="flex flex-wrap gap-2 mt-5">
+<span class="bg-[#EEEEEE] text-[#041562] font-mono text-xs px-2.5 py-1 rounded-md">PyTorch</span>
+<span class="bg-[#EEEEEE] text-[#041562] font-mono text-xs px-2.5 py-1 rounded-md">LangGraph</span>
+<span class="bg-[#EEEEEE] text-[#041562] font-mono text-xs px-2.5 py-1 rounded-md">vLLM</span>
+</div>
+</div>
+<div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
+<span class="text-sm font-semibold text-[#041562] group-hover:text-[#DA1212] transition-colors">Explore Architecture</span>
+<div class="w-9 h-9 rounded-lg bg-[#EEEEEE] text-[#041562] group-hover:bg-[#DA1212] group-hover:text-white flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Card 03 -->
+<div class="bg-white rounded-2xl p-8 border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col justify-between group">
+<div>
+<div class="flex items-center justify-between">
+<div class="bg-[#EEEEEE] rounded-xl p-3 text-[#041562]">
+<span class="material-symbols-outlined text-2xl">web</span>
+</div>
+<span class="font-mono text-3xl font-bold text-slate-300">03</span>
+</div>
+<h3 class="font-title-lg text-xl font-bold text-[#041562] mt-6">High-Performance Web Platforms</h3>
+<p class="font-body-md text-slate-600 mt-2 leading-relaxed">
+              Ultra-responsive enterprise interfaces with server components, deterministic hydration, and sub-second paint times.
+            </p>
+<div class="flex flex-wrap gap-2 mt-5">
+<span class="bg-[#EEEEEE] text-[#041562] font-mono text-xs px-2.5 py-1 rounded-md">Next.js 15</span>
+<span class="bg-[#EEEEEE] text-[#041562] font-mono text-xs px-2.5 py-1 rounded-md">React 19</span>
+<span class="bg-[#EEEEEE] text-[#041562] font-mono text-xs px-2.5 py-1 rounded-md">TypeScript</span>
+</div>
+</div>
+<div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
+<span class="text-sm font-semibold text-[#041562] group-hover:text-[#DA1212] transition-colors">Explore Architecture</span>
+<div class="w-9 h-9 rounded-lg bg-[#EEEEEE] text-[#041562] group-hover:bg-[#DA1212] group-hover:text-white flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Card 04 -->
+<div class="bg-white rounded-2xl p-8 border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col justify-between group">
+<div>
+<div class="flex items-center justify-between">
+<div class="bg-[#EEEEEE] rounded-xl p-3 text-[#041562]">
+<span class="material-symbols-outlined text-2xl">smartphone</span>
+</div>
+<span class="font-mono text-3xl font-bold text-slate-300">04</span>
+</div>
+<h3 class="font-title-lg text-xl font-bold text-[#041562] mt-6">Native &amp; Cross-Platform Mobile</h3>
+<p class="font-body-md text-slate-600 mt-2 leading-relaxed">
+              Mission-critical mobile applications engineered for offline resilience, biometrics, and secure cryptographic transactions.
+            </p>
+<div class="flex flex-wrap gap-2 mt-5">
+<span class="bg-[#EEEEEE] text-[#041562] font-mono text-xs px-2.5 py-1 rounded-md">Kotlin</span>
+<span class="bg-[#EEEEEE] text-[#041562] font-mono text-xs px-2.5 py-1 rounded-md">Swift</span>
+<span class="bg-[#EEEEEE] text-[#041562] font-mono text-xs px-2.5 py-1 rounded-md">Flutter</span>
+</div>
+</div>
+<div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
+<span class="text-sm font-semibold text-[#041562] group-hover:text-[#DA1212] transition-colors">Explore Architecture</span>
+<div class="w-9 h-9 rounded-lg bg-[#EEEEEE] text-[#041562] group-hover:bg-[#DA1212] group-hover:text-white flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Card 05 -->
+<div class="bg-white rounded-2xl p-8 border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col justify-between group">
+<div>
+<div class="flex items-center justify-between">
+<div class="bg-[#EEEEEE] rounded-xl p-3 text-[#041562]">
+<span class="material-symbols-outlined text-2xl">database</span>
+</div>
+<span class="font-mono text-3xl font-bold text-slate-300">05</span>
+</div>
+<h3 class="font-title-lg text-xl font-bold text-[#041562] mt-6">Data Engineering &amp; Lakehouse</h3>
+<p class="font-body-md text-slate-600 mt-2 leading-relaxed">
+              Real-time telemetry streaming, petabyte-scale transformations, and ACID-compliant distributed data lakehouse platforms.
+            </p>
+<div class="flex flex-wrap gap-2 mt-5">
+<span class="bg-[#EEEEEE] text-[#041562] font-mono text-xs px-2.5 py-1 rounded-md">Apache Spark</span>
+<span class="bg-[#EEEEEE] text-[#041562] font-mono text-xs px-2.5 py-1 rounded-md">Kafka</span>
+<span class="bg-[#EEEEEE] text-[#041562] font-mono text-xs px-2.5 py-1 rounded-md">Snowflake</span>
+</div>
+</div>
+<div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
+<span class="text-sm font-semibold text-[#041562] group-hover:text-[#DA1212] transition-colors">Explore Architecture</span>
+<div class="w-9 h-9 rounded-lg bg-[#EEEEEE] text-[#041562] group-hover:bg-[#DA1212] group-hover:text-white flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Card 06 -->
+<div class="bg-white rounded-2xl p-8 border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col justify-between group">
+<div>
+<div class="flex items-center justify-between">
+<div class="bg-[#EEEEEE] rounded-xl p-3 text-[#041562]">
+<span class="material-symbols-outlined text-2xl">cloud</span>
+</div>
+<span class="font-mono text-3xl font-bold text-slate-300">06</span>
+</div>
+<h3 class="font-title-lg text-xl font-bold text-[#041562] mt-6">Cloud Infrastructure &amp; Kubernetes</h3>
+<p class="font-body-md text-slate-600 mt-2 leading-relaxed">
+              Immutable infrastructure-as-code, multi-region cluster federation, and automated FinOps optimization protocols.
+            </p>
+<div class="flex flex-wrap gap-2 mt-5">
+<span class="bg-[#EEEEEE] text-[#041562] font-mono text-xs px-2.5 py-1 rounded-md">AWS</span>
+<span class="bg-[#EEEEEE] text-[#041562] font-mono text-xs px-2.5 py-1 rounded-md">Terraform</span>
+<span class="bg-[#EEEEEE] text-[#041562] font-mono text-xs px-2.5 py-1 rounded-md">Kubernetes</span>
+</div>
+</div>
+<div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
+<span class="text-sm font-semibold text-[#041562] group-hover:text-[#DA1212] transition-colors">Explore Architecture</span>
+<div class="w-9 h-9 rounded-lg bg-[#EEEEEE] text-[#041562] group-hover:bg-[#DA1212] group-hover:text-white flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Card 07 -->
+<div class="bg-white rounded-2xl p-8 border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col justify-between group">
+<div>
+<div class="flex items-center justify-between">
+<div class="bg-[#EEEEEE] rounded-xl p-3 text-[#041562]">
+<span class="material-symbols-outlined text-2xl">shield</span>
+</div>
+<span class="font-mono text-3xl font-bold text-slate-300">07</span>
+</div>
+<h3 class="font-title-lg text-xl font-bold text-[#041562] mt-6">Zero-Trust Cybersecurity &amp; AppSec</h3>
+<p class="font-body-md text-slate-600 mt-2 leading-relaxed">
+              Automated SAST/DAST gating, eBPF network observability, secrets management, and proactive threat boundary modeling.
+            </p>
+<div class="flex flex-wrap gap-2 mt-5">
+<span class="bg-[#EEEEEE] text-[#041562] font-mono text-xs px-2.5 py-1 rounded-md">OWASP</span>
+<span class="bg-[#EEEEEE] text-[#041562] font-mono text-xs px-2.5 py-1 rounded-md">eBPF</span>
+<span class="bg-[#EEEEEE] text-[#041562] font-mono text-xs px-2.5 py-1 rounded-md">Vault</span>
+</div>
+</div>
+<div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
+<span class="text-sm font-semibold text-[#041562] group-hover:text-[#DA1212] transition-colors">Explore Architecture</span>
+<div class="w-9 h-9 rounded-lg bg-[#EEEEEE] text-[#041562] group-hover:bg-[#DA1212] group-hover:text-white flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Card 08 -->
+<div class="bg-white rounded-2xl p-8 border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col justify-between group">
+<div>
+<div class="flex items-center justify-between">
+<div class="bg-[#EEEEEE] rounded-xl p-3 text-[#041562]">
+<span class="material-symbols-outlined text-2xl">speed</span>
+</div>
+<span class="font-mono text-3xl font-bold text-slate-300">08</span>
+</div>
+<h3 class="font-title-lg text-xl font-bold text-[#041562] mt-6">Rapid MVP &amp; Product Engineering</h3>
+<p class="font-body-md text-slate-600 mt-2 leading-relaxed">
+              High-velocity prototyping designed with enterprise grade fundamentals to prevent throwaway codebase rewrites.
+            </p>
+<div class="flex flex-wrap gap-2 mt-5">
+<span class="bg-[#EEEEEE] text-[#041562] font-mono text-xs px-2.5 py-1 rounded-md">FastAPI</span>
+<span class="bg-[#EEEEEE] text-[#041562] font-mono text-xs px-2.5 py-1 rounded-md">React</span>
+<span class="bg-[#EEEEEE] text-[#041562] font-mono text-xs px-2.5 py-1 rounded-md">Supabase</span>
+</div>
+</div>
+<div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
+<span class="text-sm font-semibold text-[#041562] group-hover:text-[#DA1212] transition-colors">Explore Architecture</span>
+<div class="w-9 h-9 rounded-lg bg-[#EEEEEE] text-[#041562] group-hover:bg-[#DA1212] group-hover:text-white flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Card 09 -->
+<div class="bg-white rounded-2xl p-8 border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col justify-between group">
+<div>
+<div class="flex items-center justify-between">
+<div class="bg-[#EEEEEE] rounded-xl p-3 text-[#041562]">
+<span class="material-symbols-outlined text-2xl">published_with_changes</span>
+</div>
+<span class="font-mono text-3xl font-bold text-slate-300">09</span>
+</div>
+<h3 class="font-title-lg text-xl font-bold text-[#041562] mt-6">Legacy Modernization &amp; Advisory</h3>
+<p class="font-body-md text-slate-600 mt-2 leading-relaxed">
+              Incremental strangler-fig transformations decomposing monoliths into domain-driven cloud-native microservices.
+            </p>
+<div class="flex flex-wrap gap-2 mt-5">
+<span class="bg-[#EEEEEE] text-[#041562] font-mono text-xs px-2.5 py-1 rounded-md">Event-Driven</span>
+<span class="bg-[#EEEEEE] text-[#041562] font-mono text-xs px-2.5 py-1 rounded-md">Strangler Fig</span>
+<span class="bg-[#EEEEEE] text-[#041562] font-mono text-xs px-2.5 py-1 rounded-md">DDD</span>
+</div>
+</div>
+<div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
+<span class="text-sm font-semibold text-[#041562] group-hover:text-[#DA1212] transition-colors">Explore Architecture</span>
+<div class="w-9 h-9 rounded-lg bg-[#EEEEEE] text-[#041562] group-hover:bg-[#DA1212] group-hover:text-white flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. 'Powered by Modern Enterprise Tech Stacks' (Dark Marquee Section) -->
+<section class="bg-[#041562] py-20 text-white dark-grid-pattern relative overflow-hidden border-b border-white/10">
+<div class="max-w-7xl mx-auto px-6 lg:px-12 mb-12 text-center">
+<h2 class="text-3xl lg:text-4xl font-bold font-headline-md tracking-tight text-white mb-3">
+        Powered by Modern Enterprise Tech Stacks
+      </h2>
+<p class="text-[#EEEEEE] font-body-md max-w-2xl mx-auto text-sm sm:text-base opacity-90">
+        Engineered with deterministic toolchains that ensure horizontal scale, type safety, and zero deployment friction.
+      </p>
+</div>
+<!-- Tech Capsules Grid -->
+<div class="max-w-7xl mx-auto px-6 lg:px-12">
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3.5">
+<div class="bg-[#020b2d]/80 border border-white/10 px-4 py-3 rounded-xl flex items-center justify-between text-[#EEEEEE] shadow-sm hover:border-[#DA1212]/50 transition-colors">
+<span class="font-mono text-xs font-semibold">React 19</span>
+<span class="w-2 h-2 rounded-full bg-[#DA1212] shadow-[0_0_8px_#DA1212]"></span>
+</div>
+<div class="bg-[#020b2d]/80 border border-white/10 px-4 py-3 rounded-xl flex items-center justify-between text-[#EEEEEE] shadow-sm hover:border-[#DA1212]/50 transition-colors">
+<span class="font-mono text-xs font-semibold">Next.js</span>
+<span class="w-2 h-2 rounded-full bg-[#DA1212] shadow-[0_0_8px_#DA1212]"></span>
+</div>
+<div class="bg-[#020b2d]/80 border border-white/10 px-4 py-3 rounded-xl flex items-center justify-between text-[#EEEEEE] shadow-sm hover:border-[#DA1212]/50 transition-colors">
+<span class="font-mono text-xs font-semibold">Spring Boot</span>
+<span class="w-2 h-2 rounded-full bg-[#DA1212] shadow-[0_0_8px_#DA1212]"></span>
+</div>
+<div class="bg-[#020b2d]/80 border border-white/10 px-4 py-3 rounded-xl flex items-center justify-between text-[#EEEEEE] shadow-sm hover:border-[#DA1212]/50 transition-colors">
+<span class="font-mono text-xs font-semibold">Python</span>
+<span class="w-2 h-2 rounded-full bg-[#DA1212] shadow-[0_0_8px_#DA1212]"></span>
+</div>
+<div class="bg-[#020b2d]/80 border border-white/10 px-4 py-3 rounded-xl flex items-center justify-between text-[#EEEEEE] shadow-sm hover:border-[#DA1212]/50 transition-colors">
+<span class="font-mono text-xs font-semibold">PyTorch</span>
+<span class="w-2 h-2 rounded-full bg-[#DA1212] shadow-[0_0_8px_#DA1212]"></span>
+</div>
+<div class="bg-[#020b2d]/80 border border-white/10 px-4 py-3 rounded-xl flex items-center justify-between text-[#EEEEEE] shadow-sm hover:border-[#DA1212]/50 transition-colors">
+<span class="font-mono text-xs font-semibold">PostgreSQL</span>
+<span class="w-2 h-2 rounded-full bg-[#DA1212] shadow-[0_0_8px_#DA1212]"></span>
+</div>
+<div class="bg-[#020b2d]/80 border border-white/10 px-4 py-3 rounded-xl flex items-center justify-between text-[#EEEEEE] shadow-sm hover:border-[#DA1212]/50 transition-colors">
+<span class="font-mono text-xs font-semibold">AWS</span>
+<span class="w-2 h-2 rounded-full bg-[#DA1212] shadow-[0_0_8px_#DA1212]"></span>
+</div>
+<div class="bg-[#020b2d]/80 border border-white/10 px-4 py-3 rounded-xl flex items-center justify-between text-[#EEEEEE] shadow-sm hover:border-[#DA1212]/50 transition-colors">
+<span class="font-mono text-xs font-semibold">Docker</span>
+<span class="w-2 h-2 rounded-full bg-[#DA1212] shadow-[0_0_8px_#DA1212]"></span>
+</div>
+<div class="bg-[#020b2d]/80 border border-white/10 px-4 py-3 rounded-xl flex items-center justify-between text-[#EEEEEE] shadow-sm hover:border-[#DA1212]/50 transition-colors">
+<span class="font-mono text-xs font-semibold">Kubernetes</span>
+<span class="w-2 h-2 rounded-full bg-[#DA1212] shadow-[0_0_8px_#DA1212]"></span>
+</div>
+<div class="bg-[#020b2d]/80 border border-white/10 px-4 py-3 rounded-xl flex items-center justify-between text-[#EEEEEE] shadow-sm hover:border-[#DA1212]/50 transition-colors">
+<span class="font-mono text-xs font-semibold">Terraform</span>
+<span class="w-2 h-2 rounded-full bg-[#DA1212] shadow-[0_0_8px_#DA1212]"></span>
+</div>
+<div class="bg-[#020b2d]/80 border border-white/10 px-4 py-3 rounded-xl flex items-center justify-between text-[#EEEEEE] shadow-sm hover:border-[#DA1212]/50 transition-colors">
+<span class="font-mono text-xs font-semibold">Apache Kafka</span>
+<span class="w-2 h-2 rounded-full bg-[#DA1212] shadow-[0_0_8px_#DA1212]"></span>
+</div>
+<div class="bg-[#020b2d]/80 border border-white/10 px-4 py-3 rounded-xl flex items-center justify-between text-[#EEEEEE] shadow-sm hover:border-[#DA1212]/50 transition-colors">
+<span class="font-mono text-xs font-semibold">OpenCV</span>
+<span class="w-2 h-2 rounded-full bg-[#DA1212] shadow-[0_0_8px_#DA1212]"></span>
+</div>
+<div class="bg-[#020b2d]/80 border border-white/10 px-4 py-3 rounded-xl flex items-center justify-between text-[#EEEEEE] shadow-sm hover:border-[#DA1212]/50 transition-colors">
+<span class="font-mono text-xs font-semibold">Redis</span>
+<span class="w-2 h-2 rounded-full bg-[#DA1212] shadow-[0_0_8px_#DA1212]"></span>
+</div>
+<div class="bg-[#020b2d]/80 border border-white/10 px-4 py-3 rounded-xl flex items-center justify-between text-[#EEEEEE] shadow-sm hover:border-[#DA1212]/50 transition-colors">
+<span class="font-mono text-xs font-semibold">Go</span>
+<span class="w-2 h-2 rounded-full bg-[#DA1212] shadow-[0_0_8px_#DA1212]"></span>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. 'A Disciplined 4-Stage Engineering Lifecycle' Section (Sticky 2-Column Stacking Scroll) -->
+<section class="bg-[#EEEEEE] py-24 border-b border-slate-300" id="lifecycle">
+<div class="max-w-7xl mx-auto px-6 lg:px-12">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+<!-- LEFT COLUMN (Sticky Sidebar) -->
+<div class="lg:col-span-5 sticky top-28 self-start space-y-6">
+<div class="inline-flex items-center gap-2 bg-white border border-slate-200/80 px-4 py-1.5 rounded-full shadow-sm">
+<span class="font-label-sm uppercase tracking-wider text-xs font-bold text-[#DA1212]">METHODOLOGY &amp; ENGAGEMENT</span>
+</div>
+<h2 class="font-headline-lg text-4xl lg:text-5xl font-bold text-[#041562] tracking-tight leading-tight">
+          A Disciplined 4-Stage Engineering Lifecycle
+        </h2>
+<p class="font-body-lg text-[#041562]/70 leading-relaxed text-base">
+          From architectural discovery to autonomous production operations, each stage delivers documented artifacts and verified benchmarks.
+        </p>
+<!-- Interactive Active-Stage Progress Tracker -->
+<div class="pt-6 border-t border-slate-300/80 space-y-3">
+<div class="flex items-center gap-4 group cursor-pointer">
+<div class="w-8 h-8 rounded-lg bg-[#DA1212] text-white flex items-center justify-center font-mono text-xs font-bold shrink-0 shadow-sm">01</div>
+<div class="flex-1">
+<div class="text-sm font-bold text-[#041562]">Discovery &amp; System Audit</div>
+<div class="w-full bg-slate-300 h-1 rounded-full mt-1.5 overflow-hidden">
+<div class="bg-[#DA1212] h-full w-full rounded-full transition-all duration-300"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 group cursor-pointer">
+<div class="w-8 h-8 rounded-lg bg-[#041562] text-white flex items-center justify-center font-mono text-xs font-bold shrink-0">02</div>
+<div class="flex-1">
+<div class="text-sm font-semibold text-slate-700">Architecture &amp; Blueprinting</div>
+<div class="w-full bg-slate-300 h-1 rounded-full mt-1.5 overflow-hidden">
+<div class="bg-[#041562] h-full w-3/4 rounded-full"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 group cursor-pointer">
+<div class="w-8 h-8 rounded-lg bg-[#041562]/80 text-white flex items-center justify-center font-mono text-xs font-bold shrink-0">03</div>
+<div class="flex-1">
+<div class="text-sm font-semibold text-slate-700">Agile Sprint Execution</div>
+<div class="w-full bg-slate-300 h-1 rounded-full mt-1.5 overflow-hidden">
+<div class="bg-[#041562] h-full w-1/2 rounded-full"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 group cursor-pointer">
+<div class="w-8 h-8 rounded-lg bg-[#041562]/60 text-white flex items-center justify-center font-mono text-xs font-bold shrink-0">04</div>
+<div class="flex-1">
+<div class="text-sm font-semibold text-slate-700">CI/CD Launch &amp; 24/7 SRE</div>
+<div class="w-full bg-slate-300 h-1 rounded-full mt-1.5 overflow-hidden">
+<div class="bg-[#041562] h-full w-1/4 rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN (Stacking Sticky Cards) -->
+<div class="lg:col-span-7 space-y-12">
+<!-- CARD 01 -->
+<div class="sticky top-28 bg-[#FFFFFF] rounded-2xl border border-black/5 shadow-xl overflow-hidden mb-12 transition-all">
+<img alt="Discovery &amp; System Audit" class="w-full h-64 aspect-video object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTs0wyfpUtWX1iUtSSrN71Yw0cjg6xq1IrVyX9tfsOTAqJeNpiLf5i2VpBaq5DKMK9eexONeOq8zTXElmAb7aO8l271tGdt_3DUqUeqlV2GdFPIPCDAZzdeEEf3S7fEmYDrLUo1t9icxZvHph6JA2jnc5RjZ7QHjUnjJGYKwyx1OarPLN0hySjOYnrmtBmFjkeMRUYff0DESo6F3iJKJHGCnpFs4EC9mGWYWmHsIjI">
+<div class="p-8">
+<div class="flex items-center justify-between mb-4">
+<span class="bg-[#EEEEEE] text-[#041562] font-mono text-xs font-bold px-3 py-1.5 rounded-md">STEP 01</span>
+<span class="text-xs font-mono font-semibold text-[#DA1212] uppercase tracking-wider">PHASE 1 ARCHITECTURE</span>
+</div>
+<h3 class="text-2xl font-bold font-title-lg text-[#041562]">Discovery &amp; System Audit</h3>
+<p class="font-mono text-xs text-slate-500 mt-1 mb-3">RFC &amp; Architecture Blueprint</p>
+<p class="font-body-md text-sm text-slate-600 leading-relaxed mb-6">
+              In-depth code repository audits, dependency graph analysis, security posture evaluations, and latency bottleneck profiling.
+            </p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-5 border-t border-slate-100">
+<div class="flex items-center gap-3 border-l-2 border-[#DA1212] pl-3 py-1 bg-[#EEEEEE]/50 rounded-r-lg">
+<span class="text-xs font-semibold text-[#041562]">Architectural RFC document</span>
+</div>
+<div class="flex items-center gap-3 border-l-2 border-[#041562] pl-3 py-1 bg-[#EEEEEE]/50 rounded-r-lg">
+<span class="text-xs font-semibold text-[#041562]">Threat vector matrix</span>
+</div>
+</div>
+</div>
+</div>
+<!-- CARD 02 -->
+<div class="sticky top-32 bg-[#FFFFFF] rounded-2xl border border-black/5 shadow-xl overflow-hidden mb-12 transition-all">
+<img alt="Architecture &amp; Blueprinting" class="w-full h-64 aspect-video object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoOMxKr7BgxmBdYe4qVdfljUphwI5UWojz2oxijXSZSn9Aw8sO7oy6dy2lJtpKrki9998XH1v7Hw_MSdWRDXqwnuWF6PfZTTe-kk_eoO9oBsheq947MK_MqzJQVmn-ZE39otE-VS4rUC8yz8iq8g9ThVTiKD4WCwhSXssT_jAX7VWeHvhTZJQDusRB769UHrjxrgHa2mqvsS4HbuhWCCWxWtJlXa0uk18wBKDzsDc2">
+<div class="p-8">
+<div class="flex items-center justify-between mb-4">
+<span class="bg-[#EEEEEE] text-[#041562] font-mono text-xs font-bold px-3 py-1.5 rounded-md">STEP 02</span>
+<span class="text-xs font-mono font-semibold text-[#DA1212] uppercase tracking-wider">PHASE 2 FOUNDATIONS</span>
+</div>
+<h3 class="text-2xl font-bold font-title-lg text-[#041562]">Architecture &amp; Blueprinting</h3>
+<p class="font-mono text-xs text-slate-500 mt-1 mb-3">Terraform &amp; IaC Foundations</p>
+<p class="font-body-md text-sm text-slate-600 leading-relaxed mb-6">
+              Establishing target topologies, schema contracts, event schema registries, and automated multi-account cloud landing zones.
+            </p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-5 border-t border-slate-100">
+<div class="flex items-center gap-3 border-l-2 border-[#DA1212] pl-3 py-1 bg-[#EEEEEE]/50 rounded-r-lg">
+<span class="text-xs font-semibold text-[#041562]">Terraform module library</span>
+</div>
+<div class="flex items-center gap-3 border-l-2 border-[#041562] pl-3 py-1 bg-[#EEEEEE]/50 rounded-r-lg">
+<span class="text-xs font-semibold text-[#041562]">API schema definitions</span>
+</div>
+</div>
+</div>
+</div>
+<!-- CARD 03 -->
+<div class="sticky top-36 bg-[#FFFFFF] rounded-2xl border border-black/5 shadow-xl overflow-hidden mb-12 transition-all">
+<img alt="Agile Sprint Execution" class="w-full h-64 aspect-video object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADYL1mE2XRfbNHufTHkOV-5w5p6sSMYsUo0rT6hMU8PIgd7TDDXZzfpBQpLnk0RiIeWEAgJ-ss07796qaFHuXBtIZThjw26sZANMmaKMc8_9OnzyA9D4e7bdPCOO_0uHcWDV9jCqwPAYv5Fxn6Swt9TB5pdHXJmZzhSBSMToCQEryemHfA8vtiV6tbgloBGKt6hcEq21u1Mv2foPoytCf-BQF-9YmIxMe8f_LJPGJh">
+<div class="p-8">
+<div class="flex items-center justify-between mb-4">
+<span class="bg-[#EEEEEE] text-[#041562] font-mono text-xs font-bold px-3 py-1.5 rounded-md">STEP 03</span>
+<span class="text-xs font-mono font-semibold text-[#DA1212] uppercase tracking-wider">PHASE 3 POD DELIVERY</span>
+</div>
+<h3 class="text-2xl font-bold font-title-lg text-[#041562]">Agile Sprint Execution</h3>
+<p class="font-mono text-xs text-slate-500 mt-1 mb-3">Production Code &amp; CI/CD</p>
+<p class="font-body-md text-sm text-slate-600 leading-relaxed mb-6">
+              Bi-weekly engineering sprints delivered by dedicated pods, test-driven validation, and ephemeral PR staging environments.
+            </p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-5 border-t border-slate-100">
+<div class="flex items-center gap-3 border-l-2 border-[#DA1212] pl-3 py-1 bg-[#EEEEEE]/50 rounded-r-lg">
+<span class="text-xs font-semibold text-[#041562]">85%+ automated test coverage</span>
+</div>
+<div class="flex items-center gap-3 border-l-2 border-[#041562] pl-3 py-1 bg-[#EEEEEE]/50 rounded-r-lg">
+<span class="text-xs font-semibold text-[#041562]">GitOps continuous rollout</span>
+</div>
+</div>
+</div>
+</div>
+<!-- CARD 04 -->
+<div class="sticky top-40 bg-[#FFFFFF] rounded-2xl border border-black/5 shadow-xl overflow-hidden mb-12 transition-all">
+<img alt="CI/CD Launch &amp; 24/7 SRE" class="w-full h-64 aspect-video object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhgGWsR3Ip8M4z9_73GtMWIYe7hvcUiaAw5uvXFUPTCLdhFZB9wsJKVNreprXDYaw6iOUZA1_srZrCRVm17nd1fRZfDZFgpFGhaFf-MoErSB7Cgkb2AVM6UBc2HwjGZn_DMpbjL2PTLZ-moBPiR_XR4XvWepkS4MlSC1QVdteQv0o1ZrclbjgG5OMLXnsQA0CZWA7oRw5Mb3sFE-QvlI4KXNsmSiujX73Jh-llHxmy">
+<div class="p-8">
+<div class="flex items-center justify-between mb-4">
+<span class="bg-[#EEEEEE] text-[#041562] font-mono text-xs font-bold px-3 py-1.5 rounded-md">STEP 04</span>
+<span class="text-xs font-mono font-semibold text-[#DA1212] uppercase tracking-wider">PHASE 4 HANDOVER</span>
+</div>
+<h3 class="text-2xl font-bold font-title-lg text-[#041562]">CI/CD Launch &amp; 24/7 SRE</h3>
+<p class="font-mono text-xs text-slate-500 mt-1 mb-3">99.99% SLA Handover</p>
+<p class="font-body-md text-sm text-slate-600 leading-relaxed mb-6">
+              Canary releases, live production traffic cutover, automated runbook creation, and continuous telemetry monitoring handover.
+            </p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-5 border-t border-slate-100">
+<div class="flex items-center gap-3 border-l-2 border-[#DA1212] pl-3 py-1 bg-[#EEEEEE]/50 rounded-r-lg">
+<span class="text-xs font-semibold text-[#041562]">Full IP and repo transfer</span>
+</div>
+<div class="flex items-center gap-3 border-l-2 border-[#041562] pl-3 py-1 bg-[#EEEEEE]/50 rounded-r-lg">
+<span class="text-xs font-semibold text-[#041562]">24/7 SRE monitoring runbook</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. 'Industry Expertise Network' (Sliding Dual-Row Infinite Horizontal Marquee Carousel) -->
+<section class="bg-[#041562] py-24 text-white dark-grid-pattern border-b border-white/10 overflow-hidden">
+<div class="max-w-7xl mx-auto px-6 lg:px-12 mb-16 text-center">
+<!-- Eyebrow & Headline -->
+<div class="inline-flex items-center gap-2 bg-white/10 border border-white/10 px-4 py-1.5 rounded-full mb-4">
+<span class="font-mono text-xs font-bold text-[#DA1212] uppercase tracking-wider">VERTICAL SPECIALIZATION</span>
+</div>
+<h2 class="font-headline-lg text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-4">
+        Industry Expertise Network
+      </h2>
+<p class="text-[#EEEEEE] font-body-lg text-slate-300 max-w-2xl mx-auto">
+        Domain-specific architectures certified against stringent institutional regulatory compliance demands.
+      </p>
+</div>
+<!-- DUAL-ROW INFINITE HORIZONTAL MARQUEE CAROUSEL -->
+<div class="marquee-container space-y-6 overflow-hidden w-full select-none">
+<!-- ROW 1 (Glides Forward smoothly) -->
+<div class="overflow-hidden w-full flex">
+<div class="animate-marquee-forward flex gap-6 pl-4">
+<!-- Card 1: Banking & FinTech -->
+<div class="bg-[#071c77]/80 hover:bg-[#09228e] border border-white/10 rounded-2xl p-6 min-w-[420px] max-w-[420px] flex items-start gap-4 transition-all duration-300 hover:scale-[1.02] shadow-lg shrink-0">
+<div class="w-12 h-12 rounded-xl bg-[#DA1212] flex items-center justify-center text-white shrink-0 shadow-md">
+<span class="material-symbols-outlined text-2xl">account_balance</span>
+</div>
+<div class="flex-1">
+<h3 class="font-title-lg text-lg font-bold text-white mb-1.5">Banking &amp; FinTech</h3>
+<p class="text-[#EEEEEE]/80 text-xs leading-relaxed mb-4">
+            Low-latency ledger engines, PCI-DSS Tier-1 payment gateways, and real-time fraud scoring.
+          </p>
+<div class="inline-flex items-center gap-2 bg-black/30 border border-white/10 px-3 py-1 rounded-full text-[10px] font-mono font-bold text-[#DA1212]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#DA1212]"></span>
+<span>PRODUCTION SLA • 99.99%</span>
+</div>
+</div>
+</div>
+<!-- Card 2: Healthcare & MedTech -->
+<div class="bg-[#071c77]/80 hover:bg-[#09228e] border border-white/10 rounded-2xl p-6 min-w-[420px] max-w-[420px] flex items-start gap-4 transition-all duration-300 hover:scale-[1.02] shadow-lg shrink-0">
+<div class="w-12 h-12 rounded-xl bg-[#041562] border border-[#DA1212]/40 flex items-center justify-center text-white shrink-0 shadow-md">
+<span class="material-symbols-outlined text-[#DA1212] text-2xl">medical_services</span>
+</div>
+<div class="flex-1">
+<h3 class="font-title-lg text-lg font-bold text-white mb-1.5">Healthcare &amp; MedTech</h3>
+<p class="text-[#EEEEEE]/80 text-xs leading-relaxed mb-4">
+            HIPAA-compliant EHR pipelines, DICOM imaging ingestion, and patient telemetry brokers.
+          </p>
+<div class="inline-flex items-center gap-2 bg-black/30 border border-white/10 px-3 py-1 rounded-full text-[10px] font-mono font-bold text-[#DA1212]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#DA1212]"></span>
+<span>PRODUCTION SLA • 99.99%</span>
+</div>
+</div>
+</div>
+<!-- Card 3: E-Commerce & Retail -->
+<div class="bg-[#071c77]/80 hover:bg-[#09228e] border border-white/10 rounded-2xl p-6 min-w-[420px] max-w-[420px] flex items-start gap-4 transition-all duration-300 hover:scale-[1.02] shadow-lg shrink-0">
+<div class="w-12 h-12 rounded-xl bg-[#DA1212] flex items-center justify-center text-white shrink-0 shadow-md">
+<span class="material-symbols-outlined text-2xl">shopping_bag</span>
+</div>
+<div class="flex-1">
+<h3 class="font-title-lg text-lg font-bold text-white mb-1.5">E-Commerce &amp; Retail</h3>
+<p class="text-[#EEEEEE]/80 text-xs leading-relaxed mb-4">
+            Composable headless commerce architectures with sub-5ms flash sale inventory locking.
+          </p>
+<div class="inline-flex items-center gap-2 bg-black/30 border border-white/10 px-3 py-1 rounded-full text-[10px] font-mono font-bold text-[#DA1212]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#DA1212]"></span>
+<span>PRODUCTION SLA • 99.99%</span>
+</div>
+</div>
+</div>
+<!-- Card 4: EdTech Platforms -->
+<div class="bg-[#071c77]/80 hover:bg-[#09228e] border border-white/10 rounded-2xl p-6 min-w-[420px] max-w-[420px] flex items-start gap-4 transition-all duration-300 hover:scale-[1.02] shadow-lg shrink-0">
+<div class="w-12 h-12 rounded-xl bg-[#041562] border border-[#DA1212]/40 flex items-center justify-center text-white shrink-0 shadow-md">
+<span class="material-symbols-outlined text-[#DA1212] text-2xl">school</span>
+</div>
+<div class="flex-1">
+<h3 class="font-title-lg text-lg font-bold text-white mb-1.5">EdTech Platforms</h3>
+<p class="text-[#EEEEEE]/80 text-xs leading-relaxed mb-4">
+            Real-time collaborative classrooms, video processing microservices, and student analytics.
+          </p>
+<div class="inline-flex items-center gap-2 bg-black/30 border border-white/10 px-3 py-1 rounded-full text-[10px] font-mono font-bold text-[#DA1212]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#DA1212]"></span>
+<span>PRODUCTION SLA • 99.99%</span>
+</div>
+</div>
+</div>
+<!-- Duplicate Set for Seamless Infinite Loop -->
+<div class="bg-[#071c77]/80 hover:bg-[#09228e] border border-white/10 rounded-2xl p-6 min-w-[420px] max-w-[420px] flex items-start gap-4 transition-all duration-300 hover:scale-[1.02] shadow-lg shrink-0">
+<div class="w-12 h-12 rounded-xl bg-[#DA1212] flex items-center justify-center text-white shrink-0 shadow-md">
+<span class="material-symbols-outlined text-2xl">account_balance</span>
+</div>
+<div class="flex-1">
+<h3 class="font-title-lg text-lg font-bold text-white mb-1.5">Banking &amp; FinTech</h3>
+<p class="text-[#EEEEEE]/80 text-xs leading-relaxed mb-4">
+            Low-latency ledger engines, PCI-DSS Tier-1 payment gateways, and real-time fraud scoring.
+          </p>
+<div class="inline-flex items-center gap-2 bg-black/30 border border-white/10 px-3 py-1 rounded-full text-[10px] font-mono font-bold text-[#DA1212]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#DA1212]"></span>
+<span>PRODUCTION SLA • 99.99%</span>
+</div>
+</div>
+</div>
+<div class="bg-[#071c77]/80 hover:bg-[#09228e] border border-white/10 rounded-2xl p-6 min-w-[420px] max-w-[420px] flex items-start gap-4 transition-all duration-300 hover:scale-[1.02] shadow-lg shrink-0">
+<div class="w-12 h-12 rounded-xl bg-[#041562] border border-[#DA1212]/40 flex items-center justify-center text-white shrink-0 shadow-md">
+<span class="material-symbols-outlined text-[#DA1212] text-2xl">medical_services</span>
+</div>
+<div class="flex-1">
+<h3 class="font-title-lg text-lg font-bold text-white mb-1.5">Healthcare &amp; MedTech</h3>
+<p class="text-[#EEEEEE]/80 text-xs leading-relaxed mb-4">
+            HIPAA-compliant EHR pipelines, DICOM imaging ingestion, and patient telemetry brokers.
+          </p>
+<div class="inline-flex items-center gap-2 bg-black/30 border border-white/10 px-3 py-1 rounded-full text-[10px] font-mono font-bold text-[#DA1212]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#DA1212]"></span>
+<span>PRODUCTION SLA • 99.99%</span>
+</div>
+</div>
+</div>
+<div class="bg-[#071c77]/80 hover:bg-[#09228e] border border-white/10 rounded-2xl p-6 min-w-[420px] max-w-[420px] flex items-start gap-4 transition-all duration-300 hover:scale-[1.02] shadow-lg shrink-0">
+<div class="w-12 h-12 rounded-xl bg-[#DA1212] flex items-center justify-center text-white shrink-0 shadow-md">
+<span class="material-symbols-outlined text-2xl">shopping_bag</span>
+</div>
+<div class="flex-1">
+<h3 class="font-title-lg text-lg font-bold text-white mb-1.5">E-Commerce &amp; Retail</h3>
+<p class="text-[#EEEEEE]/80 text-xs leading-relaxed mb-4">
+            Composable headless commerce architectures with sub-5ms flash sale inventory locking.
+          </p>
+<div class="inline-flex items-center gap-2 bg-black/30 border border-white/10 px-3 py-1 rounded-full text-[10px] font-mono font-bold text-[#DA1212]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#DA1212]"></span>
+<span>PRODUCTION SLA • 99.99%</span>
+</div>
+</div>
+</div>
+<div class="bg-[#071c77]/80 hover:bg-[#09228e] border border-white/10 rounded-2xl p-6 min-w-[420px] max-w-[420px] flex items-start gap-4 transition-all duration-300 hover:scale-[1.02] shadow-lg shrink-0">
+<div class="w-12 h-12 rounded-xl bg-[#041562] border border-[#DA1212]/40 flex items-center justify-center text-white shrink-0 shadow-md">
+<span class="material-symbols-outlined text-[#DA1212] text-2xl">school</span>
+</div>
+<div class="flex-1">
+<h3 class="font-title-lg text-lg font-bold text-white mb-1.5">EdTech Platforms</h3>
+<p class="text-[#EEEEEE]/80 text-xs leading-relaxed mb-4">
+            Real-time collaborative classrooms, video processing microservices, and student analytics.
+          </p>
+<div class="inline-flex items-center gap-2 bg-black/30 border border-white/10 px-3 py-1 rounded-full text-[10px] font-mono font-bold text-[#DA1212]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#DA1212]"></span>
+<span>PRODUCTION SLA • 99.99%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ROW 2 (Glides in Reverse smoothly) -->
+<div class="overflow-hidden w-full flex">
+<div class="animate-marquee-reverse flex gap-6 pl-4">
+<!-- Card 5: Logistics & Fleet -->
+<div class="bg-[#071c77]/80 hover:bg-[#09228e] border border-white/10 rounded-2xl p-6 min-w-[420px] max-w-[420px] flex items-start gap-4 transition-all duration-300 hover:scale-[1.02] shadow-lg shrink-0">
+<div class="w-12 h-12 rounded-xl bg-[#041562] border border-[#DA1212]/40 flex items-center justify-center text-white shrink-0 shadow-md">
+<span class="material-symbols-outlined text-[#DA1212] text-2xl">local_shipping</span>
+</div>
+<div class="flex-1">
+<h3 class="font-title-lg text-lg font-bold text-white mb-1.5">Logistics &amp; Fleet</h3>
+<p class="text-[#EEEEEE]/80 text-xs leading-relaxed mb-4">
+            Geospatial dispatch systems, route optimization graphs, and cold-chain sensor monitoring.
+          </p>
+<div class="inline-flex items-center gap-2 bg-black/30 border border-white/10 px-3 py-1 rounded-full text-[10px] font-mono font-bold text-[#DA1212]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#DA1212]"></span>
+<span>PRODUCTION SLA • 99.99%</span>
+</div>
+</div>
+</div>
+<!-- Card 6: Enterprise SaaS -->
+<div class="bg-[#071c77]/80 hover:bg-[#09228e] border border-white/10 rounded-2xl p-6 min-w-[420px] max-w-[420px] flex items-start gap-4 transition-all duration-300 hover:scale-[1.02] shadow-lg shrink-0">
+<div class="w-12 h-12 rounded-xl bg-[#DA1212] flex items-center justify-center text-white shrink-0 shadow-md">
+<span class="material-symbols-outlined text-2xl">layers</span>
+</div>
+<div class="flex-1">
+<h3 class="font-title-lg text-lg font-bold text-white mb-1.5">Enterprise SaaS</h3>
+<p class="text-[#EEEEEE]/80 text-xs leading-relaxed mb-4">
+            Multi-tenant database sharding, usage metering, and fine-grained RBAC permission trees.
+          </p>
+<div class="inline-flex items-center gap-2 bg-black/30 border border-white/10 px-3 py-1 rounded-full text-[10px] font-mono font-bold text-[#DA1212]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#DA1212]"></span>
+<span>PRODUCTION SLA • 99.99%</span>
+</div>
+</div>
+</div>
+<!-- Card 7: PropTech -->
+<div class="bg-[#071c77]/80 hover:bg-[#09228e] border border-white/10 rounded-2xl p-6 min-w-[420px] max-w-[420px] flex items-start gap-4 transition-all duration-300 hover:scale-[1.02] shadow-lg shrink-0">
+<div class="w-12 h-12 rounded-xl bg-[#041562] border border-[#DA1212]/40 flex items-center justify-center text-white shrink-0 shadow-md">
+<span class="material-symbols-outlined text-[#DA1212] text-2xl">apartment</span>
+</div>
+<div class="flex-1">
+<h3 class="font-title-lg text-lg font-bold text-white mb-1.5">PropTech</h3>
+<p class="text-[#EEEEEE]/80 text-xs leading-relaxed mb-4">
+            Building automation telemetry, digitized lease underwriting, and automated appraisal APIs.
+          </p>
+<div class="inline-flex items-center gap-2 bg-black/30 border border-white/10 px-3 py-1 rounded-full text-[10px] font-mono font-bold text-[#DA1212]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#DA1212]"></span>
+<span>PRODUCTION SLA • 99.99%</span>
+</div>
+</div>
+</div>
+<!-- Card 8: Energy & Industrial IoT -->
+<div class="bg-[#071c77]/80 hover:bg-[#09228e] border border-white/10 rounded-2xl p-6 min-w-[420px] max-w-[420px] flex items-start gap-4 transition-all duration-300 hover:scale-[1.02] shadow-lg shrink-0">
+<div class="w-12 h-12 rounded-xl bg-[#DA1212] flex items-center justify-center text-white shrink-0 shadow-md">
+<span class="material-symbols-outlined text-2xl">bolt</span>
+</div>
+<div class="flex-1">
+<h3 class="font-title-lg text-lg font-bold text-white mb-1.5">Energy &amp; Industrial IoT</h3>
+<p class="text-[#EEEEEE]/80 text-xs leading-relaxed mb-4">
+            SCADA system integration, edge inference gateways, and power grid telemetry aggregation.
+          </p>
+<div class="inline-flex items-center gap-2 bg-black/30 border border-white/10 px-3 py-1 rounded-full text-[10px] font-mono font-bold text-[#DA1212]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#DA1212]"></span>
+<span>PRODUCTION SLA • 99.99%</span>
+</div>
+</div>
+</div>
+<!-- Duplicate Set for Seamless Infinite Loop -->
+<div class="bg-[#071c77]/80 hover:bg-[#09228e] border border-white/10 rounded-2xl p-6 min-w-[420px] max-w-[420px] flex items-start gap-4 transition-all duration-300 hover:scale-[1.02] shadow-lg shrink-0">
+<div class="w-12 h-12 rounded-xl bg-[#041562] border border-[#DA1212]/40 flex items-center justify-center text-white shrink-0 shadow-md">
+<span class="material-symbols-outlined text-[#DA1212] text-2xl">local_shipping</span>
+</div>
+<div class="flex-1">
+<h3 class="font-title-lg text-lg font-bold text-white mb-1.5">Logistics &amp; Fleet</h3>
+<p class="text-[#EEEEEE]/80 text-xs leading-relaxed mb-4">
+            Geospatial dispatch systems, route optimization graphs, and cold-chain sensor monitoring.
+          </p>
+<div class="inline-flex items-center gap-2 bg-black/30 border border-white/10 px-3 py-1 rounded-full text-[10px] font-mono font-bold text-[#DA1212]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#DA1212]"></span>
+<span>PRODUCTION SLA • 99.99%</span>
+</div>
+</div>
+</div>
+<div class="bg-[#071c77]/80 hover:bg-[#09228e] border border-white/10 rounded-2xl p-6 min-w-[420px] max-w-[420px] flex items-start gap-4 transition-all duration-300 hover:scale-[1.02] shadow-lg shrink-0">
+<div class="w-12 h-12 rounded-xl bg-[#DA1212] flex items-center justify-center text-white shrink-0 shadow-md">
+<span class="material-symbols-outlined text-2xl">layers</span>
+</div>
+<div class="flex-1">
+<h3 class="font-title-lg text-lg font-bold text-white mb-1.5">Enterprise SaaS</h3>
+<p class="text-[#EEEEEE]/80 text-xs leading-relaxed mb-4">
+            Multi-tenant database sharding, usage metering, and fine-grained RBAC permission trees.
+          </p>
+<div class="inline-flex items-center gap-2 bg-black/30 border border-white/10 px-3 py-1 rounded-full text-[10px] font-mono font-bold text-[#DA1212]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#DA1212]"></span>
+<span>PRODUCTION SLA • 99.99%</span>
+</div>
+</div>
+</div>
+<div class="bg-[#071c77]/80 hover:bg-[#09228e] border border-white/10 rounded-2xl p-6 min-w-[420px] max-w-[420px] flex items-start gap-4 transition-all duration-300 hover:scale-[1.02] shadow-lg shrink-0">
+<div class="w-12 h-12 rounded-xl bg-[#041562] border border-[#DA1212]/40 flex items-center justify-center text-white shrink-0 shadow-md">
+<span class="material-symbols-outlined text-[#DA1212] text-2xl">apartment</span>
+</div>
+<div class="flex-1">
+<h3 class="font-title-lg text-lg font-bold text-white mb-1.5">PropTech</h3>
+<p class="text-[#EEEEEE]/80 text-xs leading-relaxed mb-4">
+            Building automation telemetry, digitized lease underwriting, and automated appraisal APIs.
+          </p>
+<div class="inline-flex items-center gap-2 bg-black/30 border border-white/10 px-3 py-1 rounded-full text-[10px] font-mono font-bold text-[#DA1212]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#DA1212]"></span>
+<span>PRODUCTION SLA • 99.99%</span>
+</div>
+</div>
+</div>
+<div class="bg-[#071c77]/80 hover:bg-[#09228e] border border-white/10 rounded-2xl p-6 min-w-[420px] max-w-[420px] flex items-start gap-4 transition-all duration-300 hover:scale-[1.02] shadow-lg shrink-0">
+<div class="w-12 h-12 rounded-xl bg-[#DA1212] flex items-center justify-center text-white shrink-0 shadow-md">
+<span class="material-symbols-outlined text-2xl">bolt</span>
+</div>
+<div class="flex-1">
+<h3 class="font-title-lg text-lg font-bold text-white mb-1.5">Energy &amp; Industrial IoT</h3>
+<p class="text-[#EEEEEE]/80 text-xs leading-relaxed mb-4">
+            SCADA system integration, edge inference gateways, and power grid telemetry aggregation.
+          </p>
+<div class="inline-flex items-center gap-2 bg-black/30 border border-white/10 px-3 py-1 rounded-full text-[10px] font-mono font-bold text-[#DA1212]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#DA1212]"></span>
+<span>PRODUCTION SLA • 99.99%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. 'Enterprise Security & Compliance Verified' (Dark Section) -->
+<section class="bg-[#041562] py-20 text-white border-b border-white/10">
+<div class="max-w-7xl mx-auto px-6 lg:px-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+<div>
+<div class="inline-flex items-center gap-2 bg-white/10 border border-white/10 px-3.5 py-1 rounded-full mb-3">
+<span class="font-mono text-xs font-bold text-[#DA1212]">GOVERNANCE FRAMEWORK</span>
+</div>
+<h2 class="text-3xl lg:text-4xl font-bold font-headline-md tracking-tight text-white">
+            Enterprise Security &amp; Compliance Verified
+          </h2>
+</div>
+<p class="text-[#EEEEEE] text-sm max-w-md mt-4 md:mt-0 opacity-80">
+          Institutional assurance backed by third-party attestation and continuous automated policy enforcement.
+        </p>
+</div>
+<!-- 3 Precision Compliance Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<div class="bg-[#020b2d] border border-white/10 rounded-2xl p-7 relative">
+<div class="absolute top-4 right-4 w-4 h-4 border-t-2 border-r-2 border-[#DA1212]"></div>
+<span class="material-symbols-outlined text-[#DA1212] text-3xl mb-4">verified_user</span>
+<h3 class="font-title-lg text-lg font-bold text-white mb-2">ISO/IEC 27001:2022</h3>
+<p class="text-xs text-slate-300 leading-relaxed mb-6">
+            Certified Information Security Management Systems covering software architecture, infrastructure access, and key storage.
+          </p>
+<div class="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1 rounded text-[11px] font-mono">
+<span class="w-2 h-2 rounded-full bg-[#DA1212]"></span>
+<span class="text-slate-300">STATUS: VERIFIED &amp; ACTIVE</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-[#020b2d] border border-white/10 rounded-2xl p-7 relative">
+<div class="absolute top-4 right-4 w-4 h-4 border-t-2 border-r-2 border-[#DA1212]"></div>
+<span class="material-symbols-outlined text-[#DA1212] text-3xl mb-4">lock</span>
+<h3 class="font-title-lg text-lg font-bold text-white mb-2">SOC 2 Type II Audited</h3>
+<p class="text-xs text-slate-300 leading-relaxed mb-6">
+            Annual rigorous independent examinations verifying security, availability, processing integrity, and confidential data storage.
+          </p>
+<div class="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1 rounded text-[11px] font-mono">
+<span class="w-2 h-2 rounded-full bg-[#DA1212]"></span>
+<span class="text-slate-300">STATUS: VERIFIED &amp; ACTIVE</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-[#020b2d] border border-white/10 rounded-2xl p-7 relative">
+<div class="absolute top-4 right-4 w-4 h-4 border-t-2 border-r-2 border-[#DA1212]"></div>
+<span class="material-symbols-outlined text-[#DA1212] text-3xl mb-4">gavel</span>
+<h3 class="font-title-lg text-lg font-bold text-white mb-2">GDPR &amp; HIPAA Ready Architecture</h3>
+<p class="text-xs text-slate-300 leading-relaxed mb-6">
+            Pre-engineered cryptographic separation, differential privacy, audit logging, and automated right-to-be-forgotten webhooks.
+          </p>
+<div class="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1 rounded text-[11px] font-mono">
+<span class="w-2 h-2 rounded-full bg-[#DA1212]"></span>
+<span class="text-slate-300">STATUS: VERIFIED &amp; ACTIVE</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 7. 'Why Principal Teams Choose StriveCode' Section -->
+<section class="bg-[#EEEEEE] py-24 border-b border-slate-300">
+<div class="max-w-7xl mx-auto px-6 lg:px-12">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<!-- Left Column: Guarantees -->
+<div class="lg:col-span-6 space-y-8">
+<div>
+<div class="inline-flex items-center gap-2 bg-white border border-slate-200/80 px-4 py-1.5 rounded-full shadow-sm mb-4">
+<span class="font-label-sm uppercase tracking-wider text-xs font-bold text-[#DA1212]">THE STRIVECODE ADVANTAGE</span>
+</div>
+<h2 class="font-headline-lg text-3xl sm:text-4xl font-bold text-[#041562] tracking-tight">
+              Why Principal Teams Choose StriveCode
+            </h2>
+</div>
+<div class="space-y-6">
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-full bg-[#EEEEEE] border border-slate-300 flex items-center justify-center shrink-0 mt-1">
+<span class="material-symbols-outlined text-[#DA1212] font-bold text-xl">check</span>
+</div>
+<div>
+<h3 class="font-title-lg text-lg font-bold text-[#041562]">Zero Technical Debt Pledge</h3>
+<p class="font-body-md text-sm text-slate-600 mt-1">
+                  Every pull request undergoes strict automated AST analysis, architectural rubric scoring, and 85%+ test branch gates.
+                </p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-full bg-[#EEEEEE] border border-slate-300 flex items-center justify-center shrink-0 mt-1">
+<span class="material-symbols-outlined text-[#DA1212] font-bold text-xl">check</span>
+</div>
+<div>
+<h3 class="font-title-lg text-lg font-bold text-[#041562]">Direct Staff &amp; Principal Architect Access</h3>
+<p class="font-body-md text-sm text-slate-600 mt-1">
+                  No junior developer buffering. Your technical leads interface directly with senior system architects who own implementation.
+                </p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-full bg-[#EEEEEE] border border-slate-300 flex items-center justify-center shrink-0 mt-1">
+<span class="material-symbols-outlined text-[#DA1212] font-bold text-xl">check</span>
+</div>
+<div>
+<h3 class="font-title-lg text-lg font-bold text-[#041562]">Guaranteed 99.99% Production Uptime SLA</h3>
+<p class="font-body-md text-sm text-slate-600 mt-1">
+                  Contractually secured performance criteria with financially backed uptime commitments and active round-the-clock SRE rotations.
+                </p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-full bg-[#EEEEEE] border border-slate-300 flex items-center justify-center shrink-0 mt-1">
+<span class="material-symbols-outlined text-[#DA1212] font-bold text-xl">check</span>
+</div>
+<div>
+<h3 class="font-title-lg text-lg font-bold text-[#041562]">Complete Intellectual Property Handover</h3>
+<p class="font-body-md text-sm text-slate-600 mt-1">
+                  100% of custom pipelines, deployment templates, documentation, and model configurations belong entirely to your enterprise.
+                </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Engineering Benchmark Terminal -->
+<div class="lg:col-span-6">
+<div class="bg-[#020b2d] border border-white/10 rounded-2xl p-7 shadow-xl text-white font-mono text-sm relative">
+<div class="flex items-center justify-between pb-4 border-b border-white/10 mb-4">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-slate-600"></span>
+<span class="w-3 h-3 rounded-full bg-slate-600"></span>
+<span class="w-3 h-3 rounded-full bg-[#DA1212]"></span>
+<span class="text-xs text-slate-400 ml-2">ENGINEERING BENCHMARK METRICS</span>
+</div>
+<span class="text-xs text-[#DA1212] font-bold">Q3 AUDIT REPORT</span>
+</div>
+<!-- Terminal Code Output -->
+<div class="space-y-3 text-xs leading-relaxed">
+<div class="text-slate-400">
+<span class="text-[#DA1212]">$</span> strivecode-bench --env=production --cluster=all
+              </div>
+<div class="text-slate-300 bg-white/5 p-3 rounded-lg border border-white/5">
+<p class="text-slate-400">--- [AUDIT BENCHMARK SUMMARY] ---</p>
+<p>Median Deployment Frequency: <span class="text-white font-bold">14.2 / day</span></p>
+<p>Change Failure Rate (MTTR): <span class="text-[#DA1212] font-bold">&lt; 0.04%</span></p>
+<p>Automated Test Assertion Count: <span class="text-white font-bold">128,490</span></p>
+<p>Mean Time to Recovery (MTTR): <span class="text-white font-bold">4.2 minutes</span></p>
+</div>
+<div class="pt-2 text-slate-400">
+<span class="text-[#DA1212]">&gt;</span> Retention verification passed.
+              </div>
+</div>
+<!-- Metric Highlight Box -->
+<div class="mt-6 pt-6 border-t border-white/10 flex items-center justify-between">
+<div>
+<div class="text-3xl font-bold font-headline-md text-[#DA1212]">99.8%</div>
+<div class="text-xs text-slate-400 uppercase tracking-wider">Client Retention Rate</div>
+</div>
+<div class="text-right">
+<div class="text-sm font-bold text-white">4.9 / 5.0</div>
+<div class="text-xs text-slate-400">Principal Architect Rating</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 8. Pre-Footer CTA -->
+<section class="bg-[#041562] py-20 text-white text-center relative overflow-hidden border-b border-white/10" id="consultation">
+<div class="max-w-4xl mx-auto px-6 lg:px-12">
+<h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold font-headline-lg tracking-tight text-white mb-6">
+        Ready to Scale Your Engineering Capabilities?
+      </h2>
+<p class="text-[#EEEEEE] font-body-lg text-base sm:text-lg mb-10 max-w-2xl mx-auto opacity-90">
+        Book an architecture review with our principal engineers. We analyze your requirements and assemble dedicated pods in under 10 business days.
+      </p>
+<div class="flex flex-wrap items-center justify-center gap-4">
+<a class="inline-flex items-center gap-2 bg-[#DA1212] hover:bg-[#b80e0e] text-white font-label-md px-8 py-4 rounded-xl shadow-lg transition-all active:scale-95 text-base" href="mailto:ops@strivecode.com">
+<span>Schedule Technical Consultation</span>
+<span class="material-symbols-outlined text-base">arrow_forward</span>
+</a>
+<a class="inline-flex items-center gap-2 bg-transparent hover:bg-white/10 border border-[#EEEEEE] text-[#EEEEEE] font-label-md px-8 py-4 rounded-xl transition-all text-base" href="#">
+<span>Download Services Overview</span>
+<span class="material-symbols-outlined text-base">download</span>
+</a>
+</div>
+</div>
+</section>
+<!-- 9. Footer -->
+
+</BaseLayout>

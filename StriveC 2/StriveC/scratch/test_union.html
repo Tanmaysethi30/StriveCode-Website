@@ -1,0 +1,58 @@
+
+  <!DOCTYPE html><html><head>
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "/node_modules/three/build/three.module.js",
+      "three/addons/": "/node_modules/three/examples/jsm/"
+    }
+  }
+  </script>
+  </head><body><script type="module">
+    import * as THREE from 'three';
+    import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+    const loader = new GLTFLoader();
+    loader.load('/public/assets/models/robot-arm.glb', (gltf) => {
+      const model = gltf.scene;
+      const mixer = new THREE.AnimationMixer(model);
+      const clip = gltf.animations[0];
+      const action = mixer.clipAction(clip);
+      action.play();
+
+      const unionBox = new THREE.Box3();
+      const numSamples = 60;
+      const duration = clip.duration;
+
+      for (let i = 0; i <= numSamples; i++) {
+        const t = (i / numSamples) * duration;
+        mixer.setTime(t);
+        model.updateMatrixWorld(true);
+        const sampleBox = new THREE.Box3().setFromObject(model);
+        if (i === 0) unionBox.copy(sampleBox);
+        else unionBox.union(sampleBox);
+      }
+
+      mixer.setTime(0);
+      model.updateMatrixWorld(true);
+
+      const center = new THREE.Vector3();
+      unionBox.getCenter(center);
+      const size = new THREE.Vector3();
+      unionBox.getSize(size);
+
+      // Bounding sphere from union box
+      const sphere = new THREE.Sphere();
+      unionBox.getBoundingSphere(sphere);
+
+      window.__UNION_DATA__ = {
+        min: unionBox.min,
+        max: unionBox.max,
+        size: size,
+        center: center,
+        radius: sphere.radius,
+        baseY: unionBox.min.y
+      };
+    });
+  </script></body></html>
+  

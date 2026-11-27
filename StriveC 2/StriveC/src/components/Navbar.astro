@@ -1,0 +1,75 @@
+---
+interface Props {
+  currentRoute?: string;
+}
+
+const { currentRoute } = Astro.props;
+const pathname = (currentRoute || Astro.url.pathname).replace(/\/$/, '') || '/';
+
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/product', label: 'Product' },
+  { href: '/services', label: 'Services' },
+  { href: '/courses', label: 'Internship' },
+  { href: '/careers', label: 'Careers' },
+  { href: '/mentorship', label: 'Mentorship' },
+  { href: '/aboutus', label: 'About us' },
+  { href: '/contact', label: 'Contact' }
+];
+
+function isActive(href: string) {
+  if (href === '/') return pathname === '/';
+  return pathname === href || pathname.startsWith(href + '/');
+}
+---
+
+<header class="bg-white/95 backdrop-blur-md sticky top-0 z-50 border-b border-[#e0e0e0] transition-all duration-200 shadow-sm">
+  <div class="w-full flex justify-between items-center px-6 lg:px-14 py-3.5">
+    <a class="flex items-center gap-3" href="/">
+      <img alt="StriveCode Logo" class="h-10 w-10 object-contain rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAF1GPRqkM5p4r2vPbhV-ZrQqC8AtIqw6PCOU8Q3bYLe7I_Fbhfg_vcUhb9N-kB2ZTYVM7bA2L0tFEqWSNH7ryitR7-0hIQaDqhNuFUzv8idxTUN_L798fySsTjyI6S8TJv59OvYuHGXclfBJJi0vEj6qGoPt7Ajo4_TKdkwOxGRBZWTt7adcYdb4fPshtKjNVpHMhhzyBfBmZiVkBMQ4uM3L3kzJ8er3WQrEHuxAyvoxktFVstvSNKFQ" width="40" height="40" />
+      <div class="flex flex-col">
+        <span class="font-display font-extrabold text-[22px] text-[#041562] tracking-tight">StriveCode</span>
+        <span class="text-[10px] uppercase font-bold tracking-widest text-slate-400 -mt-1 font-mono">Technology</span>
+      </div>
+    </a>
+    <nav class="hidden xl:flex items-center gap-7 text-[14px]">
+      {links.map((link) => (
+        <a
+          class={isActive(link.href)
+            ? "text-[#041562] font-bold border-b-2 border-[#DA1212] pb-0.5 transition-all duration-200"
+            : "text-[#1b254b] hover:text-[#DA1212] font-medium border-b-2 border-transparent pb-0.5 transition-colors duration-200"
+          }
+          href={link.href}
+        >
+          {link.label}
+        </a>
+      ))}
+      <a class="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-[#DA1212] text-white text-[14px] font-semibold hover:bg-[#b80f0f] hover:shadow-[0_20px_45px_-12px_rgba(218,18,18,0.35)] hover:-translate-y-1 transition-all duration-200 shadow-sm group ml-2" href="#apply" data-apply-modal>
+        <span>Apply Now</span>
+        <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+      </a>
+    </nav>
+    <div class="xl:hidden flex items-center gap-3">
+      <button aria-expanded="false" aria-label="Toggle navigation menu" class="xl:hidden text-[#041562] hover:text-[#DA1212] p-2 focus:outline-none rounded-lg hover:bg-[#EEEEEE]" id="mobile-menu-toggle">
+        <span class="material-symbols-outlined text-2xl" id="menu-icon">menu</span>
+      </button>
+    </div>
+  </div>
+  <!-- Mobile Drawer -->
+  <div class="hidden xl:hidden bg-white border-b border-[#e0e0e0] px-6 py-5 shadow-lg mobile-nav-drawer" id="mobile-menu">
+    <nav class="flex flex-col gap-3">
+      {links.map((link) => (
+        <a
+          class={isActive(link.href)
+            ? "text-[#041562] font-bold text-sm py-1.5 border-l-2 border-[#DA1212] pl-3"
+            : "text-[#1b254b] hover:text-[#DA1212] font-medium text-sm py-1 pl-3"
+          }
+          href={link.href}
+        >
+          {link.label}
+        </a>
+      ))}
+      <a class="inline-flex items-center justify-center rounded-full px-5 py-2.5 bg-[#DA1212] text-white text-sm font-semibold mt-2" href="#apply" data-apply-modal>Apply Now →</a>
+    </nav>
+  </div>
+</header>

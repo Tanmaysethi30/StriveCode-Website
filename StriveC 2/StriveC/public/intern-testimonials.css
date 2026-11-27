@@ -1,0 +1,476 @@
+/* ==========================================================================
+   StriveCode Technology — Intern & Student Testimonials (Homepage Section)
+   Prefix: sc-testi-
+   ========================================================================== */
+
+/* --- Base Section Styling --- */
+.sc-testi-section {
+  position: relative;
+  width: 100%;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  /* Ensure background grid-matrix canvas is visible through the section */
+  background: transparent;
+  pointer-events: auto;
+}
+
+@media (min-width: 1024px) {
+  .sc-testi-section {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+.sc-testi-container {
+  max-width: 80rem; /* max-w-7xl (1280px) matching Homepage */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem; /* px-6 */
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .sc-testi-container {
+    padding-left: 3rem; /* lg:px-12 */
+    padding-right: 3rem;
+  }
+}
+
+/* --- Section Header --- */
+.sc-testi-header {
+  text-align: center;
+  max-width: 48rem; /* max-w-3xl */
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3.5rem; /* mb-14 */
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.sc-testi-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.875rem;
+  border-radius: 9999px;
+  background-color: #ffffff;
+  border: 1px solid rgba(218, 18, 18, 0.25);
+  color: #DA1212;
+  font-size: 0.75rem; /* text-xs */
+  font-weight: 800;
+  letter-spacing: 0.125em;
+  text-transform: uppercase;
+  font-family: 'JetBrains Mono', monospace;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.sc-testi-heading {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 1.875rem; /* text-3xl */
+  line-height: 1.2;
+  color: #041562;
+  letter-spacing: -0.025em;
+}
+
+@media (min-width: 640px) {
+  .sc-testi-heading {
+    font-size: 2.25rem; /* sm:text-4xl */
+  }
+}
+
+@media (min-width: 1024px) {
+  .sc-testi-heading {
+    font-size: 2.75rem; /* lg:text-[44px] */
+  }
+}
+
+/* --- Layout Grid --- */
+/*
+   Desktop (>=1024px): 6-column grid
+   Row 1: Cards 1, 2, 3 each span 2 cols (total 6 cols)
+   Row 2: Card 4 spans cols 2-3, Card 5 spans cols 4-5 (centered 2 cards!)
+   Tablet (640px-1023px): 2 columns, 5th card centered
+   Phone (<640px): 1 column
+*/
+.sc-testi-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+  width: 100%;
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .sc-testi-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem;
+  }
+  .sc-testi-card-wrap:nth-child(5) {
+    grid-column: 1 / -1;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .sc-testi-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 2rem;
+  }
+  .sc-testi-card-wrap:nth-child(1),
+  .sc-testi-card-wrap:nth-child(2),
+  .sc-testi-card-wrap:nth-child(3) {
+    grid-column: span 2;
+  }
+  .sc-testi-card-wrap:nth-child(4) {
+    grid-column: 2 / span 2;
+  }
+  .sc-testi-card-wrap:nth-child(5) {
+    grid-column: 4 / span 2;
+  }
+}
+
+/* --- Progressive Enhancement & Reveal --- */
+/* By default, fully visible with no JS */
+.sc-testi-header-reveal,
+.sc-testi-card-wrap {
+  opacity: 1;
+  transform: none;
+  transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* When JS is active, arm hidden pre-reveal state */
+.sc-testi-js .sc-testi-header-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.sc-testi-js .sc-testi-card-wrap {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+/* When revealed, animate in smoothly with staggering */
+.sc-testi-js .sc-testi-header-reveal.sc-testi-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sc-testi-js .sc-testi-card-wrap.sc-testi-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sc-testi-card-wrap:nth-child(1) { transition-delay: 0ms; }
+.sc-testi-card-wrap:nth-child(2) { transition-delay: 140ms; }
+.sc-testi-card-wrap:nth-child(3) { transition-delay: 280ms; }
+.sc-testi-card-wrap:nth-child(4) { transition-delay: 420ms; }
+.sc-testi-card-wrap:nth-child(5) { transition-delay: 560ms; }
+
+/* --- Card Structure & Aesthetics --- */
+.sc-testi-card-wrap {
+  perspective: 1200px;
+  display: flex;
+}
+
+.sc-testi-card {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #ffffff;
+  border-radius: 18px;
+  padding: 1.75rem 1.75rem 1.5rem;
+  border: 1px solid rgba(4, 21, 98, 0.08);
+  box-shadow: 0 4px 18px -2px rgba(4, 21, 98, 0.05),
+              0 2px 6px -1px rgba(4, 21, 98, 0.03);
+  overflow: hidden;
+  margin: 0;
+  /* Separate 3D tilt layer from entrance reveal */
+  transform: translate3d(0, 0, 0);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.4s ease,
+              opacity 0.45s ease;
+  will-change: transform;
+}
+
+@media (min-width: 640px) {
+  .sc-testi-card {
+    padding: 2rem 2rem 1.75rem;
+  }
+}
+
+/* Red accent bar at top edge */
+.sc-testi-accent-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #DA1212 0%, #DA1212 60%, #041562 100%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Soft Spotlight following cursor */
+.sc-testi-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle 240px at var(--sc-mouse-x, 50%) var(--sc-mouse-y, 50%),
+    rgba(4, 21, 98, 0.035),
+    rgba(218, 18, 18, 0.02) 65%,
+    transparent 85%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Decorative Quote Mark */
+.sc-testi-quote-mark {
+  position: absolute;
+  right: 1.25rem;
+  top: 1rem;
+  color: #DA1212;
+  opacity: 0.08;
+  font-family: 'Plus Jakarta Sans', serif;
+  font-size: 5.5rem;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  animation: sc-testi-quote-drift 8s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes sc-testi-quote-drift {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(3deg);
+  }
+}
+
+/* --- Blockquote & Typography --- */
+.sc-testi-quote-body {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem; /* 16px min on mobile */
+  line-height: 1.65;
+  color: #2a3556;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .sc-testi-quote-body {
+    font-size: 0.9375rem; /* 15px on tablet/desktop for tight cohesion, >=16px on mobile */
+    line-height: 1.68;
+  }
+}
+
+@media (max-width: 639px) {
+  .sc-testi-quote-body {
+    font-size: 1rem; /* >=16px strict compliance on mobile */
+  }
+}
+
+/* --- Figcaption / Author Section --- */
+.sc-testi-author {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(4, 21, 98, 0.07);
+}
+
+/* Photo Frame & Sweep Ring */
+.sc-testi-avatar-frame {
+  position: relative;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+}
+
+.sc-testi-avatar-ring {
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, #041562, #DA1212 50%, #041562 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.sc-testi-avatar-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #ffffff;
+  background-color: #f1f5f9;
+}
+
+.sc-testi-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 50%;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sc-testi-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.sc-testi-name {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.0625rem; /* ~17px */
+  font-weight: 700;
+  color: #041562;
+  letter-spacing: -0.015em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sc-testi-role {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6875rem; /* 11px */
+  font-weight: 600;
+  padding: 0.2rem 0.625rem;
+  border-radius: 9999px;
+  background-color: rgba(4, 21, 98, 0.07);
+  color: #041562;
+  width: fit-content;
+  transition: background-color 0.35s ease, color 0.35s ease, transform 0.35s ease;
+}
+
+/* ==========================================================================
+   Desktop Hover & Interactive State (@media hover: hover and pointer: fine)
+   ========================================================================== */
+@media (hover: hover) and (pointer: fine) {
+  /* Card Lift & Shadow */
+  .sc-testi-card:hover {
+    transform: translateY(-8px) rotateX(var(--sc-tilt-x, 0deg)) rotateY(var(--sc-tilt-y, 0deg));
+    box-shadow: 0 20px 35px -8px rgba(4, 21, 98, 0.12),
+                0 0 25px rgba(218, 18, 18, 0.05);
+    border-color: rgba(4, 21, 98, 0.18);
+  }
+
+  /* Reveal top accent bar */
+  .sc-testi-card:hover .sc-testi-accent-bar {
+    transform: scaleX(1);
+  }
+
+  /* Reveal cursor spotlight */
+  .sc-testi-card:hover::before {
+    opacity: 1;
+  }
+
+  /* Sweep ring rotation around avatar */
+  .sc-testi-card:hover .sc-testi-avatar-ring {
+    opacity: 1;
+    animation: sc-testi-ring-sweep 5s linear infinite;
+  }
+
+  /* Photo slight zoom */
+  .sc-testi-card:hover .sc-testi-img {
+    transform: scale(1.08);
+  }
+
+  /* Role chip fills navy with white text */
+  .sc-testi-card:hover .sc-testi-role {
+    background-color: #041562;
+    color: #ffffff;
+    transform: translateY(-1px);
+  }
+
+  /* Decorative quote drift & rotate */
+  .sc-testi-card:hover .sc-testi-quote-mark {
+    opacity: 0.15;
+    transform: scale(1.08) rotate(4deg) translateY(-3px);
+  }
+
+  /* Focus effect: other cards dim slightly and scale down */
+  .sc-testi-grid:has(.sc-testi-card:hover) .sc-testi-card:not(:hover) {
+    opacity: 0.8;
+    transform: scale(0.985);
+  }
+}
+
+@keyframes sc-testi-ring-sweep {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* --- Touch Devices --- */
+@media (hover: none) or (pointer: coarse) {
+  .sc-testi-card:active {
+    transform: scale(0.99);
+  }
+}
+
+/* ==========================================================================
+   Prefers Reduced Motion
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .sc-testi-header-reveal,
+  .sc-testi-card-wrap,
+  .sc-testi-card,
+  .sc-testi-img,
+  .sc-testi-accent-bar,
+  .sc-testi-avatar-ring,
+  .sc-testi-quote-mark,
+  .sc-testi-role {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .sc-testi-card:hover {
+    transform: none !important;
+    box-shadow: 0 4px 18px -2px rgba(4, 21, 98, 0.08) !important;
+    border-color: rgba(4, 21, 98, 0.18) !important;
+  }
+
+  .sc-testi-grid:has(.sc-testi-card:hover) .sc-testi-card:not(:hover) {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

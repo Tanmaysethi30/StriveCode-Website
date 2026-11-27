@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="404 - Page Not Found | StriveCode Technology"
+  description="The requested page could not be found. Navigate back to StriveCode Technology."
+  currentRoute="/404"
+  hasGridMatrix={true}
+>
+  <section class="min-h-[70vh] flex items-center justify-center py-20 px-6">
+    <div class="max-w-xl mx-auto text-center flex flex-col items-center">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#DA1212]/10 border border-[#DA1212]/20 text-[#DA1212] text-xs font-mono font-bold uppercase tracking-wider mb-6">
+        <span>ERROR 404</span>
+      </div>
+      <h1 class="text-4xl sm:text-6xl font-extrabold text-[#041562] font-display tracking-tight mb-4">
+        Page Not Found
+      </h1>
+      <p class="text-base sm:text-lg text-[#1b254b]/80 leading-relaxed mb-8 max-w-md">
+        The route you are looking for does not exist or has been relocated within our enterprise network.
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-4">
+        <a
+          href="/"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#DA1212] text-white font-semibold text-sm hover:bg-[#b80f0f] hover:shadow-[0_20px_45px_-12px_rgba(218,18,18,0.35)] hover:-translate-y-0.5 transition-all duration-200 shadow-sm"
+        >
+          <span>Return to Homepage</span>
+          <span class="material-symbols-outlined text-base">arrow_forward</span>
+        </a>
+        <a
+          href="/courses"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-[#041562] border border-[#041562]/20 font-semibold text-sm hover:bg-[#EEEEEE] hover:-translate-y-0.5 transition-all duration-200 shadow-xs"
+        >
+          <span>Explore Courses</span>
+        </a>
+        <a
+          href="/contact"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-[#041562] border border-[#041562]/20 font-semibold text-sm hover:bg-[#EEEEEE] hover:-translate-y-0.5 transition-all duration-200 shadow-xs"
+        >
+          <span>Contact Us</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

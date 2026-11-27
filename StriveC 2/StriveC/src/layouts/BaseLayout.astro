@@ -1,0 +1,244 @@
+---
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import ApplyModal from '../components/ApplyModal.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  hasGridMatrix?: boolean;
+  currentRoute?: string;
+  bodyClass?: string;
+  isHome?: boolean;
+}
+
+const {
+  title,
+  description = "StriveCode Technology - Enterprise Tech, Training & Career Acceleration",
+  hasGridMatrix = true,
+  currentRoute,
+  bodyClass = "bg-[#EEEEEE] text-[#1b254b] font-sans antialiased selection:bg-[#DA1212]/15 selection:text-[#DA1212] min-h-screen flex flex-col",
+  isHome = false
+} = Astro.props;
+
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site || 'https://strivecode.in').href;
+---
+
+<!DOCTYPE html>
+<html class="light scroll-smooth" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" type="image/jpeg" href="/logo.jpg" />
+
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://strivecode.in/logo.jpg" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://strivecode.in/logo.jpg" />
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json" is:inline>
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "StriveCode Technology Private Limited",
+        "url": "https://strivecode.in",
+        "logo": "https://strivecode.in/logo.jpg",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+91-8279431435",
+          "contactType": "admissions and corporate",
+          "email": "hr@strive-code.com"
+        }
+      }
+    </script>
+
+    {isHome && (
+      <>
+        <script is:inline>
+          if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+          }
+          if (!window.location.hash) {
+            window.scrollTo(0, 0);
+          }
+          document.documentElement.classList.add('sc-loader-lock');
+        </script>
+        <style is:inline id="sc-loader-styles">
+          #scLoaderOverlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            width: 100vw; height: 100vh;
+            z-index: 9999999;
+            background-color: #ffffff;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            opacity: 1; pointer-events: all;
+            will-change: opacity;
+          }
+          html.sc-loader-lock, html.sc-loader-lock body {
+            overflow: hidden !important;
+          }
+          .sc-loader-logo-wrap {
+            position: relative; display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            will-change: transform, opacity;
+            animation: sc-loader-entrance 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+          }
+          .sc-loader-halo {
+            position: absolute; top: 50%; left: 50%;
+            width: 160%; height: 160%; border-radius: 50%;
+            background: radial-gradient(circle, rgba(218, 18, 18, 0.22) 0%, rgba(4, 21, 98, 0.16) 45%, rgba(255, 255, 255, 0) 70%);
+            filter: blur(18px); pointer-events: none;
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0.6; z-index: 1;
+            animation: sc-loader-halo-pulse 5.5s ease-in-out infinite;
+          }
+          .sc-loader-logo-box {
+            position: relative; width: 140px; height: 140px;
+            border-radius: 20px; background: #ffffff;
+            box-shadow: 0 10px 30px -5px rgba(4, 21, 98, 0.08), 0 0 20px rgba(218, 18, 18, 0.06);
+            overflow: hidden; display: flex; align-items: center; justify-content: center;
+            z-index: 2;
+          }
+          .sc-loader-img {
+            width: 100%; height: 100%; object-fit: contain; display: block;
+            user-select: none; pointer-events: none;
+          }
+          .sc-loader-shine {
+            position: absolute; top: 0; left: -150%; width: 100%; height: 100%;
+            background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0) 35%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0) 65%, transparent 100%);
+            transform: skewX(-25deg); pointer-events: none; z-index: 5;
+            animation: sc-loader-sweep 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.6s forwards;
+          }
+          .sc-loader-track {
+            width: 120px; height: 2px; background: rgba(4, 21, 98, 0.08);
+            border-radius: 9999px; margin-top: 1.5rem; position: relative;
+            overflow: hidden; z-index: 3;
+          }
+          .sc-loader-bar {
+            position: absolute; top: 0; left: 0; height: 100%; width: 0%;
+            background: linear-gradient(90deg, #041562 0%, #041562 70%, #DA1212 100%);
+            border-radius: 9999px;
+            animation: sc-loader-bar-fill 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+          }
+          #scLoaderOverlay.sc-loader-exit {
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+          }
+          #scLoaderOverlay.sc-loader-exit .sc-loader-logo-wrap {
+            transform: scale(1.04);
+            transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+          }
+          #sc-loader-page {
+            opacity: 0; transform: translateY(12px);
+            transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: opacity, transform;
+          }
+          #sc-loader-page.sc-loader-revealed {
+            opacity: 1; transform: translateY(0);
+          }
+          @media (max-width: 640px) {
+            .sc-loader-logo-box { width: 100px; height: 100px; border-radius: 16px; }
+            .sc-loader-track { width: 100px; margin-top: 1.25rem; }
+          }
+          @keyframes sc-loader-entrance {
+            0% { opacity: 0; transform: translateY(10px) scale(0.9); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+          }
+          @keyframes sc-loader-halo-pulse {
+            0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 0.85; transform: translate(-50%, -50%) scale(1.12); }
+          }
+          @keyframes sc-loader-bar-fill {
+            0% { width: 0%; }
+            100% { width: 100%; }
+          }
+          @keyframes sc-loader-sweep {
+            0% { left: -150%; }
+            100% { left: 160%; }
+          }
+          @media (prefers-reduced-motion: reduce) {
+            .sc-loader-logo-wrap, .sc-loader-halo, .sc-loader-bar, .sc-loader-shine { animation: none !important; }
+            .sc-loader-logo-wrap { opacity: 1 !important; transform: none !important; }
+            .sc-loader-halo { opacity: 0.4 !important; transform: translate(-50%, -50%) scale(1) !important; }
+            .sc-loader-bar { width: 100% !important; }
+            .sc-loader-shine { display: none !important; }
+            #scLoaderOverlay.sc-loader-exit { transition: opacity 0.4s ease !important; }
+            #scLoaderOverlay.sc-loader-exit .sc-loader-logo-wrap { transform: none !important; transition: none !important; }
+            #sc-loader-page { transition: opacity 0.4s ease !important; transform: none !important; }
+          }
+        </style>
+        <noscript>
+          <style>
+            #scLoaderOverlay { display: none !important; }
+            #sc-loader-page { opacity: 1 !important; transform: none !important; }
+            html, body { overflow: auto !important; }
+          </style>
+        </noscript>
+      </>
+    )}
+
+    <!-- Google Fonts Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+    <slot name="head" />
+  </head>
+  <body class={bodyClass}>
+    {isHome && (
+      <div id="scLoaderOverlay" class="sc-loader-overlay" role="status" aria-label="Loading StriveCode">
+        <div class="sc-loader-logo-wrap">
+          <div class="sc-loader-halo" aria-hidden="true"></div>
+          <div class="sc-loader-logo-box">
+            <img src="/logo.jpg" alt="StriveCode Technology Logo" class="sc-loader-img" width="140" height="140" loading="eager" />
+            <div class="sc-loader-shine" aria-hidden="true"></div>
+          </div>
+        </div>
+        <div class="sc-loader-track" aria-hidden="true">
+          <div class="sc-loader-bar"></div>
+        </div>
+      </div>
+    )}
+
+    {isHome ? (
+      <div id="sc-loader-page" class="sc-loader-content flex flex-col flex-grow min-h-screen">
+        <Navbar currentRoute={currentRoute} />
+        <main class="flex-grow">
+          <slot />
+        </main>
+        <Footer />
+      </div>
+    ) : (
+      <>
+        <Navbar currentRoute={currentRoute} />
+        <main class="flex-grow">
+          <slot />
+        </main>
+        <Footer />
+      </>
+    )}
+
+    <ApplyModal />
+
+    <!-- Scripts -->
+    <script is:inline src="/main.js"></script>
+    {hasGridMatrix && <script is:inline src="/grid-matrix.js"></script>}
+
+    <slot name="scripts" />
+  </body>
+</html>

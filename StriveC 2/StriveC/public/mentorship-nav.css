@@ -1,0 +1,112 @@
+/* ==========================================================================
+   StriveCode Mentorship — Dual-State Navbar Styling (Option A)
+   Prefix: sc-mnav-
+   Only loaded on /mentorship
+   ========================================================================== */
+
+/* --- Default Transitions --- */
+header.sc-mnav-header {
+  transition: background-color 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+header.sc-mnav-header .font-display,
+header.sc-mnav-header .font-mono,
+header.sc-mnav-header nav a,
+header.sc-mnav-header #mobile-menu-toggle {
+  transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* --- Hero State: Seamless continuous surface with #041562 hero --- */
+/* Applied via header.sc-mnav-hero (runtime) or html.sc-mnav-hero-initial (flash prevention) */
+html.sc-mnav-hero-initial header:not(.sc-mnav-menu-open),
+header.sc-mnav-hero:not(.sc-mnav-menu-open) {
+  background-color: #041562 !important;
+  border-bottom-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Typography in Hero State */
+html.sc-mnav-hero-initial header:not(.sc-mnav-menu-open) .font-display,
+header.sc-mnav-hero:not(.sc-mnav-menu-open) .font-display {
+  color: #ffffff !important;
+}
+
+html.sc-mnav-hero-initial header:not(.sc-mnav-menu-open) .font-mono,
+header.sc-mnav-hero:not(.sc-mnav-menu-open) .font-mono {
+  color: rgba(255, 255, 255, 0.65) !important;
+}
+
+/* Inactive Navigation Links */
+html.sc-mnav-hero-initial header:not(.sc-mnav-menu-open) nav a:not([data-apply-modal]),
+header.sc-mnav-hero:not(.sc-mnav-menu-open) nav a:not([data-apply-modal]) {
+  color: rgba(255, 255, 255, 0.85) !important;
+  border-bottom-color: transparent !important;
+}
+
+html.sc-mnav-hero-initial header:not(.sc-mnav-menu-open) nav a:not([data-apply-modal]):hover,
+header.sc-mnav-hero:not(.sc-mnav-menu-open) nav a:not([data-apply-modal]):hover {
+  color: #ffffff !important;
+}
+
+/* Active Link (Mentorship) - Red underline preserved */
+html.sc-mnav-hero-initial header:not(.sc-mnav-menu-open) nav a.border-\[\#DA1212\],
+header.sc-mnav-hero:not(.sc-mnav-menu-open) nav a.border-\[\#DA1212\] {
+  color: #ffffff !important;
+  border-bottom-color: #DA1212 !important;
+}
+
+/* Mobile Toggle Button */
+html.sc-mnav-hero-initial header:not(.sc-mnav-menu-open) #mobile-menu-toggle,
+header.sc-mnav-hero:not(.sc-mnav-menu-open) #mobile-menu-toggle {
+  color: #ffffff !important;
+}
+
+html.sc-mnav-hero-initial header:not(.sc-mnav-menu-open) #mobile-menu-toggle:hover,
+header.sc-mnav-hero:not(.sc-mnav-menu-open) #mobile-menu-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Logo Image in Hero State: Clean rounded badge accent */
+html.sc-mnav-hero-initial header:not(.sc-mnav-menu-open) a > img,
+header.sc-mnav-hero:not(.sc-mnav-menu-open) a > img {
+  border-radius: 8px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2), 0 2px 6px rgba(0, 0, 0, 0.25);
+  background-color: #ffffff;
+}
+
+/* --- Scrolled State (Explicit, when scrolled below hero) --- */
+header.sc-mnav-scrolled {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-bottom-color: #e0e0e0;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* --- Mobile Menu Open Override --- */
+/* While mobile drawer is open, keep navbar white so it matches the white drawer panel */
+header.sc-mnav-menu-open {
+  background-color: #ffffff !important;
+  border-bottom-color: #e0e0e0 !important;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+}
+header.sc-mnav-menu-open .font-display {
+  color: #041562 !important;
+}
+header.sc-mnav-menu-open .font-mono {
+  color: #94a3b8 !important;
+}
+header.sc-mnav-menu-open #mobile-menu-toggle {
+  color: #041562 !important;
+}
+
+/* --- Reduced Motion Support --- */
+@media (prefers-reduced-motion: reduce) {
+  header.sc-mnav-header,
+  header.sc-mnav-header *,
+  html.sc-mnav-hero-initial header,
+  html.sc-mnav-hero-initial header * {
+    transition: none !important;
+  }
+}

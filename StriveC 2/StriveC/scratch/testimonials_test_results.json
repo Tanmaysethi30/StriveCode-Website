@@ -1,0 +1,362 @@
+{
+  "imageLoads": {
+    "testimonial-shivam-jain.jpg": {
+      "status": 200,
+      "ok": true,
+      "sizeBytes": 9198,
+      "contentType": "image/jpeg"
+    },
+    "testimonial-harsh-jain.jpg": {
+      "status": 200,
+      "ok": true,
+      "sizeBytes": 10047,
+      "contentType": "image/jpeg"
+    },
+    "testimonial-kartik-jain.jpg": {
+      "status": 200,
+      "ok": true,
+      "sizeBytes": 9981,
+      "contentType": "image/jpeg"
+    },
+    "testimonial-avinesh-shukla.jpg": {
+      "status": 200,
+      "ok": true,
+      "sizeBytes": 10369,
+      "contentType": "image/jpeg"
+    },
+    "testimonial-tanmay-sethi.jpg": {
+      "status": 200,
+      "ok": true,
+      "sizeBytes": 9767,
+      "contentType": "image/jpeg"
+    }
+  },
+  "consoleErrors": [
+    {
+      "viewport": "1920",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "1920",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "1920",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "1920",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "1920",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "1920",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "1920",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "1440",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "1440",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "1440",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "1440",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "1440",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "1440",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "1280",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "1280",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "1280",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "1280",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "1280",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "1280",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "1280",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "1024",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "1024",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "1024",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "1024",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "1024",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "1024",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "1024",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "768",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "768",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "768",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "768",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "768",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "768",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "390",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "390",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "390",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "390",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "390",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "390",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "320",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "320",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "320",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "320",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "320",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "320",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    }
+  ],
+  "pageErrors": [],
+  "viewportsTested": [],
+  "overflowChecks": {
+    "320": {
+      "docScrollWidth": 320,
+      "winInnerWidth": 320,
+      "hasOverflow": false
+    },
+    "390": {
+      "docScrollWidth": 390,
+      "winInnerWidth": 390,
+      "hasOverflow": false
+    },
+    "768": {
+      "docScrollWidth": 768,
+      "winInnerWidth": 768,
+      "hasOverflow": false
+    },
+    "1024": {
+      "docScrollWidth": 1024,
+      "winInnerWidth": 1024,
+      "hasOverflow": false
+    },
+    "1280": {
+      "docScrollWidth": 1280,
+      "winInnerWidth": 1280,
+      "hasOverflow": false
+    },
+    "1440": {
+      "docScrollWidth": 1440,
+      "winInnerWidth": 1440,
+      "hasOverflow": false
+    },
+    "1920": {
+      "docScrollWidth": 1920,
+      "winInnerWidth": 1920,
+      "hasOverflow": false
+    }
+  },
+  "domChecks": {
+    "cards": [
+      {
+        "name": "Shivam Jain",
+        "role": "Full Stack Intern",
+        "quoteText": "“Strive Code provided me with an excellent platform to learn, experiment, and grow. Throughout the internship, I gained practical knowledge, improved my technical abilities, and experienced a professional working environment. I am grateful for the experience and would recommend this opportunity to aspiring developers.”",
+        "imgAlt": "Portrait of Shivam Jain",
+        "imgSrc": "/assets/testimonials/testimonial-shivam-jain.jpg",
+        "complete": true,
+        "naturalWidth": 160,
+        "naturalHeight": 160,
+        "renderedWidth": "373.3",
+        "renderedHeight": "366.5",
+        "isRevealed": true
+      },
+      {
+        "name": "Harsh Jain",
+        "role": "DevOps Intern",
+        "quoteText": "“Working with Strive Code was a great experience. Their team demonstrated excellent professionalism, maintained timely communication, and delivered a solution that aligned perfectly with our business needs. We highly appreciate their commitment and ongoing support.”",
+        "imgAlt": "Portrait of Harsh Jain",
+        "imgSrc": "/assets/testimonials/testimonial-harsh-jain.jpg",
+        "complete": true,
+        "naturalWidth": 160,
+        "naturalHeight": 160,
+        "renderedWidth": "373.3",
+        "renderedHeight": "366.5",
+        "isRevealed": true
+      },
+      {
+        "name": "Kartik Jain",
+        "role": "Full Stack Intern",
+        "quoteText": "“One of the best things about my internship at Strive Code was the supportive learning environment. The mentors were always ready to guide me, clarify my doubts, and encourage me to improve. It helped me build confidence and develop a better understanding of the IT industry.”",
+        "imgAlt": "Portrait of Kartik Jain",
+        "imgSrc": "/assets/testimonials/testimonial-kartik-jain.jpg",
+        "complete": true,
+        "naturalWidth": 160,
+        "naturalHeight": 160,
+        "renderedWidth": "373.3",
+        "renderedHeight": "366.5",
+        "isRevealed": true
+      },
+      {
+        "name": "Avinesh Shukla",
+        "role": "Web Intern",
+        "quoteText": "“Working with Strive Code was an amazing experience. The internship provided me with practical exposure to real-world projects and helped me understand how theoretical concepts are applied in actual development. I also improved my problem-solving, teamwork, and communication skills.”",
+        "imgAlt": "Portrait of Avinesh Shukla",
+        "imgSrc": "/assets/testimonials/testimonial-avinesh-shukla.jpg",
+        "complete": true,
+        "naturalWidth": 160,
+        "naturalHeight": 160,
+        "renderedWidth": "373.3",
+        "renderedHeight": "366.5",
+        "isRevealed": true
+      },
+      {
+        "name": "Tanmay Sethi",
+        "role": "DevOps Intern",
+        "quoteText": "“My internship at Strive Code Pvt. Ltd. was a great learning experience. I got the opportunity to enhance my technical skills, explore new technologies, and understand how software development works in a professional environment. The guidance and support from the team helped me grow both technically and professionally.”",
+        "imgAlt": "Portrait of Tanmay Sethi",
+        "imgSrc": "/assets/testimonials/testimonial-tanmay-sethi.jpg",
+        "complete": true,
+        "naturalWidth": 160,
+        "naturalHeight": 160,
+        "renderedWidth": "373.3",
+        "renderedHeight": "366.5",
+        "isRevealed": true
+      }
+    ],
+    "sectionFound": true,
+    "hasJsClass": true,
+    "cardCount": 5
+  },
+  "interactions": {
+    "hoverState": {
+      "tiltX": "-1.97deg",
+      "tiltY": "1.97deg",
+      "mouseX": "75.0%",
+      "mouseY": "75.0%",
+      "cardTransform": "matrix3d(0.999518, -0.000963086, -0.0310187, 0, 0, 0.999518, -0.0310336, 0, 0.0310336, 0.0310187, 0.999037, 0, 0, -7.66102, 0, 1)",
+      "otherCardOpacity": "0.808576",
+      "otherCardTransform": "matrix(0.985126, 0, 0, 0.985126, 0, 0)"
+    },
+    "resetState": {
+      "tiltX": "0deg",
+      "tiltY": "0deg"
+    }
+  },
+  "accessibilityChecks": {
+    "reducedMotion": {
+      "opacity": "1",
+      "animation": "none",
+      "transition": "none"
+    },
+    "noJsState": {
+      "sectionFound": true,
+      "hasJsClass": false,
+      "cardCount": 5,
+      "opacities": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "allVisible": true
+    }
+  }
+}

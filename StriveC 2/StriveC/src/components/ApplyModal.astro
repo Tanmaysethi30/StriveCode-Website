@@ -1,0 +1,182 @@
+---
+// Universal Apply Modal Component (src/components/ApplyModal.astro)
+// Verified 100% against apply-modal.js with all 13 fields and exact PROGRAM_DATA
+---
+
+<div class="sc-apply-backdrop" id="sc-apply-modal" role="dialog" aria-modal="true" aria-labelledby="sc-apply-title" aria-hidden="true">
+  <div class="sc-apply-container">
+    <div class="sc-apply-card" id="sc-apply-card">
+      <button type="button" class="sc-apply-close-btn" id="sc-apply-close" aria-label="Close modal">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <!-- Form Body -->
+      <div class="sc-apply-body" id="sc-apply-form-wrapper">
+        <div class="sc-apply-header">
+          <span class="sc-apply-badge">APPLY TO STRIVECODE</span>
+          <h2 class="sc-apply-title" id="sc-apply-title">Start Your Journey With Us</h2>
+          <p class="sc-apply-subtitle">Fill in your details below. Our admissions and engineering team will review your profile and reach out within 24 hours.</p>
+        </div>
+
+        <form class="sc-apply-form" id="sc-apply-form" novalidate>
+          <div class="sc-apply-grid">
+            <!-- 1. Full Name * -->
+            <div class="sc-apply-field sc-apply-stagger" data-field="name">
+              <label class="sc-apply-label" for="sc-apply-name">Full Name <span class="sc-apply-required">*</span></label>
+              <input type="text" class="sc-apply-input" id="sc-apply-name" name="name" placeholder="John Doe" required autocomplete="name" />
+              <span class="sc-apply-error" id="sc-apply-name-error"></span>
+            </div>
+
+            <!-- 2. Email Address * -->
+            <div class="sc-apply-field sc-apply-stagger" data-field="email">
+              <label class="sc-apply-label" for="sc-apply-email">Email Address <span class="sc-apply-required">*</span></label>
+              <input type="email" class="sc-apply-input" id="sc-apply-email" name="email" placeholder="john@example.com" required autocomplete="email" />
+              <span class="sc-apply-error" id="sc-apply-email-error"></span>
+            </div>
+
+            <!-- 3. Phone Number * -->
+            <div class="sc-apply-field sc-apply-stagger" data-field="phone">
+              <label class="sc-apply-label" for="sc-apply-phone">Phone Number <span class="sc-apply-required">*</span></label>
+              <div class="sc-apply-phone-wrap" id="sc-apply-phone-wrap">
+                <span class="sc-apply-phone-prefix">+91</span>
+                <input type="tel" class="sc-apply-input sc-apply-phone-input" id="sc-apply-phone" name="phone" placeholder="98765 43210" maxlength="10" required autocomplete="tel-national" />
+              </div>
+              <span class="sc-apply-error" id="sc-apply-phone-error"></span>
+            </div>
+
+            <!-- 4. I'm Applying For * -->
+            <div class="sc-apply-field sc-apply-stagger" data-field="category">
+              <label class="sc-apply-label" for="sc-apply-category">I'm Applying For <span class="sc-apply-required">*</span></label>
+              <select class="sc-apply-select" id="sc-apply-category" name="category" required>
+                <option value="" disabled selected>Select application type...</option>
+                <option value="Engineering Course">Engineering Course</option>
+                <option value="Career Opportunity">Career Opportunity</option>
+                <option value="1-on-1 Mentorship">1-on-1 Mentorship</option>
+                <option value="Enterprise Project Inquiry">Enterprise Project Inquiry</option>
+              </select>
+              <span class="sc-apply-error" id="sc-apply-category-error"></span>
+            </div>
+
+            <!-- 5. Program or Role * (Dependent on field 4) -->
+            <div class="sc-apply-field sc-apply-stagger" data-field="program">
+              <label class="sc-apply-label" for="sc-apply-program">Program or Role <span class="sc-apply-required">*</span></label>
+              <select class="sc-apply-select" id="sc-apply-program" name="program" required>
+                <option value="" disabled selected>Select program or role...</option>
+              </select>
+              <span class="sc-apply-error" id="sc-apply-program-error"></span>
+            </div>
+
+            <!-- 6. Current Status * -->
+            <div class="sc-apply-field sc-apply-stagger" data-field="status">
+              <label class="sc-apply-label" for="sc-apply-status">Current Status <span class="sc-apply-required">*</span></label>
+              <select class="sc-apply-select" id="sc-apply-status" name="status" required>
+                <option value="" disabled selected>Select your current status...</option>
+                <option value="Student">Student</option>
+                <option value="Working Professional">Working Professional</option>
+                <option value="Fresher">Fresher</option>
+                <option value="Career Switcher">Career Switcher</option>
+              </select>
+              <span class="sc-apply-error" id="sc-apply-status-error"></span>
+            </div>
+
+            <!-- 7. College / Company Name -->
+            <div class="sc-apply-field sc-apply-stagger" data-field="organization">
+              <label class="sc-apply-label" for="sc-apply-org">College / Company Name</label>
+              <input type="text" class="sc-apply-input" id="sc-apply-org" name="organization" placeholder="e.g. Stanford University / Tech Corp" />
+              <span class="sc-apply-error" id="sc-apply-org-error"></span>
+            </div>
+
+            <!-- 8. Experience Level -->
+            <div class="sc-apply-field sc-apply-stagger" data-field="experience">
+              <label class="sc-apply-label" for="sc-apply-experience">Experience Level</label>
+              <select class="sc-apply-select" id="sc-apply-experience" name="experience">
+                <option value="" disabled selected>Select experience level...</option>
+                <option value="Beginner">Beginner (0-1 yrs)</option>
+                <option value="Intermediate">Intermediate (1-3 yrs)</option>
+                <option value="Advanced">Advanced (3+ yrs)</option>
+              </select>
+              <span class="sc-apply-error" id="sc-apply-experience-error"></span>
+            </div>
+
+            <!-- 9. City / Location -->
+            <div class="sc-apply-field sc-apply-stagger" data-field="location">
+              <label class="sc-apply-label" for="sc-apply-location">City / Location</label>
+              <input type="text" class="sc-apply-input" id="sc-apply-location" name="location" placeholder="e.g. Bengaluru, India" />
+              <span class="sc-apply-error" id="sc-apply-location-error"></span>
+            </div>
+
+            <!-- 10. LinkedIn / GitHub / Portfolio Link -->
+            <div class="sc-apply-field sc-apply-stagger" data-field="portfolio">
+              <label class="sc-apply-label" for="sc-apply-portfolio">LinkedIn / GitHub / Portfolio Link <span class="sc-apply-optional">(Optional)</span></label>
+              <input type="url" class="sc-apply-input" id="sc-apply-portfolio" name="portfolio" placeholder="https://linkedin.com/in/... or github.com/..." />
+              <span class="sc-apply-error" id="sc-apply-portfolio-error"></span>
+            </div>
+
+            <!-- 11. Preferred Start Timeline -->
+            <div class="sc-apply-field sc-apply-col-span-2 sc-apply-stagger" data-field="timeline">
+              <label class="sc-apply-label" for="sc-apply-timeline">Preferred Start Timeline</label>
+              <select class="sc-apply-select" id="sc-apply-timeline" name="timeline">
+                <option value="" disabled selected>Select start timeline...</option>
+                <option value="Immediately">Immediately</option>
+                <option value="Within 1 month">Within 1 month</option>
+                <option value="Within 3 months">Within 3 months</option>
+                <option value="Just exploring">Just exploring</option>
+              </select>
+              <span class="sc-apply-error" id="sc-apply-timeline-error"></span>
+            </div>
+
+            <!-- 12. Message (textarea) -->
+            <div class="sc-apply-field sc-apply-col-span-2 sc-apply-stagger" data-field="message">
+              <label class="sc-apply-label" for="sc-apply-message">Message / Tell us about your goals <span class="sc-apply-optional">(Optional)</span></label>
+              <textarea class="sc-apply-textarea" id="sc-apply-message" name="message" rows="3" placeholder="Share your background, what you hope to achieve, or any specific questions..."></textarea>
+              <span class="sc-apply-error" id="sc-apply-message-error"></span>
+            </div>
+
+            <!-- 13. Checkbox Agreement * -->
+            <div class="sc-apply-field sc-apply-col-span-2 sc-apply-checkbox-wrap sc-apply-stagger" data-field="agree">
+              <label class="sc-apply-checkbox-label">
+                <input type="checkbox" class="sc-apply-checkbox" id="sc-apply-agree" name="agree" required />
+                <span class="sc-apply-checkbox-custom"></span>
+                <span class="sc-apply-checkbox-text">I agree to be contacted by the StriveCode team regarding my application and programs <span class="sc-apply-required">*</span></span>
+              </label>
+              <span class="sc-apply-error" id="sc-apply-agree-error"></span>
+            </div>
+          </div>
+
+          <!-- Submit / Cancel Actions -->
+          <div class="sc-apply-actions sc-apply-stagger">
+            <button type="submit" class="sc-apply-submit-btn" id="sc-apply-submit">
+              <span class="sc-apply-btn-text">Submit Application →</span>
+              <span class="sc-apply-spinner" aria-hidden="true"></span>
+            </button>
+            <button type="button" class="sc-apply-cancel-btn" id="sc-apply-cancel">Cancel</button>
+          </div>
+
+          <div class="sc-apply-footer-note sc-apply-stagger">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            <span>Our team responds within 24 hours.</span>
+          </div>
+        </form>
+      </div>
+
+      <!-- Success State -->
+      <div class="sc-apply-success" id="sc-apply-success" style="display: none;" aria-live="polite">
+        <div class="sc-apply-success-icon-wrap">
+          <svg class="sc-apply-checkmark-svg" viewBox="0 0 52 52">
+            <circle class="sc-apply-checkmark-circle" cx="26" cy="26" r="24" fill="none"></circle>
+            <path class="sc-apply-checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"></path>
+          </svg>
+        </div>
+        <h3 class="sc-apply-success-title">Application Received!</h3>
+        <p class="sc-apply-success-desc">Thank you for applying to StriveCode. Our team will review your application and contact you within 24 hours.</p>
+        <button type="button" class="sc-apply-success-close-btn" id="sc-apply-success-close">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<link rel="stylesheet" href="/apply-modal.css" />
+<script is:inline src="/apply-modal.js"></script>

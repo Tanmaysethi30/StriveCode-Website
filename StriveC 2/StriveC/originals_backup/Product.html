@@ -1,0 +1,1295 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en"><head>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="nav.css">
+<link rel="stylesheet" href="apply-modal.css">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Products | StriveCode Technology - Enterprise Technical Infrastructure</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config verbatim from design tokens with Apple editorial layout extensions -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#041562",
+            "primary-container": "#041562",
+            "secondary": "#DA1212",
+            "secondary-container": "#DA1212",
+            "surface-apple": "#EEEEEE",
+            "background-studio": "#F8F9FB",
+            "on-surface-muted": "#041562"
+          },
+          fontFamily: {
+            sans: ["Plus Jakarta Sans", "system-ui", "sans-serif"],
+            display: ["Plus Jakarta Sans", "system-ui", "sans-serif"]
+          },
+          boxShadow: {
+            "apple-sm": "0 2px 8px -2px rgba(4, 21, 98, 0.04), 0 1px 3px 0 rgba(0, 0, 0, 0.02)",
+            "apple-card": "0 10px 30px -10px rgba(4, 21, 98, 0.06), 0 2px 8px -2px rgba(0, 0, 0, 0.03)",
+            "apple-hover": "0 20px 40px -15px rgba(4, 21, 98, 0.12), 0 4px 12px -2px rgba(0, 0, 0, 0.04)",
+            "studio-ground": "0 35px 70px -15px rgba(4, 21, 98, 0.12), 0 15px 30px -10px rgba(0, 0, 0, 0.06)"
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    /* Continuous Marquee Animations */
+    @keyframes marquee-left {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    @keyframes marquee-right {
+      0% { transform: translateX(-50%); }
+      100% { transform: translateX(0%); }
+    }
+    .animate-marquee-left {
+      display: flex;
+      width: max-content;
+      animation: marquee-left 32s linear infinite;
+    }
+    .animate-marquee-right {
+      display: flex;
+      width: max-content;
+      animation: marquee-right 36s linear infinite;
+    }
+    .marquee-container:hover .animate-marquee-left,
+    .marquee-container:hover .animate-marquee-right {
+      animation-play-state: paused;
+    }
+
+    /* Subtle Studio Lighting Gradients - semi-transparent to reveal grid matrix background */
+    .studio-bg {
+      background: radial-gradient(100% 70% at 50% 0%, rgba(255, 255, 255, 0) 0%, rgba(248, 249, 251, 0.1) 50%, rgba(238, 238, 240, 0.5) 100%);
+    }
+
+    /* Apple-style Tactile Micro-Interactions with cubic-bezier(0.16, 1, 0.3, 1) */
+    .apple-motion {
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* 1. Software Bento Card Hover */
+    .software-card-interactive {
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 2px solid transparent;
+      outline: 1px solid rgba(0, 0, 0, 0.04);
+    }
+    .software-card-interactive:hover {
+      transform: translateY(-10px) scale(1.02);
+      border-color: #DA1212 !important;
+      outline-color: transparent;
+      box-shadow: 0 20px 40px -12px rgba(218, 18, 18, 0.18) !important;
+    }
+    .software-card-interactive:hover .card-icon-box {
+      background-color: #DA1212 !important;
+      color: #FFFFFF !important;
+      box-shadow: 0 8px 16px -4px rgba(218, 18, 18, 0.3);
+    }
+    .software-card-interactive:hover .card-tag-pill {
+      border-color: #DA1212;
+      color: #041562;
+      background-color: #FFFFFF;
+    }
+
+    /* 2. Hero Studio Device Pop-ups & Parallax 3D Base */
+    .hero-device-perspective-stage {
+      perspective: 1200px;
+      perspective-origin: 50% 50%;
+      transform-style: preserve-3d;
+      overflow: visible;
+    }
+
+    .hero-device-interactive {
+      border: 2px solid rgba(0, 0, 0, 0.1);
+      will-change: transform, opacity, box-shadow;
+      transition: transform 0.15s ease-out, opacity 0.2s ease-out, box-shadow 0.2s ease-out;
+    }
+    .hero-device-interactive:hover {
+      border-color: #DA1212 !important;
+      z-index: 35;
+    }
+
+    /* Sub-pills & website tech capsules */
+    .interactive-subpill {
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1.5px solid transparent;
+    }
+    .interactive-subpill:hover {
+      transform: translateY(-3px);
+      border-color: #DA1212 !important;
+      color: #DA1212 !important;
+      background-color: #FFFFFF !important;
+      box-shadow: 0 6px 16px -4px rgba(218, 18, 18, 0.15);
+    }
+
+    /* 3. Tier Engagement Cards Hover */
+    .tier-card-interactive {
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 2px solid rgba(0, 0, 0, 0.04);
+    }
+    .tier-card-interactive:hover {
+      transform: translateY(-12px) scale(1.02) !important;
+      border-color: #DA1212 !important;
+      box-shadow: 0 24px 48px -12px rgba(218, 18, 18, 0.2) !important;
+    }
+    .tier-card-interactive:hover .tier-action-btn {
+      background-color: #DA1212 !important;
+      color: #FFFFFF !important;
+      border-color: #DA1212 !important;
+      box-shadow: 0 8px 18px -4px rgba(218, 18, 18, 0.35);
+    }
+
+    /* 4. Client Badges & Testimonial Cards */
+    .client-badge-interactive {
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1.5px solid rgba(0, 0, 0, 0.05);
+      cursor: default;
+    }
+    .client-badge-interactive:hover {
+      transform: translateY(-6px);
+      border-color: #DA1212 !important;
+      color: #DA1212 !important;
+      box-shadow: 0 10px 20px -6px rgba(218, 18, 18, 0.18);
+    }
+
+    .testimonial-card-interactive {
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 2px solid rgba(0, 0, 0, 0.04);
+    }
+    .testimonial-card-interactive:hover {
+      transform: translateY(-8px) scale(1.01);
+      border-color: #DA1212 !important;
+      box-shadow: 0 20px 40px -12px rgba(4, 21, 98, 0.12) !important;
+    }
+  </style>
+</head>
+<body class="bg-[#EEEEEE] font-sans text-[#041562] antialiased selection:bg-[#DA1212] selection:text-white min-h-screen flex flex-col">
+<!-- =========================================================================
+       1. TOP NAVBAR (Apple Frosted Glass, High Contrast #041562, Zero CTA Buttons)
+       ========================================================================= -->
+<header class="bg-white/95 backdrop-blur-md sticky top-0 z-50 border-b border-[#e0e0e0] transition-all duration-200 shadow-sm">
+<div class="w-full flex justify-between items-center px-6 lg:px-14 py-3.5">
+<a class="flex items-center gap-3 group" href="Homepage.html">
+<img alt="StriveCode Logo" class="h-10 w-10 object-contain rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAF1GPRqkM5p4r2vPbhV-ZrQqC8AtIqw6PCOU8Q3bYLe7I_Fbhfg_vcUhb9N-kB2ZTYVM7bA2L0tFEqWSNH7ryitR7-0hIQaDqhNuFUzv8idxTUN_L798fySsTjyI6S8TJv59OvYuHGXclfBJJi0vEj6qGoPt7Ajo4_TKdkwOxGRBZWTt7adcYdb4fPshtKjNVpHMhhzyBfBmZiVkBMQ4uM3L3kzJ8er3WQrEHuxAyvoxktFVstvSNKFQ">
+<div class="flex flex-col">
+<span class="font-display font-extrabold text-[22px] text-[#041562] group-hover:text-[#DA1212] transition-colors tracking-tight">StriveCode</span>
+<span class="text-[10px] uppercase font-bold tracking-widest text-slate-400 -mt-1 font-mono">Technology</span>
+</div>
+</a>
+<nav class="hidden xl:flex items-center gap-7 text-[14px]">
+<a class="text-[#1b254b] hover:text-[#DA1212] font-medium transition-colors duration-200" href="Homepage.html">Home</a>
+<a class="text-[#041562] font-bold border-b-2 border-[#DA1212] pb-0.5 transition-all duration-200" href="Product.html">Product</a>
+<a class="text-[#1b254b] hover:text-[#DA1212] font-medium transition-colors duration-200" href="Services.html">Services</a>
+<a class="text-[#1b254b] hover:text-[#DA1212] font-medium transition-colors duration-200" href="Courses.html">Course</a>
+<a class="text-[#1b254b] hover:text-[#DA1212] font-medium transition-colors duration-200" href="Careers.html">Careers</a>
+<a class="text-[#1b254b] hover:text-[#DA1212] font-medium transition-colors duration-200" href="Mentorship.html">Mentorship</a>
+<a class="text-[#1b254b] hover:text-[#DA1212] font-medium transition-colors duration-200" href="Aboutus.html">About us</a>
+<a class="text-[#1b254b] hover:text-[#DA1212] font-medium transition-colors duration-200" href="Contact.html">Contact</a><a class="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-[#DA1212] text-white text-[14px] font-semibold hover:bg-[#b80f0f] hover:shadow-[0_20px_45px_-12px_rgba(218,18,18,0.35)] hover:-translate-y-1 transition-all duration-200 shadow-sm group ml-2" href="#apply" data-apply-modal><span>Apply Now</span><span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span></a>
+</nav>
+<div class="xl:hidden flex items-center gap-3">
+<button aria-expanded="false" aria-label="Toggle navigation menu" class="xl:hidden text-[#041562] hover:text-[#DA1212] p-2 focus:outline-none rounded-lg hover:bg-[#EEEEEE]" id="mobile-menu-toggle">
+<span class="material-symbols-outlined text-2xl" id="menu-icon">menu</span>
+</button>
+</div>
+</div>
+<!-- Mobile Drawer -->
+<div class="hidden xl:hidden bg-white border-b border-[#e0e0e0] px-6 py-5 shadow-lg mobile-nav-drawer" id="mobile-menu">
+<nav class="flex flex-col gap-3">
+<a class="text-[#1b254b] hover:text-[#DA1212] font-medium text-sm py-1 pl-3" href="Homepage.html">Home</a>
+<a class="text-[#041562] font-bold text-sm py-1.5 border-l-2 border-[#DA1212] pl-3" href="Product.html">Product</a>
+<a class="text-[#1b254b] hover:text-[#DA1212] font-medium text-sm py-1 pl-3" href="Services.html">Services</a>
+<a class="text-[#1b254b] hover:text-[#DA1212] font-medium text-sm py-1 pl-3" href="Courses.html">Course</a>
+<a class="text-[#1b254b] hover:text-[#DA1212] font-medium text-sm py-1 pl-3" href="Careers.html">Careers</a>
+<a class="text-[#1b254b] hover:text-[#DA1212] font-medium text-sm py-1 pl-3" href="Mentorship.html">Mentorship</a>
+<a class="text-[#1b254b] hover:text-[#DA1212] font-medium text-sm py-1 pl-3" href="Aboutus.html">About us</a>
+<a class="text-[#1b254b] hover:text-[#DA1212] font-medium text-sm py-1 pl-3" href="Contact.html">Contact</a>
+<a class="inline-flex items-center justify-center rounded-full px-5 py-2.5 bg-[#DA1212] text-white text-sm font-semibold mt-2" href="#apply" data-apply-modal>Apply Now →</a>
+</nav>
+</div>
+</header>
+<!-- =========================================================================
+       2. APPLE KEYNOTE STUDIO HERO SECTION
+       Bright Light-Mode Studio, Hardware Showcase, Centered Cinematic Typography, Zero CTAs
+       ========================================================================= -->
+<section class="relative w-full studio-bg pt-10 md:pt-14 lg:pt-16 pb-8 md:pb-10 border-b border-[#041562]/5 overflow-hidden">
+<div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col items-center text-center">
+<!-- Eyebrow -->
+<span class="text-xs font-bold tracking-[0.18em] uppercase text-[#DA1212] mb-2 sm:mb-2.5">
+        STRIVECODE ECOSYSTEM
+      </span>
+<!-- Headline -->
+<h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#041562] tracking-tight max-w-4xl leading-[1.12]">
+        Building Scalable Digital Solutions for a Smarter Tomorrow.
+      </h1>
+<!-- Subtitle -->
+<p class="text-base sm:text-lg text-[#041562]/70 max-w-2xl mt-3 md:mt-4 mb-4 md:mb-5 leading-relaxed text-balance">
+        We build powerful, secure, and scalable software products, web portals, and mobile applications designed to automate processes, improve efficiency, and drive measurable business growth.
+      </p>
+<!-- Centerpiece Studio Hardware Showcase Composition with 3D Perspective Stage -->
+<div class="hero-device-perspective-stage relative w-full max-w-5xl my-1 sm:my-2 py-2 sm:py-3 flex items-center justify-center">
+<!-- Left Flanking Smartphone: Fly My Journey -->
+<div class="hero-device-interactive cursor-pointer hidden md:block w-52 bg-white rounded-[32px] p-3 shadow-apple-card border border-black/10 transform -rotate-6 z-10 shrink-0" id="hero-device-left" style="transform: translate3d(0px, 0px, 0px) rotateZ(-6deg) rotateY(0deg); opacity: 1;">
+<div class="w-full bg-[#F8F9FB] rounded-[24px] p-3.5 border border-black/5 text-left">
+<div class="flex items-center justify-between pb-2 mb-2 border-b border-black/5">
+<span class="text-xs font-bold text-[#041562]">Fly My Journey</span>
+<span class="text-[9px] font-bold text-[#DA1212] uppercase tracking-wider">BOOKING APP</span>
+</div>
+<div class="space-y-2 text-xs">
+<div class="bg-white p-2 rounded-xl shadow-apple-sm">
+<div class="text-[10px] text-[#041562]/60">Total Bookings</div>
+<div class="font-bold text-[#041562] text-xs">128 Completed</div>
+</div>
+<div class="bg-white p-2 rounded-xl shadow-apple-sm">
+<div class="text-[10px] text-[#041562]/60">Destinations</div>
+<div class="font-bold text-[#041562] text-xs">Paris, Bali, Dubai</div>
+</div>
+<div class="bg-[#041562] text-white text-center py-1.5 rounded-lg text-[10px] font-bold">
+                Search Flights &amp; Stays
+              </div>
+</div>
+</div>
+</div>
+<!-- Central Ultra-Thin Modern Laptop Showcase -->
+<div class="hero-device-interactive cursor-pointer w-full max-w-2xl bg-white rounded-t-[26px] p-3.5 pb-0 shadow-studio-ground border border-black/10 z-20 mx-[-20px] md:mx-0" id="hero-device-center" style="transform: translate3d(0px, 0px, 0px) rotateX(0deg) scale(1); box-shadow: rgba(4, 21, 98, 0.12) 0px 35px 70px -15px, rgba(0, 0, 0, 0.06) 0px 15px 30px -10px;">
+<!-- Laptop Bezel & Screen -->
+<div class="bg-[#041562] rounded-t-[20px] p-4 text-left text-white overflow-hidden">
+<!-- Mock Dashboard Header -->
+<div class="flex items-center justify-between pb-3 border-b border-white/10 mb-4">
+<div class="flex items-center space-x-2">
+<span class="text-xs font-bold tracking-tight">StriveCode ERP/CRM Platform</span>
+<span class="text-[10px] bg-white/10 px-2 py-0.5 rounded text-white/80">v4.8 Live</span>
+</div>
+<span class="text-[11px] font-medium text-white/60">Cluster Health: 99.98%</span>
+</div>
+<!-- Live Mock Data UI -->
+<div class="grid grid-cols-3 gap-3 mb-4">
+<div class="bg-white/5 rounded-xl p-3 border border-white/10">
+<span class="text-[10px] uppercase tracking-wider text-white/60 block">Monthly Invoiced</span>
+<span class="text-lg font-bold text-white tracking-tight">$428,500</span>
+</div>
+<div class="bg-white/5 rounded-xl p-3 border border-white/10">
+<span class="text-[10px] uppercase tracking-wider text-white/60 block">Active Pipelines</span>
+<span class="text-lg font-bold text-white tracking-tight">1,240 Leads</span>
+</div>
+<div class="bg-white/5 rounded-xl p-3 border border-white/10">
+<span class="text-[10px] uppercase tracking-wider text-white/60 block">Inventory Sync</span>
+<span class="text-lg font-bold text-white tracking-tight">Real-Time</span>
+</div>
+</div>
+<!-- Mock Bar Graphic Representation -->
+<div class="bg-white/5 rounded-xl p-3 border border-white/10 flex items-end justify-between h-20 px-4 pt-2">
+<div class="w-6 bg-white/20 rounded-t h-8"></div>
+<div class="w-6 bg-white/30 rounded-t h-12"></div>
+<div class="w-6 bg-white/40 rounded-t h-10"></div>
+<div class="w-6 bg-white/50 rounded-t h-14"></div>
+<div class="w-6 bg-[#DA1212] rounded-t h-16"></div>
+<div class="w-6 bg-white/60 rounded-t h-12"></div>
+<div class="w-6 bg-white/80 rounded-t h-15"></div>
+</div>
+</div>
+<!-- Laptop Aluminum Base Lip -->
+<div class="w-full bg-[#EEEEEE] h-3 rounded-b-sm border-t border-black/10"></div>
+</div>
+<!-- Right Flanking Smartphone: Health Tracker -->
+<div class="hero-device-interactive cursor-pointer hidden md:block w-52 bg-white rounded-[32px] p-3 shadow-apple-card border border-black/10 transform rotate-6 z-10 shrink-0" id="hero-device-right" style="transform: translate3d(0px, 0px, 0px) rotateZ(6deg) rotateY(0deg); opacity: 1;">
+<div class="w-full bg-[#F8F9FB] rounded-[24px] p-3.5 border border-black/5 text-left">
+<div class="flex items-center justify-between pb-2 mb-2 border-b border-black/5">
+<span class="text-xs font-bold text-[#041562]">Health Tracker</span>
+<span class="text-[9px] font-bold text-[#DA1212] uppercase tracking-wider">METRICS APP</span>
+</div>
+<div class="space-y-2 text-xs">
+<div class="bg-white p-2 rounded-xl shadow-apple-sm flex items-center justify-between">
+<span class="text-[10px] text-[#041562]/60">Heart Rate</span>
+<span class="font-bold text-[#DA1212]">72 bpm</span>
+</div>
+<div class="bg-white p-2 rounded-xl shadow-apple-sm flex items-center justify-between">
+<span class="text-[10px] text-[#041562]/60">Daily Steps</span>
+<span class="font-bold text-[#041562]">6,342 steps</span>
+</div>
+<div class="bg-white p-2 rounded-xl shadow-apple-sm flex items-center justify-between">
+<span class="text-[10px] text-[#041562]/60">Sleep Quality</span>
+<span class="font-bold text-[#041562]">7.5 hrs Deep</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Minimalist Apple Spec Ribbon -->
+<div class="w-full max-w-5xl mt-4 md:mt-5 pt-4 md:pt-5 border-t border-[#041562]/10">
+<div class="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-0 divide-y md:divide-y-0 md:divide-x divide-black/5">
+<div class="pt-3 md:pt-0 px-4 text-center">
+<div class="text-3xl font-extrabold text-[#041562] tracking-tight">150+</div>
+<div class="text-xs tracking-wider uppercase text-[#041562]/60 font-medium mt-1">Projects Delivered</div>
+</div>
+<div class="pt-3 md:pt-0 px-4 text-center">
+<div class="text-3xl font-extrabold text-[#041562] tracking-tight">100+</div>
+<div class="text-xs tracking-wider uppercase text-[#041562]/60 font-medium mt-1">Happy Clients</div>
+</div>
+<div class="pt-3 md:pt-0 px-4 text-center col-span-2 md:col-span-1">
+<div class="text-3xl font-extrabold text-[#041562] tracking-tight">100K+</div>
+<div class="text-xs tracking-wider uppercase text-[#041562]/60 font-medium mt-1">Lines of Code</div>
+</div>
+<div class="pt-3 md:pt-0 px-4 text-center">
+<div class="text-3xl font-extrabold text-[#041562] tracking-tight">99%</div>
+<div class="text-xs tracking-wider uppercase text-[#041562]/60 font-medium mt-1">Client Satisfaction</div>
+</div>
+<div class="pt-3 md:pt-0 px-4 text-center">
+<div class="text-3xl font-extrabold text-[#041562] tracking-tight">100%</div>
+<div class="text-xs tracking-wider uppercase text-[#041562]/60 font-medium mt-1">On-Time Delivery</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- =========================================================================
+       3. APPLE BENTO GRID FOR THE 8 SOFTWARE PRODUCTS
+       Soft Apple #EEEEEE canvas, Centered Segmented Control, 24px Radius Cards
+       ========================================================================= -->
+<section class="w-full bg-[#EEEEEE] py-20 px-6 lg:px-12 border-b border-black/5">
+<div class="max-w-7xl mx-auto">
+<!-- Centered Header & iOS-Style Segmented Control -->
+<div class="text-center max-w-3xl mx-auto mb-12">
+<span class="text-xs font-bold tracking-[0.16em] uppercase text-[#DA1212] block mb-2">
+          CORE SOFTWARE SUITE
+        </span>
+<h2 class="text-3xl lg:text-4xl font-extrabold text-[#041562] tracking-tight">
+          Enterprise-Ready Software Products
+        </h2>
+<!-- Segmented Control Bar -->
+<div class="inline-flex items-center p-1.5 bg-[#E5E7EB] rounded-2xl mt-8 shadow-inner" id="filterTabs">
+<button class="filter-btn px-5 py-2 rounded-xl text-xs font-semibold bg-white text-[#041562] shadow-apple-sm transition-all" data-filter="all">
+            All Suites (8)
+          </button>
+<button class="filter-btn px-5 py-2 rounded-xl text-xs font-semibold text-[#041562]/70 hover:text-[#041562] transition-all" data-filter="operations">
+            Operations &amp; ERP
+          </button>
+<button class="filter-btn px-5 py-2 rounded-xl text-xs font-semibold text-[#041562]/70 hover:text-[#041562] transition-all" data-filter="finance">
+            Finance &amp; HR
+          </button>
+<button class="filter-btn px-5 py-2 rounded-xl text-xs font-semibold text-[#041562]/70 hover:text-[#041562] transition-all" data-filter="verticals">
+            Industry Verticals
+          </button>
+</div>
+</div>
+<!-- 8 Pure White Apple Bento Tiles (24px Radius, Zero Background Watermarks, Tactile Hover Lift) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="productsGrid">
+<!-- 01 CRM Solutions -->
+<div class="product-card software-card-interactive bg-white rounded-[24px] p-8 shadow-apple-card flex flex-col justify-between cursor-pointer" data-category="operations">
+<div>
+<div class="card-icon-box w-12 h-12 rounded-2xl bg-[#EEEEEE]/60 flex items-center justify-center text-[#DA1212] mb-6 apple-motion">
+<span class="material-symbols-outlined text-2xl">pie_chart</span>
+</div>
+<h3 class="text-lg font-bold text-[#041562] mb-2 tracking-tight">CRM Solutions</h3>
+<p class="text-sm text-[#041562]/70 leading-relaxed mb-6">
+              Manage leads, customers and sales pipelines effectively with custom CRM systems.
+            </p>
+</div>
+<div class="flex flex-wrap gap-2 pt-4 border-t border-[#EEEEEE]">
+<span class="card-tag-pill interactive-subpill px-3 py-1 bg-[#EEEEEE] text-[#041562] rounded-lg text-xs font-semibold">Lead Scoring</span>
+<span class="card-tag-pill interactive-subpill px-3 py-1 bg-[#EEEEEE] text-[#041562] rounded-lg text-xs font-semibold">Omnichannel</span>
+</div>
+</div>
+<!-- 02 ERP Solutions -->
+<div class="product-card software-card-interactive bg-white rounded-[24px] p-8 shadow-apple-card flex flex-col justify-between cursor-pointer" data-category="operations">
+<div>
+<div class="card-icon-box w-12 h-12 rounded-2xl bg-[#EEEEEE]/60 flex items-center justify-center text-[#DA1212] mb-6 apple-motion">
+<span class="material-symbols-outlined text-2xl">hub</span>
+</div>
+<h3 class="text-lg font-bold text-[#041562] mb-2 tracking-tight">ERP Solutions</h3>
+<p class="text-sm text-[#041562]/70 leading-relaxed mb-6">
+              Integrated ERP systems to streamline operations, finance, HR, inventory and more.
+            </p>
+</div>
+<div class="flex flex-wrap gap-2 pt-4 border-t border-[#EEEEEE]">
+<span class="card-tag-pill interactive-subpill px-3 py-1 bg-[#EEEEEE] text-[#041562] rounded-lg text-xs font-semibold">Supply Chain</span>
+<span class="card-tag-pill interactive-subpill px-3 py-1 bg-[#EEEEEE] text-[#041562] rounded-lg text-xs font-semibold">Automated Sync</span>
+</div>
+</div>
+<!-- 03 Billing Solutions -->
+<div class="product-card software-card-interactive bg-white rounded-[24px] p-8 shadow-apple-card flex flex-col justify-between cursor-pointer" data-category="finance">
+<div>
+<div class="card-icon-box w-12 h-12 rounded-2xl bg-[#EEEEEE]/60 flex items-center justify-center text-[#DA1212] mb-6 apple-motion">
+<span class="material-symbols-outlined text-2xl">receipt_long</span>
+</div>
+<h3 class="text-lg font-bold text-[#041562] mb-2 tracking-tight">Billing Solutions</h3>
+<p class="text-sm text-[#041562]/70 leading-relaxed mb-6">
+              Automate billing, invoicing, payments and GST compliance with ease.
+            </p>
+</div>
+<div class="flex flex-wrap gap-2 pt-4 border-t border-[#EEEEEE]">
+<span class="card-tag-pill interactive-subpill px-3 py-1 bg-[#EEEEEE] text-[#041562] rounded-lg text-xs font-semibold">GST Compliant</span>
+<span class="card-tag-pill interactive-subpill px-3 py-1 bg-[#EEEEEE] text-[#041562] rounded-lg text-xs font-semibold">Auto Invoice</span>
+</div>
+</div>
+<!-- 04 HRMS Solutions -->
+<div class="product-card software-card-interactive bg-white rounded-[24px] p-8 shadow-apple-card flex flex-col justify-between cursor-pointer" data-category="finance">
+<div>
+<div class="card-icon-box w-12 h-12 rounded-2xl bg-[#EEEEEE]/60 flex items-center justify-center text-[#DA1212] mb-6 apple-motion">
+<span class="material-symbols-outlined text-2xl">badge</span>
+</div>
+<h3 class="text-lg font-bold text-[#041562] mb-2 tracking-tight">HRMS Solutions</h3>
+<p class="text-sm text-[#041562]/70 leading-relaxed mb-6">
+              Smart HR management systems for employee data, payroll, attendance and performance.
+            </p>
+</div>
+<div class="flex flex-wrap gap-2 pt-4 border-t border-[#EEEEEE]">
+<span class="card-tag-pill interactive-subpill px-3 py-1 bg-[#EEEEEE] text-[#041562] rounded-lg text-xs font-semibold">Payroll Engine</span>
+<span class="card-tag-pill interactive-subpill px-3 py-1 bg-[#EEEEEE] text-[#041562] rounded-lg text-xs font-semibold">Biometric Sync</span>
+</div>
+</div>
+<!-- 05 Inventory Management -->
+<div class="product-card software-card-interactive bg-white rounded-[24px] p-8 shadow-apple-card flex flex-col justify-between cursor-pointer" data-category="operations">
+<div>
+<div class="card-icon-box w-12 h-12 rounded-2xl bg-[#EEEEEE]/60 flex items-center justify-center text-[#DA1212] mb-6 apple-motion">
+<span class="material-symbols-outlined text-2xl">inventory_2</span>
+</div>
+<h3 class="text-lg font-bold text-[#041562] mb-2 tracking-tight">Inventory Management</h3>
+<p class="text-sm text-[#041562]/70 leading-relaxed mb-6">
+              Real-time inventory tracking, stock management and reorder automation.
+            </p>
+</div>
+<div class="flex flex-wrap gap-2 pt-4 border-t border-[#EEEEEE]">
+<span class="card-tag-pill interactive-subpill px-3 py-1 bg-[#EEEEEE] text-[#041562] rounded-lg text-xs font-semibold">Barcode Scan</span>
+<span class="card-tag-pill interactive-subpill px-3 py-1 bg-[#EEEEEE] text-[#041562] rounded-lg text-xs font-semibold">Auto-Reorder</span>
+</div>
+</div>
+<!-- 06 LMS Solutions -->
+<div class="product-card software-card-interactive bg-white rounded-[24px] p-8 shadow-apple-card flex flex-col justify-between cursor-pointer" data-category="verticals">
+<div>
+<div class="card-icon-box w-12 h-12 rounded-2xl bg-[#EEEEEE]/60 flex items-center justify-center text-[#DA1212] mb-6 apple-motion">
+<span class="material-symbols-outlined text-2xl">school</span>
+</div>
+<h3 class="text-lg font-bold text-[#041562] mb-2 tracking-tight">LMS Solutions</h3>
+<p class="text-sm text-[#041562]/70 leading-relaxed mb-6">
+              E-learning platforms for course management, live classes, exams and student tracking.
+            </p>
+</div>
+<div class="flex flex-wrap gap-2 pt-4 border-t border-[#EEEEEE]">
+<span class="card-tag-pill interactive-subpill px-3 py-1 bg-[#EEEEEE] text-[#041562] rounded-lg text-xs font-semibold">Live Classes</span>
+<span class="card-tag-pill interactive-subpill px-3 py-1 bg-[#EEEEEE] text-[#041562] rounded-lg text-xs font-semibold">Certificates</span>
+</div>
+</div>
+<!-- 07 Hospital Management -->
+<div class="product-card software-card-interactive bg-white rounded-[24px] p-8 shadow-apple-card flex flex-col justify-between cursor-pointer" data-category="verticals">
+<div>
+<div class="card-icon-box w-12 h-12 rounded-2xl bg-[#EEEEEE]/60 flex items-center justify-center text-[#DA1212] mb-6 apple-motion">
+<span class="material-symbols-outlined text-2xl">local_hospital</span>
+</div>
+<h3 class="text-lg font-bold text-[#041562] mb-2 tracking-tight">Hospital Management</h3>
+<p class="text-sm text-[#041562]/70 leading-relaxed mb-6">
+              Complete hospital management solutions for clinic, patient, appointments and reports.
+            </p>
+</div>
+<div class="flex flex-wrap gap-2 pt-4 border-t border-[#EEEEEE]">
+<span class="card-tag-pill interactive-subpill px-3 py-1 bg-[#EEEEEE] text-[#041562] rounded-lg text-xs font-semibold">EHR Integrated</span>
+<span class="card-tag-pill interactive-subpill px-3 py-1 bg-[#EEEEEE] text-[#041562] rounded-lg text-xs font-semibold">OPD / IPD</span>
+</div>
+</div>
+<!-- 08 Travel Portal Solutions -->
+<div class="product-card software-card-interactive bg-white rounded-[24px] p-8 shadow-apple-card flex flex-col justify-between cursor-pointer" data-category="verticals">
+<div>
+<div class="card-icon-box w-12 h-12 rounded-2xl bg-[#EEEEEE]/60 flex items-center justify-center text-[#DA1212] mb-6 apple-motion">
+<span class="material-symbols-outlined text-2xl">flight_takeoff</span>
+</div>
+<h3 class="text-lg font-bold text-[#041562] mb-2 tracking-tight">Travel Portal Solutions</h3>
+<p class="text-sm text-[#041562]/70 leading-relaxed mb-6">
+              Flight, hotel, package and booking systems for travel businesses.
+            </p>
+</div>
+<div class="flex flex-wrap gap-2 pt-4 border-t border-[#EEEEEE]">
+<span class="card-tag-pill interactive-subpill px-3 py-1 bg-[#EEEEEE] text-[#041562] rounded-lg text-xs font-semibold">GDS API Engine</span>
+<span class="card-tag-pill interactive-subpill px-3 py-1 bg-[#EEEEEE] text-[#041562] rounded-lg text-xs font-semibold">Dynamic Itinerary</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- =========================================================================
+       4. FULL-WIDTH APPLE FEATURE SHOWCASES
+       Editorial Bento Tiles (28px Radius), Generous Spacing, Clean Spec Clusters
+       ========================================================================= -->
+<section class="w-full bg-[#EEEEEE] py-20 px-6 lg:px-12 border-b border-black/5">
+<div class="max-w-7xl mx-auto space-y-8">
+<!-- Showcase Tile 1: Full-Width Split Bento Card (Mobile App Flagships) -->
+<div class="bg-white rounded-[28px] p-8 lg:p-12 border border-black/[0.04] shadow-apple-card">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+<!-- Left Column -->
+<div class="lg:col-span-6 space-y-6">
+<span class="text-xs font-bold tracking-[0.16em] uppercase text-[#DA1212] block">
+              MULTI-PLATFORM ECOSYSTEM
+            </span>
+<h2 class="text-3xl lg:text-4xl font-extrabold text-[#041562] tracking-tight">
+              Native &amp; Cross-Platform Mobile Experiences
+            </h2>
+<p class="text-base text-[#041562]/70 leading-relaxed">
+              From cloud-native responsive enterprise websites to high-throughput mobile platforms, we engineer architectures that stay fast under peak scale.
+            </p>
+<!-- Sleek Tech Pills -->
+<div class="flex flex-wrap gap-2 pt-2">
+<span class="interactive-subpill px-3 py-1.5 bg-[#EEEEEE] text-[#041562] rounded-xl text-xs font-semibold cursor-pointer">Android Kotlin</span>
+<span class="interactive-subpill px-3 py-1.5 bg-[#EEEEEE] text-[#041562] rounded-xl text-xs font-semibold cursor-pointer">iOS Swift</span>
+<span class="interactive-subpill px-3 py-1.5 bg-[#EEEEEE] text-[#041562] rounded-xl text-xs font-semibold cursor-pointer">Flutter</span>
+<span class="interactive-subpill px-3 py-1.5 bg-[#EEEEEE] text-[#041562] rounded-xl text-xs font-semibold cursor-pointer">React Native</span>
+<span class="interactive-subpill px-3 py-1.5 bg-[#EEEEEE] text-[#041562] rounded-xl text-xs font-semibold cursor-pointer">PWA Apps</span>
+</div>
+<!-- Architectural Attributes -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-3">
+<div class="interactive-subpill p-3 bg-[#F8F9FB] rounded-xl border border-black/5 text-xs font-semibold text-[#041562] cursor-default">
+                100% Responsive Architecture
+              </div>
+<div class="interactive-subpill p-3 bg-[#F8F9FB] rounded-xl border border-black/5 text-xs font-semibold text-[#041562] cursor-default">
+                SEO Ready Core Web Vitals
+              </div>
+<div class="interactive-subpill p-3 bg-[#F8F9FB] rounded-xl border border-black/5 text-xs font-semibold text-[#041562] cursor-default">
+                Fast Performance Sub-Second Load
+              </div>
+<div class="interactive-subpill p-3 bg-[#F8F9FB] rounded-xl border border-black/5 text-xs font-semibold text-[#041562] cursor-default">
+                Easy-to-Manage Headless CMS
+              </div>
+</div>
+</div>
+<!-- Right Column: Interactive Dual Device Preview Cards -->
+<div class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+<!-- App Preview 1: Fly My Journey -->
+<div class="hero-device-interactive cursor-pointer bg-[#F8F9FB] p-5 rounded-2xl border border-black/5 shadow-apple-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-3 mb-4 border-b border-black/5">
+<span class="text-sm font-bold text-[#041562]">Fly My Journey</span>
+<span class="text-[10px] font-bold text-[#DA1212] uppercase tracking-wider">BOOKING APP</span>
+</div>
+<div class="space-y-2.5">
+<div class="bg-white p-3 rounded-xl border border-black/5">
+<span class="text-xs text-[#041562]/60 block">Total Bookings</span>
+<span class="text-sm font-bold text-[#041562]">128 Completed</span>
+</div>
+<div class="bg-white p-3 rounded-xl border border-black/5">
+<span class="text-xs text-[#041562]/60 block">Popular Destinations</span>
+<span class="text-sm font-bold text-[#041562]">Paris, Bali, Dubai</span>
+</div>
+</div>
+</div>
+<div class="mt-4 bg-[#041562] text-white text-center py-2.5 rounded-xl text-xs font-bold">
+                Search Flights &amp; Stays
+              </div>
+</div>
+<!-- App Preview 2: Health Tracker -->
+<div class="hero-device-interactive cursor-pointer bg-[#F8F9FB] p-5 rounded-2xl border border-black/5 shadow-apple-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-3 mb-4 border-b border-black/5">
+<span class="text-sm font-bold text-[#041562]">Health Tracker</span>
+<span class="text-[10px] font-bold text-[#DA1212] uppercase tracking-wider">METRICS APP</span>
+</div>
+<div class="space-y-2.5">
+<div class="bg-white p-3 rounded-xl border border-black/5 flex items-center justify-between">
+<span class="text-xs text-[#041562]/60">Heart Rate</span>
+<span class="text-sm font-bold text-[#DA1212]">72 bpm</span>
+</div>
+<div class="bg-white p-3 rounded-xl border border-black/5 flex items-center justify-between">
+<span class="text-xs text-[#041562]/60">Daily Steps</span>
+<span class="text-sm font-bold text-[#041562]">6,342 steps</span>
+</div>
+<div class="bg-white p-3 rounded-xl border border-black/5 flex items-center justify-between">
+<span class="text-xs text-[#041562]/60">Sleep Quality</span>
+<span class="text-sm font-bold text-[#041562]">7.5 hrs Deep</span>
+</div>
+</div>
+</div>
+<div class="mt-4 p-2.5 bg-[#EEEEEE] rounded-xl text-center text-xs text-[#041562] font-semibold">
+                Continuous Biometric Sync
+              </div>
+</div>
+</div>
+</div>
+</div>
+<!-- Showcase Tiles 2 & 3: Side-by-Side Half-Width Bento Cards -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<!-- Tile 2: 8 Specialized Industry Website Suites -->
+<div class="bg-white rounded-[28px] p-8 lg:p-10 border border-black/[0.04] shadow-apple-card flex flex-col justify-between">
+<div>
+<span class="text-xs font-bold tracking-[0.16em] uppercase text-[#DA1212] block mb-2">
+              WEB INFRASTRUCTURE
+            </span>
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-2xl font-extrabold text-[#041562] tracking-tight">
+                Industry Website Products
+              </h3>
+<span class="text-xs text-[#041562]/60 font-semibold bg-[#EEEEEE] px-2.5 py-1 rounded-lg">8 Sector Portals</span>
+</div>
+<p class="text-sm text-[#041562]/70 mb-6 leading-relaxed">
+              Each portal incorporates headless CMS integration, server-side rendering, and strict performance metrics.
+            </p>
+<!-- 2-column grid of minimal #EEEEEE capsules with Apple hover pop -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+<div class="interactive-subpill px-4 py-3 bg-[#EEEEEE] text-[#041562] rounded-xl text-xs font-semibold cursor-pointer">
+                Corporate Websites
+              </div>
+<div class="interactive-subpill px-4 py-3 bg-[#EEEEEE] text-[#041562] rounded-xl text-xs font-semibold cursor-pointer">
+                E-Commerce Websites
+              </div>
+<div class="interactive-subpill px-4 py-3 bg-[#EEEEEE] text-[#041562] rounded-xl text-xs font-semibold cursor-pointer">
+                Travel &amp; Tourism Websites
+              </div>
+<div class="interactive-subpill px-4 py-3 bg-[#EEEEEE] text-[#041562] rounded-xl text-xs font-semibold cursor-pointer">
+                Jewellery Websites
+              </div>
+<div class="interactive-subpill px-4 py-3 bg-[#EEEEEE] text-[#041562] rounded-xl text-xs font-semibold cursor-pointer">
+                Hospital &amp; Clinic Websites
+              </div>
+<div class="interactive-subpill px-4 py-3 bg-[#EEEEEE] text-[#041562] rounded-xl text-xs font-semibold cursor-pointer">
+                School &amp; College Websites
+              </div>
+<div class="interactive-subpill px-4 py-3 bg-[#EEEEEE] text-[#041562] rounded-xl text-xs font-semibold cursor-pointer">
+                Startup &amp; Landing Pages
+              </div>
+<div class="interactive-subpill px-4 py-3 bg-[#EEEEEE] text-[#041562] rounded-xl text-xs font-semibold cursor-pointer">
+                Portfolio &amp; Personal Websites
+              </div>
+</div>
+</div>
+<div class="pt-4 border-t border-[#EEEEEE] text-xs text-[#041562]/60 font-medium">
+            Standard SLA: 99.9% High Availability Cloud Deployment
+          </div>
+</div>
+<!-- Tile 3: Modern Tech Stack -->
+<div class="bg-white rounded-[28px] p-8 lg:p-10 border border-black/[0.04] shadow-apple-card flex flex-col justify-between">
+<div>
+<span class="text-xs font-bold tracking-[0.16em] uppercase text-[#DA1212] block mb-2">
+              CORE ENGINEERING
+            </span>
+<h3 class="text-2xl font-extrabold text-[#041562] tracking-tight mb-6">
+              Powered by Our Modern Tech Stack
+            </h3>
+<!-- Categorized Spec Clusters -->
+<div class="space-y-4">
+<!-- Frontend -->
+<div>
+<span class="text-[11px] font-bold uppercase tracking-wider text-[#041562]/60 block mb-2">Frontend Engineering</span>
+<div class="flex flex-wrap gap-2">
+<span class="interactive-subpill px-3 py-1 bg-[#EEEEEE] text-[#041562] rounded-lg text-xs font-semibold cursor-pointer">React.js</span>
+<span class="interactive-subpill px-3 py-1 bg-[#EEEEEE] text-[#041562] rounded-lg text-xs font-semibold cursor-pointer">Next.js</span>
+<span class="interactive-subpill px-3 py-1 bg-[#EEEEEE] text-[#041562] rounded-lg text-xs font-semibold cursor-pointer">Tailwind CSS</span>
+<span class="interactive-subpill px-3 py-1 bg-[#EEEEEE] text-[#041562] rounded-lg text-xs font-semibold cursor-pointer">HTML5 / CSS3</span>
+</div>
+</div>
+<!-- Backend -->
+<div>
+<span class="text-[11px] font-bold uppercase tracking-wider text-[#041562]/60 block mb-2">Backend &amp; Microservices</span>
+<div class="flex flex-wrap gap-2">
+<span class="interactive-subpill px-3 py-1 bg-[#EEEEEE] text-[#041562] rounded-lg text-xs font-semibold cursor-pointer">Node.js</span>
+<span class="interactive-subpill px-3 py-1 bg-[#EEEEEE] text-[#041562] rounded-lg text-xs font-semibold cursor-pointer">Express.js</span>
+<span class="interactive-subpill px-3 py-1 bg-[#EEEEEE] text-[#041562] rounded-lg text-xs font-semibold cursor-pointer">PHP</span>
+<span class="interactive-subpill px-3 py-1 bg-[#EEEEEE] text-[#041562] rounded-lg text-xs font-semibold cursor-pointer">Laravel</span>
+<span class="interactive-subpill px-3 py-1 bg-[#EEEEEE] text-[#041562] rounded-lg text-xs font-semibold cursor-pointer">RESTful APIs</span>
+</div>
+</div>
+<!-- Database & Cloud -->
+<div>
+<span class="text-[11px] font-bold uppercase tracking-wider text-[#041562]/60 block mb-2">Database &amp; Cloud DevOps</span>
+<div class="flex flex-wrap gap-2">
+<span class="interactive-subpill px-3 py-1 bg-[#EEEEEE] text-[#041562] rounded-lg text-xs font-semibold cursor-pointer">PostgreSQL</span>
+<span class="interactive-subpill px-3 py-1 bg-[#EEEEEE] text-[#041562] rounded-lg text-xs font-semibold cursor-pointer">MySQL</span>
+<span class="interactive-subpill px-3 py-1 bg-[#EEEEEE] text-[#041562] rounded-lg text-xs font-semibold cursor-pointer">MongoDB</span>
+<span class="interactive-subpill px-3 py-1 bg-[#EEEEEE] text-[#041562] rounded-lg text-xs font-semibold cursor-pointer">Firebase</span>
+<span class="interactive-subpill px-3 py-1 bg-[#EEEEEE] text-[#041562] rounded-lg text-xs font-semibold cursor-pointer">AWS</span>
+<span class="interactive-subpill px-3 py-1 bg-[#EEEEEE] text-[#041562] rounded-lg text-xs font-semibold cursor-pointer">DigitalOcean</span>
+<span class="interactive-subpill px-3 py-1 bg-[#EEEEEE] text-[#041562] rounded-lg text-xs font-semibold cursor-pointer">Docker &amp; CI/CD</span>
+</div>
+</div>
+<!-- UI/UX -->
+<div>
+<span class="text-[11px] font-bold uppercase tracking-wider text-[#041562]/60 block mb-2">Architectural UI/UX Design</span>
+<div class="flex flex-wrap gap-2">
+<span class="interactive-subpill px-3 py-1 bg-[#EEEEEE] text-[#041562] rounded-lg text-xs font-semibold cursor-pointer">Figma</span>
+<span class="interactive-subpill px-3 py-1 bg-[#EEEEEE] text-[#041562] rounded-lg text-xs font-semibold cursor-pointer">Adobe XD</span>
+</div>
+</div>
+</div>
+</div>
+<div class="pt-4 border-t border-[#EEEEEE] text-xs text-[#041562]/60 font-medium">
+            Strict Code Review &amp; Automated Pipeline Verification
+          </div>
+</div>
+</div>
+</div>
+</section>
+<!-- =========================================================================
+       5. COMPARISON TIERS (Apple Minimalist Columns, Zero Checkmarks)
+       ========================================================================= -->
+<section class="w-full bg-[#EEEEEE] py-20 px-6 lg:px-12 border-b border-black/5">
+<div class="max-w-7xl mx-auto">
+<!-- Section Header -->
+<div class="text-center max-w-3xl mx-auto mb-16">
+<span class="text-xs font-bold tracking-[0.16em] uppercase text-[#DA1212] block mb-2">
+          FLEXIBLE ENGAGEMENT MODELS
+        </span>
+<h2 class="text-3xl lg:text-4xl font-extrabold text-[#041562] tracking-tight mb-4">
+          Tailored Product Tiers for Every Stage of Growth
+        </h2>
+<p class="text-base text-[#041562]/70 leading-relaxed">
+          Predictable delivery sprints, transparent SLA commitments, and high-impact software execution.
+        </p>
+</div>
+<!-- 4-Column Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+<!-- Card 1: STARTER -->
+<div class="tier-card-interactive bg-white rounded-[24px] p-8 shadow-apple-card flex flex-col justify-between cursor-pointer">
+<div>
+<div class="text-xs font-bold text-[#041562]/60 uppercase tracking-wider mb-1">Tier 01</div>
+<h3 class="text-xl font-extrabold text-[#041562] mb-1">STARTER</h3>
+<p class="text-xs font-bold text-[#DA1212] uppercase tracking-wider mb-6">Perfect for Startups</p>
+<div class="space-y-3 mb-8">
+<div class="flex items-start gap-2.5">
+<span class="w-[2px] h-4 bg-[#041562] mt-1 shrink-0"></span>
+<span class="text-sm text-[#041562]">Up to 5 Pages Website</span>
+</div>
+<div class="flex items-start gap-2.5">
+<span class="w-[2px] h-4 bg-[#041562] mt-1 shrink-0"></span>
+<span class="text-sm text-[#041562]">Responsive Design</span>
+</div>
+<div class="flex items-start gap-2.5">
+<span class="w-[2px] h-4 bg-[#041562] mt-1 shrink-0"></span>
+<span class="text-sm text-[#041562]">Basic SEO Structure</span>
+</div>
+<div class="flex items-start gap-2.5">
+<span class="w-[2px] h-4 bg-[#041562] mt-1 shrink-0"></span>
+<span class="text-sm text-[#041562]">1 Month Tech Support</span>
+</div>
+</div>
+</div>
+<button class="tier-action-btn apple-motion w-full py-2.5 px-4 rounded-xl border border-[#041562] text-[#041562] text-xs font-bold hover:bg-[#DA1212] hover:text-white hover:border-[#DA1212]">
+            Consult on Starter
+          </button>
+</div>
+<!-- Card 2: GROWTH -->
+<div class="tier-card-interactive bg-white rounded-[24px] p-8 shadow-apple-card flex flex-col justify-between cursor-pointer">
+<div>
+<div class="text-xs font-bold text-[#041562]/60 uppercase tracking-wider mb-1">Tier 02</div>
+<h3 class="text-xl font-extrabold text-[#041562] mb-1">GROWTH</h3>
+<p class="text-xs font-bold text-[#DA1212] uppercase tracking-wider mb-6">For Growing Businesses</p>
+<div class="space-y-3 mb-8">
+<div class="flex items-start gap-2.5">
+<span class="w-[2px] h-4 bg-[#041562] mt-1 shrink-0"></span>
+<span class="text-sm text-[#041562]">Up to 15 Pages Website</span>
+</div>
+<div class="flex items-start gap-2.5">
+<span class="w-[2px] h-4 bg-[#041562] mt-1 shrink-0"></span>
+<span class="text-sm text-[#041562]">CMS Integration</span>
+</div>
+<div class="flex items-start gap-2.5">
+<span class="w-[2px] h-4 bg-[#041562] mt-1 shrink-0"></span>
+<span class="text-sm text-[#041562]">On-Page SEO Optimization</span>
+</div>
+<div class="flex items-start gap-2.5">
+<span class="w-[2px] h-4 bg-[#041562] mt-1 shrink-0"></span>
+<span class="text-sm text-[#041562]">3 Months Priority Support</span>
+</div>
+</div>
+</div>
+<button class="tier-action-btn apple-motion w-full py-2.5 px-4 rounded-xl border border-[#041562] text-[#041562] text-xs font-bold hover:bg-[#DA1212] hover:text-white hover:border-[#DA1212]">
+            Consult on Growth
+          </button>
+</div>
+<!-- Card 3: BUSINESS (Featured with #DA1212 Highlight) -->
+<div class="tier-card-interactive bg-white rounded-[24px] p-8 border-2 border-[#DA1212] shadow-apple-hover flex flex-col justify-between relative transform lg:-translate-y-2 cursor-pointer">
+<div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-full bg-[#DA1212] text-white text-[10px] font-extrabold uppercase tracking-wider shadow-sm">
+            MOST POPULAR
+          </div>
+<div>
+<div class="text-xs font-bold text-[#DA1212] uppercase tracking-wider mb-1">Tier 03</div>
+<h3 class="text-xl font-extrabold text-[#041562] mb-1">BUSINESS</h3>
+<p class="text-xs font-bold text-[#DA1212] uppercase tracking-wider mb-6">For Established Businesses</p>
+<div class="space-y-3 mb-8">
+<div class="flex items-start gap-2.5">
+<span class="w-[2px] h-4 bg-[#DA1212] mt-1 shrink-0"></span>
+<span class="text-sm text-[#041562] font-semibold">Custom Website / Web App</span>
+</div>
+<div class="flex items-start gap-2.5">
+<span class="w-[2px] h-4 bg-[#DA1212] mt-1 shrink-0"></span>
+<span class="text-sm text-[#041562]">Advanced Feature Modules</span>
+</div>
+<div class="flex items-start gap-2.5">
+<span class="w-[2px] h-4 bg-[#DA1212] mt-1 shrink-0"></span>
+<span class="text-sm text-[#041562]">SEO + Speed Optimization</span>
+</div>
+<div class="flex items-start gap-2.5">
+<span class="w-[2px] h-4 bg-[#DA1212] mt-1 shrink-0"></span>
+<span class="text-sm text-[#041562]">6 Months Dedicated Support</span>
+</div>
+</div>
+</div>
+<button class="tier-action-btn apple-motion w-full py-2.5 px-4 rounded-xl bg-[#DA1212] text-white text-xs font-bold hover:bg-[#DA1212]/90 border border-transparent shadow-sm">
+            Consult on Business
+          </button>
+</div>
+<!-- Card 4: ENTERPRISE -->
+<div class="tier-card-interactive bg-white rounded-[24px] p-8 shadow-apple-card flex flex-col justify-between cursor-pointer">
+<div>
+<div class="text-xs font-bold text-[#041562]/60 uppercase tracking-wider mb-1">Tier 04</div>
+<h3 class="text-xl font-extrabold text-[#041562] mb-1">ENTERPRISE</h3>
+<p class="text-xs font-bold text-[#DA1212] uppercase tracking-wider mb-6">For Large Enterprises</p>
+<div class="space-y-3 mb-8">
+<div class="flex items-start gap-2.5">
+<span class="w-[2px] h-4 bg-[#041562] mt-1 shrink-0"></span>
+<span class="text-sm text-[#041562]">Custom Software Solutions</span>
+</div>
+<div class="flex items-start gap-2.5">
+<span class="w-[2px] h-4 bg-[#041562] mt-1 shrink-0"></span>
+<span class="text-sm text-[#041562]">Third-Party Integrations</span>
+</div>
+<div class="flex items-start gap-2.5">
+<span class="w-[2px] h-4 bg-[#041562] mt-1 shrink-0"></span>
+<span class="text-sm text-[#041562]">Dedicated Engineering Team</span>
+</div>
+<div class="flex items-start gap-2.5">
+<span class="w-[2px] h-4 bg-[#041562] mt-1 shrink-0"></span>
+<span class="text-sm text-[#041562]">12 Months Enterprise Support</span>
+</div>
+</div>
+</div>
+<button class="tier-action-btn apple-motion w-full py-2.5 px-4 rounded-xl border border-[#041562] text-[#041562] text-xs font-bold hover:bg-[#DA1212] hover:text-white hover:border-[#DA1212]">
+            Consult on Enterprise
+          </button>
+</div>
+</div>
+</div>
+</section>
+<!-- =========================================================================
+       6. CLIENT PROOF & REAL TESTIMONIALS
+       ========================================================================= -->
+<section class="w-full bg-[#EEEEEE] py-20 px-6 lg:px-12 border-b border-black/5 overflow-hidden">
+<div class="max-w-7xl mx-auto">
+<!-- Eyebrow & Title -->
+<div class="text-center max-w-2xl mx-auto mb-12">
+<span class="text-xs font-bold tracking-[0.16em] uppercase text-[#DA1212] block mb-2">
+          PROVEN RESULTS &amp; CLIENT TRUST
+        </span>
+<h2 class="text-3xl lg:text-4xl font-extrabold text-[#041562] tracking-tight">
+          Trusted by Clients. Proven by Results.
+        </h2>
+</div>
+<!-- Dual Row Infinite Marquee -->
+<div class="marquee-container space-y-4 mb-16 py-2">
+<!-- Marquee Row 1: Clients (Hover Pop Badges) -->
+<div class="overflow-hidden whitespace-nowrap">
+<div class="animate-marquee-left flex gap-4 items-center">
+<!-- Set 1 -->
+<span class="client-badge-interactive px-5 py-2.5 bg-white rounded-xl text-sm font-bold text-[#041562] shadow-apple-sm">Yadu Hospital</span>
+<span class="client-badge-interactive px-5 py-2.5 bg-white rounded-xl text-sm font-bold text-[#041562] shadow-apple-sm">Sun Cancer Centre</span>
+<span class="client-badge-interactive px-5 py-2.5 bg-white rounded-xl text-sm font-bold text-[#041562] shadow-apple-sm">AMDC Multispeciality Dental Clinic</span>
+<span class="client-badge-interactive px-5 py-2.5 bg-white rounded-xl text-sm font-bold text-[#041562] shadow-apple-sm">Taj Trip Tour</span>
+<span class="client-badge-interactive px-5 py-2.5 bg-white rounded-xl text-sm font-bold text-[#041562] shadow-apple-sm">Taj Travels</span>
+<span class="client-badge-interactive px-5 py-2.5 bg-white rounded-xl text-sm font-bold text-[#041562] shadow-apple-sm">OrthoCare Clinic</span>
+<span class="client-badge-interactive px-5 py-2.5 bg-white rounded-xl text-sm font-bold text-[#041562] shadow-apple-sm">Dentist Studio</span>
+<span class="client-badge-interactive px-5 py-2.5 bg-white rounded-xl text-sm font-bold text-[#041562] shadow-apple-sm">Kanowa</span>
+<!-- Set 2 Duplicate -->
+<span class="client-badge-interactive px-5 py-2.5 bg-white rounded-xl text-sm font-bold text-[#041562] shadow-apple-sm">Yadu Hospital</span>
+<span class="client-badge-interactive px-5 py-2.5 bg-white rounded-xl text-sm font-bold text-[#041562] shadow-apple-sm">Sun Cancer Centre</span>
+<span class="client-badge-interactive px-5 py-2.5 bg-white rounded-xl text-sm font-bold text-[#041562] shadow-apple-sm">AMDC Multispeciality Dental Clinic</span>
+<span class="client-badge-interactive px-5 py-2.5 bg-white rounded-xl text-sm font-bold text-[#041562] shadow-apple-sm">Taj Trip Tour</span>
+<span class="client-badge-interactive px-5 py-2.5 bg-white rounded-xl text-sm font-bold text-[#041562] shadow-apple-sm">Taj Travels</span>
+<span class="client-badge-interactive px-5 py-2.5 bg-white rounded-xl text-sm font-bold text-[#041562] shadow-apple-sm">OrthoCare Clinic</span>
+<span class="client-badge-interactive px-5 py-2.5 bg-white rounded-xl text-sm font-bold text-[#041562] shadow-apple-sm">Dentist Studio</span>
+<span class="client-badge-interactive px-5 py-2.5 bg-white rounded-xl text-sm font-bold text-[#041562] shadow-apple-sm">Kanowa</span>
+</div>
+</div>
+<!-- Marquee Row 2: Industries Served -->
+<div class="overflow-hidden whitespace-nowrap">
+<div class="animate-marquee-right flex gap-4 items-center">
+<!-- Set 1 -->
+<span class="interactive-subpill px-4 py-2 bg-[#041562] text-white rounded-lg text-xs font-bold tracking-wide cursor-default">Healthcare</span>
+<span class="interactive-subpill px-4 py-2 bg-[#041562] text-white rounded-lg text-xs font-bold tracking-wide cursor-default">Education</span>
+<span class="interactive-subpill px-4 py-2 bg-[#041562] text-white rounded-lg text-xs font-bold tracking-wide cursor-default">Insurance</span>
+<span class="interactive-subpill px-4 py-2 bg-[#041562] text-white rounded-lg text-xs font-bold tracking-wide cursor-default">Travel &amp; Tourism</span>
+<span class="interactive-subpill px-4 py-2 bg-[#041562] text-white rounded-lg text-xs font-bold tracking-wide cursor-default">Jewellery</span>
+<span class="interactive-subpill px-4 py-2 bg-[#041562] text-white rounded-lg text-xs font-bold tracking-wide cursor-default">Real Estate</span>
+<span class="interactive-subpill px-4 py-2 bg-[#041562] text-white rounded-lg text-xs font-bold tracking-wide cursor-default">Manufacturing</span>
+<span class="interactive-subpill px-4 py-2 bg-[#041562] text-white rounded-lg text-xs font-bold tracking-wide cursor-default">Hospitality</span>
+<span class="interactive-subpill px-4 py-2 bg-[#041562] text-white rounded-lg text-xs font-bold tracking-wide cursor-default">Startups</span>
+<span class="interactive-subpill px-4 py-2 bg-[#041562] text-white rounded-lg text-xs font-bold tracking-wide cursor-default">Enterprises</span>
+<!-- Set 2 Duplicate -->
+<span class="interactive-subpill px-4 py-2 bg-[#041562] text-white rounded-lg text-xs font-bold tracking-wide cursor-default">Healthcare</span>
+<span class="interactive-subpill px-4 py-2 bg-[#041562] text-white rounded-lg text-xs font-bold tracking-wide cursor-default">Education</span>
+<span class="interactive-subpill px-4 py-2 bg-[#041562] text-white rounded-lg text-xs font-bold tracking-wide cursor-default">Insurance</span>
+<span class="interactive-subpill px-4 py-2 bg-[#041562] text-white rounded-lg text-xs font-bold tracking-wide cursor-default">Travel &amp; Tourism</span>
+<span class="interactive-subpill px-4 py-2 bg-[#041562] text-white rounded-lg text-xs font-bold tracking-wide cursor-default">Jewellery</span>
+<span class="interactive-subpill px-4 py-2 bg-[#041562] text-white rounded-lg text-xs font-bold tracking-wide cursor-default">Real Estate</span>
+<span class="interactive-subpill px-4 py-2 bg-[#041562] text-white rounded-lg text-xs font-bold tracking-wide cursor-default">Manufacturing</span>
+<span class="interactive-subpill px-4 py-2 bg-[#041562] text-white rounded-lg text-xs font-bold tracking-wide cursor-default">Hospitality</span>
+<span class="interactive-subpill px-4 py-2 bg-[#041562] text-white rounded-lg text-xs font-bold tracking-wide cursor-default">Startups</span>
+<span class="interactive-subpill px-4 py-2 bg-[#041562] text-white rounded-lg text-xs font-bold tracking-wide cursor-default">Enterprises</span>
+</div>
+</div>
+</div>
+<!-- 3 Humanized Client Review Cards (Hover Lift) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Review 1: Dr. Prateek Yadav -->
+<div class="testimonial-card-interactive bg-white rounded-[24px] p-8 shadow-apple-card flex flex-col justify-between cursor-pointer">
+<div>
+<div class="text-[#DA1212] text-2xl mb-3 font-serif font-bold">“</div>
+<p class="text-sm text-[#041562]/80 italic leading-relaxed mb-6">
+              Strive Code delivered a website that exceeded our expectations. Their attention to detail and dedication is truly commendable.
+            </p>
+</div>
+<div class="flex items-center gap-4 pt-4 border-t border-[#EEEEEE]">
+<img alt="Dr. Prateek Yadav" class="w-12 h-12 rounded-full object-cover border border-[#041562]/10" src="https://lh3.googleusercontent.com/aida/AEtjO1Vk3yUG1TDfmBoXkvixcrtk3R8Tpgs_eZ7BnO4g9BNO0f3CQQhfpzBaVeCs7raxkEo3iN1QoZ8DQVmUN4HtI-lRSTOABRkIiOrD_uDg7Mt6bFpdJfFCIS86r98KseE3uJLMKjE0WQGazqJqfALI69H3VChsGBtiNhpYjUOfiPPw7IAqg13p0I57aEQk-SSBf0umDuNMSd4MDXWswVGVQ5y9JeScZ7Uu5xlglRevVZvDaA">
+<div>
+<div class="text-sm font-bold text-[#041562]">Dr. Prateek Yadav</div>
+<div class="text-xs text-[#041562]/60">Yadu Hospital</div>
+</div>
+</div>
+</div>
+<!-- Review 2: Mr. Mohit Bansal -->
+<div class="testimonial-card-interactive bg-white rounded-[24px] p-8 shadow-apple-card flex flex-col justify-between cursor-pointer">
+<div>
+<div class="text-[#DA1212] text-2xl mb-3 font-serif font-bold">“</div>
+<p class="text-sm text-[#041562]/80 italic leading-relaxed mb-6">
+              Professional team, on-time delivery and great support throughout the project. Highly recommended!
+            </p>
+</div>
+<div class="flex items-center gap-4 pt-4 border-t border-[#EEEEEE]">
+<img alt="Mr. Mohit Bansal" class="w-12 h-12 rounded-full object-cover border border-[#041562]/10" src="https://lh3.googleusercontent.com/aida/AEtjO1UgEa_nEWXrjjXa3kSXVIeMPhlY5pqZXR0T1ms1JAh6HsuQHWZkKLbQOWSsmkQboU_g3BuzFpg-PSwRT-T6KsIGTRCuD-b6rUgM8YEu4m7Gf13e6eTNuy2GJ7bGwYuxqLt1INp62WepMNCLKRM2Z1lO4FbKsDuXFKXBYFyYOuxK56wZM8Lk85t6Fdz91Q7O4p5GUuHR8ynNBdlxWCP1xn5SBrQf-Gt5YM7WerlPne6Veg">
+<div>
+<div class="text-sm font-bold text-[#041562]">Mr. Mohit Bansal</div>
+<div class="text-xs text-[#041562]/60">Taj Trip Tour</div>
+</div>
+</div>
+</div>
+<!-- Review 3: Dr. Abdul Moid -->
+<div class="testimonial-card-interactive bg-white rounded-[24px] p-8 shadow-apple-card flex flex-col justify-between cursor-pointer">
+<div>
+<div class="text-[#DA1212] text-2xl mb-3 font-serif font-bold">“</div>
+<p class="text-sm text-[#041562]/80 italic leading-relaxed mb-6">
+              Their solutions helped us streamline our operations and grow our business significantly.
+            </p>
+</div>
+<div class="flex items-center gap-4 pt-4 border-t border-[#EEEEEE]">
+<img alt="Dr. Abdul Moid" class="w-12 h-12 rounded-full object-cover border border-[#041562]/10" src="https://lh3.googleusercontent.com/aida/AEtjO1VawBiYaYDJdwNn-W9E0phBQ9_QiAN0OIuLFbmYyvg3MBKeTOTVeRgCHtAQrxRDwejQpRYJjdfvU9fdXgJiucNj4coeIoky8-KTts21sFngKzu_ZJ9TdbQzsCKVezQzJNfnfcar7M1r8V_vz1V0-rTqz5obZ-UW3XqwHIsckABHPPZXLb1wt-HDFtJVCzE_nWHhr61MZzWYcc91vszRaEjkdd05oiLVo0u0OAhWs055hA">
+<div>
+<div class="text-sm font-bold text-[#041562]">Dr. Abdul Moid</div>
+<div class="text-xs text-[#041562]/60">AMDC Dental Clinic</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- =========================================================================
+       7. ENTERPRISE FOOTER (Deep #041562 Canvas, High Contrast, Compliance Badges)
+       ========================================================================= -->
+<footer class="w-full bg-[#041562] pt-16 pb-12 px-6 lg:px-16 text-[#EEEEEE] relative overflow-hidden border-t-2 border-[#DA1212]/40">
+  <!-- Subtle Top Atmospheric Rim Light Gradient -->
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[1px] bg-gradient-to-r from-transparent via-[#DA1212] to-transparent opacity-75"></div>
+
+  <div class="max-w-7xl mx-auto relative z-10">
+    <!-- =========================================================================
+         TIER 1: 4-COLUMN EXECUTIVE NAVIGATION & DIRECT DESK GRID
+         ========================================================================= -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-14 pb-14 border-b border-white/10">
+      <!-- Column 1: Brand & Socials -->
+      <div class="space-y-6 flex flex-col justify-between">
+        <div class="space-y-4">
+          <a href="Homepage.html" class="flex items-center space-x-3 group">
+            <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center p-1.5 shadow-md border border-white/20 transition-transform duration-200 group-hover:scale-105 overflow-hidden shrink-0">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUzlKE9vfV3Qsl0ouqRvdcoKaQQz4d1TXDCCMdv_7tPZrRRdXqUg05Nl4WYKiQSaW6110QWyD0zRpTms_Z_8bTxG4BF7COGUtbrr6FePSMQm6b7F4dr-bkaQrpawvbqk_P6RUpVipjYBSqbu_uVk49kyxcctDcKlCcSGq2FxqTK8AEaPeeUsEhLjPigosRuSISO9pzOnChMa69N7hHDEGIOVgj1awdLtWgI2NcHuhwHQfkdVn0VPNn9g" alt="StriveCode Technology Logo" class="w-full h-full object-contain">
+            </div>
+            <div class="flex flex-col">
+              <span class="text-lg font-extrabold text-white tracking-tight leading-none">StriveCode</span>
+              <span class="text-[9px] uppercase font-bold tracking-wider text-[#EEEEEE]/70 mt-1">Technology</span>
+            </div>
+          </a>
+          <p class="text-sm text-[#EEEEEE]/80 leading-relaxed">
+            StriveCode empowers enterprises and innovators with secure, scalable, and globally trusted digital solutions.
+          </p>
+          <div class="w-12 h-[2px] bg-[#DA1212]"></div>
+        </div>
+
+        <!-- Social Links Section -->
+        <div class="space-y-3 pt-2">
+          <span class="text-xs font-bold uppercase tracking-wider text-white block">FOLLOW US</span>
+          <div class="flex items-center gap-3">
+            <!-- LinkedIn -->
+            <a href="#" aria-label="LinkedIn" class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#EEEEEE] transition-all duration-300 hover:border-[#DA1212] hover:bg-white/10 hover:text-white hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(218,18,18,0.35)]">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"></path></svg>
+            </a>
+            <!-- X / Twitter -->
+            <a href="#" aria-label="X Twitter" class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#EEEEEE] transition-all duration-300 hover:border-[#DA1212] hover:bg-white/10 hover:text-white hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(218,18,18,0.35)]">
+              <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+            </a>
+            <!-- Instagram -->
+            <a href="#" aria-label="Instagram" class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#EEEEEE] transition-all duration-300 hover:border-[#DA1212] hover:bg-white/10 hover:text-white hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(218,18,18,0.35)]">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+            </a>
+            <!-- GitHub -->
+            <a href="#" aria-label="GitHub" class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#EEEEEE] transition-all duration-300 hover:border-[#DA1212] hover:bg-white/10 hover:text-white hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(218,18,18,0.35)]">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column 2: Products & Contact -->
+      <div class="space-y-6 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <span class="w-[3px] h-4 bg-[#DA1212] block"></span>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-white">PRODUCTS</h4>
+          </div>
+          <ul class="space-y-2.5 text-sm text-[#EEEEEE]/80">
+            <li><a href="Product.html" class="hover:text-white transition-colors block">CRM &amp; ERP Suite</a></li>
+            <li><a href="Product.html" class="hover:text-white transition-colors block">Billing &amp; HRMS Systems</a></li>
+            <li><a href="Product.html" class="hover:text-white transition-colors block">LMS &amp; Hospital Portals</a></li>
+            <li><a href="Product.html" class="hover:text-white transition-colors block">Fly My Journey Mobile Suite</a></li>
+            <li><a href="Product.html" class="hover:text-white transition-colors block">Enterprise Custom Software</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Info Subgroup -->
+        <div class="mt-5 pt-3 border-t border-white/10 space-y-2.5">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="w-[3px] h-3 bg-[#DA1212] block"></span>
+            <span class="text-[11px] font-bold uppercase tracking-wider text-white">CONTACT INFO</span>
+          </div>
+          <div class="p-2.5 bg-white/5 rounded-xl border border-white/10 text-xs text-[#EEEEEE] leading-relaxed backdrop-blur-sm">
+            <div class="font-medium">hr@strive-code.com</div>
+            <div class="text-[#EEEEEE]/70 text-[11px]">hello@strivecode.com</div>
+          </div>
+          <div class="p-2.5 bg-white/5 rounded-xl border border-white/10 text-xs text-[#EEEEEE] leading-relaxed backdrop-blur-sm">
+            <div class="font-medium">+91 8279431435</div>
+            <div class="text-[#EEEEEE]/70 text-[11px]">+91 7536061159</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column 3: Solutions & Services -->
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="w-[3px] h-4 bg-[#DA1212] block"></span>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-white">SOLUTIONS &amp; SERVICES</h4>
+        </div>
+        <ul class="space-y-2.5 text-sm text-[#EEEEEE]/80">
+          <li><a href="Services.html" class="hover:text-white transition-colors block">Custom Software Development</a></li>
+          <li><a href="Services.html" class="hover:text-white transition-colors block">AI Solutions &amp; Automation</a></li>
+          <li><a href="Services.html" class="hover:text-white transition-colors block">Web &amp; E-Commerce Portals</a></li>
+          <li><a href="Services.html" class="hover:text-white transition-colors block">Native &amp; Cross-Platform Apps</a></li>
+          <li><a href="Courses.html" class="hover:text-white transition-colors block">Cloud &amp; DevOps</a></li>
+          <li><a href="Courses.html" class="hover:text-white transition-colors block">UI/UX Design</a></li>
+          <li><a href="Mentorship.html" class="hover:text-white transition-colors block">Mentorship</a></li>
+          <li><a href="Aboutus.html" class="hover:text-white transition-colors block">About StriveCode</a></li>
+          <li><a href="Careers.html" class="hover:text-white transition-colors block">Careers</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Legal & Resources -->
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="w-[3px] h-4 bg-[#DA1212] block"></span>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-white">LEGAL &amp; RESOURCES</h4>
+        </div>
+        <ul class="space-y-2.5 text-sm text-[#EEEEEE]/80">
+          <li><a href="#" class="hover:text-white transition-colors block">Privacy Policy</a></li>
+          <li><a href="#" class="hover:text-white transition-colors block">Terms of Service</a></li>
+          <li><a href="#" class="hover:text-white transition-colors block">Cookie Policy</a></li>
+          <li><a href="#" class="hover:text-white transition-colors block">Refund Policy</a></li>
+          <li><a href="Services.html" class="hover:text-white transition-colors block">Engineering Lifecycle</a></li>
+          <li><a href="Services.html" class="hover:text-white transition-colors block">Tech Stack</a></li>
+          <li><a href="Services.html" class="hover:text-white transition-colors block">Case Studies</a></li>
+          <li><a href="#" class="hover:text-white transition-colors block">Compliance &amp; Security</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- =========================================================================
+         TIER 2: OFFICIAL PRESENCE & REGISTERED OPERATIONS
+         ========================================================================= -->
+    <div class="pt-12 pb-6">
+      <div class="text-center max-w-2xl mx-auto mb-8">
+        <h3 class="text-xl font-bold text-white tracking-tight">Official Presence &amp; Registered Operations</h3>
+      </div>
+
+      <!-- 3-Column Presence Hub Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
+        <!-- Card 1: Agra Hub -->
+        <div class="bg-white/[0.04] backdrop-blur-md rounded-2xl p-6 border border-white/10 hover:border-[#DA1212] transition-all duration-300 flex flex-col justify-between group">
+          <div>
+            <div class="text-xs font-bold uppercase tracking-wider text-[#DA1212] mb-1.5">Operations Hub</div>
+            <div class="text-base font-bold text-white mb-2">Agra, Uttar Pradesh</div>
+            <p class="text-xs text-[#EEEEEE]/80 leading-relaxed mb-4">
+              Software Development &amp; Enterprise Delivery Center, Agra, UP, India
+            </p>
+          </div>
+          <div class="pt-3 border-t border-white/10 flex items-center justify-between text-xs text-[#EEEEEE]">
+            <span class="text-[#EEEEEE]/60 font-medium">Direct Desk:</span>
+            <a href="tel:+918279431435" class="font-semibold hover:text-[#DA1212] transition-colors">+91 8279431435</a>
+          </div>
+        </div>
+
+        <!-- Card 2: Awagarh Office -->
+        <div class="bg-white/[0.04] backdrop-blur-md rounded-2xl p-6 border border-white/10 hover:border-[#DA1212] transition-all duration-300 flex flex-col justify-between group">
+          <div>
+            <div class="text-xs font-bold uppercase tracking-wider text-[#DA1212] mb-1.5">Registered Office</div>
+            <div class="text-base font-bold text-white mb-2">Awagarh, Etah, UP</div>
+            <p class="text-xs text-[#EEEEEE]/80 leading-relaxed mb-4">
+              Mohalla Bohran, Jain Mandir, Awagarh, Etah, UP – 207301
+            </p>
+          </div>
+          <div class="pt-3 border-t border-white/10 flex items-center justify-between text-xs text-[#EEEEEE]">
+            <span class="text-[#EEEEEE]/60 font-medium">Executive Desk:</span>
+            <a href="tel:+917536061159" class="font-semibold hover:text-[#DA1212] transition-colors">+91 7536061159</a>
+          </div>
+        </div>
+
+        <!-- Card 3: Global Client Operations -->
+        <div class="bg-white/[0.04] backdrop-blur-md rounded-2xl p-6 border border-white/10 hover:border-[#DA1212] transition-all duration-300 flex flex-col justify-between group">
+          <div>
+            <div class="text-xs font-bold uppercase tracking-wider text-[#DA1212] mb-1.5">Global Reach</div>
+            <div class="text-base font-bold text-white mb-2">Global Client Operations</div>
+            <p class="text-xs text-[#EEEEEE]/80 leading-relaxed mb-4">
+              Serving 100+ Clients &amp; 10+ Industries Across Enterprise Clusters
+            </p>
+          </div>
+          <div class="pt-3 border-t border-white/10 flex items-center justify-between text-xs text-[#EEEEEE]">
+            <span class="text-[#EEEEEE]/60 font-medium">Official Portal:</span>
+            <a href="https://www.strivecode.in" target="_blank" class="font-semibold hover:text-[#DA1212] transition-colors">www.strivecode.in</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Centered Executive CTA -->
+      <div class="flex justify-center mt-8 mb-2">
+        <a href="Contact.html" class="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-[#DA1212] text-white text-sm font-semibold tracking-tight shadow-md border border-white/20 transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.03] hover:shadow-[0_12px_28px_-6px_rgba(218,18,18,0.5)]">
+          <span>Schedule Executive Consultation</span>
+          <span class="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- =========================================================================
+         BOTTOM LEGAL BAR
+         ========================================================================= -->
+    <div class="mt-8 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
+      <div class="text-[#EEEEEE]/70 text-center md:text-left text-[13px]">
+        © 2026 Strive Code Technology Private Limited. All rights reserved.
+      </div>
+      <div class="text-[#EEEEEE]/60 text-center md:text-right font-medium tracking-wide">
+        CIN: U62090UP2025PTC226707 | GSTIN: 09ABQCS5771C1ZW | RoC Kanpur
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- Interactive Filter Tabs Script & Apple-Style 3D Scatter Parallax -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Filter tabs logic
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const productCards = document.querySelectorAll('.product-card');
+
+      filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const filterValue = button.getAttribute('data-filter');
+
+          // Update Segmented Button States
+          filterButtons.forEach(btn => {
+            btn.classList.remove('bg-white', 'text-[#041562]', 'shadow-apple-sm');
+            btn.classList.add('text-[#041562]/70');
+          });
+
+          button.classList.add('bg-white', 'text-[#041562]', 'shadow-apple-sm');
+          button.classList.remove('text-[#041562]/70');
+
+          // Filter Products
+          productCards.forEach(card => {
+            const category = card.getAttribute('data-category');
+            if (filterValue === 'all' || category === filterValue) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // 2. Apple-Style Scroll-Linked 3D Scatter & Fly-Out Parallax Animation
+      const leftDevice = document.getElementById('hero-device-left');
+      const centerDevice = document.getElementById('hero-device-center');
+      const rightDevice = document.getElementById('hero-device-right');
+
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (!prefersReducedMotion && leftDevice && centerDevice && rightDevice) {
+        let isTicking = false;
+
+        const handleScroll = () => {
+          const scrollY = window.scrollY || window.pageYOffset || 0;
+          const maxScroll = 420; // Complete scatter progress reached around 400-420px
+          const progress = Math.min(Math.max(scrollY / maxScroll, 0), 1);
+
+          // Left Device: Fly My Journey
+          const leftTx = -220 * progress;
+          const leftTy = -120 * progress;
+          const leftTz = 80 * progress;
+          const leftRotZ = -6 - (16 * progress);
+          const leftRotY = 18 * progress;
+          const leftOpacity = 1 - (0.78 * progress);
+          const leftGlow = progress > 0.05 ? `0 24px 48px -10px rgba(218, 18, 18, ${0.15 + 0.18 * progress}), 0 10px 24px -6px rgba(4, 21, 98, 0.08)` : '';
+
+          leftDevice.style.transform = `translate3d(${leftTx}px, ${leftTy}px, ${leftTz}px) rotateZ(${leftRotZ}deg) rotateY(${leftRotY}deg)`;
+          leftDevice.style.opacity = leftOpacity;
+          if (leftGlow) leftDevice.style.boxShadow = leftGlow;
+          else leftDevice.style.boxShadow = '';
+
+          // Center Device: StriveCode ERP/CRM Platform
+          const centerTy = -90 * progress;
+          const centerTz = 140 * progress;
+          const centerRotX = 16 * progress;
+          const centerScale = 1 + (0.08 * progress);
+          const centerShadowY = 35 + (35 * progress);
+          const centerShadowBlur = 70 + (40 * progress);
+          const centerShadowOpacity = 0.12 + (0.10 * progress);
+
+          centerDevice.style.transform = `translate3d(0px, ${centerTy}px, ${centerTz}px) rotateX(${centerRotX}deg) scale(${centerScale})`;
+          centerDevice.style.boxShadow = `0 ${centerShadowY}px ${centerShadowBlur}px -15px rgba(4, 21, 98, ${centerShadowOpacity}), 0 15px 30px -10px rgba(0, 0, 0, 0.06)`;
+
+          // Right Device: Health Tracker
+          const rightTx = 220 * progress;
+          const rightTy = -120 * progress;
+          const rightTz = 80 * progress;
+          const rightRotZ = 6 + (16 * progress);
+          const rightRotY = -18 * progress;
+          const rightOpacity = 1 - (0.78 * progress);
+          const rightGlow = progress > 0.05 ? `0 24px 48px -10px rgba(218, 18, 18, ${0.15 + 0.18 * progress}), 0 10px 24px -6px rgba(4, 21, 98, 0.08)` : '';
+
+          rightDevice.style.transform = `translate3d(${rightTx}px, ${rightTy}px, ${rightTz}px) rotateZ(${rightRotZ}deg) rotateY(${rightRotY}deg)`;
+          rightDevice.style.opacity = rightOpacity;
+          if (rightGlow) rightDevice.style.boxShadow = rightGlow;
+          else rightDevice.style.boxShadow = '';
+
+          isTicking = false;
+        };
+
+        window.addEventListener('scroll', () => {
+          if (!isTicking) {
+            window.requestAnimationFrame(handleScroll);
+            isTicking = true;
+          }
+        }, { passive: true });
+
+        // Trigger once on page load to preserve resting coordinates
+        handleScroll();
+      }
+    });
+  </script>
+
+
+<script src="main.js" defer></script>
+<script defer src="apply-modal.js"></script>
+<script defer src="grid-matrix.js"></script>
+</body></html>

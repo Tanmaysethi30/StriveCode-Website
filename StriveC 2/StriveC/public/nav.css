@@ -1,0 +1,25 @@
+/* ==========================================================================
+   StriveCode Master Navigation Stylesheet (nav.css)
+   Ensures 100% pixel-for-pixel visual & functional identity across all 8 pages
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+/* Header Box Model */
+header {
+  box-sizing: border-box;
+}
+
+/* Master Brand Logo Typography */
+header .font-display {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+header .font-mono {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+}
+
+/* Master Navigation Links Typography */
+header nav a {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}

@@ -1,0 +1,620 @@
+<!DOCTYPE html><html lang="en"><head>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="nav.css">
+<link rel="stylesheet" href="apply-modal.css">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Contact Us — StriveCode Technology</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container": "#eeeeee",
+            "on-primary-fixed-variant": "#33408a",
+            "secondary-container": "#e51e19",
+            "on-secondary-fixed-variant": "#930004",
+            "on-error": "#ffffff",
+            "inverse-on-surface": "#f0f1f1",
+            "inverse-primary": "#bac3ff",
+            "outline-variant": "#c6c5d2",
+            "on-surface-variant": "#454651",
+            "on-secondary-fixed": "#410001",
+            "surface-container-low": "#f3f3f4",
+            "on-background": "#1a1c1c",
+            "inverse-surface": "#2f3131",
+            "on-secondary": "#ffffff",
+            "surface": "#f9f9f9",
+            "on-tertiary-fixed-variant": "#454747",
+            "primary-container": "#041562",
+            "primary-fixed": "#dee0ff",
+            "on-secondary-container": "#fffbff",
+            "on-surface": "#1a1c1c",
+            "secondary-fixed": "#ffdad5",
+            "on-primary": "#ffffff",
+            "tertiary-fixed": "#e2e2e2",
+            "surface-container-highest": "#e2e2e2",
+            "primary-fixed-dim": "#bac3ff",
+            "tertiary-fixed-dim": "#c6c6c7",
+            "tertiary-container": "#1e2020",
+            "on-tertiary": "#ffffff",
+            "surface-bright": "#f9f9f9",
+            "error-container": "#ffdad6",
+            "secondary-fixed-dim": "#ffb4a9",
+            "background": "#f9f9f9",
+            "on-error-container": "#93000a",
+            "on-tertiary-container": "#868788",
+            "surface-container-high": "#e8e8e8",
+            "tertiary": "#060808",
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary-fixed": "#1a1c1c",
+            "secondary": "#bc0007",
+            "surface-variant": "#e2e2e2",
+            "outline": "#767682",
+            "surface-dim": "#dadada",
+            "on-primary-fixed": "#00105c",
+            "surface-tint": "#4c59a3",
+            "primary": "#00042a",
+            "on-primary-container": "#7582d0",
+            "error": "#ba1a1a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "3xl": "1.5rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "space-lg": "1.5rem",
+            "space-md": "1rem",
+            "gutter-sm": "1rem",
+            "space-sm": "0.5rem",
+            "gutter": "1.5rem",
+            "margin-sm": "1rem",
+            "space-xl": "2.5rem",
+            "margin": "2.5rem"
+          },
+          "fontFamily": {
+            "headline-lg-mobile": ["Plus Jakarta Sans"],
+            "display-mobile": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "title-lg": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "title-md": ["Plus Jakarta Sans"],
+            "display": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "headline-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "display-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.025em", "fontWeight": "800" }],
+            "headline-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.025em", "fontWeight": "700" }],
+            "title-lg": ["18px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-md": ["13px", { "lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "700" }],
+            "headline-sm": ["22px", { "lineHeight": "30px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "600" }],
+            "display": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.03em", "fontWeight": "800" }],
+            "body-md": ["14px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-md": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "26px", "letterSpacing": "0em", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .bento-card-transition {
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+    }
+    .bento-card-transition:hover {
+      transform: translateY(-6px) scale(1.008);
+      border-color: #DA1212 !important;
+      box-shadow: 0 20px 40px -12px rgba(4, 21, 98, 0.12), 0 0 0 1px #DA1212;
+    }
+    .form-card-hover {
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .form-card-hover:hover {
+      border-color: #DA1212 !important;
+      box-shadow: 0 24px 48px -12px rgba(4, 21, 98, 0.10), 0 0 0 1px #DA1212;
+    }
+    .apply-btn-pill {
+      background-color: #DA1212;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .apply-btn-pill:hover {
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: 0 10px 24px -6px rgba(218, 18, 18, 0.45);
+      border-color: #FFFFFF;
+    }
+    .apply-btn-pill:hover .apply-arrow {
+      transform: translateX(4px);
+    }
+    .apply-arrow {
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+  </style>
+</head>
+<body class="bg-surface-container text-on-surface antialiased font-body-md min-h-screen flex flex-col selection:bg-secondary selection:text-on-secondary">
+<!-- TopNavBar (Web Header with Apple Frosted-Glass finish) -->
+<header class="bg-white/95 backdrop-blur-md sticky top-0 z-50 border-b border-[#e0e0e0] transition-all duration-200 shadow-sm">
+<div class="w-full flex justify-between items-center px-6 lg:px-14 py-3.5">
+<a class="flex items-center gap-3 group" href="Homepage.html">
+<img alt="StriveCode Logo" class="h-10 w-10 object-contain rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAF1GPRqkM5p4r2vPbhV-ZrQqC8AtIqw6PCOU8Q3bYLe7I_Fbhfg_vcUhb9N-kB2ZTYVM7bA2L0tFEqWSNH7ryitR7-0hIQaDqhNuFUzv8idxTUN_L798fySsTjyI6S8TJv59OvYuHGXclfBJJi0vEj6qGoPt7Ajo4_TKdkwOxGRBZWTt7adcYdb4fPshtKjNVpHMhhzyBfBmZiVkBMQ4uM3L3kzJ8er3WQrEHuxAyvoxktFVstvSNKFQ">
+<div class="flex flex-col">
+<span class="font-display font-extrabold text-[22px] text-[#041562] group-hover:text-[#DA1212] transition-colors tracking-tight">StriveCode</span>
+<span class="text-[10px] uppercase font-bold tracking-widest text-slate-400 -mt-1 font-mono">Technology</span>
+</div>
+</a>
+<nav class="hidden xl:flex items-center gap-7 text-[14px]">
+<a class="text-[#1b254b] hover:text-[#DA1212] font-medium transition-colors duration-200" href="Homepage.html">Home</a>
+<a class="text-[#1b254b] hover:text-[#DA1212] font-medium transition-colors duration-200" href="Product.html">Product</a>
+<a class="text-[#1b254b] hover:text-[#DA1212] font-medium transition-colors duration-200" href="Services.html">Services</a>
+<a class="text-[#1b254b] hover:text-[#DA1212] font-medium transition-colors duration-200" href="Courses.html">Course</a>
+<a class="text-[#1b254b] hover:text-[#DA1212] font-medium transition-colors duration-200" href="Careers.html">Careers</a>
+<a class="text-[#1b254b] hover:text-[#DA1212] font-medium transition-colors duration-200" href="Mentorship.html">Mentorship</a>
+<a class="text-[#1b254b] hover:text-[#DA1212] font-medium transition-colors duration-200" href="Aboutus.html">About us</a>
+<a class="text-[#041562] font-bold border-b-2 border-[#DA1212] pb-0.5 transition-all duration-200" href="Contact.html">Contact</a><a class="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-[#DA1212] text-white text-[14px] font-semibold hover:bg-[#b80f0f] hover:shadow-[0_20px_45px_-12px_rgba(218,18,18,0.35)] hover:-translate-y-1 transition-all duration-200 shadow-sm group ml-2" href="#apply" data-apply-modal><span>Apply Now</span><span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span></a>
+</nav>
+<div class="xl:hidden flex items-center gap-3">
+<button aria-expanded="false" aria-label="Toggle navigation menu" class="xl:hidden text-[#041562] hover:text-[#DA1212] p-2 focus:outline-none rounded-lg hover:bg-[#EEEEEE]" id="mobile-menu-toggle">
+<span class="material-symbols-outlined text-2xl" id="menu-icon">menu</span>
+</button>
+</div>
+</div>
+<!-- Mobile Drawer -->
+<div class="hidden xl:hidden bg-white border-b border-[#e0e0e0] px-6 py-5 shadow-lg mobile-nav-drawer" id="mobile-menu">
+<nav class="flex flex-col gap-3">
+<a class="text-[#1b254b] hover:text-[#DA1212] font-medium text-sm py-1 pl-3" href="Homepage.html">Home</a>
+<a class="text-[#1b254b] hover:text-[#DA1212] font-medium text-sm py-1 pl-3" href="Product.html">Product</a>
+<a class="text-[#1b254b] hover:text-[#DA1212] font-medium text-sm py-1 pl-3" href="Services.html">Services</a>
+<a class="text-[#1b254b] hover:text-[#DA1212] font-medium text-sm py-1 pl-3" href="Courses.html">Course</a>
+<a class="text-[#1b254b] hover:text-[#DA1212] font-medium text-sm py-1 pl-3" href="Careers.html">Careers</a>
+<a class="text-[#1b254b] hover:text-[#DA1212] font-medium text-sm py-1 pl-3" href="Mentorship.html">Mentorship</a>
+<a class="text-[#1b254b] hover:text-[#DA1212] font-medium text-sm py-1 pl-3" href="Aboutus.html">About us</a>
+<a class="text-[#041562] font-bold text-sm py-1.5 border-l-2 border-[#DA1212] pl-3" href="Contact.html">Contact</a>
+<a class="inline-flex items-center justify-center rounded-full px-5 py-2.5 bg-[#DA1212] text-white text-sm font-semibold mt-2" href="#apply" data-apply-modal>Apply Now →</a>
+</nav>
+</div>
+</header>
+<!-- Editorial Hero Section (No CTAs, Crisp Studio Tone) -->
+<section class="w-full bg-gradient-to-b from-surface-container-lowest to-surface-container pt-20 pb-16 px-6 lg:px-12 border-b border-primary-container/5">
+<div class="max-w-4xl mx-auto text-center flex flex-col items-center">
+<span class="font-label-sm text-label-sm text-secondary tracking-widest uppercase mb-4 py-1 px-3.5 bg-surface-container-lowest rounded-full border border-secondary/20 shadow-xs">
+        LET'S CONNECT
+      </span>
+<h1 class="text-display-mobile md:text-display font-display text-primary-container tracking-tight leading-none mb-6">
+        Your Vision. Our Expertise. Endless Possibilities.
+      </h1>
+<p class="text-body-lg font-body-lg text-primary-container/75 max-w-2xl mx-auto leading-relaxed">
+        Whether you want to launch a custom enterprise software product, scale your digital portal, or partner on campus-to-corporate training, our team responds within 24 hours.
+      </p>
+</div>
+</section>
+<!-- Interactive 2-Column Hub (55% Form / 45% Stacking Bento Cards) -->
+<main class="w-full max-w-7xl mx-auto px-6 lg:px-12 py-12 flex-1">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Left Column: Interactive Project Inquiry Card (55% -> col-span-7) -->
+<section class="lg:col-span-7 bg-surface-container-lowest rounded-3xl p-8 lg:p-12 shadow-md border border-primary-container/10 form-card-hover">
+<div class="mb-8">
+<h2 class="text-headline-md md:text-headline-lg font-headline-lg text-primary-container tracking-tight">
+            Start a Conversation
+          </h2>
+<p class="text-body-md font-body-md text-primary-container/70 mt-2 leading-normal">
+            Tell us about your project or inquiry—our principal architects and team leads review every message personally.
+          </p>
+</div>
+<form action="#" class="space-y-6" method="POST" onsubmit="event.preventDefault();">
+<!-- Interactive Topic Selector Pills -->
+<div>
+<label class="block text-label-md font-label-md text-primary-container mb-3">
+              What can we help you with?
+            </label>
+<div aria-label="Inquiry Topic" class="flex flex-wrap gap-2.5" id="topic-pills" role="radiogroup">
+<button aria-checked="true" class="topic-pill px-4 py-2.5 rounded-xl text-label-md font-label-md transition-all duration-200 bg-primary-container text-on-primary shadow-xs" data-value="custom-software" role="radio" type="button">
+                Custom Software / ERP
+              </button>
+<button aria-checked="false" class="topic-pill px-4 py-2.5 rounded-xl text-label-md font-label-md transition-all duration-200 bg-surface-container text-primary-container hover:bg-surface-container-high border border-primary-container/10" data-value="web-mobile" role="radio" type="button">
+                Web or Mobile App
+              </button>
+<button aria-checked="false" class="topic-pill px-4 py-2.5 rounded-xl text-label-md font-label-md transition-all duration-200 bg-surface-container text-primary-container hover:bg-surface-container-high border border-primary-container/10" data-value="cloud-ai" role="radio" type="button">
+                Cloud &amp; AI Solutions
+              </button>
+<button aria-checked="false" class="topic-pill px-4 py-2.5 rounded-xl text-label-md font-label-md transition-all duration-200 bg-surface-container text-primary-container hover:bg-surface-container-high border border-primary-container/10" data-value="cohort" role="radio" type="button">
+                Cohort &amp; Mentorship
+              </button>
+<button aria-checked="false" class="topic-pill px-4 py-2.5 rounded-xl text-label-md font-label-md transition-all duration-200 bg-surface-container text-primary-container hover:bg-surface-container-high border border-primary-container/10" data-value="general" role="radio" type="button">
+                General Inquiry
+              </button>
+</div>
+</div>
+<!-- Input Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-2">
+<div>
+<label class="block text-label-md font-label-md text-primary-container mb-2" for="fullName">
+                Full Name <span class="text-secondary">*</span>
+</label>
+<input class="w-full h-11 px-4 rounded-lg bg-surface-container border border-primary-container/15 text-primary-container placeholder-primary-container/40 text-body-md font-body-md focus:bg-surface-container-lowest focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-container/15 transition-all" id="fullName" name="fullName" placeholder="e.g. Alex Richardson" required="" type="text">
+</div>
+<div>
+<label class="block text-label-md font-label-md text-primary-container mb-2" for="workEmail">
+                Work Email <span class="text-secondary">*</span>
+</label>
+<input class="w-full h-11 px-4 rounded-lg bg-surface-container border border-primary-container/15 text-primary-container placeholder-primary-container/40 text-body-md font-body-md focus:bg-surface-container-lowest focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-container/15 transition-all" id="workEmail" name="workEmail" placeholder="alex@organization.com" required="" type="email">
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+<div>
+<label class="block text-label-md font-label-md text-primary-container mb-2" for="phoneNumber">
+                Phone Number
+              </label>
+<input class="w-full h-11 px-4 rounded-lg bg-surface-container border border-primary-container/15 text-primary-container placeholder-primary-container/40 text-body-md font-body-md focus:bg-surface-container-lowest focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-container/15 transition-all" id="phoneNumber" name="phoneNumber" placeholder="+91 98765 43210" type="tel">
+</div>
+<div>
+<label class="block text-label-md font-label-md text-primary-container mb-2" for="company">
+                Company / Institution
+              </label>
+<input class="w-full h-11 px-4 rounded-lg bg-surface-container border border-primary-container/15 text-primary-container placeholder-primary-container/40 text-body-md font-body-md focus:bg-surface-container-lowest focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-container/15 transition-all" id="company" name="company" placeholder="e.g. Nexus Enterprises Ltd." type="text">
+</div>
+</div>
+<div>
+<label class="block text-label-md font-label-md text-primary-container mb-2" for="projectBrief">
+              Project Brief / Message <span class="text-secondary">*</span>
+</label>
+<textarea class="w-full p-4 rounded-lg bg-surface-container border border-primary-container/15 text-primary-container placeholder-primary-container/40 text-body-md font-body-md focus:bg-surface-container-lowest focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-container/15 transition-all resize-y" id="projectBrief" name="projectBrief" placeholder="Outline your technical goals, timeline, architectural scope, or workforce scaling needs..." required="" rows="4"></textarea>
+</div>
+<!-- Submit CTA -->
+<div class="pt-2">
+<button class="w-full py-4 px-8 rounded-xl bg-secondary text-on-primary font-headline-sm text-title-md font-bold tracking-tight shadow-md hover:bg-secondary-container active:scale-[0.99] transition-all duration-150 flex items-center justify-center gap-2" type="submit">
+<span>Send Message</span>
+<span class="material-symbols-outlined text-lg" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<p class="text-center text-label-sm font-label-sm text-primary-container/60 mt-3">
+              Protected by enterprise-grade NDA protocols. We never share communication records.
+            </p>
+</div>
+</form>
+</section>
+<!-- Right Column: 3 Stacking Bento Cards (45% -> col-span-5) -->
+<aside class="lg:col-span-5 space-y-6">
+<!-- Bento Card 1: Direct Voice & Dispatch Channels -->
+<article class="bg-surface-container-lowest rounded-3xl p-8 shadow-sm border border-primary-container/10 bento-card-transition">
+<div class="flex items-start gap-4 mb-4">
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-secondary shrink-0 border border-primary-container/5">
+<span class="material-symbols-outlined text-2xl" data-icon="call">call</span>
+</div>
+<div>
+<h3 class="text-title-lg font-title-lg text-primary-container">
+                Talk to Our Team Directly
+              </h3>
+<p class="text-body-md font-body-md text-primary-container/65 mt-0.5">
+                Available Mon–Sat, 9:00 AM to 7:00 PM IST
+              </p>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-3 pt-2">
+<a class="flex items-center justify-between px-4 py-3 bg-surface-container hover:bg-surface-container-high rounded-xl text-primary-container font-title-md text-body-md border border-primary-container/10 hover:border-secondary transition-all" href="tel:+918279431435">
+<span class="font-semibold">+91 8279431435</span>
+<span class="material-symbols-outlined text-secondary text-base" data-icon="arrow_outward">arrow_outward</span>
+</a>
+<a class="flex items-center justify-between px-4 py-3 bg-surface-container hover:bg-surface-container-high rounded-xl text-primary-container font-title-md text-body-md border border-primary-container/10 hover:border-secondary transition-all" href="tel:+917536061159">
+<span class="font-semibold">+91 7536061159</span>
+<span class="material-symbols-outlined text-secondary text-base" data-icon="arrow_outward">arrow_outward</span>
+</a>
+</div>
+</article>
+<!-- Bento Card 2: Official Corporate Email Channels -->
+<article class="bg-surface-container-lowest rounded-3xl p-8 shadow-sm border border-primary-container/10 bento-card-transition">
+<div class="flex items-start gap-4 mb-5">
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-secondary shrink-0 border border-primary-container/5">
+<span class="material-symbols-outlined text-2xl" data-icon="mail">mail</span>
+</div>
+<div>
+<h3 class="text-title-lg font-title-lg text-primary-container">
+                Email Our Desks
+              </h3>
+<p class="text-body-md font-body-md text-primary-container/65 mt-0.5">
+                Categorized inbox routing for direct engagement
+              </p>
+</div>
+</div>
+<div class="space-y-3">
+<div class="p-3 bg-surface-container rounded-xl border border-primary-container/10 hover:border-secondary transition-colors">
+<span class="text-label-sm font-label-sm text-primary-container/60 block uppercase">Client Projects &amp; RFP</span>
+<a class="text-primary-container font-semibold text-body-md hover:text-secondary transition-colors flex items-center justify-between" href="mailto:hello@strivecode.com">
+<span>hello@strivecode.com</span>
+<span class="material-symbols-outlined text-primary-container/40 text-sm" data-icon="content_copy">content_copy</span>
+</a>
+</div>
+<div class="p-3 bg-surface-container rounded-xl border border-primary-container/10 hover:border-secondary transition-colors">
+<span class="text-label-sm font-label-sm text-primary-container/60 block uppercase">Enterprise Architecture</span>
+<a class="text-primary-container font-semibold text-body-md hover:text-secondary transition-colors flex items-center justify-between" href="mailto:ops@strivecode.com">
+<span>ops@strivecode.com</span>
+<span class="material-symbols-outlined text-primary-container/40 text-sm" data-icon="content_copy">content_copy</span>
+</a>
+</div>
+<div class="p-3 bg-surface-container rounded-xl border border-primary-container/10 hover:border-secondary transition-colors">
+<span class="text-label-sm font-label-sm text-primary-container/60 block uppercase">Careers, Academic &amp; Mentorship</span>
+<a class="text-primary-container font-semibold text-body-md hover:text-secondary transition-colors flex items-center justify-between" href="mailto:hr@strive-code.com">
+<span>hr@strive-code.com</span>
+<span class="material-symbols-outlined text-primary-container/40 text-sm" data-icon="content_copy">content_copy</span>
+</a>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-primary-container/10 flex items-center justify-between text-label-md font-label-md text-primary-container/70">
+<span>Corporate Portals:</span>
+<span class="font-semibold text-primary-container">www.strivecode.in • strivecode.com</span>
+</div>
+</article>
+<!-- Bento Card 3: Innovation Hubs & Locations -->
+<article class="bg-surface-container-lowest rounded-3xl p-8 shadow-sm border border-primary-container/10 bento-card-transition">
+<div class="flex items-start gap-4 mb-5">
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-secondary shrink-0 border border-primary-container/5">
+<span class="material-symbols-outlined text-2xl" data-icon="location_on">location_on</span>
+</div>
+<div>
+<h3 class="text-title-lg font-title-lg text-primary-container">
+                Visit Our Technology Centers
+              </h3>
+<p class="text-body-md font-body-md text-primary-container/65 mt-0.5">
+                Scheduled client tours and development facilities
+              </p>
+</div>
+</div>
+<div class="space-y-4">
+<div class="p-4 bg-surface-container rounded-xl border border-primary-container/10 hover:border-secondary transition-colors">
+<div class="flex items-center justify-between mb-1">
+<span class="font-title-md font-bold text-primary-container">Agra Research &amp; Technology Center</span>
+<span class="text-label-sm font-label-sm text-secondary bg-surface-container-lowest px-2 py-0.5 rounded border border-secondary/20 uppercase">HQ</span>
+</div>
+<p class="text-body-md font-body-md text-primary-container/75 leading-relaxed">
+                Software Tech Park, Fatehabad Rd, Agra, Uttar Pradesh 282001, India.
+              </p>
+</div>
+<div class="p-4 bg-surface-container rounded-xl border border-primary-container/10 hover:border-secondary transition-colors">
+<div class="flex items-center justify-between mb-1">
+<span class="font-title-md font-bold text-primary-container">Bengaluru Innovation Lab</span>
+<span class="text-label-sm font-label-sm text-primary-container/70 bg-surface-container-lowest px-2 py-0.5 rounded border border-primary-container/10 uppercase">LAB</span>
+</div>
+<p class="text-body-md font-body-md text-primary-container/75 leading-relaxed">
+                Tech Enclave, Koramangala 4th Block, Bengaluru, Karnataka 560034, India.
+              </p>
+</div>
+</div>
+</article>
+</aside>
+</div>
+</main>
+<!-- Technical Infrastructure Visual Anchor -->
+<section class="w-full max-w-7xl mx-auto px-6 lg:px-12 py-10">
+<div class="relative rounded-3xl overflow-hidden border border-primary-container/10 shadow-sm bg-surface-container-lowest">
+<div class="grid grid-cols-1 lg:grid-cols-12 items-center">
+<div class="lg:col-span-6 p-8 lg:p-12">
+<span class="text-label-sm font-label-sm uppercase text-secondary tracking-widest block mb-2">PRECISION ENGINEERING</span>
+<h3 class="text-headline-md font-headline-md text-primary-container tracking-tight mb-4">
+            Architected for Modern Enterprise Resilience
+          </h3>
+<p class="text-body-md font-body-md text-primary-container/80 leading-relaxed mb-6">
+            From distributed microservices and mission-critical cloud deployments to guided tech mentorship, StriveCode pairs senior engineering governance with human-centric execution.
+          </p>
+<div class="flex flex-wrap gap-4 text-label-md font-label-md text-primary-container font-semibold">
+<span class="px-3.5 py-1.5 rounded-lg bg-surface-container border border-primary-container/10">ISO 9001:2015 Process</span>
+<span class="px-3.5 py-1.5 rounded-lg bg-surface-container border border-primary-container/10">SOC-2 Type II Compliant</span>
+<span class="px-3.5 py-1.5 rounded-lg bg-surface-container border border-primary-container/10">24/7 Production SLAs</span>
+</div>
+</div>
+<div class="lg:col-span-6 h-64 lg:h-80 relative">
+<img class="w-full h-full object-cover" data-alt="A modern glass architectural conference space where diverse engineering architects collaborate around an interactive transparent schematics display illustrating microservices and system cloud architecture. Clean daylight floods through high-ceiling floor-to-ceiling windows, highlighting crisp lines in deep navy, white, and subtle crimson accents, capturing an elite enterprise technology aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlxV1BmvP7Uv8Pa3E8q9NoZAfLBCNgRMQiLP3oaUDDek66q_unm-Op7vM4zrf4dmplnVP1GU49NiFCv6H0wAI62yH2dZKS3nukFcigDZljFtQCBNczU1coCT3GOZWHlEjIVY0xsMFmxTl1oAjGjBRVgskN67jhC6SJWMMJ67Vy86IeZhEHgRaLJCZFMY57IPeA35Va7WQtBUk8jzBtV6t-JR7_pouUXo3kEsX4bhLo">
+<div class="absolute inset-0 bg-gradient-to-r from-surface-container-lowest via-transparent to-transparent lg:block hidden"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer (Verbatim from Shared Components JSON) -->
+<footer class="w-full pt-16 pb-12 px-6 lg:px-16 text-[#EEEEEE] relative overflow-hidden border-t-2 border-[#DA1212]/40 bg-[#041562]">
+  <!-- Atmospheric Ambient Glow -->
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-24 bg-[#DA1212]/10 blur-3xl pointer-events-none rounded-full"></div>
+
+  <div class="max-w-7xl mx-auto relative z-10">
+    <!-- Tier 1: 4-Column Executive Navigation & Direct Desk Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-14 pb-14 border-b border-white/10">
+      <!-- Column 1: Brand & Socials -->
+      <div class="flex flex-col space-y-5">
+        <div class="flex items-center gap-3">
+          <span class="w-9 h-9 rounded-xl bg-white text-[#041562] flex items-center justify-center font-extrabold text-lg shadow-md">S</span>
+          <span class="text-xl font-bold text-white tracking-tight">StriveCode Technology</span>
+        </div>
+        <p class="text-sm leading-relaxed text-[#EEEEEE]/80">
+          StriveCode empowers enterprises and innovators with secure, scalable, and globally trusted digital solutions.
+        </p>
+        <div class="w-12 h-1 bg-[#DA1212] rounded-full my-1"></div>
+        <div>
+          <span class="block text-xs font-bold uppercase tracking-wider text-white mb-3">FOLLOW US</span>
+          <div class="flex items-center gap-2.5">
+            <a href="#" aria-label="LinkedIn" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 hover:border-[#DA1212] hover:bg-white/10 text-white flex items-center justify-center transition-all duration-200 hover:-translate-y-1 shadow-sm hover:shadow-[#DA1212]/20 font-semibold text-xs">
+              in
+            </a>
+            <a href="#" aria-label="X" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 hover:border-[#DA1212] hover:bg-white/10 text-white flex items-center justify-center transition-all duration-200 hover:-translate-y-1 shadow-sm hover:shadow-[#DA1212]/20 font-bold text-xs">
+              𝕏
+            </a>
+            <a href="#" aria-label="Instagram" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 hover:border-[#DA1212] hover:bg-white/10 text-white flex items-center justify-center transition-all duration-200 hover:-translate-y-1 shadow-sm hover:shadow-[#DA1212]/20 font-semibold text-xs">
+              IG
+            </a>
+            <a href="#" aria-label="GitHub" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 hover:border-[#DA1212] hover:bg-white/10 text-white flex items-center justify-center transition-all duration-200 hover:-translate-y-1 shadow-sm hover:shadow-[#DA1212]/20 font-semibold text-xs">
+              GH
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column 2: Products & Contact -->
+      <div class="flex flex-col space-y-4">
+        <div class="flex items-center gap-2.5 border-l-[3px] border-[#DA1212] pl-3">
+          <h4 class="text-sm font-bold uppercase tracking-wider text-white">PRODUCTS</h4>
+        </div>
+        <ul class="space-y-2.5 text-sm text-[#EEEEEE]/80">
+          <li><a href="Product.html" class="hover:text-white transition-colors">CRM &amp; ERP Suite</a></li>
+          <li><a href="Product.html" class="hover:text-white transition-colors">Billing &amp; HRMS Systems</a></li>
+          <li><a href="Product.html" class="hover:text-white transition-colors">LMS &amp; Hospital Portals</a></li>
+          <li><a href="Product.html" class="hover:text-white transition-colors">Fly My Journey Mobile Suite</a></li>
+          <li><a href="Product.html" class="hover:text-white transition-colors">Enterprise Custom Software</a></li>
+        </ul>
+        <div class="mt-5 pt-3">
+          <span class="block text-xs font-bold uppercase tracking-wider text-white mb-2.5">CONTACT INFO</span>
+          <div class="space-y-2">
+            <div class="px-3.5 py-2 rounded-xl bg-white/[0.04] border border-white/10 backdrop-blur-md text-xs text-[#EEEEEE] hover:border-[#DA1212] transition-colors break-words">
+              <a href="mailto:hr@strive-code.com" class="hover:underline">hr@strive-code.com</a> / <a href="mailto:hello@strivecode.com" class="hover:underline">hello@strivecode.com</a>
+            </div>
+            <div class="px-3.5 py-2 rounded-xl bg-white/[0.04] border border-white/10 backdrop-blur-md text-xs text-[#EEEEEE] hover:border-[#DA1212] transition-colors">
+              <a href="tel:+918279431435" class="hover:underline">+91 8279431435</a> / <a href="tel:+917536061159" class="hover:underline">+91 7536061159</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column 3: Solutions & Services -->
+      <div class="flex flex-col space-y-4">
+        <div class="flex items-center gap-2.5 border-l-[3px] border-[#DA1212] pl-3">
+          <h4 class="text-sm font-bold uppercase tracking-wider text-white">SOLUTIONS &amp; SERVICES</h4>
+        </div>
+        <ul class="space-y-2.5 text-sm text-[#EEEEEE]/80">
+          <li><a href="Services.html" class="hover:text-white transition-colors">Custom Software Development</a></li>
+          <li><a href="Services.html" class="hover:text-white transition-colors">AI Solutions &amp; Automation</a></li>
+          <li><a href="Services.html" class="hover:text-white transition-colors">Web &amp; E-Commerce Portals</a></li>
+          <li><a href="Services.html" class="hover:text-white transition-colors">Native &amp; Cross-Platform Apps</a></li>
+          <li><a href="Courses.html" class="hover:text-white transition-colors">Cloud &amp; DevOps</a></li>
+          <li><a href="Courses.html" class="hover:text-white transition-colors">UI/UX Design</a></li>
+          <li><a href="Mentorship.html" class="hover:text-white transition-colors">Mentorship</a></li>
+          <li><a href="Aboutus.html" class="hover:text-white transition-colors">About StriveCode</a></li>
+          <li><a href="Careers.html" class="hover:text-white transition-colors">Careers</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Legal & Resources -->
+      <div class="flex flex-col space-y-4">
+        <div class="flex items-center gap-2.5 border-l-[3px] border-[#DA1212] pl-3">
+          <h4 class="text-sm font-bold uppercase tracking-wider text-white">LEGAL &amp; RESOURCES</h4>
+        </div>
+        <ul class="space-y-2.5 text-sm text-[#EEEEEE]/80">
+          <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Cookie Policy</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Refund Policy</a></li>
+          <li><a href="Services.html" class="hover:text-white transition-colors">Engineering Lifecycle</a></li>
+          <li><a href="Services.html" class="hover:text-white transition-colors">Tech Stack</a></li>
+          <li><a href="Services.html" class="hover:text-white transition-colors">Case Studies</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Compliance &amp; Security</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Tier 2: Official Presence & Registered Operations -->
+    <div class="pt-12 pb-10">
+      <h3 class="text-[20px] font-bold text-white text-center tracking-tight mb-8">
+        Official Presence &amp; Registered Operations
+      </h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
+        <!-- Card 1 -->
+        <div class="bg-white/[0.04] backdrop-blur-md rounded-2xl p-6 border border-white/10 hover:border-[#DA1212] hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#DA1212] block mb-1.5">Operations Hub</span>
+            <h5 class="text-base font-bold text-white mb-2.5">Agra, Uttar Pradesh</h5>
+            <p class="text-sm text-[#EEEEEE]/80 leading-relaxed">
+              Software Development &amp; Enterprise Delivery Center, Agra, UP, India
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-white/10 text-xs font-semibold text-[#EEEEEE]">
+            Direct Desk: <a href="tel:+918279431435" class="hover:underline text-inherit">+91 8279431435</a>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-white/[0.04] backdrop-blur-md rounded-2xl p-6 border border-white/10 hover:border-[#DA1212] hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#DA1212] block mb-1.5">Registered Office</span>
+            <h5 class="text-base font-bold text-white mb-2.5">Awagarh, Etah, UP</h5>
+            <p class="text-sm text-[#EEEEEE]/80 leading-relaxed">
+              Mohalla Bohran, Jain Mandir, Awagarh, Etah, UP – 207301
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-white/10 text-xs font-semibold text-[#EEEEEE]">
+            Executive Desk: <a href="tel:+917536061159" class="hover:underline text-inherit">+91 7536061159</a>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-white/[0.04] backdrop-blur-md rounded-2xl p-6 border border-white/10 hover:border-[#DA1212] hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#DA1212] block mb-1.5">Global Operations</span>
+            <h5 class="text-base font-bold text-white mb-2.5">Global Client Operations</h5>
+            <p class="text-sm text-[#EEEEEE]/80 leading-relaxed">
+              Serving 100+ Clients &amp; 10+ Industries | <a href="mailto:hr@strive-code.com" class="hover:underline text-inherit">hr@strive-code.com</a>
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-white/10 text-xs font-semibold text-[#EEEEEE]">
+            Official Portal: www.strivecode.in
+          </div>
+        </div>
+      </div>
+
+      <!-- Executive Consultation Pill CTA -->
+      <div class="flex justify-center pt-2">
+        <a href="Contact.html" class="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#DA1212] hover:bg-[#DA1212]/90 text-white font-semibold text-sm tracking-wide shadow-lg hover:shadow-[#DA1212]/30 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200">
+          <span>Schedule Executive Consultation</span>
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Bottom Legal Bar -->
+    <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+      <div class="text-[13px] text-[#EEEEEE]/70 font-normal">
+        © 2026 Strive Code Technology Private Limited. All rights reserved.
+      </div>
+      <div class="text-[13px] text-[#EEEEEE]/70 font-mono tracking-tight">
+        CIN: U62090UP2025PTC226707 | GSTIN: 09ABQCS5771C1ZW | RoC Kanpur
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- Interactive Logic for Inquiry Pills -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const pills = document.querySelectorAll('.topic-pill');
+      pills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          pills.forEach(p => {
+            p.setAttribute('aria-checked', 'false');
+            p.className = 'topic-pill px-4 py-2.5 rounded-xl text-label-md font-label-md transition-all duration-200 bg-surface-container text-primary-container hover:bg-surface-container-high border border-primary-container/10';
+          });
+          pill.setAttribute('aria-checked', 'true');
+          pill.className = 'topic-pill px-4 py-2.5 rounded-xl text-label-md font-label-md transition-all duration-200 bg-primary-container text-on-primary shadow-xs';
+        });
+      });
+    });
+  </script>
+
+
+<script src="main.js" defer></script>
+<script defer src="apply-modal.js"></script>
+<script defer src="grid-matrix.js"></script>
+</body></html>

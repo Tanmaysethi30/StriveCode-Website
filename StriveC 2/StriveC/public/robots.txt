@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://strivecode.in/sitemap-index.xml

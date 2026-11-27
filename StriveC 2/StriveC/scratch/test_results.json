@@ -1,0 +1,185 @@
+{
+  "imageLoads": {
+    "nitin-jain.png": {
+      "status": 200,
+      "ok": true,
+      "sizeBytes": 553217,
+      "contentType": "image/png"
+    },
+    "shivam-jain.png": {
+      "status": 200,
+      "ok": true,
+      "sizeBytes": 199258,
+      "contentType": "image/png"
+    },
+    "harsh-jain.png": {
+      "status": 200,
+      "ok": true,
+      "sizeBytes": 204041,
+      "contentType": "image/png"
+    },
+    "nishtha-tiwari.png": {
+      "status": 200,
+      "ok": true,
+      "sizeBytes": 224241,
+      "contentType": "image/png"
+    },
+    "vansh-jain.png": {
+      "status": 200,
+      "ok": true,
+      "sizeBytes": 325258,
+      "contentType": "image/png"
+    },
+    "shamu.png": {
+      "status": 200,
+      "ok": true,
+      "sizeBytes": 274928,
+      "contentType": "image/png"
+    },
+    "prashant-singh-yaduvanshi.png": {
+      "status": 200,
+      "ok": true,
+      "sizeBytes": 228210,
+      "contentType": "image/png"
+    },
+    "akshat-soni.png": {
+      "status": 200,
+      "ok": true,
+      "sizeBytes": 118534,
+      "contentType": "image/png"
+    },
+    "smilepreet-kaur.png": {
+      "status": 200,
+      "ok": true,
+      "sizeBytes": 266943,
+      "contentType": "image/png"
+    },
+    "garv-kaushik.png": {
+      "status": 200,
+      "ok": true,
+      "sizeBytes": 233949,
+      "contentType": "image/png"
+    },
+    "vinay-kumar.png": {
+      "status": 200,
+      "ok": true,
+      "sizeBytes": 269375,
+      "contentType": "image/png"
+    },
+    "anshul-yadav.png": {
+      "status": 200,
+      "ok": true,
+      "sizeBytes": 60655,
+      "contentType": "image/png"
+    },
+    "esha-jain.png": {
+      "status": 200,
+      "ok": true,
+      "sizeBytes": 401026,
+      "contentType": "image/png"
+    },
+    "nancy-jain.png": {
+      "status": 200,
+      "ok": true,
+      "sizeBytes": 311423,
+      "contentType": "image/png"
+    },
+    "shreya-singh.png": {
+      "status": 200,
+      "ok": true,
+      "sizeBytes": 325603,
+      "contentType": "image/png"
+    },
+    "muskan-chandravanshi.png": {
+      "status": 200,
+      "ok": true,
+      "sizeBytes": 305430,
+      "contentType": "image/png"
+    }
+  },
+  "consoleErrors": [
+    {
+      "viewport": "desktop_1440",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "desktop_1440",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "desktop_1440",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "wide_1920",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "wide_1920",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "wide_1920",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "mobile_390",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "mobile_390",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "viewport": "mobile_390",
+      "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    }
+  ],
+  "pageErrors": [],
+  "domChecks": {
+    "Nitin Jain": {
+      "found": true,
+      "src": "/assets/members/nitin-jain.png",
+      "currentSrc": "file:///assets/members/nitin-jain.png",
+      "complete": true,
+      "naturalWidth": 640,
+      "naturalHeight": 800,
+      "naturalRatio": "0.8000",
+      "renderedWidth": "318.0",
+      "renderedHeight": "398.0",
+      "renderedRatio": "0.7990",
+      "isRevealed": false
+    },
+    "Shivam Jain": {
+      "found": true,
+      "src": "/assets/members/shivam-jain.png",
+      "currentSrc": "file:///assets/members/shivam-jain.png",
+      "complete": true,
+      "naturalWidth": 404,
+      "naturalHeight": 505,
+      "naturalRatio": "0.8000",
+      "renderedWidth": "230.0",
+      "renderedHeight": "287.5",
+      "renderedRatio": "0.8000",
+      "isRevealed": true
+    },
+    "Harsh Jain": {
+      "found": true,
+      "src": "/assets/members/harsh-jain.png",
+      "currentSrc": "file:///assets/members/harsh-jain.png",
+      "complete": true,
+      "naturalWidth": 388,
+      "naturalHeight": 485,
+      "naturalRatio": "0.8000",
+      "renderedWidth": "230.0",
+      "renderedHeight": "287.5",
+      "renderedRatio": "0.8000",
+      "isRevealed": true
+    }
+  },
+  "screenshots": [
+    "/Users/avinesh_shukla/Downloads/StriveC/scratch/screenshots/aboutus-after-desktop_1440.png",
+    "/Users/avinesh_shukla/Downloads/StriveC/scratch/screenshots/aboutus-after-wide_1920.png",
+    "/Users/avinesh_shukla/Downloads/StriveC/scratch/screenshots/aboutus-after-mobile_390.png"
+  ]
+}

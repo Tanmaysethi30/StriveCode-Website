@@ -1,0 +1,9 @@
+# Build and cache
+dist/
+.astro/
+node_modules/
+.DS_Store
+
+# Source 3D assets (large original files)
+source-assets/
+*.glb.bak

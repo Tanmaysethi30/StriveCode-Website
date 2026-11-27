@@ -1,0 +1,308 @@
+/* ==========================================================================
+   StriveCode Mentorship Hero Logo Styles
+   Scoped Prefix: sc-ml-
+   ========================================================================== */
+
+.sc-ml-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 1.75rem auto;
+  position: relative;
+  z-index: 20;
+  width: fit-content;
+  will-change: transform;
+}
+
+.sc-ml-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 128px;
+  height: 128px;
+}
+
+/* Entrance Ripple Effect */
+.sc-ml-ripple {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(218, 18, 18, 0.45) 0%, rgba(4, 21, 98, 0.6) 50%, transparent 75%);
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.6);
+  opacity: 0;
+  z-index: 1;
+}
+
+/* Breathing Ambient Halo / Glow */
+.sc-ml-halo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 135%;
+  height: 135%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(218, 18, 18, 0.35) 0%, rgba(76, 89, 163, 0.25) 45%, rgba(4, 21, 98, 0) 70%);
+  filter: blur(14px);
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 0.6;
+  z-index: 2;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Orbit Accent Ring */
+.sc-ml-orbit-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 148%;
+  height: 148%;
+  border-radius: 50%;
+  border: 1px dashed rgba(255, 218, 213, 0.22);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+}
+
+.sc-ml-dot {
+  display: block;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.sc-ml-dot-red {
+  top: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 7px;
+  height: 7px;
+  background: #e51e19;
+  box-shadow: 0 0 8px #ff3b30, 0 0 14px rgba(229, 30, 25, 0.8);
+}
+
+.sc-ml-dot-gold {
+  bottom: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  background: #f5b324;
+  box-shadow: 0 0 8px #ffc107, 0 0 12px rgba(245, 179, 36, 0.7);
+}
+
+/* Logo Box / Disc Badge */
+.sc-ml-logo-box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 12px 30px -4px rgba(0, 0, 0, 0.45), 0 0 24px rgba(218, 18, 18, 0.25);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4;
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Logo Image */
+.sc-ml-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.46);
+  display: block;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Light Sweep Shimmer */
+.sc-ml-shine {
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0) 35%,
+    rgba(255, 255, 255, 0.7) 50%,
+    rgba(255, 255, 255, 0) 65%,
+    transparent 100%
+  );
+  transform: skewX(-25deg);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Desktop Hover */
+@media (hover: hover) and (pointer: fine) {
+  .sc-ml-wrap:hover .sc-ml-logo-box {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 18px 40px -4px rgba(0, 0, 0, 0.55), 0 0 32px rgba(218, 18, 18, 0.4);
+  }
+
+  .sc-ml-wrap:hover .sc-ml-halo {
+    opacity: 0.95;
+    filter: blur(20px);
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+
+  .sc-ml-wrap:hover .sc-ml-shine {
+    animation: sc-ml-sweep-hover 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+}
+
+/* Mobile Responsive Adjustments (80–100px) */
+@media (max-width: 640px) {
+  .sc-ml-wrap {
+    width: 90px;
+    height: 90px;
+  }
+
+  .sc-ml-container {
+    margin-bottom: 1.25rem;
+  }
+}
+
+/* ==========================================================================
+   Motion Animations (Natural Easing: cubic-bezier(0.22, 1, 0.36, 1))
+   ========================================================================== */
+@media (prefers-reduced-motion: no-preference) {
+  /* Entrance: 1.6s total */
+  .sc-ml-wrap {
+    animation: sc-ml-entrance 1.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .sc-ml-ripple {
+    animation: sc-ml-ripple-anim 1.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  /* Idle Float on Logo Box: 6s ease-in-out infinite */
+  .sc-ml-logo-box {
+    animation: sc-ml-float 6s ease-in-out infinite;
+  }
+
+  /* Breathing Halo: 5.5s ease-in-out infinite */
+  .sc-ml-halo {
+    animation: sc-ml-halo-pulse 5.5s ease-in-out infinite;
+  }
+
+  /* Orbit Rotation: 22s linear infinite */
+  .sc-ml-orbit-ring {
+    animation: sc-ml-orbit 22s linear infinite;
+  }
+
+  /* Light Sweep: every ~7.5s */
+  .sc-ml-shine {
+    animation: sc-ml-sweep 7.5s ease-in-out infinite;
+  }
+}
+
+/* Keyframes */
+@keyframes sc-ml-entrance {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.85);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes sc-ml-ripple-anim {
+  0% {
+    opacity: 0.9;
+    transform: translate(-50%, -50%) scale(0.6);
+  }
+  60% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(2.2);
+  }
+}
+
+@keyframes sc-ml-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes sc-ml-halo-pulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: translate(-50%, -50%) scale(1.12);
+  }
+}
+
+@keyframes sc-ml-orbit {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes sc-ml-sweep {
+  0%, 70% {
+    left: -150%;
+  }
+  85%, 100% {
+    left: 180%;
+  }
+}
+
+@keyframes sc-ml-sweep-hover {
+  0% {
+    left: -150%;
+  }
+  100% {
+    left: 180%;
+  }
+}
+
+/* Accessibility: Strict Reduced Motion Fallback */
+@media (prefers-reduced-motion: reduce) {
+  .sc-ml-wrap,
+  .sc-ml-ripple,
+  .sc-ml-halo,
+  .sc-ml-orbit-ring,
+  .sc-ml-logo-box,
+  .sc-ml-shine {
+    animation: none !important;
+  }
+  .sc-ml-wrap {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .sc-ml-ripple {
+    display: none !important;
+  }
+  .sc-ml-halo {
+    opacity: 0.4 !important;
+    transform: translate(-50%, -50%) scale(1) !important;
+  }
+  .sc-ml-orbit-ring {
+    transform: translate(-50%, -50%) rotate(0deg) !important;
+  }
+}

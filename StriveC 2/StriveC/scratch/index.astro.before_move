@@ -1,0 +1,2099 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import InternTestimonials from '../components/InternTestimonials.astro';
+---
+
+<BaseLayout
+  title="StriveCode Technology - Enterprise Tech, Training &amp; Career Acceleration"
+  description="StriveCode Technology - Enterprise Tech, Training & Career Acceleration"
+  currentRoute="/"
+  hasGridMatrix={true}
+  isHome={true}
+>
+  <Fragment slot="head">
+    <link rel="stylesheet" href="/intern-testimonials.css" />
+    <style is:inline>
+      .reveal {
+        opacity: 0;
+        transform: translateY(25px);
+        transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: opacity, transform;
+      }
+      .reveal.revealed {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @keyframes marqueeLeft {
+        0% { transform: translateX(0%); }
+        100% { transform: translateX(-50%); }
+      }
+      @keyframes marqueeRight {
+        0% { transform: translateX(-50%); }
+        100% { transform: translateX(0%); }
+      }
+
+      .animate-marquee-left {
+        display: flex;
+        width: max-content;
+        animation: marqueeLeft 32s linear infinite;
+      }
+      .animate-marquee-right {
+        display: flex;
+        width: max-content;
+        animation: marqueeRight 35s linear infinite;
+      }
+      .pause-hover:hover {
+        animation-play-state: paused;
+      }
+
+      /* Stacked Card Deck Fan-Out Gallery */
+      .sc-deck-wrapper {
+        position: relative;
+        width: 100%;
+      }
+      .sc-deck {
+        position: relative;
+        width: 100%;
+      }
+      .sc-deck-grid {
+        position: relative;
+        width: 100%;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 24px;
+        max-width: 360px;
+        margin: 0 auto;
+        padding: 0;
+        list-style: none;
+      }
+      @media (min-width: 640px) {
+        .sc-deck-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          max-width: 100%;
+        }
+      }
+      @media (min-width: 1024px) {
+        .sc-deck-grid {
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          max-width: 100%;
+        }
+      }
+      .sc-deck-card {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        border-radius: 18px;
+        overflow: hidden;
+        border: 1px solid rgba(4, 21, 98, 0.10);
+        box-shadow: 0 10px 25px -5px rgba(4, 21, 98, 0.08), 0 8px 10px -6px rgba(4, 21, 98, 0.04);
+        background-color: #041562;
+        cursor: pointer;
+        transform: translate3d(0, 0, 0) rotate(0deg);
+      }
+      .sc-deck-card picture,
+      .sc-deck-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* Stacked State (Active when JavaScript is loaded and not reduced-motion) */
+      .sc-deck-ready .sc-deck-card {
+        transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        transform: translate3d(var(--sx, 0px), calc(var(--sy, 0px) + var(--dy, 0px)), 0) rotate(var(--rot, 0deg));
+        z-index: var(--z, 1);
+      }
+
+      /* Collapse Stagger: Card 4 (0ms), Card 3 (50ms), Card 2 (100ms), Card 1 (150ms) */
+      .sc-deck-ready:not(.sc-deck-fanned) .sc-deck-card:nth-child(4) { transition-delay: 0ms; }
+      .sc-deck-ready:not(.sc-deck-fanned) .sc-deck-card:nth-child(3) { transition-delay: 50ms; }
+      .sc-deck-ready:not(.sc-deck-fanned) .sc-deck-card:nth-child(2) { transition-delay: 100ms; }
+      .sc-deck-ready:not(.sc-deck-fanned) .sc-deck-card:nth-child(1) { transition-delay: 150ms; }
+
+      /* Fanned State (Hover, Focus, or Touch Intersection) */
+      .sc-deck-ready.sc-deck-fanned .sc-deck-card,
+      .sc-deck-ready:focus-within .sc-deck-card {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+      }
+
+      /* Fan-Out Stagger: Card 1 (0ms), Card 2 (50ms), Card 3 (100ms), Card 4 (150ms) */
+      .sc-deck-ready.sc-deck-fanned .sc-deck-card:nth-child(1),
+      .sc-deck-ready:focus-within .sc-deck-card:nth-child(1) { transition-delay: 0ms; }
+      .sc-deck-ready.sc-deck-fanned .sc-deck-card:nth-child(2),
+      .sc-deck-ready:focus-within .sc-deck-card:nth-child(2) { transition-delay: 50ms; }
+      .sc-deck-ready.sc-deck-fanned .sc-deck-card:nth-child(3),
+      .sc-deck-ready:focus-within .sc-deck-card:nth-child(3) { transition-delay: 100ms; }
+      .sc-deck-ready.sc-deck-fanned .sc-deck-card:nth-child(4),
+      .sc-deck-ready:focus-within .sc-deck-card:nth-child(4) { transition-delay: 150ms; }
+
+      /* will-change optimization during active animation */
+      .sc-deck-animating .sc-deck-card {
+        will-change: transform;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .reveal {
+          opacity: 1 !important;
+          transform: none !important;
+          transition: none !important;
+        }
+        .animate-marquee-left,
+        .animate-marquee-right {
+          animation: none !important;
+          transform: none !important;
+        }
+        .sc-deck-ready .sc-deck-card {
+          transition: none !important;
+          transform: none !important;
+        }
+      }
+    </style>
+  </Fragment>
+
+  <div id="home">
+<!-- 2. HERO SECTION -->
+<section class="relative py-16 lg:py-24 w-full" style="overflow-x: clip;">
+<!-- Full-bleed background decorative layer (spanning 100% viewport width) -->
+<div class="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden" aria-hidden="true">
+  <!-- Symmetric, full-bleed centered bluish-grey ambient wash -->
+  <div class="absolute inset-0 w-full h-full" style="background: radial-gradient(ellipse 85% 70% at 50% 45%, rgba(4, 21, 98, 0.06) 0%, rgba(4, 21, 98, 0.02) 55%, transparent 80%);"></div>
+
+  <!-- Full-bleed diagonal light streak, smoothly fading to transparent at all edges -->
+  <div class="absolute inset-0 w-full h-full" style="background: linear-gradient(125deg, transparent 0%, transparent 28%, rgba(255, 255, 255, 0) 36%, rgba(255, 255, 255, 0.22) 47%, rgba(255, 255, 255, 0.35) 50%, rgba(255, 255, 255, 0.22) 53%, rgba(255, 255, 255, 0) 64%, transparent 72%, transparent 100%); mask-image: radial-gradient(ellipse 90% 80% at 50% 50%, black 40%, transparent 95%); -webkit-mask-image: radial-gradient(ellipse 90% 80% at 50% 50%, black 40%, transparent 95%);"></div>
+
+  <!-- Soft, balanced ambient radial glows on left & right for natural depth -->
+  <div class="absolute top-1/4 left-1/2 -translate-x-[550px] -translate-y-1/2 w-[500px] h-[450px] bg-[#041562]/[0.05] rounded-full blur-[100px]"></div>
+  <div class="absolute top-1/4 left-1/2 translate-x-[50px] -translate-y-1/2 w-[500px] h-[450px] bg-[#041562]/[0.05] rounded-full blur-[100px]"></div>
+</div>
+
+<!-- Content Container (preserves exact dimensions, padding, and centered alignment) -->
+<div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+<!-- Left Column -->
+<div class="lg:col-span-7 flex flex-col gap-6 reveal revealed" style="transition-delay: 0s;">
+<div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[#EEEEEE] border border-[#041562]/20 w-fit shadow-xs">
+<span class="text-xs font-semibold text-[#041562] tracking-wide uppercase font-mono">Next-Gen Tech &amp; Career Ecosystem</span>
+</div>
+<h1 class="font-display font-extrabold text-[38px] sm:text-[46px] lg:text-[56px] leading-[1.12] text-[#041562] tracking-tight">
+  Engineering Digital Excellence &amp; <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#041562] via-[#041562] to-[#112d96]">Future Tech Leaders</span>
+</h1>
+<p class="text-[#2a3556] text-lg sm:text-[19px] leading-relaxed max-w-2xl font-normal">
+  StriveCode delivers world-class enterprise software delivery, hands-on production engineering labs, and elite 1-on-1 cohort career accelerators built to transform aspiring coders into principal industry architects.
+</p>
+<div class="flex flex-wrap items-center gap-y-3 gap-x-8 pt-6 mt-2 border-t border-[#041562]/15 text-xs sm:text-sm font-medium text-[#2a3556]">
+<div class="flex items-center gap-1.5"><span class="font-semibold text-[#041562]">ISO Certified</span></div>
+<div class="flex items-center gap-1.5"><span class="font-semibold text-[#041562]">1-on-1 Industry Mentorship</span></div>
+<div class="flex items-center gap-1.5"><span class="font-semibold text-[#041562]">99.8% Client &amp; Student Satisfaction</span></div>
+</div>
+</div>
+<!-- Right Column -->
+<div class="lg:col-span-5 relative reveal revealed" style="transition-delay: 0.1s;">
+<!-- Soft pink/red glow centered softly behind the hero card -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 sm:w-96 h-80 sm:h-96 bg-[#DA1212]/10 rounded-full blur-3xl pointer-events-none -z-10" aria-hidden="true"></div>
+<div class="relative group">
+<div class="rounded-3xl relative overflow-hidden p-6 sm:p-8 shadow-2xl bg-gradient-to-br from-[#020b30] via-[#041562] to-[#01081e] border border-[#041562]/40">
+<div class="absolute -top-16 -right-16 w-56 h-56 rounded-full bg-[#DA1212]/20 blur-3xl pointer-events-none"></div>
+<div class="absolute -bottom-16 -left-16 w-56 h-56 rounded-full bg-[#041562]/30 blur-3xl pointer-events-none"></div>
+<div class="relative z-10 backdrop-blur-md bg-[#020b30]/95 rounded-2xl border border-blue-900/60 shadow-2xl overflow-hidden">
+<div class="flex items-center justify-between px-4 py-3 bg-[#030e38] border-b border-blue-950">
+<div class="flex items-center gap-2">
+<span class="text-[11px] text-[#EEEEEE]/80 font-sans font-medium flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px] text-[#bac3ff]">terminal</span>strive-cohorts/arch-core
+</span>
+</div>
+<div class="flex items-center gap-1 bg-[#020b30] px-2.5 py-0.5 rounded border border-blue-900 text-[11px] text-[#bac3ff] font-sans font-semibold">Arch Lab</div>
+</div>
+<div class="flex border-b border-blue-950 bg-[#031144] text-[11px]">
+<span class="px-3.5 py-1.5 bg-[#020b30] text-[#bac3ff] border-r border-blue-950 flex items-center gap-1.5 font-sans font-medium">
+<span class="material-symbols-outlined text-[13px]">code</span>architecture.ts
+</span>
+<span class="px-3.5 py-1.5 text-slate-400 border-r border-blue-950 hover:text-[#EEEEEE] transition-colors flex items-center gap-1.5 font-sans">
+<span class="material-symbols-outlined text-[13px]">tune</span>pipeline.yml
+</span>
+</div>
+<div class="p-4 space-y-2 bg-[#020b30] font-mono text-[11px] leading-relaxed">
+<div class="text-slate-400">// Enterprise Distributed Service Mesh</div>
+<div class="text-[#EEEEEE]"><span class="text-[#DA1212]">interface</span> <span class="text-amber-300">SystemBlueprint</span> &#123;</div>
+<div class="pl-4 text-[#EEEEEE]">meshNodes: <span class="text-[#bac3ff]">Cluster</span>[];</div>
+<div class="pl-4 text-[#EEEEEE]">telemetry: <span class="text-emerald-400">PrometheusObserver</span>;</div>
+<div class="pl-4 text-[#EEEEEE]">slaLatency: <span class="text-[#DA1212]">"&lt;12ms"</span>;</div>
+<div class="text-[#EEEEEE]">&#125;</div>
+</div>
+<div class="mx-3 mb-3 p-3.5 rounded-lg bg-[#041562] border border-blue-900 font-sans space-y-3">
+<div class="flex items-center justify-between text-xs">
+<span class="font-semibold text-white flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[#DA1212] text-sm">bolt</span>Cohort Sprint 14 • Week 6
+</span>
+<span class="text-white font-mono text-[11px] bg-[#DA1212] px-2 py-0.5 rounded font-semibold">92% Passing</span>
+</div>
+<div class="w-full bg-[#020b30] rounded-full h-1.5 overflow-hidden">
+<div class="bg-gradient-to-r from-[#DA1212] to-[#bac3ff] h-1.5 rounded-full" style="width: 92%"></div>
+</div>
+<div class="flex items-center justify-between pt-1 text-[11px] text-[#EEEEEE]/80 border-t border-blue-900">
+<div class="flex items-center gap-1.5"><span class="text-white font-medium">64 PRs Reviewed</span></div>
+<span class="font-mono text-xs text-[#bac3ff]">Zero Downtime SLA</span>
+</div>
+</div>
+</div>
+</div>
+<div class="relative z-20 -mt-8 mx-2 sm:mx-4 p-3.5 sm:p-4 rounded-2xl bg-white border border-[#041562]/15 shadow-2xl flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2"><span class="text-xs font-bold text-[#041562] tracking-wide">Live Architectural Mentorship • 1-on-1 Code Review</span></div>
+<span class="material-symbols-outlined text-[#DA1212] text-lg">videocam</span>
+</div>
+<style id="sc-live-styles">
+  .sc-live-box {
+    position: relative;
+  }
+  .sc-live-box img {
+    display: none !important;
+  }
+  .sc-live-inner {
+    position: absolute;
+    inset: 0;
+    padding: 10px 12px 42px 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    pointer-events: none;
+    background: radial-gradient(circle at 50% 20%, rgba(4, 21, 98, 0.45) 0%, rgba(2, 11, 48, 0.95) 100%);
+    user-select: none;
+  }
+  .sc-live-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .sc-live-topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .sc-live-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 2px 7px;
+    border-radius: 9999px;
+    background: rgba(218, 18, 18, 0.15);
+    border: 1px solid rgba(218, 18, 18, 0.35);
+  }
+  .sc-live-pulse-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #DA1212;
+    box-shadow: 0 0 6px rgba(218, 18, 18, 0.8);
+  }
+  .sc-live-badge-text {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #DA1212;
+    line-height: 1;
+  }
+  .sc-live-timer {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: #bac3ff;
+    letter-spacing: 0.08em;
+    line-height: 1;
+  }
+  .sc-live-status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 7px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 9px;
+    color: rgba(238, 238, 238, 0.65);
+    font-weight: 500;
+  }
+  .sc-live-status-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: #10b981;
+  }
+  .sc-live-stage {
+    display: flex;
+    gap: 8px;
+    align-items: stretch;
+    flex: 1;
+    max-height: 125px;
+    margin: 6px 0;
+  }
+  .sc-live-tile {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+  .sc-live-tile-mentor {
+    flex: 1;
+    background: linear-gradient(145deg, rgba(4, 21, 98, 0.7) 0%, rgba(3, 14, 56, 0.85) 100%);
+    border: 1px solid rgba(186, 195, 255, 0.15);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.08), 0 4px 12px rgba(0, 0, 0, 0.3);
+    padding: 8px;
+    gap: 6px;
+  }
+  .sc-live-tile-mentee {
+    width: 28%;
+    min-width: 68px;
+    max-width: 95px;
+    background: linear-gradient(145deg, rgba(3, 14, 56, 0.75) 0%, rgba(2, 9, 36, 0.9) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05), 0 4px 12px rgba(0, 0, 0, 0.25);
+    padding: 6px;
+    gap: 5px;
+  }
+  .sc-live-avatar-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .sc-live-avatar {
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    user-select: none;
+    position: relative;
+    z-index: 2;
+  }
+  .sc-live-avatar-mentor {
+    width: 34px;
+    height: 34px;
+    background: linear-gradient(135deg, #041562 0%, #0d2894 100%);
+    border: 1.5px solid rgba(186, 195, 255, 0.45);
+    color: #ffffff;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+  }
+  .sc-live-glow-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(218, 18, 18, 0.5);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+  .sc-live-avatar-mentee {
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(135deg, #020b30 0%, #112a73 100%);
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    color: #bac3ff;
+    font-size: 10px;
+    letter-spacing: 0.04em;
+  }
+  .sc-live-wave {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5px;
+    height: 14px;
+  }
+  .sc-live-bar {
+    width: 2.5px;
+    height: 14px;
+    border-radius: 2px;
+    background: linear-gradient(to top, rgba(4, 21, 98, 0.6), #DA1212);
+    transform-origin: center bottom;
+    transform: scaleY(0.35);
+  }
+  .sc-live-tile-tag {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 9px;
+    color: rgba(186, 195, 255, 0.75);
+    letter-spacing: 0.03em;
+    line-height: 1;
+  }
+  .sc-live-bottombar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+  }
+  .sc-live-code-strip {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 9px;
+    line-height: 1.25;
+    opacity: 0.65;
+  }
+  .sc-live-code-comment {
+    color: #8892b0;
+  }
+  .sc-live-code-check {
+    color: #10b981;
+    font-weight: 700;
+  }
+  .sc-live-code-res {
+    color: #bac3ff;
+  }
+  .sc-live-controls {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .sc-live-ctrl-btn {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.7);
+  }
+  .sc-live-ctrl-btn-end {
+    background: rgba(218, 18, 18, 0.85);
+    border-color: #DA1212;
+    color: #ffffff;
+  }
+  @media (max-width: 640px) {
+    .sc-live-inner {
+      padding: 8px 10px 40px 10px;
+    }
+    .sc-live-avatar-mentor {
+      width: 30px;
+      height: 30px;
+      font-size: 11px;
+    }
+    .sc-live-glow-ring {
+      width: 38px;
+      height: 38px;
+    }
+    .sc-live-avatar-mentee {
+      width: 24px;
+      height: 24px;
+      font-size: 9px;
+    }
+    .sc-live-stage {
+      max-height: 100px;
+      margin: 4px 0;
+    }
+    .sc-live-bar {
+      width: 2px;
+      height: 12px;
+    }
+    .sc-live-code-strip {
+      font-size: 8px;
+    }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .sc-live-tile-mentor {
+      animation: sc-live-fade-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+    }
+    .sc-live-tile-mentee {
+      animation: sc-live-fade-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.22s both;
+    }
+    .sc-live-bottombar {
+      animation: sc-live-fade-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.35s both;
+    }
+    @keyframes sc-live-fade-in {
+      0% {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .sc-live-pulse-dot {
+      animation: sc-live-pulse 2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+    }
+    @keyframes sc-live-pulse {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.95;
+      }
+      50% {
+        transform: scale(1.4);
+        opacity: 0.45;
+      }
+    }
+    .sc-live-glow-ring {
+      animation: sc-live-glow-breathe 4.5s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+    }
+    @keyframes sc-live-glow-breathe {
+      0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.45;
+        box-shadow: 0 0 6px rgba(218, 18, 18, 0.25);
+      }
+      50% {
+        transform: translate(-50%, -50%) scale(1.12);
+        opacity: 0.9;
+        box-shadow: 0 0 14px rgba(218, 18, 18, 0.55);
+      }
+    }
+    .sc-live-bar-1 { animation: sc-live-audio-1 1.4s cubic-bezier(0.22, 1, 0.36, 1) infinite alternate 0s; }
+    .sc-live-bar-2 { animation: sc-live-audio-2 1.2s cubic-bezier(0.22, 1, 0.36, 1) infinite alternate 0.3s; }
+    .sc-live-bar-3 { animation: sc-live-audio-3 1.7s cubic-bezier(0.22, 1, 0.36, 1) infinite alternate 0.15s; }
+    .sc-live-bar-4 { animation: sc-live-audio-4 1.3s cubic-bezier(0.22, 1, 0.36, 1) infinite alternate 0.45s; }
+    .sc-live-bar-5 { animation: sc-live-audio-5 1.5s cubic-bezier(0.22, 1, 0.36, 1) infinite alternate 0.2s; }
+    .sc-live-bar-6 { animation: sc-live-audio-6 1.25s cubic-bezier(0.22, 1, 0.36, 1) infinite alternate 0.5s; }
+    .sc-live-bar-7 { animation: sc-live-audio-7 1.6s cubic-bezier(0.22, 1, 0.36, 1) infinite alternate 0.35s; }
+    @keyframes sc-live-audio-1 { 0% { transform: scaleY(0.25); } 100% { transform: scaleY(0.9); } }
+    @keyframes sc-live-audio-2 { 0% { transform: scaleY(0.35); } 100% { transform: scaleY(0.65); } }
+    @keyframes sc-live-audio-3 { 0% { transform: scaleY(0.2); } 100% { transform: scaleY(1.0); } }
+    @keyframes sc-live-audio-4 { 0% { transform: scaleY(0.3); } 100% { transform: scaleY(0.55); } }
+    @keyframes sc-live-audio-5 { 0% { transform: scaleY(0.25); } 100% { transform: scaleY(0.85); } }
+    @keyframes sc-live-audio-6 { 0% { transform: scaleY(0.35); } 100% { transform: scaleY(0.7); } }
+    @keyframes sc-live-audio-7 { 0% { transform: scaleY(0.2); } 100% { transform: scaleY(0.95); } }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .sc-live-tile-mentor,
+    .sc-live-tile-mentee,
+    .sc-live-bottombar,
+    .sc-live-pulse-dot,
+    .sc-live-glow-ring,
+    .sc-live-bar {
+      animation: none !important;
+      transition: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+    .sc-live-glow-ring {
+      transform: translate(-50%, -50%) !important;
+      opacity: 0.6 !important;
+    }
+    .sc-live-bar {
+      transform: scaleY(0.6) !important;
+    }
+  }
+</style>
+<div class="relative rounded-xl overflow-hidden border border-[#e0e0e0] aspect-[16/10] bg-[#020b30] sc-live-box">
+  <div class="sc-live-inner">
+    <!-- Topbar -->
+    <div class="sc-live-topbar">
+      <div class="sc-live-topbar-left">
+        <div class="sc-live-badge">
+          <span class="sc-live-pulse-dot" aria-hidden="true"></span>
+          <span class="sc-live-badge-text">LIVE</span>
+        </div>
+        <span id="scLiveTimer" class="sc-live-timer" aria-label="Session duration">00:00</span>
+      </div>
+      <div class="sc-live-status-pill">
+        <span class="sc-live-status-dot" aria-hidden="true"></span>
+        <span>1080p HD</span>
+      </div>
+    </div>
+
+    <!-- Video Stage: Main Mentor Tile + Mentee Tile -->
+    <div class="sc-live-stage">
+      <!-- Mentor Tile -->
+      <div class="sc-live-tile sc-live-tile-mentor">
+        <div class="sc-live-avatar-wrap">
+          <div class="sc-live-glow-ring" aria-hidden="true"></div>
+          <div class="sc-live-avatar sc-live-avatar-mentor">PA</div>
+        </div>
+        <div class="sc-live-wave" aria-label="Audio activity">
+          <span class="sc-live-bar sc-live-bar-1"></span>
+          <span class="sc-live-bar sc-live-bar-2"></span>
+          <span class="sc-live-bar sc-live-bar-3"></span>
+          <span class="sc-live-bar sc-live-bar-4"></span>
+          <span class="sc-live-bar sc-live-bar-5"></span>
+          <span class="sc-live-bar sc-live-bar-6"></span>
+          <span class="sc-live-bar sc-live-bar-7"></span>
+        </div>
+        <div class="sc-live-tile-tag">Principal Architect</div>
+      </div>
+
+      <!-- Mentee Tile -->
+      <div class="sc-live-tile sc-live-tile-mentee">
+        <div class="sc-live-avatar-wrap">
+          <div class="sc-live-avatar sc-live-avatar-mentee">ST</div>
+        </div>
+        <div class="sc-live-tile-tag">Student Pod</div>
+      </div>
+    </div>
+
+    <!-- Bottom Review & Call Controls Bar -->
+    <div class="sc-live-bottombar">
+      <div class="sc-live-code-strip">
+        <div class="sc-live-code-line"><span class="sc-live-code-comment">// reviewing architecture.ts</span></div>
+        <div class="sc-live-code-line"><span class="sc-live-code-check">✓</span> <span class="sc-live-code-res">3 comments resolved</span></div>
+      </div>
+      <div class="sc-live-controls" aria-label="Call controls">
+        <div class="sc-live-ctrl-btn" aria-label="Microphone active">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+            <line x1="12" y1="19" x2="12" y2="23"/>
+            <line x1="8" y1="23" x2="16" y2="23"/>
+          </svg>
+        </div>
+        <div class="sc-live-ctrl-btn" aria-label="Camera active">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="23 7 16 12 23 17 23 7"/>
+            <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+          </svg>
+        </div>
+        <div class="sc-live-ctrl-btn sc-live-ctrl-btn-end" aria-label="Leave session">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 9c-1.6 0-3.15.25-4.6.72v3.1c0 .39-.23.74-.56.9-.98.49-1.87 1.12-2.66 1.85-.18.18-.43.28-.7.28-.28 0-.53-.11-.71-.29L.29 13.08a.996.996 0 0 1 0-1.41C3.28 8.91 7.42 7.25 12 7.25s8.72 1.66 11.71 4.42c.39.39.39 1.02 0 1.41l-2.48 2.48c-.18.18-.43.29-.71.29-.27 0-.52-.11-.7-.28-.79-.74-1.69-1.36-2.67-1.85-.33-.16-.56-.5-.56-.9v-3.1C15.15 9.25 13.6 9 12 9z"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="absolute bottom-2 left-2 right-2 flex items-center justify-between px-3 py-1.5 rounded-lg bg-[#020b30]/85 backdrop-blur-md border border-white/10 text-white text-[11px] font-medium font-sans">
+    <div class="flex items-center gap-2"><span class="text-white font-semibold">Principal Architect &amp; Fellow</span></div>
+    <span class="font-mono text-[10px] text-white">Session in Progress</span>
+  </div>
+</div>
+<script id="sc-live-timer-script">
+(function() {
+  'use strict';
+  const timerEl = document.getElementById('scLiveTimer');
+  if (!timerEl) return;
+
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reducedMotion) {
+    timerEl.textContent = '12:34';
+    return;
+  }
+
+  let totalSeconds = 0;
+  let timerId = null;
+
+  function updateDisplay() {
+    const mins = Math.floor(totalSeconds / 60);
+    const secs = totalSeconds % 60;
+    timerEl.textContent =
+      (mins < 10 ? '0' + mins : mins) + ':' + (secs < 10 ? '0' + secs : secs);
+  }
+
+  function startTimer() {
+    if (timerId !== null) return;
+    timerId = setInterval(function() {
+      totalSeconds++;
+      updateDisplay();
+    }, 1000);
+  }
+
+  function stopTimer() {
+    if (timerId !== null) {
+      clearInterval(timerId);
+      timerId = null;
+    }
+  }
+
+  startTimer();
+
+  document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+      stopTimer();
+    } else {
+      startTimer();
+    }
+  });
+})();
+</script>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. METRIC & DUAL MARQUEE STRIP -->
+<section class="py-12 bg-[#EEEEEE] border-y border-[#e0e0e0]">
+<div class="max-w-7xl mx-auto px-6 lg:px-12 mb-12">
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-6 bg-white p-6 lg:p-8 rounded-2xl border border-[#e0e0e0] shadow-sm reveal revealed">
+<div class="flex flex-col gap-1 border-l-2 border-[#041562] pl-4">
+<div class="font-display font-extrabold text-3xl lg:text-4xl text-[#041562]">250+</div>
+<div class="text-xs sm:text-sm font-medium text-[#2a3556]">Projects &amp; Cohorts</div>
+</div>
+<div class="flex flex-col gap-1 border-l-2 border-[#DA1212] pl-4">
+<div class="font-display font-extrabold text-3xl lg:text-4xl text-[#041562]">99.8%</div>
+<div class="text-xs sm:text-sm font-medium text-[#2a3556]">Success Rate</div>
+</div>
+<div class="flex flex-col gap-1 border-l-2 border-[#041562] pl-4">
+<div class="font-display font-extrabold text-3xl lg:text-4xl text-[#041562]">50+</div>
+<div class="text-xs sm:text-sm font-medium text-[#2a3556]">Enterprise Partners</div>
+</div>
+<div class="flex flex-col gap-1 border-l-2 border-[#DA1212] pl-4">
+<div class="font-display font-extrabold text-3xl lg:text-4xl text-[#041562]">12+</div>
+<div class="text-xs sm:text-sm font-medium text-[#2a3556]">Global Hubs</div>
+</div>
+</div>
+</div>
+<!-- Dual Marquee -->
+<div class="space-y-4 overflow-hidden" style="mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);">
+<div class="relative overflow-hidden w-full pause-hover">
+<div class="animate-marquee-left flex gap-4 items-center">
+<span class="px-4 py-2 rounded-lg bg-[#EEEEEE] border border-[#041562]/15 text-xs font-mono font-semibold text-[#041562]">React.js</span>
+<span class="px-4 py-2 rounded-lg bg-[#EEEEEE] border border-[#041562]/15 text-xs font-mono font-semibold text-[#041562]">Python</span>
+<span class="px-4 py-2 rounded-lg bg-[#EEEEEE] border border-[#041562]/15 text-xs font-mono font-semibold text-[#041562]">Spring Boot</span>
+<span class="px-4 py-2 rounded-lg bg-[#EEEEEE] border border-[#041562]/15 text-xs font-mono font-semibold text-[#041562]">AWS Cloud</span>
+<span class="px-4 py-2 rounded-lg bg-[#EEEEEE] border border-[#041562]/15 text-xs font-mono font-semibold text-[#041562]">Docker</span>
+<span class="px-4 py-2 rounded-lg bg-[#EEEEEE] border border-[#041562]/15 text-xs font-mono font-semibold text-[#041562]">OpenCV</span>
+<span class="px-4 py-2 rounded-lg bg-[#EEEEEE] border border-[#041562]/15 text-xs font-mono font-semibold text-[#041562]">Next.js 15</span>
+<span class="px-4 py-2 rounded-lg bg-[#EEEEEE] border border-[#041562]/15 text-xs font-mono font-semibold text-[#041562]">Kubernetes</span>
+<span class="px-4 py-2 rounded-lg bg-[#EEEEEE] border border-[#041562]/15 text-xs font-mono font-semibold text-[#041562]">PostgreSQL</span>
+<span class="px-4 py-2 rounded-lg bg-[#EEEEEE] border border-[#041562]/15 text-xs font-mono font-semibold text-[#041562]">TypeScript</span>
+<span class="px-4 py-2 rounded-lg bg-[#EEEEEE] border border-[#041562]/15 text-xs font-mono font-semibold text-[#041562]">PyTorch</span>
+<span class="px-4 py-2 rounded-lg bg-[#EEEEEE] border border-[#041562]/15 text-xs font-mono font-semibold text-[#041562]">GraphQL</span>
+<span class="px-4 py-2 rounded-lg bg-[#EEEEEE] border border-[#041562]/15 text-xs font-mono font-semibold text-[#041562]">React.js</span>
+<span class="px-4 py-2 rounded-lg bg-[#EEEEEE] border border-[#041562]/15 text-xs font-mono font-semibold text-[#041562]">Python</span>
+<span class="px-4 py-2 rounded-lg bg-[#EEEEEE] border border-[#041562]/15 text-xs font-mono font-semibold text-[#041562]">Spring Boot</span>
+<span class="px-4 py-2 rounded-lg bg-[#EEEEEE] border border-[#041562]/15 text-xs font-mono font-semibold text-[#041562]">AWS Cloud</span>
+<span class="px-4 py-2 rounded-lg bg-[#EEEEEE] border border-[#041562]/15 text-xs font-mono font-semibold text-[#041562]">Docker</span>
+<span class="px-4 py-2 rounded-lg bg-[#EEEEEE] border border-[#041562]/15 text-xs font-mono font-semibold text-[#041562]">OpenCV</span>
+<span class="px-4 py-2 rounded-lg bg-[#EEEEEE] border border-[#041562]/15 text-xs font-mono font-semibold text-[#041562]">Next.js 15</span>
+<span class="px-4 py-2 rounded-lg bg-[#EEEEEE] border border-[#041562]/15 text-xs font-mono font-semibold text-[#041562]">Kubernetes</span>
+<span class="px-4 py-2 rounded-lg bg-[#EEEEEE] border border-[#041562]/15 text-xs font-mono font-semibold text-[#041562]">PostgreSQL</span>
+<span class="px-4 py-2 rounded-lg bg-[#EEEEEE] border border-[#041562]/15 text-xs font-mono font-semibold text-[#041562]">TypeScript</span>
+<span class="px-4 py-2 rounded-lg bg-[#EEEEEE] border border-[#041562]/15 text-xs font-mono font-semibold text-[#041562]">PyTorch</span>
+<span class="px-4 py-2 rounded-lg bg-[#EEEEEE] border border-[#041562]/15 text-xs font-mono font-semibold text-[#041562]">GraphQL</span>
+</div>
+</div>
+<div class="relative overflow-hidden w-full pause-hover">
+<div class="animate-marquee-right flex gap-4 items-center">
+<div class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white border border-[#e0e0e0] text-xs font-semibold text-[#041562]">
+<span class="material-symbols-outlined text-[16px] text-[#041562]">corporate_fare</span> Fortune 500 Partners
+</div>
+<div class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white border border-[#e0e0e0] text-xs font-semibold text-[#1b254b]">
+<span class="material-symbols-outlined text-[16px] text-[#DA1212]">school</span> IIT Delhi Hub
+</div>
+<div class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white border border-[#e0e0e0] text-xs font-semibold text-[#1b254b]">
+<span class="material-symbols-outlined text-[16px] text-[#041562]">domain</span> GlobalTech Solutions
+</div>
+<div class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white border border-[#e0e0e0] text-xs font-semibold text-[#1b254b]">
+<span class="text-[#041562] font-bold">Apex Systems</span>
+</div>
+<div class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white border border-[#e0e0e0] text-xs font-semibold text-[#1b254b]">
+<span class="material-symbols-outlined text-[16px] text-[#041562]">psychology</span> Vanguard AI
+</div>
+<div class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white border border-[#e0e0e0] text-xs font-semibold text-[#1b254b]">
+<span class="material-symbols-outlined text-[16px] text-[#DA1212]">school</span> Stanford Tech Alumni
+</div>
+<div class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white border border-[#e0e0e0] text-xs font-semibold text-[#1b254b]">
+<span class="material-symbols-outlined text-[16px] text-[#041562]">science</span> Quantum Labs
+</div>
+<div class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white border border-[#e0e0e0] text-xs font-semibold text-[#1b254b]">
+<span class="material-symbols-outlined text-[16px] text-[#041562]">account_tree</span> Nexus Enterprise
+</div>
+<div class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white border border-[#e0e0e0] text-xs font-semibold text-[#1b254b]">
+<span class="material-symbols-outlined text-[16px] text-[#041562]">account_balance</span> FinTech Global
+</div>
+<!-- Duplicates -->
+<div class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white border border-[#e0e0e0] text-xs font-semibold text-[#041562]">
+<span class="material-symbols-outlined text-[16px] text-[#041562]">corporate_fare</span> Fortune 500 Partners
+</div>
+<div class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white border border-[#e0e0e0] text-xs font-semibold text-[#1b254b]">
+<span class="material-symbols-outlined text-[16px] text-[#DA1212]">school</span> IIT Delhi Hub
+</div>
+<div class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white border border-[#e0e0e0] text-xs font-semibold text-[#1b254b]">
+<span class="material-symbols-outlined text-[16px] text-[#041562]">domain</span> GlobalTech Solutions
+</div>
+<div class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white border border-[#e0e0e0] text-xs font-semibold text-[#1b254b]">
+<span class="text-[#041562] font-bold">Apex Systems</span>
+</div>
+<div class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white border border-[#e0e0e0] text-xs font-semibold text-[#1b254b]">
+<span class="material-symbols-outlined text-[16px] text-[#041562]">psychology</span> Vanguard AI
+</div>
+<div class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white border border-[#e0e0e0] text-xs font-semibold text-[#1b254b]">
+<span class="material-symbols-outlined text-[16px] text-[#DA1212]">school</span> Stanford Tech Alumni
+</div>
+<div class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white border border-[#e0e0e0] text-xs font-semibold text-[#1b254b]">
+<span class="material-symbols-outlined text-[16px] text-[#041562]">science</span> Quantum Labs
+</div>
+<div class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white border border-[#e0e0e0] text-xs font-semibold text-[#1b254b]">
+<span class="material-symbols-outlined text-[16px] text-[#041562]">account_tree</span> Nexus Enterprise
+</div>
+<div class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white border border-[#e0e0e0] text-xs font-semibold text-[#1b254b]">
+<span class="material-symbols-outlined text-[16px] text-[#041562]">account_balance</span> FinTech Global
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. SERVICES & LEARNING TRACKS -->
+<section class="py-20 max-w-7xl mx-auto px-6 lg:px-12" id="course">
+<div class="text-center max-w-3xl mx-auto mb-16 flex flex-col gap-3 reveal revealed" style="transition-delay: 0s;">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EEEEEE] border border-[#041562]/20 text-[#041562] text-xs font-semibold tracking-wide uppercase font-mono w-fit mx-auto">
+  Curriculum &amp; Solutions
+</div>
+<h2 class="font-display font-extrabold text-3xl sm:text-4xl text-[#041562] tracking-tight">
+  Core Services &amp; Career Tracks
+</h2>
+<p class="text-[#2a3556] text-base sm:text-lg">
+  Production-grade architectural training and tailored enterprise engineering delivery designed for modern tech demands.
+</p>
+</div>
+<div class="flex flex-wrap items-center justify-center gap-2 mb-10 reveal revealed" id="track-filter-container" style="transition-delay: 0.1s;">
+<button class="track-filter-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-[#DA1212] text-white shadow-sm" data-filter="all" type="button">All Programs (6)</button>
+<button class="track-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-[#1b254b] hover:text-[#041562] hover:bg-[#EEEEEE] border border-[#e0e0e0]" data-filter="accelerator" type="button">Career Accelerators</button>
+<button class="track-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-[#1b254b] hover:text-[#041562] hover:bg-[#EEEEEE] border border-[#e0e0e0]" data-filter="enterprise" type="button">Enterprise Engineering</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- 1. Full-Stack Engineering -->
+<div class="p-6 rounded-2xl bg-white border border-[#e0e0e0] shadow-sm hover:border-[#DA1212] hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between gap-5 group reveal revealed" data-category="accelerator enterprise" style="transition-delay: 0s;">
+<div class="flex flex-col gap-4">
+<div class="w-12 h-12 rounded-xl bg-[#EEEEEE] border border-[#041562]/10 flex items-center justify-center text-[#041562] group-hover:bg-[#041562] group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl">terminal</span>
+</div>
+<h3 class="font-display font-bold text-xl text-[#041562] group-hover:text-[#DA1212] transition-colors">
+  Full-Stack Engineering
+</h3>
+<p class="text-[#2a3556] text-sm leading-relaxed">
+  Construct high-availability distributed systems, resilient REST &amp; GraphQL APIs, and performant user applications with enterprise patterns.
+</p>
+<div class="flex flex-wrap gap-1.5 pt-1">
+<span class="px-2.5 py-1 rounded-md bg-[#EEEEEE] text-[#041562] text-[11px] font-mono font-medium">React</span>
+<span class="px-2.5 py-1 rounded-md bg-[#EEEEEE] text-[#041562] text-[11px] font-mono font-medium">Node.js</span>
+<span class="px-2.5 py-1 rounded-md bg-[#EEEEEE] text-[#041562] text-[11px] font-mono font-medium">Next.js</span>
+<span class="px-2.5 py-1 rounded-md bg-[#EEEEEE] text-[#041562] text-[11px] font-mono font-medium">PostgreSQL</span>
+</div>
+</div>
+<div class="pt-3 border-t border-[#e0e0e0]">
+<a class="inline-flex items-center gap-1 text-sm font-semibold text-[#DA1212] hover:text-[#b80f0f] group-hover:translate-x-1 transition-transform" href="/courses">
+  Learn More <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- 2. AI & ML Solutions -->
+<div class="p-6 rounded-2xl bg-white border border-[#e0e0e0] shadow-sm hover:border-[#DA1212] hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between gap-5 group reveal revealed" data-category="accelerator enterprise" style="transition-delay: 0.1s;">
+<div class="flex flex-col gap-4">
+<div class="w-12 h-12 rounded-xl bg-[#EEEEEE] border border-[#041562]/10 flex items-center justify-center text-[#041562] group-hover:bg-[#041562] group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl">psychology</span>
+</div>
+<h3 class="font-display font-bold text-xl text-[#041562] group-hover:text-[#DA1212] transition-colors">
+  AI &amp; ML Solutions
+</h3>
+<p class="text-[#2a3556] text-sm leading-relaxed">
+  Architect custom LLM agents, vector embeddings, predictive deep networks, and fine-tuned generative intelligence pipelines.
+</p>
+<div class="flex flex-wrap gap-1.5 pt-1">
+<span class="px-2.5 py-1 rounded-md bg-[#EEEEEE] text-[#041562] text-[11px] font-mono font-medium">PyTorch</span>
+<span class="px-2.5 py-1 rounded-md bg-[#EEEEEE] text-[#041562] text-[11px] font-mono font-medium">Python</span>
+<span class="px-2.5 py-1 rounded-md bg-[#EEEEEE] text-[#041562] text-[11px] font-mono font-medium">LLMs</span>
+<span class="px-2.5 py-1 rounded-md bg-[#EEEEEE] text-[#041562] text-[11px] font-mono font-medium">LangChain</span>
+</div>
+</div>
+<div class="pt-3 border-t border-[#e0e0e0]">
+<a class="inline-flex items-center gap-1 text-sm font-semibold text-[#DA1212] hover:text-[#b80f0f] group-hover:translate-x-1 transition-transform" href="/courses">
+  Learn More <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- 3. Cloud & DevOps -->
+<div class="p-6 rounded-2xl bg-white border border-[#e0e0e0] shadow-sm hover:border-[#DA1212] hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between gap-5 group reveal revealed" data-category="enterprise" style="transition-delay: 0.2s;">
+<div class="flex flex-col gap-4">
+<div class="w-12 h-12 rounded-xl bg-[#EEEEEE] border border-[#041562]/10 flex items-center justify-center text-[#041562] group-hover:bg-[#041562] group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl">cloud_sync</span>
+</div>
+<h3 class="font-display font-bold text-xl text-[#041562] group-hover:text-[#DA1212] transition-colors">
+  Cloud &amp; DevOps
+</h3>
+<p class="text-[#2a3556] text-sm leading-relaxed">
+  Automate continuous integration, container orchestration, zero-downtime blue/green rollouts, and infrastructure as code.
+</p>
+<div class="flex flex-wrap gap-1.5 pt-1">
+<span class="px-2.5 py-1 rounded-md bg-[#EEEEEE] text-[#041562] text-[11px] font-mono font-medium">AWS</span>
+<span class="px-2.5 py-1 rounded-md bg-[#EEEEEE] text-[#041562] text-[11px] font-mono font-medium">Kubernetes</span>
+<span class="px-2.5 py-1 rounded-md bg-[#EEEEEE] text-[#041562] text-[11px] font-mono font-medium">Docker</span>
+<span class="px-2.5 py-1 rounded-md bg-[#EEEEEE] text-[#041562] text-[11px] font-mono font-medium">Terraform</span>
+</div>
+</div>
+<div class="pt-3 border-t border-[#e0e0e0]">
+<a class="inline-flex items-center gap-1 text-sm font-semibold text-[#DA1212] hover:text-[#b80f0f] group-hover:translate-x-1 transition-transform" href="/courses">
+  Learn More <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- 4. Data Engineering -->
+<div class="p-6 rounded-2xl bg-white border border-[#e0e0e0] shadow-sm hover:border-[#DA1212] hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between gap-5 group reveal revealed" data-category="enterprise" style="transition-delay: 0.3s;">
+<div class="flex flex-col gap-4">
+<div class="w-12 h-12 rounded-xl bg-[#EEEEEE] border border-[#041562]/10 flex items-center justify-center text-[#041562] group-hover:bg-[#041562] group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl">database</span>
+</div>
+<h3 class="font-display font-bold text-xl text-[#041562] group-hover:text-[#DA1212] transition-colors">
+  Data Engineering
+</h3>
+<p class="text-[#2a3556] text-sm leading-relaxed">
+  Build high-throughput streaming pipelines, distributed ETL transformations, lakehouse partitions, and analytics warehouses.
+</p>
+<div class="flex flex-wrap gap-1.5 pt-1">
+<span class="px-2.5 py-1 rounded-md bg-[#EEEEEE] text-[#041562] text-[11px] font-mono font-medium">Apache Spark</span>
+<span class="px-2.5 py-1 rounded-md bg-[#EEEEEE] text-[#041562] text-[11px] font-mono font-medium">Kafka</span>
+<span class="px-2.5 py-1 rounded-md bg-[#EEEEEE] text-[#041562] text-[11px] font-mono font-medium">Snowflake</span>
+<span class="px-2.5 py-1 rounded-md bg-[#EEEEEE] text-[#041562] text-[11px] font-mono font-medium">SQL</span>
+</div>
+</div>
+<div class="pt-3 border-t border-[#e0e0e0]">
+<a class="inline-flex items-center gap-1 text-sm font-semibold text-[#DA1212] hover:text-[#b80f0f] group-hover:translate-x-1 transition-transform" href="/courses">
+  Learn More <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- 5. Cybersecurity -->
+<div class="p-6 rounded-2xl bg-white border border-[#e0e0e0] shadow-sm hover:border-[#DA1212] hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between gap-5 group reveal revealed" data-category="enterprise" style="transition-delay: 0s;">
+<div class="flex flex-col gap-4">
+<div class="w-12 h-12 rounded-xl bg-[#EEEEEE] border border-[#041562]/10 flex items-center justify-center text-[#041562] group-hover:bg-[#041562] group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl">security</span>
+</div>
+<h3 class="font-display font-bold text-xl text-[#041562] group-hover:text-[#DA1212] transition-colors">
+  Cybersecurity &amp; AppSec
+</h3>
+<p class="text-[#2a3556] text-sm leading-relaxed">
+  Harden critical enterprise perimeters through automated pentesting, vulnerability mitigation, and zero-trust policies.
+</p>
+<div class="flex flex-wrap gap-1.5 pt-1">
+<span class="px-2.5 py-1 rounded-md bg-[#EEEEEE] text-[#041562] text-[11px] font-mono font-medium">OWASP</span>
+<span class="px-2.5 py-1 rounded-md bg-[#EEEEEE] text-[#041562] text-[11px] font-mono font-medium">Pen-testing</span>
+<span class="px-2.5 py-1 rounded-md bg-[#EEEEEE] text-[#041562] text-[11px] font-mono font-medium">Zero-Trust</span>
+<span class="px-2.5 py-1 rounded-md bg-[#EEEEEE] text-[#041562] text-[11px] font-mono font-medium">SIEM</span>
+</div>
+</div>
+<div class="pt-3 border-t border-[#e0e0e0]">
+<a class="inline-flex items-center gap-1 text-sm font-semibold text-[#DA1212] hover:text-[#b80f0f] group-hover:translate-x-1 transition-transform" href="/courses">
+  Learn More <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- 6. UI/UX Architecture -->
+<div class="p-6 rounded-2xl bg-white border border-[#DA1212] shadow-sm hover:border-[#DA1212] hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between gap-5 group reveal revealed" data-category="accelerator" style="transition-delay: 0.1s;">
+<div class="flex flex-col gap-4">
+<div class="w-12 h-12 rounded-xl bg-[#DA1212]/10 border border-[#DA1212]/20 flex items-center justify-center text-[#DA1212] group-hover:bg-[#DA1212] group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl">draw</span>
+</div>
+<h3 class="font-display font-bold text-xl text-[#041562] group-hover:text-[#DA1212] transition-colors">
+  UI/UX Architecture
+</h3>
+<p class="text-[#2a3556] text-sm leading-relaxed">
+  Engineer scalable multi-brand design systems, tokenized atomic UI libraries, micro-frontends, and accessible user flows.
+</p>
+<div class="flex flex-wrap gap-1.5 pt-1">
+<span class="px-2.5 py-1 rounded-md bg-[#EEEEEE] text-[#041562] text-[11px] font-mono font-medium">Figma</span>
+<span class="px-2.5 py-1 rounded-md bg-[#EEEEEE] text-[#041562] text-[11px] font-mono font-medium">Design Systems</span>
+<span class="px-2.5 py-1 rounded-md bg-[#EEEEEE] text-[#041562] text-[11px] font-mono font-medium">Design Tokens</span>
+<span class="px-2.5 py-1 rounded-md bg-[#EEEEEE] text-[#041562] text-[11px] font-mono font-medium">Micro-frontends</span>
+</div>
+</div>
+<div class="pt-3 border-t border-[#e0e0e0]">
+<a class="inline-flex items-center gap-1 text-sm font-semibold text-[#DA1212] hover:text-[#b80f0f] group-hover:translate-x-1 transition-transform" href="/courses">
+  Learn More <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. PROPRIETARY PLATFORMS & GUIDED MENTORSHIP -->
+<section class="py-20 bg-[#EEEEEE] border-y border-[#e0e0e0]" id="product">
+<div class="max-w-7xl mx-auto px-6 lg:px-12">
+<div class="text-center max-w-3xl mx-auto mb-16 flex flex-col gap-3 reveal revealed">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-[#041562]/20 text-[#041562] text-xs font-semibold tracking-wide uppercase font-mono w-fit mx-auto">
+  Ecosystem &amp; Infrastructure
+</div>
+<h2 class="font-display font-extrabold text-3xl sm:text-4xl text-[#041562] tracking-tight">
+  Proprietary Platforms &amp; Guided Mentorship
+</h2>
+<p class="text-[#2a3556] text-base sm:text-lg">
+  Integrated software suites and senior executive mentorship that empower companies and developers to scale predictably.
+</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="p-6 rounded-2xl bg-white border border-[#e0e0e0] shadow-sm hover:border-[#DA1212] hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between gap-5 group reveal revealed" style="transition-delay: 0s;">
+<div class="flex flex-col gap-3">
+<span class="text-[11px] font-mono font-semibold px-2.5 py-1 rounded bg-[#EEEEEE] text-[#041562] border border-[#041562]/15 w-fit">ERP &amp; CLOUD</span>
+<h3 class="font-display font-bold text-lg text-[#041562] group-hover:text-[#DA1212] transition-colors">StriveFlow ERP &amp; Cloud Suite</h3>
+<p class="text-[#2a3556] text-sm leading-relaxed">Enterprise resource planning and multi-tenant delivery engine built for high-throughput business logic and team ops.</p>
+</div>
+<a href="/product" class="flex items-center gap-1.5 text-xs font-semibold text-[#DA1212] hover:text-[#b80f0f]">
+<span>Explore Suite</span><span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<div class="p-6 rounded-2xl bg-white border border-[#e0e0e0] shadow-sm hover:border-[#DA1212] hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between gap-5 group reveal revealed" style="transition-delay: 0.1s;">
+<div class="flex flex-col gap-3">
+<span class="text-[11px] font-mono font-semibold px-2.5 py-1 rounded bg-[#EEEEEE] text-[#041562] border border-[#041562]/15 w-fit">EDUTECH LMS</span>
+<h3 class="font-display font-bold text-lg text-[#041562] group-hover:text-[#DA1212] transition-colors">EduSphere Interactive LMS</h3>
+<p class="text-[#2a3556] text-sm leading-relaxed">Hands-on browser terminal sandbox and real-time automated code evaluator for continuous developer skill measurement.</p>
+</div>
+<a href="/product" class="flex items-center gap-1.5 text-xs font-semibold text-[#DA1212] hover:text-[#b80f0f]">
+<span>Launch Sandbox</span><span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<div class="p-6 rounded-2xl bg-white border border-[#e0e0e0] shadow-sm hover:border-[#DA1212] hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between gap-5 group reveal revealed" style="transition-delay: 0.2s;">
+<div class="flex flex-col gap-3">
+<span class="text-[11px] font-mono font-semibold px-2.5 py-1 rounded bg-[#EEEEEE] text-[#041562] border border-[#041562]/15 w-fit">1:1 ADVISORY</span>
+<h3 class="font-display font-bold text-lg text-[#041562] group-hover:text-[#DA1212] transition-colors">1:1 Senior Architect Mentorship</h3>
+<p class="text-[#2a3556] text-sm leading-relaxed">Direct weekly code reviews and systems architecture walkthroughs with Staff and Principal Engineers from tech giants.</p>
+</div>
+<a href="/mentorship" class="flex items-center gap-1.5 text-xs font-semibold text-[#DA1212] hover:text-[#b80f0f]">
+<span>Meet Mentors</span><span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<div class="p-6 rounded-2xl bg-white border border-[#e0e0e0] shadow-sm hover:border-[#DA1212] hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between gap-5 group reveal revealed" style="transition-delay: 0.3s;">
+<div class="flex flex-col gap-3">
+<span class="text-[11px] font-mono font-semibold px-2.5 py-1 rounded bg-[#EEEEEE] text-[#041562] border border-[#041562]/15 w-fit">CAREER ACCELERATOR</span>
+<h3 class="font-display font-bold text-lg text-[#041562] group-hover:text-[#DA1212] transition-colors">Career Launchpad &amp; Portal</h3>
+<p class="text-[#2a3556] text-sm leading-relaxed">Automated resume parser, algorithmic mock interview loops, and direct partner referral pipelines to 120+ top employers.</p>
+</div>
+<a href="/careers" class="flex items-center gap-1.5 text-xs font-semibold text-[#DA1212] hover:text-[#b80f0f]">
+<span>Access Portal</span><span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. 5-STEP EXECUTION & PEDAGOGY -->
+<style id="sc-stage-styles">
+  #stage-nodes-container::-webkit-scrollbar {
+    display: none;
+  }
+  #stage-nodes-container {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>
+<section class="py-24 max-w-7xl mx-auto px-6 lg:px-12" id="stage-methodology">
+<div class="text-center max-w-3xl mx-auto mb-12 flex flex-col gap-3 reveal revealed">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EEEEEE] border border-[#041562]/20 text-[#041562] text-xs font-semibold tracking-wide uppercase font-mono w-fit mx-auto">
+  Structured Methodology
+</div>
+<h2 class="font-display font-extrabold text-3xl sm:text-4xl text-[#041562] tracking-tight">
+  5-Stage Execution &amp; Pedagogy
+</h2>
+<p class="text-[#2a3556] text-base sm:text-lg">
+  A rigorous, outcome-driven process ensuring high-caliber system architecture and guaranteed tech placement.
+</p>
+</div>
+<div class="relative mb-10">
+<div class="hidden md:block absolute top-6 left-10 right-10 h-1 bg-[#e0e0e0] rounded-full z-0"></div>
+<div class="hidden md:block absolute top-6 left-10 h-1 bg-gradient-to-r from-[#041562] via-[#DA1212] to-[#DA1212] rounded-full z-0 transition-all duration-500 ease-out" id="stage-progress-bar" style="width: 0%;"></div>
+<div class="flex overflow-x-auto md:grid md:grid-cols-5 gap-3 md:gap-4 relative z-10 pb-2 md:pb-0 scroll-smooth no-scrollbar" id="stage-nodes-container" role="tablist" aria-label="5-Stage Methodology and Pedagogy">
+<button class="stage-node group flex flex-col items-center text-center p-3 rounded-xl border transition-all duration-200 bg-white border-[#DA1212] shadow-md ring-2 ring-[#DA1212]/20 cursor-pointer min-w-[150px] sm:min-w-[170px] md:min-w-0 flex-1 shrink-0 md:shrink is-active" data-stage="1" id="stage-tab-1" role="tab" aria-selected="true" aria-controls="stage-tabpanel" tabindex="0" type="button">
+<div class="node-badge w-10 h-10 rounded-full bg-[#DA1212] text-white font-mono font-bold flex items-center justify-center text-sm shadow-md shadow-[#DA1212]/25 transition-colors mb-2">01</div>
+<span class="node-title text-xs font-bold text-[#DA1212] transition-colors leading-tight">Discovery &amp; Assessment</span>
+</button>
+<button class="stage-node group flex flex-col items-center text-center p-3 rounded-xl border transition-all duration-200 bg-white border-[#e0e0e0] hover:border-[#DA1212] hover:shadow-md cursor-pointer min-w-[150px] sm:min-w-[170px] md:min-w-0 flex-1 shrink-0 md:shrink" data-stage="2" id="stage-tab-2" role="tab" aria-selected="false" aria-controls="stage-tabpanel" tabindex="-1" type="button">
+<div class="node-badge w-10 h-10 rounded-full bg-[#EEEEEE] text-[#041562] font-mono font-bold flex items-center justify-center text-sm shadow-xs transition-colors mb-2 group-hover:bg-[#041562] group-hover:text-white">02</div>
+<span class="node-title text-xs font-semibold text-[#1b254b] group-hover:text-[#DA1212] transition-colors leading-tight">Architecture &amp; Curriculum</span>
+</button>
+<button class="stage-node group flex flex-col items-center text-center p-3 rounded-xl border transition-all duration-200 bg-white border-[#e0e0e0] hover:border-[#DA1212] hover:shadow-md cursor-pointer min-w-[150px] sm:min-w-[170px] md:min-w-0 flex-1 shrink-0 md:shrink" data-stage="3" id="stage-tab-3" role="tab" aria-selected="false" aria-controls="stage-tabpanel" tabindex="-1" type="button">
+<div class="node-badge w-10 h-10 rounded-full bg-[#EEEEEE] text-[#041562] font-mono font-bold flex items-center justify-center text-sm shadow-xs transition-colors mb-2 group-hover:bg-[#041562] group-hover:text-white">03</div>
+<span class="node-title text-xs font-semibold text-[#1b254b] group-hover:text-[#DA1212] transition-colors leading-tight">Agile Build &amp; Labs</span>
+</button>
+<button class="stage-node group flex flex-col items-center text-center p-3 rounded-xl border transition-all duration-200 bg-white border-[#e0e0e0] hover:border-[#DA1212] hover:shadow-md cursor-pointer min-w-[150px] sm:min-w-[170px] md:min-w-0 flex-1 shrink-0 md:shrink" data-stage="4" id="stage-tab-4" role="tab" aria-selected="false" aria-controls="stage-tabpanel" tabindex="-1" type="button">
+<div class="node-badge w-10 h-10 rounded-full bg-[#EEEEEE] text-[#041562] font-mono font-bold flex items-center justify-center text-sm shadow-xs transition-colors mb-2 group-hover:bg-[#041562] group-hover:text-white">04</div>
+<span class="node-title text-xs font-semibold text-[#1b254b] group-hover:text-[#DA1212] transition-colors leading-tight">QA &amp; Code Reviews</span>
+</button>
+<button class="stage-node group flex flex-col items-center text-center p-3 rounded-xl border transition-all duration-200 bg-white border-[#e0e0e0] hover:border-[#DA1212] hover:shadow-md cursor-pointer min-w-[150px] sm:min-w-[170px] md:min-w-0 flex-1 shrink-0 md:shrink" data-stage="5" id="stage-tab-5" role="tab" aria-selected="false" aria-controls="stage-tabpanel" tabindex="-1" type="button">
+<div class="node-badge w-10 h-10 rounded-full bg-[#EEEEEE] text-[#041562] font-mono font-bold flex items-center justify-center text-sm shadow-xs transition-colors mb-2 group-hover:bg-[#041562] group-hover:text-white">05</div>
+<span class="node-title text-xs font-semibold text-[#1b254b] group-hover:text-[#DA1212] transition-colors leading-tight">Deployment &amp; Placement</span>
+</button>
+</div>
+</div>
+<div class="bg-white rounded-2xl border border-[#e0e0e0] shadow-xl p-6 sm:p-8 lg:p-10 transition-all overflow-hidden relative" id="stage-panel-wrapper">
+<!-- Stage Pane (Starts at Stage 01 by default) -->
+<div class="stage-pane grid grid-cols-1 lg:grid-cols-12 gap-8 items-center" id="stage-tabpanel" role="tabpanel" aria-labelledby="stage-tab-1">
+<div class="lg:col-span-6 flex flex-col gap-5">
+<div class="flex items-center gap-2">
+<span id="stage-badge" class="px-2.5 py-1 rounded bg-[#EEEEEE] border border-[#DA1212]/30 text-[#DA1212] font-mono text-xs font-bold uppercase tracking-wider">STAGE 01 / 05 • ASSESSMENT PHASE</span>
+</div>
+<h3 id="stage-title" class="font-display font-extrabold text-2xl sm:text-3xl text-[#041562] tracking-tight">Discovery, Candidate Profiling &amp; Technical Diagnostics</h3>
+<p id="stage-desc" class="text-[#2a3556] text-sm sm:text-base leading-relaxed">Rigorous background evaluations, algorithmic diagnostic baselines, and individual system profiling to establish targeted enterprise engineering trajectories.</p>
+<div id="stage-chips" class="flex flex-wrap gap-2 pt-1">
+<span class="px-3 py-1.5 rounded-lg bg-[#EEEEEE] text-[#041562] text-xs font-mono font-medium border border-[#041562]/20">Baseline Diagnostics</span>
+<span class="px-3 py-1.5 rounded-lg bg-[#EEEEEE] text-[#041562] text-xs font-mono font-medium border border-[#041562]/20">System Profiling</span>
+<span class="px-3 py-1.5 rounded-lg bg-[#EEEEEE] text-[#041562] text-xs font-mono font-medium border border-[#041562]/20">Cohort Matching</span>
+</div>
+<div class="pt-4 border-t border-[#e0e0e0] flex flex-wrap items-center justify-between gap-3 text-xs sm:text-sm font-semibold">
+<span id="stage-output" class="inline-flex items-center gap-1.5 text-[#041562] bg-[#EEEEEE] border border-[#041562]/20 px-3 py-1.5 rounded-lg">Output: Diagnostic Scorecard &amp; Individual Roadmap</span>
+<span id="stage-duration" class="text-[#2a3556] font-mono">Duration: Weeks 1-2</span>
+</div>
+</div>
+<div class="lg:col-span-6">
+<div class="bg-[#020b30] rounded-xl p-6 border border-blue-950 text-slate-200 shadow-2xl relative overflow-hidden">
+<div class="flex items-center justify-between pb-4 border-b border-blue-900/60 text-xs">
+<span id="stage-cluster" class="font-mono text-[#bac3ff] flex items-center gap-1.5"><span class="material-symbols-outlined text-sm">bolt</span> cluster:diagnostic-baseline.metrics</span>
+<span id="stage-pod-badge" class="bg-[#DA1212]/20 text-[#DA1212] border border-[#DA1212]/30 px-2.5 py-0.5 rounded font-mono text-[11px] font-semibold">Assessment Pod</span>
+</div>
+<div class="grid grid-cols-2 gap-4 py-5">
+<div class="p-3.5 rounded-lg bg-[#041562] border border-blue-900">
+<div id="stage-m1-label" class="text-[11px] font-mono text-[#EEEEEE]/70">DIAGNOSTIC SCORE</div>
+<div id="stage-m1-val" class="text-2xl font-bold font-mono text-white mt-1">98%</div>
+<div id="stage-m1-sub" class="text-[10px] text-white mt-0.5">+18% vs peer baseline</div>
+</div>
+<div class="p-3.5 rounded-lg bg-[#041562] border border-blue-900">
+<div id="stage-m2-label" class="text-[11px] font-mono text-[#EEEEEE]/70">EVALUATION NODES</div>
+<div id="stage-m2-val" class="text-2xl font-bold font-mono text-[#DA1212] mt-1">24 Checks</div>
+<div id="stage-m2-sub" class="text-[10px] text-[#bac3ff] mt-0.5">Algorithmic Screener OK</div>
+</div>
+</div>
+<div class="p-3.5 rounded-lg bg-[#030e38] border border-blue-900/80 mb-3 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="flex flex-col">
+<span id="stage-squad-title" class="text-xs font-semibold text-white">Admissions Review Pod</span>
+<span id="stage-squad-sub" class="text-[10px] text-[#bac3ff] font-mono">Staff Evaluators Paired</span>
+</div>
+</div>
+<span id="stage-squad-status" class="text-[11px] font-mono text-white bg-blue-900/60 px-2 py-0.5 rounded border border-blue-700">Baseline Verified</span>
+</div>
+<div class="space-y-2 pt-1 font-mono text-xs">
+<div class="flex justify-between text-[#EEEEEE]/80 text-[11px]"><span id="stage-progress-label">Cohort Intake Screening</span><span id="stage-progress-val" class="text-[#DA1212] font-semibold">100% Verified</span></div>
+<div class="w-full bg-[#030e38] h-2 rounded-full overflow-hidden">
+<div id="stage-progress-fill" class="bg-gradient-to-r from-[#041562] to-[#DA1212] h-full rounded-full transition-all duration-700" style="width: 100%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 6.5. SECTION: INTERN VOICES & TESTIMONIALS -->
+<InternTestimonials />
+
+<!-- 7. SECTION: WORKSHOPS, INTERNSHIPS & STUDENT PROGRAMS (STACKED CARD DECK FAN-OUT) -->
+<section class="py-24 max-w-7xl mx-auto px-6 lg:px-12 relative" style="overflow-x: clip;" id="programs">
+  <!-- Section Header (Editable Texts) -->
+  <div class="text-center max-w-3xl mx-auto mb-14 flex flex-col gap-3 reveal revealed">
+    <!-- Editable Label: EVENTS & PROGRAMS -->
+    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-[#DA1212]/25 text-[#DA1212] text-xs font-extrabold tracking-widest uppercase font-mono w-fit mx-auto shadow-xs">
+      EVENTS &amp; PROGRAMS
+    </div>
+    <!-- Editable Heading: Workshops, Internships & Student Programs -->
+    <h2 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-[44px] leading-tight text-[#041562] tracking-tight">
+      Workshops, Internships &amp; Student Programs
+    </h2>
+  </div>
+
+  <!-- Stacked Card Deck Fan-Out Gallery -->
+  <div class="sc-deck-wrapper relative w-full" id="scDeckWrapper">
+    <div class="sc-deck" id="scDeck" role="group" aria-label="StriveCode workshops and programs">
+      <ul class="sc-deck-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-[360px] sm:max-w-none mx-auto list-none p-0 m-0" id="scDeckGrid">
+        <!-- Card 1: Skills Building Internship -->
+        <li class="sc-deck-card relative aspect-[4/5] rounded-[18px] overflow-hidden border border-[#041562]/10 shadow-[0_10px_25px_-5px_rgba(4,21,98,0.08),0_8px_10px_-6px_rgba(4,21,98,0.04)] bg-[#041562] cursor-pointer focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#DA1212] focus-visible:ring-offset-2" tabindex="0">
+          <picture class="w-full h-full block">
+            <source type="image/webp" srcset="/assets/workshops/internship-coming-soon.webp" />
+            <img src="/assets/workshops/internship-coming-soon.png" alt="Skills Building Internship, coming soon, 3 to 6 months" width="800" height="1000" loading="lazy" decoding="async" class="w-full h-full object-cover block select-none pointer-events-none" />
+          </picture>
+        </li>
+        <!-- Card 2: Strive Student Ambassadors -->
+        <li class="sc-deck-card relative aspect-[4/5] rounded-[18px] overflow-hidden border border-[#041562]/10 shadow-[0_10px_25px_-5px_rgba(4,21,98,0.08),0_8px_10px_-6px_rgba(4,21,98,0.04)] bg-[#041562] cursor-pointer focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#DA1212] focus-visible:ring-offset-2" tabindex="0">
+          <picture class="w-full h-full block">
+            <source type="image/webp" srcset="/assets/workshops/student-ambassadors.webp" />
+            <img src="/assets/workshops/student-ambassadors.png" alt="Strive Student Ambassadors program" width="800" height="1000" loading="lazy" decoding="async" class="w-full h-full object-cover block select-none pointer-events-none" />
+          </picture>
+        </li>
+        <!-- Card 3: Cybernetix Labs Workshop Coming Soon -->
+        <li class="sc-deck-card relative aspect-[4/5] rounded-[18px] overflow-hidden border border-[#041562]/10 shadow-[0_10px_25px_-5px_rgba(4,21,98,0.08),0_8px_10px_-6px_rgba(4,21,98,0.04)] bg-[#041562] cursor-pointer focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#DA1212] focus-visible:ring-offset-2" tabindex="0">
+          <picture class="w-full h-full block">
+            <source type="image/webp" srcset="/assets/workshops/cybernetix-labs-coming-soon.webp" />
+            <img src="/assets/workshops/cybernetix-labs-coming-soon.png" alt="Cybernetix Labs workshop, coming soon" width="800" height="1000" loading="lazy" decoding="async" class="w-full h-full object-cover block select-none pointer-events-none" />
+          </picture>
+        </li>
+        <!-- Card 4: Cybernetix Labs Workshop Facilitator (On top) -->
+        <li class="sc-deck-card relative aspect-[4/5] rounded-[18px] overflow-hidden border border-[#041562]/10 shadow-[0_10px_25px_-5px_rgba(4,21,98,0.08),0_8px_10px_-6px_rgba(4,21,98,0.04)] bg-[#041562] cursor-pointer focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#DA1212] focus-visible:ring-offset-2" tabindex="0">
+          <picture class="w-full h-full block">
+            <source type="image/webp" srcset="/assets/workshops/cybernetix-labs-workshop.webp" />
+            <img src="/assets/workshops/cybernetix-labs-workshop.png" alt="Cybernetics Labs workshop, introduction to AI-powered cybersecurity and threat detection" width="800" height="1000" loading="lazy" decoding="async" class="w-full h-full object-cover block select-none pointer-events-none" />
+          </picture>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <script is:inline>
+    (function () {
+      function initDeck() {
+        const deck = document.getElementById("scDeck");
+        const grid = document.getElementById("scDeckGrid");
+        const wrapper = document.getElementById("scDeckWrapper");
+        if (!deck || !grid || !wrapper) return;
+
+        // prefers-reduced-motion fallback: retain plain fanned-out grid
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          return;
+        }
+
+        const cards = Array.from(grid.querySelectorAll(".sc-deck-card"));
+        if (cards.length !== 4) return;
+
+        // Card default stack properties:
+        // Card 1: -4deg, dy: 0px, z: 1
+        // Card 2: 3deg, dy: 6px, z: 2
+        // Card 3: -2deg, dy: 12px, z: 3
+        // Card 4: 0deg, dy: 0px, z: 4 (on top)
+        const cardProps = [
+          { rot: "-4deg", dy: "0px", z: "1" },
+          { rot: "3deg", dy: "6px", z: "2" },
+          { rot: "-2deg", dy: "12px", z: "3" },
+          { rot: "0deg", dy: "0px", z: "4" }
+        ];
+
+        cards.forEach((card, i) => {
+          const p = cardProps[i];
+          card.style.setProperty("--rot", p.rot);
+          card.style.setProperty("--dy", p.dy);
+          card.style.setProperty("--z", p.z);
+        });
+
+        function measure() {
+          const deckW = grid.offsetWidth;
+          const deckH = grid.offsetHeight;
+          const cx = deckW / 2;
+          const cy = deckH / 2;
+          cards.forEach((card) => {
+            const cardX = card.offsetLeft + card.offsetWidth / 2;
+            const cardY = card.offsetTop + card.offsetHeight / 2;
+            card.style.setProperty("--sx", (cx - cardX) + "px");
+            card.style.setProperty("--sy", (cy - cardY) + "px");
+          });
+        }
+
+        measure();
+        deck.classList.add("sc-deck-ready");
+
+        // Recalculate on window load and image completion
+        window.addEventListener("load", measure, { once: true });
+        cards.forEach((card) => {
+          const img = card.querySelector("img");
+          if (img && !img.complete) {
+            img.addEventListener("load", measure, { once: true });
+          }
+        });
+
+        // Debounced resize handler
+        let resizeRaf = null;
+        window.addEventListener("resize", () => {
+          if (resizeRaf) cancelAnimationFrame(resizeRaf);
+          resizeRaf = requestAnimationFrame(() => {
+            measure();
+          });
+        }, { passive: true });
+
+        // Animation lifecycle & will-change management
+        let animTimer = null;
+        function setAnimating() {
+          deck.classList.add("sc-deck-animating");
+          clearTimeout(animTimer);
+          animTimer = setTimeout(() => {
+            deck.classList.remove("sc-deck-animating");
+          }, 850);
+        }
+
+        let collapseTimer = null;
+        let isFanned = false;
+
+        function openDeck() {
+          clearTimeout(collapseTimer);
+          if (!isFanned) {
+            isFanned = true;
+            setAnimating();
+            deck.classList.add("sc-deck-fanned");
+          }
+        }
+
+        function closeDeck(immediate) {
+          clearTimeout(collapseTimer);
+          if (immediate) {
+            if (isFanned) {
+              isFanned = false;
+              setAnimating();
+              deck.classList.remove("sc-deck-fanned");
+            }
+            return;
+          }
+          collapseTimer = setTimeout(() => {
+            if (isFanned) {
+              isFanned = false;
+              setAnimating();
+              deck.classList.remove("sc-deck-fanned");
+            }
+          }, 180);
+        }
+
+        const isFinePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+        if (isFinePointer) {
+          // Hovering any card of the deck fans them out
+          grid.addEventListener("pointerover", (e) => {
+            if (e.target.closest(".sc-deck-card")) {
+              openDeck();
+            }
+          });
+
+          // While pointer stays inside the card area / wrapper, remain open
+          wrapper.addEventListener("pointerenter", () => {
+            if (isFanned) {
+              clearTimeout(collapseTimer);
+            }
+          });
+
+          // When pointer leaves wrapper, smoothly collapse after 180ms debounce
+          wrapper.addEventListener("pointerleave", () => {
+            closeDeck();
+          });
+        }
+
+        // Touch & mobile: auto fan out once when about 35% enters view
+        const isTouch = window.matchMedia("(hover: none), (pointer: coarse)").matches;
+        if (isTouch || !isFinePointer) {
+          const sectionEl = document.getElementById("programs") || wrapper;
+          const thresholds = [];
+          for (let i = 0; i <= 1.0; i += 0.05) thresholds.push(Number(i.toFixed(2)));
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              const visibleH = entry.intersectionRect.height;
+              const targetH = entry.boundingClientRect.height;
+              const winH = window.innerHeight;
+              const thresholdH = Math.min(winH, targetH) * 0.35;
+              if (entry.isIntersecting && (entry.intersectionRatio >= 0.35 || visibleH >= thresholdH)) {
+                openDeck();
+                observer.disconnect();
+              }
+            });
+          }, { threshold: thresholds });
+          observer.observe(sectionEl);
+        }
+
+        // Keyboard focus accessibility
+        deck.addEventListener("focusin", () => {
+          openDeck();
+        });
+        deck.addEventListener("focusout", (e) => {
+          if (!deck.contains(e.relatedTarget)) {
+            closeDeck(true);
+          }
+        });
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initDeck);
+      } else {
+        initDeck();
+      }
+    })();
+  </script>
+</section>
+<!-- 8. TESTIMONIALS: VALIDATED BY ENGINEERING LEADERS -->
+<section class="py-20 max-w-7xl mx-auto px-6 lg:px-12">
+<div class="text-center max-w-3xl mx-auto mb-16 flex flex-col gap-3 reveal revealed">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EEEEEE] border border-[#041562]/20 text-[#041562] text-xs font-semibold tracking-wide uppercase font-mono w-fit mx-auto">
+  ALUMNI &amp; ENTERPRISE FEEDBACK
+</div>
+<h2 class="font-display font-extrabold text-3xl sm:text-4xl text-[#041562] tracking-tight">
+  Validated by Engineering Leaders
+</h2>
+<p class="text-[#2a3556] text-base sm:text-lg">
+  Read genuine reviews from engineering directors and alumni working across the globe.
+</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Testimonial 1 -->
+<div class="p-6 rounded-2xl bg-white border border-[#e0e0e0] shadow-sm flex flex-col justify-between gap-6 hover:shadow-lg transition-all duration-200 reveal revealed">
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex text-[#DA1212] gap-1 text-sm">★★★★★</div>
+<span class="text-[10px] font-mono px-2 py-0.5 bg-[#EEEEEE] rounded text-[#041562] font-semibold">HEALTHCARE TECH</span>
+</div>
+<p class="text-sm text-[#2a3556] italic leading-relaxed">
+  "StriveCode engineered our entire digital patient-ops portal with zero hiccups. Their engineering standard is pristine and deeply reliable."
+</p>
+</div>
+<div class="flex items-center gap-3 pt-4 border-t border-[#e0e0e0]">
+<img alt="Dr. Prateek Yadav" class="w-10 h-10 rounded-full object-cover border border-[#041562]/20" src="https://lh3.googleusercontent.com/aida/ALJJyrCwq8ggAZnwBuabvcZdww6WT_31vAEhl3_4apzZ_u3FFunAcVxZ70OTPPCx3D16dkqoQ9rC4dK0eyYwfw3O4a1bx4d7fPl80qvdVckcKV7K7pGEtZZQhh_J04S-wTQd2uLRCZtJw_WiNFlx2xuGjf3GePlD5Y2gXh1eQe_QNJ6h9auEHcTLqTug8d86L40Ncv2aKVew2I1zqAzqS5VTfCNMWhshDfY8cUhafYee36iJUA">
+<div class="flex flex-col">
+<span class="text-xs font-bold text-[#041562]">Dr. Prateek Yadav</span>
+<span class="text-[11px] text-[#2a3556]">Director, Yadu Hospital</span>
+</div>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="p-6 rounded-2xl bg-white border border-[#e0e0e0] shadow-sm flex flex-col justify-between gap-6 hover:shadow-lg transition-all duration-200 reveal revealed">
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex text-[#DA1212] gap-1 text-sm">★★★★★</div>
+<span class="text-[10px] font-mono px-2 py-0.5 bg-[#EEEEEE] rounded text-[#041562] font-semibold">ENTERPRISE HIRING</span>
+</div>
+<p class="text-sm text-[#2a3556] italic leading-relaxed">
+  "The Full-Stack cohorts produce engineers who think in production paradigms from day one. We consistently hire from StriveCode's fellowship."
+</p>
+</div>
+<div class="flex items-center gap-3 pt-4 border-t border-[#e0e0e0]">
+<img alt="Jonathan Davis" class="w-10 h-10 rounded-full object-cover border border-[#041562]/20" src="https://lh3.googleusercontent.com/aida/AEtjO1Wa5S2Y2X0h1BBTVKduH7dzRqWMO8wjS0dddzHqa-WngRmtAke-zI0MD2LysC65LkRbnEgR1ZgLS_onde74pcg4vNEJm0bjFMG1QB5JdKeOTrIR5OQknkysnn8EgHbDeO0z9EC9moXmDdY2uLXvOC9-t6VCRT9KGcPbsSKzWyvfJ55g0VPXJzGspKE8UFiRTBCltWsNtu0rhPk9bwT4mArd-MIGSAqxAQz1J1vs4FEZTg">
+<div class="flex flex-col">
+<span class="text-xs font-bold text-[#041562]">Jonathan Davis</span>
+<span class="text-[11px] text-[#2a3556]">CTO, GlobalTech Solutions</span>
+</div>
+</div>
+</div>
+<!-- Testimonial 3 -->
+<div class="p-6 rounded-2xl bg-white border border-[#e0e0e0] shadow-sm flex flex-col justify-between gap-6 hover:shadow-lg transition-all duration-200 reveal revealed">
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex text-[#DA1212] gap-1 text-sm">★★★★★</div>
+<span class="text-[10px] font-mono px-2 py-0.5 bg-[#EEEEEE] rounded text-[#041562] font-semibold">CAREER ACCELERATION</span>
+</div>
+<p class="text-sm text-[#2a3556] italic leading-relaxed">
+  "1-on-1 mentorship with senior architects transformed how I write modular code and handle system bottlenecks. Leveled up into Principal Architect within 6 months!"
+</p>
+</div>
+<div class="flex items-center gap-3 pt-4 border-t border-[#e0e0e0]">
+<img alt="Ananya Sharma" class="w-10 h-10 rounded-full object-cover border border-[#041562]/20" src="https://lh3.googleusercontent.com/aida/AEtjO1XUadDEMbwEao3UrDCX8Q2CZgBlDpRErK-s10bT3x3rVOncsOkkF7ZK9-DIdajVxGZ7LPZBOBZ5HhR7XJMsDjd0y0LzjYZ2LRFGmrjM3n341uNhO1RblaCssf9dMWdblcoAt6ZTO3-Fm4BHCH_1clkujM_37So13klSaDR_9PqTY4_SuYNyEwY0hQnTnPoJPlO5IYdN9ay0OlTJe44wEj7G_ci2G4KduNfzmvuO2vg-pA">
+<div class="flex flex-col">
+<span class="text-xs font-bold text-[#041562]">Ananya Sharma</span>
+<span class="text-[11px] text-[#2a3556]">Principal Architect, Apex Systems</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 9. PRE-FOOTER CONSULTATION BANNER -->
+<section class="max-w-7xl mx-auto px-6 lg:px-12 pb-20">
+<div class="rounded-3xl bg-[#041562] p-8 sm:p-12 lg:p-16 text-white shadow-2xl relative overflow-hidden flex flex-col items-start gap-6">
+<div class="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-[#DA1212]/15 blur-3xl pointer-events-none"></div>
+<div class="relative z-10 max-w-2xl space-y-4">
+<h2 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight leading-tight">
+  Ready to Accelerate Your Digital Journey?
+</h2>
+<p class="text-[#EEEEEE]/90 text-base sm:text-lg">
+  Partner with our enterprise engineering squads or upskill your workforce with top-tier technology cohorts.
+</p>
+</div>
+<div class="flex flex-wrap items-center gap-4 relative z-10 pt-2">
+<a class="px-6 py-3 rounded-xl bg-[#DA1212] hover:bg-[#b80f0f] text-white font-semibold text-sm transition-all shadow-md" href="/contact">
+  Schedule a Consultation
+</a>
+<a class="px-6 py-3 rounded-xl bg-white/10 hover:bg-white/15 text-white border border-white/20 font-semibold text-sm transition-all" href="/courses">
+  Download Program Brochure
+</a>
+</div>
+</div>
+</section>
+</div>
+<!-- 10. ENTERPRISE FOOTER -->
+
+  <Fragment slot="scripts">
+    <script is:inline src="/intern-testimonials.js"></script>
+    <script is:inline>
+      // Course Filter Toggle
+      const filterBtns = document.querySelectorAll('.track-filter-btn');
+      const cards = document.querySelectorAll('[data-category]');
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => {
+            b.className = 'track-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-[#1b254b] hover:text-[#041562] hover:bg-[#EEEEEE] border border-[#e0e0e0]';
+          });
+          btn.className = 'track-filter-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-[#DA1212] text-white shadow-sm';
+          const filter = btn.getAttribute('data-filter');
+          cards.forEach(card => {
+            if (filter === 'all' || card.getAttribute('data-category').includes(filter)) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // Reveal On Scroll
+      const revealElements = document.querySelectorAll('.reveal');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+          }
+        });
+      }, { threshold: 0.1 });
+      revealElements.forEach(el => observer.observe(el));
+    </script>
+    <script is:inline id="sc-stage-controller">
+(function() {
+  'use strict';
+
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const STAGE_DATA = {
+    1: {
+      badge: 'STAGE 01 / 05 • ASSESSMENT PHASE',
+      title: 'Discovery, Candidate Profiling & Technical Diagnostics',
+      desc: 'Rigorous background evaluations, algorithmic diagnostic baselines, and individual system profiling to establish targeted enterprise engineering trajectories.',
+      chips: ['Baseline Diagnostics', 'System Profiling', 'Cohort Matching'],
+      output: 'Output: Diagnostic Scorecard & Individual Roadmap',
+      duration: 'Duration: Weeks 1-2',
+      cluster: 'cluster:diagnostic-baseline.metrics',
+      podBadge: 'Assessment Pod',
+      m1: { label: 'DIAGNOSTIC SCORE', target: 98, suffix: '%', decimals: 0, sub: '+18% vs peer baseline' },
+      m2: { label: 'EVALUATION NODES', target: 24, suffix: ' Checks', decimals: 0, sub: 'Algorithmic Screener OK' },
+      squad: { title: 'Admissions Review Pod', sub: 'Staff Evaluators Paired', status: 'Baseline Verified' },
+      progress: { label: 'Cohort Intake Screening', val: '100% Verified', pct: 100 }
+    },
+    2: {
+      badge: 'STAGE 02 / 05 • ARCHITECTURE PHASE',
+      title: 'System Design Blueprints, IaC & Curriculum Foundations',
+      desc: 'Target topologies, schema contracts, event schema registries, and high-touch architecture deep-dives led by Staff and Principal Engineers.',
+      chips: ['System Design RFC', 'Terraform & IaC', 'API Contracts'],
+      output: 'Output: Architectural RFC & Infrastructure Blueprint',
+      duration: 'Duration: Weeks 3-4',
+      cluster: 'cluster:architecture-blueprint.metrics',
+      podBadge: 'Design Pod',
+      m1: { label: 'BLUEPRINT RFC', target: 100, suffix: '%', decimals: 0, sub: 'All Schemas Enforced' },
+      m2: { label: 'TARGET TOPOLOGY', target: 12, suffix: ' Services', decimals: 0, sub: 'Domain-Driven Mesh' },
+      squad: { title: 'Principal Architecture Pod', sub: 'Target Topologies Set', status: 'RFC Sign-off OK' },
+      progress: { label: 'Core Architecture Readiness', val: '100% Approved', pct: 100 }
+    },
+    3: {
+      badge: 'STAGE 03 / 05 • EXECUTION PHASE',
+      title: 'Agile Sprints, Live Labs & Production Codebases',
+      desc: 'Live cohort sprints, paired programming, and engineering production codebases with active user traffic. Participants work in true enterprise team pods with daily standups and weekly sprint goals.',
+      chips: ['Live Sprints (2-wk)', 'Pair Programming Labs', 'High-Traffic Simulators'],
+      output: 'Output: Production Repository & Cloud Staging',
+      duration: 'Duration: Weeks 5-14',
+      cluster: 'cluster:sprint-velocity.metrics',
+      podBadge: 'Execution Pod',
+      m1: { label: 'SPRINT VELOCITY', target: 48, suffix: ' pts/sprint', decimals: 0, sub: '+14% vs avg baseline' },
+      m2: { label: 'ACTIVE NODES', target: 18, suffix: ' Nodes', decimals: 0, sub: 'Kubernetes Cluster OK' },
+      squad: { title: 'Engineering Squad Pod', sub: '3 Staff Mentors Paired', status: 'Daily Standup OK' },
+      progress: { label: 'Cohort Milestone Completion', val: '92% Passing', pct: 92 }
+    },
+    4: {
+      badge: 'STAGE 04 / 05 • AUDIT & QA PHASE',
+      title: 'Rigorous Code Reviews, Mutation Testing & ISO Standards',
+      desc: 'Strict 1-on-1 pull request audits, mutation test thresholds, automated security vulnerability scans, and institutional ISO 9001:2015 code quality benchmarks.',
+      chips: ['1-on-1 PR Reviews', 'Mutation Testing', 'ISO 9001:2015'],
+      output: 'Output: Audited Codebase & Verified QA Certificate',
+      duration: 'Duration: Weeks 15-18',
+      cluster: 'cluster:code-review-qa.metrics',
+      podBadge: 'Audit Pod',
+      m1: { label: 'TEST COVERAGE', target: 99.4, suffix: '%', decimals: 1, sub: 'Zero P0 Vulnerabilities' },
+      m2: { label: 'CLEARED AUDITS', target: 34, suffix: ' PRs', decimals: 0, sub: 'Staff Sign-off Passed' },
+      squad: { title: 'Staff QA & Security Pod', sub: 'Automated Linter Cleared', status: 'Quality Gate OK' },
+      progress: { label: 'Audit Milestone Completion', val: '98% Compliant', pct: 98 }
+    },
+    5: {
+      badge: 'STAGE 05 / 05 • DEPLOYMENT & PLACEMENT',
+      title: 'Production Cloud Deployment & Partner Placement Pipelines',
+      desc: 'Automated CI/CD release loops, zero-downtime cluster rollouts, algorithmic technical interview loops, and direct placement pipelines to 120+ top tech partners.',
+      chips: ['CI/CD Rollouts', 'Technical Defense', 'Partner Referrals'],
+      output: 'Output: Live Production Release & Enterprise Referral',
+      duration: 'Duration: Weeks 19-24',
+      cluster: 'cluster:deployment-placement.metrics',
+      podBadge: 'Placement Pod',
+      m1: { label: 'PLACEMENT ALIGNMENT', target: 100, suffix: '%', decimals: 0, sub: 'Enterprise Tier Pipeline' },
+      m2: { label: 'PRODUCTION PODS', target: 42, suffix: ' Pods', decimals: 0, sub: 'Zero Downtime Deploy' },
+      squad: { title: 'Career Accelerator Pod', sub: 'Direct Referral Active', status: 'Hiring Loop Open' },
+      progress: { label: 'Cohort Placement Readiness', val: '100% Placement', pct: 100 }
+    }
+  };
+
+  const container = document.getElementById('stage-nodes-container');
+  const pane = document.getElementById('stage-tabpanel');
+  const progressBar = document.getElementById('stage-progress-bar');
+  const stageSection = document.getElementById('stage-methodology');
+
+  if (!container || !pane) return;
+
+  let currentStage = 1;
+  let transitionTimer = null;
+  const activeAnimationFrames = [];
+
+  function cancelNumberAnimations() {
+    while (activeAnimationFrames.length > 0) {
+      cancelAnimationFrame(activeAnimationFrames.pop());
+    }
+  }
+
+  function animateNumber(element, target, suffix, decimals, duration) {
+    if (!element) return;
+    if (reducedMotion) {
+      element.textContent = (decimals ? target.toFixed(decimals) : Math.round(target)) + suffix;
+      return;
+    }
+    const startTime = performance.now();
+    function update(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      const currentVal = progress >= 1 ? target : (target * ease);
+      element.textContent = (decimals ? currentVal.toFixed(decimals) : Math.round(currentVal)) + suffix;
+      if (progress < 1) {
+        const id = requestAnimationFrame(update);
+        activeAnimationFrames.push(id);
+      }
+    }
+    const id = requestAnimationFrame(update);
+    activeAnimationFrames.push(id);
+  }
+
+  function animateProgressBar(barElement, targetPercent, duration) {
+    if (!barElement) return;
+    if (reducedMotion) {
+      barElement.style.width = targetPercent + '%';
+      return;
+    }
+    barElement.style.transition = 'none';
+    barElement.style.width = '0%';
+    void barElement.offsetWidth;
+    barElement.style.transition = 'width ' + duration + 'ms cubic-bezier(0.22, 1, 0.36, 1)';
+    barElement.style.width = targetPercent + '%';
+  }
+
+  function updateTabs(activeNum) {
+    const tabs = container.querySelectorAll('.stage-node');
+    tabs.forEach(tab => {
+      const stage = parseInt(tab.getAttribute('data-stage'), 10);
+      const badge = tab.querySelector('.node-badge');
+      const title = tab.querySelector('.node-title');
+      const isActive = stage === activeNum;
+
+      tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      tab.setAttribute('tabindex', isActive ? '0' : '-1');
+
+      if (isActive) {
+        tab.className = 'stage-node group flex flex-col items-center text-center p-3 rounded-xl border transition-all duration-200 bg-white border-[#DA1212] shadow-md ring-2 ring-[#DA1212]/20 cursor-pointer min-w-[150px] sm:min-w-[170px] md:min-w-0 flex-1 shrink-0 md:shrink is-active';
+        if (badge) {
+          badge.className = 'node-badge w-10 h-10 rounded-full bg-[#DA1212] text-white font-mono font-bold flex items-center justify-center text-sm shadow-md shadow-[#DA1212]/25 transition-colors mb-2';
+        }
+        if (title) {
+          title.className = 'node-title text-xs font-bold text-[#DA1212] transition-colors leading-tight';
+        }
+      } else {
+        tab.className = 'stage-node group flex flex-col items-center text-center p-3 rounded-xl border transition-all duration-200 bg-white border-[#e0e0e0] hover:border-[#DA1212] hover:shadow-md cursor-pointer min-w-[150px] sm:min-w-[170px] md:min-w-0 flex-1 shrink-0 md:shrink';
+        if (badge) {
+          badge.className = 'node-badge w-10 h-10 rounded-full bg-[#EEEEEE] text-[#041562] font-mono font-bold flex items-center justify-center text-sm shadow-xs transition-colors mb-2 group-hover:bg-[#041562] group-hover:text-white';
+        }
+        if (title) {
+          title.className = 'node-title text-xs font-semibold text-[#1b254b] group-hover:text-[#DA1212] transition-colors leading-tight';
+        }
+      }
+    });
+  }
+
+  function updateConnector(activeNum) {
+    if (progressBar) {
+      progressBar.style.width = ((activeNum - 1) * 25) + '%';
+    }
+  }
+
+  function renderStageContent(stageNum) {
+    const data = STAGE_DATA[stageNum];
+    if (!data) return;
+
+    pane.setAttribute('aria-labelledby', 'stage-tab-' + stageNum);
+
+    const badge = document.getElementById('stage-badge');
+    if (badge) badge.textContent = data.badge;
+
+    const title = document.getElementById('stage-title');
+    if (title) title.textContent = data.title;
+
+    const desc = document.getElementById('stage-desc');
+    if (desc) desc.textContent = data.desc;
+
+    const chipsContainer = document.getElementById('stage-chips');
+    if (chipsContainer) {
+      chipsContainer.innerHTML = data.chips.map(chip =>
+        '<span class="px-3 py-1.5 rounded-lg bg-[#EEEEEE] text-[#041562] text-xs font-mono font-medium border border-[#041562]/20">' + chip + '</span>'
+      ).join('');
+    }
+
+    const output = document.getElementById('stage-output');
+    if (output) output.textContent = data.output;
+
+    const duration = document.getElementById('stage-duration');
+    if (duration) duration.textContent = data.duration;
+
+    const cluster = document.getElementById('stage-cluster');
+    if (cluster) {
+      cluster.innerHTML = '<span class="material-symbols-outlined text-sm">bolt</span> ' + data.cluster;
+    }
+
+    const podBadge = document.getElementById('stage-pod-badge');
+    if (podBadge) podBadge.textContent = data.podBadge;
+
+    const m1Label = document.getElementById('stage-m1-label');
+    if (m1Label) m1Label.textContent = data.m1.label;
+    const m1Val = document.getElementById('stage-m1-val');
+    if (m1Val) m1Val.textContent = data.m1.target + data.m1.suffix;
+    const m1Sub = document.getElementById('stage-m1-sub');
+    if (m1Sub) m1Sub.textContent = data.m1.sub;
+
+    const m2Label = document.getElementById('stage-m2-label');
+    if (m2Label) m2Label.textContent = data.m2.label;
+    const m2Val = document.getElementById('stage-m2-val');
+    if (m2Val) m2Val.textContent = data.m2.target + data.m2.suffix;
+    const m2Sub = document.getElementById('stage-m2-sub');
+    if (m2Sub) m2Sub.textContent = data.m2.sub;
+
+    const squadTitle = document.getElementById('stage-squad-title');
+    if (squadTitle) squadTitle.textContent = data.squad.title;
+    const squadSub = document.getElementById('stage-squad-sub');
+    if (squadSub) squadSub.textContent = data.squad.sub;
+    const squadStatus = document.getElementById('stage-squad-status');
+    if (squadStatus) squadStatus.textContent = data.squad.status;
+
+    const progressLabel = document.getElementById('stage-progress-label');
+    if (progressLabel) progressLabel.textContent = data.progress.label;
+    const progressVal = document.getElementById('stage-progress-val');
+    if (progressVal) progressVal.textContent = data.progress.val;
+  }
+
+  function triggerAnimations(stageNum) {
+    cancelNumberAnimations();
+    const data = STAGE_DATA[stageNum];
+    if (!data) return;
+
+    const m1Val = document.getElementById('stage-m1-val');
+    animateNumber(m1Val, data.m1.target, data.m1.suffix, data.m1.decimals || 0, 750);
+
+    const m2Val = document.getElementById('stage-m2-val');
+    animateNumber(m2Val, data.m2.target, data.m2.suffix, data.m2.decimals || 0, 750);
+
+    const progressFill = document.getElementById('stage-progress-fill');
+    animateProgressBar(progressFill, data.progress.pct, 700);
+  }
+
+  function scrollTabIntoViewOnMobile(stageNum) {
+    const activeTab = container.querySelector('[data-stage="' + stageNum + '"]');
+    if (!activeTab) return;
+    if (container.scrollWidth > container.clientWidth) {
+      const targetLeft = activeTab.offsetLeft - (container.clientWidth - activeTab.clientWidth) / 2;
+      container.scrollTo({ left: Math.max(0, targetLeft), behavior: 'smooth' });
+    }
+  }
+
+  function setActiveStage(stageNum, immediate) {
+    if (stageNum === currentStage && !immediate) return;
+    const isNext = stageNum > currentStage;
+    currentStage = stageNum;
+
+    updateTabs(currentStage);
+    updateConnector(currentStage);
+
+    if (immediate || reducedMotion) {
+      if (transitionTimer) clearTimeout(transitionTimer);
+      renderStageContent(currentStage);
+      pane.style.transition = 'none';
+      pane.style.transform = 'none';
+      pane.style.opacity = '1';
+      triggerAnimations(currentStage);
+      return;
+    }
+
+    if (transitionTimer) clearTimeout(transitionTimer);
+
+    // Directional slide out
+    pane.style.transition = 'transform 200ms cubic-bezier(0.4, 0, 0.2, 1), opacity 200ms cubic-bezier(0.4, 0, 0.2, 1)';
+    pane.style.transform = isNext ? 'translateX(-24px)' : 'translateX(24px)';
+    pane.style.opacity = '0';
+
+    transitionTimer = setTimeout(() => {
+      renderStageContent(currentStage);
+      pane.style.transition = 'none';
+      pane.style.transform = isNext ? 'translateX(24px)' : 'translateX(-24px)';
+      pane.style.opacity = '0';
+      void pane.offsetWidth; // force reflow
+
+      // Directional slide in
+      pane.style.transition = 'transform 300ms cubic-bezier(0.16, 1, 0.3, 1), opacity 300ms cubic-bezier(0.16, 1, 0.3, 1)';
+      pane.style.transform = 'translateX(0)';
+      pane.style.opacity = '1';
+
+      triggerAnimations(currentStage);
+      transitionTimer = null;
+    }, 200);
+  }
+
+  // User tab click
+  container.addEventListener('click', (e) => {
+    const btn = e.target.closest('.stage-node');
+    if (!btn) return;
+    const targetStage = parseInt(btn.getAttribute('data-stage'), 10);
+    if (!isNaN(targetStage)) {
+      setActiveStage(targetStage, false);
+      restartAutoAdvance();
+      scrollTabIntoViewOnMobile(targetStage);
+    }
+  });
+
+  // Keyboard navigation
+  container.addEventListener('keydown', (e) => {
+    const currentTab = document.activeElement ? document.activeElement.closest('.stage-node') : null;
+    if (!currentTab) return;
+    const stage = parseInt(currentTab.getAttribute('data-stage'), 10);
+    let targetStage = null;
+
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+      e.preventDefault();
+      targetStage = stage >= 5 ? 1 : stage + 1;
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      targetStage = stage <= 1 ? 5 : stage - 1;
+    } else if (e.key === 'Home') {
+      e.preventDefault();
+      targetStage = 1;
+    } else if (e.key === 'End') {
+      e.preventDefault();
+      targetStage = 5;
+    } else if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      targetStage = stage;
+    }
+
+    if (targetStage !== null) {
+      const nextTab = container.querySelector('[data-stage="' + targetStage + '"]');
+      if (nextTab) {
+        nextTab.focus({ preventScroll: true });
+      }
+      setActiveStage(targetStage, false);
+      restartAutoAdvance();
+      scrollTabIntoViewOnMobile(targetStage);
+    }
+  });
+
+  // Auto-advance logic (6.5 seconds)
+  const AUTO_ADVANCE_DELAY = 6500;
+  let autoTimer = null;
+  let isHovered = false;
+  let isFocused = false;
+  let isVisible = false;
+
+  function autoAdvanceTick() {
+    if (isHovered || isFocused || !isVisible || document.hidden) return;
+    const nextStage = currentStage >= 5 ? 1 : currentStage + 1;
+    setActiveStage(nextStage, false);
+    scrollTabIntoViewOnMobile(nextStage);
+  }
+
+  function startAutoAdvance() {
+    stopAutoAdvance();
+    autoTimer = setInterval(autoAdvanceTick, AUTO_ADVANCE_DELAY);
+  }
+
+  function stopAutoAdvance() {
+    if (autoTimer) {
+      clearInterval(autoTimer);
+      autoTimer = null;
+    }
+  }
+
+  function restartAutoAdvance() {
+    stopAutoAdvance();
+    startAutoAdvance();
+  }
+
+  if (stageSection) {
+    stageSection.addEventListener('pointerenter', () => {
+      isHovered = true;
+      stopAutoAdvance();
+    });
+    stageSection.addEventListener('pointerleave', () => {
+      isHovered = false;
+      startAutoAdvance();
+    });
+    stageSection.addEventListener('focusin', () => {
+      isFocused = true;
+      stopAutoAdvance();
+    });
+    stageSection.addEventListener('focusout', (e) => {
+      if (!stageSection.contains(e.relatedTarget)) {
+        isFocused = false;
+        startAutoAdvance();
+      }
+    });
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          isVisible = entry.isIntersecting;
+          if (isVisible && !isHovered && !isFocused && !document.hidden) {
+            startAutoAdvance();
+          } else {
+            stopAutoAdvance();
+          }
+        });
+      }, { threshold: 0.2 });
+      observer.observe(stageSection);
+    } else {
+      isVisible = true;
+      startAutoAdvance();
+    }
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      stopAutoAdvance();
+    } else if (isVisible && !isHovered && !isFocused) {
+      startAutoAdvance();
+    }
+  });
+
+  // Initial trigger for stage 1 (without scroll or layout jumps)
+  triggerAnimations(1);
+})();
+    </script>
+    <script is:inline id="sc-loader-script">
+(function() {
+  const overlay = document.getElementById('scLoaderOverlay');
+  const pageContent = document.getElementById('sc-loader-page');
+  if (!overlay) return;
+
+  let isRunning = false;
+  let exitScheduledTimer = null;
+  let maxTimer = null;
+  let safetyTimer = null;
+  let fadeCleanupTimer = null;
+
+  function clearAllTimers() {
+    if (exitScheduledTimer) { clearTimeout(exitScheduledTimer); exitScheduledTimer = null; }
+    if (maxTimer) { clearTimeout(maxTimer); maxTimer = null; }
+    if (safetyTimer) { clearTimeout(safetyTimer); safetyTimer = null; }
+    if (fadeCleanupTimer) { clearTimeout(fadeCleanupTimer); fadeCleanupTimer = null; }
+  }
+
+  function startLoader() {
+    if (isRunning) return;
+    isRunning = true;
+    clearAllTimers();
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const minDisplayTime = reducedMotion ? 1000 : 1800;
+    const maxDisplayTime = 3000;
+    const safetyCutoffTime = 4000;
+    const startTime = Date.now();
+
+    // 1. Lock scroll
+    document.documentElement.classList.add('sc-loader-lock');
+
+    // 2. Reset Page Content (hide behind overlay with gentle 12px offset)
+    if (pageContent) {
+      pageContent.classList.remove('sc-loader-revealed');
+      pageContent.style.opacity = '';
+      pageContent.style.transform = '';
+      pageContent.style.willChange = '';
+    }
+
+    // 3. Reset Overlay
+    overlay.classList.remove('sc-loader-exit');
+    overlay.style.display = 'flex';
+    overlay.style.opacity = '';
+    overlay.style.pointerEvents = '';
+    overlay.removeAttribute('aria-hidden');
+
+    // 4. Replay Keyframe Animations (restart entrance, pulse, sweep, progress fill from 0)
+    const logoWrap = overlay.querySelector('.sc-loader-logo-wrap');
+    if (logoWrap) {
+      const newLogoWrap = logoWrap.cloneNode(true);
+      logoWrap.parentNode.replaceChild(newLogoWrap, logoWrap);
+    }
+    const track = overlay.querySelector('.sc-loader-track');
+    if (track) {
+      const newTrack = track.cloneNode(true);
+      track.parentNode.replaceChild(newTrack, track);
+    }
+
+    let isExiting = false;
+
+    function triggerExit() {
+      if (isExiting) return;
+      isExiting = true;
+      clearAllTimers();
+
+      overlay.classList.add('sc-loader-exit');
+      if (pageContent) {
+        pageContent.classList.add('sc-loader-revealed');
+      }
+
+      const fadeDuration = reducedMotion ? 400 : 900;
+      fadeCleanupTimer = setTimeout(function() {
+        overlay.style.display = 'none';
+        overlay.setAttribute('aria-hidden', 'true');
+        document.documentElement.classList.remove('sc-loader-lock');
+        if (pageContent) {
+          pageContent.style.transform = 'none';
+          pageContent.style.willChange = 'auto';
+        }
+        isRunning = false;
+
+        if (!window.location.hash) {
+          window.scrollTo(0, 0);
+        }
+
+        window.dispatchEvent(new Event('scroll'));
+        window.dispatchEvent(new Event('resize'));
+      }, fadeDuration);
+    }
+
+    function scheduleExit() {
+      const elapsed = Date.now() - startTime;
+      const remaining = Math.max(0, minDisplayTime - elapsed);
+      exitScheduledTimer = setTimeout(triggerExit, remaining);
+    }
+
+    if (document.readyState === 'complete') {
+      scheduleExit();
+    } else {
+      window.addEventListener('load', function() {
+        scheduleExit();
+      }, { once: true });
+    }
+
+    // Normal max timeout (3s)
+    maxTimer = setTimeout(function() {
+      if (!isExiting) {
+        triggerExit();
+      }
+    }, maxDisplayTime);
+
+    // Hard safety timeout (4s) - guarantees removal even if window load event is delayed/stalled
+    safetyTimer = setTimeout(function() {
+      if (!isExiting) {
+        triggerExit();
+      }
+    }, safetyCutoffTime);
+  }
+
+  // Initial Run on page load
+  startLoader();
+
+  // Handle Browser Back/Forward Cache (bfcache)
+  window.addEventListener('pageshow', function(event) {
+    if (!window.location.hash) {
+      window.scrollTo(0, 0);
+    }
+    if (event.persisted) {
+      isRunning = false;
+      startLoader();
+    }
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    if (!window.location.hash) {
+      window.scrollTo(0, 0);
+    }
+  });
+})();
+    </script>
+  </Fragment>
+</BaseLayout>

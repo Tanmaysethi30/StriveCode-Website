@@ -1,0 +1,102 @@
+---
+/**
+ * StriveCode Technology — Intern & Student Testimonials Component
+ * Rendered at build time from a frontmatter array.
+ * Prefix: sc-testi-
+ */
+interface Testimonial {
+  name: string;
+  role: string;
+  quote: string;
+  photo: string;
+}
+
+const testimonials: Testimonial[] = [
+  {
+    name: "Shivam Jain",
+    role: "Full Stack Intern",
+    quote: "Strive Code provided me with an excellent platform to learn, experiment, and grow. Throughout the internship, I gained practical knowledge, improved my technical abilities, and experienced a professional working environment. I am grateful for the experience and would recommend this opportunity to aspiring developers.",
+    photo: "/assets/testimonials/testimonial-shivam-jain.jpg"
+  },
+  {
+    name: "Harsh Jain",
+    role: "DevOps Intern",
+    quote: "Working with Strive Code was a great experience. Their team demonstrated excellent professionalism, maintained timely communication, and delivered a solution that aligned perfectly with our business needs. We highly appreciate their commitment and ongoing support.",
+    photo: "/assets/testimonials/testimonial-harsh-jain.jpg"
+  },
+  {
+    name: "Kartik Jain",
+    role: "Full Stack Intern",
+    quote: "One of the best things about my internship at Strive Code was the supportive learning environment. The mentors were always ready to guide me, clarify my doubts, and encourage me to improve. It helped me build confidence and develop a better understanding of the IT industry.",
+    photo: "/assets/testimonials/testimonial-kartik-jain.jpg"
+  },
+  {
+    name: "Avinesh Shukla",
+    role: "Web Intern",
+    quote: "Working with Strive Code was an amazing experience. The internship provided me with practical exposure to real-world projects and helped me understand how theoretical concepts are applied in actual development. I also improved my problem-solving, teamwork, and communication skills.",
+    photo: "/assets/testimonials/testimonial-avinesh-shukla.jpg"
+  },
+  {
+    name: "Tanmay Sethi",
+    role: "DevOps Intern",
+    quote: "My internship at Strive Code Pvt. Ltd. was a great learning experience. I got the opportunity to enhance my technical skills, explore new technologies, and understand how software development works in a professional environment. The guidance and support from the team helped me grow both technically and professionally.",
+    photo: "/assets/testimonials/testimonial-tanmay-sethi.jpg"
+  }
+];
+---
+
+<section class="sc-testi-section" id="intern-testimonials" aria-labelledby="sc-testi-heading">
+  <div class="sc-testi-container">
+    <!-- Section Header -->
+    <div class="sc-testi-header sc-testi-header-reveal">
+      <div class="sc-testi-eyebrow">
+        INTERN VOICES
+      </div>
+      <h2 class="sc-testi-heading" id="sc-testi-heading">
+        What Our Interns Say
+      </h2>
+    </div>
+
+    <!-- Cards Grid (3 on row 1, 2 centered on row 2) -->
+    <div class="sc-testi-grid">
+      {testimonials.map((item, index) => (
+        <div class="sc-testi-card-wrap" style={`--sc-testi-idx: ${index};`}>
+          <figure class="sc-testi-card">
+            <!-- Top Red Accent Bar -->
+            <div class="sc-testi-accent-bar" aria-hidden="true" />
+            
+            <!-- Large Decorative Quote Mark -->
+            <div class="sc-testi-quote-mark" aria-hidden="true">&ldquo;</div>
+
+            <!-- Quote Body -->
+            <blockquote class="sc-testi-quote-body">
+              <p>&ldquo;{item.quote}&rdquo;</p>
+            </blockquote>
+
+            <!-- Author / Figcaption -->
+            <figcaption class="sc-testi-author">
+              <div class="sc-testi-avatar-frame">
+                <div class="sc-testi-avatar-ring" aria-hidden="true" />
+                <div class="sc-testi-avatar-inner">
+                  <img
+                    src={item.photo}
+                    alt={`Portrait of ${item.name}`}
+                    width="58"
+                    height="58"
+                    loading="lazy"
+                    decoding="async"
+                    class="sc-testi-img"
+                  />
+                </div>
+              </div>
+              <div class="sc-testi-meta">
+                <div class="sc-testi-name">{item.name}</div>
+                <div class="sc-testi-role">{item.role}</div>
+              </div>
+            </figcaption>
+          </figure>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

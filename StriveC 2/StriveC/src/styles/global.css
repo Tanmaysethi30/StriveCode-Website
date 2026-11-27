@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================
+   StriveCode Master Navigation Stylesheet (nav.css)
+   ========================================================================== */
+
+header {
+  box-sizing: border-box;
+}
+
+header .font-display {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+header .font-mono {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+}
+
+header nav a {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+/* ==========================================================================
+   StriveCode Unified Stylesheet (style.css)
+   ========================================================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+#sc-grid-matrix {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+body.has-grid-matrix section.bg-\[\#EEEEEE\],
+body.has-grid-matrix section.bg-surface-container,
+body.has-grid-matrix main.bg-surface-container {
+  background-color: transparent !important;
+}
+
+body {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  body {
+    opacity: 0;
+    transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  body.site-loaded {
+    opacity: 1;
+  }
+
+  body.site-unloading {
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+  }
+
+  .site-reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1), transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+
+  .site-reveal.site-revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .site-subtle-lift:not([class*="hover:-translate"]):not([class*="hover:scale"]):not([class*="hover:translate"]) {
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .site-subtle-lift:not([class*="hover:-translate"]):not([class*="hover:scale"]):not([class*="hover:translate"]):hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px -6px rgba(4, 21, 98, 0.08);
+  }
+}
+
+noscript body,
+.no-js body {
+  opacity: 1 !important;
+}

@@ -1,0 +1,30 @@
+
+  <!DOCTYPE html><html><body><script type="module">
+    import * as THREE from '/node_modules/three/build/three.module.js';
+    import { GLTFLoader } from '/node_modules/three/examples/jsm/loaders/GLTFLoader.js';
+
+    const loader = new GLTFLoader();
+    loader.load('/public/assets/models/robot-arm.glb', (gltf) => {
+      const mixer = new THREE.AnimationMixer(gltf.scene);
+      const clip = gltf.animations[0];
+      const action = mixer.clipAction(clip);
+      action.play();
+
+      let minY = Infinity, maxY = -Infinity, minX = Infinity, maxX = -Infinity, minZ = Infinity, maxZ = -Infinity;
+      // Step through animation
+      const duration = clip.duration;
+      for (let t = 0; t <= duration; t += 0.1) {
+        mixer.setTime(t);
+        gltf.scene.updateMatrixWorld(true);
+        const box = new THREE.Box3().setFromObject(gltf.scene);
+        minY = Math.min(minY, box.min.y);
+        maxY = Math.max(maxY, box.max.y);
+        minX = Math.min(minX, box.min.x);
+        maxX = Math.max(maxX, box.max.x);
+        minZ = Math.min(minZ, box.min.z);
+        maxZ = Math.max(maxZ, box.max.z);
+      }
+      window.__BOUNDS__ = { minX, maxX, minY, maxY, minZ, maxZ, width: maxX - minX, height: maxY - minY, depth: maxZ - minZ };
+    });
+  </script></body></html>
+  

@@ -1,0 +1,126 @@
+{
+  "homepage": {
+    "heroLeftBox": {
+      "x": 128,
+      "y": 314.3125,
+      "width": 667.328125,
+      "height": 435.78125,
+      "opacity": "1",
+      "visibility": "visible",
+      "revealed": true
+    },
+    "heroRightBox": {
+      "x": 851.328125,
+      "y": 169,
+      "width": 460.65625,
+      "height": 726.40625
+    },
+    "metricsBox": {
+      "sectionY": 991.40625,
+      "sectionWidth": 1440,
+      "gridWidth": 1184
+    },
+    "filterTest": {
+      "initialVisible": 6,
+      "accelVisible": 3,
+      "restoredVisible": 6,
+      "filterWorks": true
+    },
+    "stageTest": [
+      {
+        "index": 1,
+        "badge": "STAGE 01 / 05 • ASSESSMENT PHASE",
+        "title": "Discovery, Candidate Profiling & Technical Diagnostics",
+        "activeStage": "1"
+      },
+      {
+        "index": 2,
+        "badge": "STAGE 02 / 05 • ARCHITECTURE PHASE",
+        "title": "System Design Blueprints, IaC & Curriculum Foundations",
+        "activeStage": "2"
+      },
+      {
+        "index": 3,
+        "badge": "STAGE 03 / 05 • EXECUTION PHASE",
+        "title": "Agile Sprints, Live Labs & Production Codebases",
+        "activeStage": "3"
+      },
+      {
+        "index": 4,
+        "badge": "STAGE 04 / 05 • AUDIT & QA PHASE",
+        "title": "Rigorous Code Reviews, Mutation Testing & ISO Standards",
+        "activeStage": "4"
+      },
+      {
+        "index": 5,
+        "badge": "STAGE 05 / 05 • DEPLOYMENT & PLACEMENT",
+        "title": "Production Cloud Deployment & Partner Placement Pipelines",
+        "activeStage": "5"
+      }
+    ]
+  },
+  "mentorship": {
+    "meshCanvasFound": true,
+    "meshCanvasWidth": 1440,
+    "flowDotsFound": true,
+    "tiltCardFound": true,
+    "tiltCardTransform": "rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)",
+    "logoFound": true,
+    "tiltTransformAfter": "rotateX(3.6deg) rotateY(3.58167deg) scale3d(1.01, 1.01, 1.01)"
+  },
+  "navbar": {
+    "homeTop": 23.5,
+    "homeHeight": 25,
+    "prodTop": 23.5,
+    "prodHeight": 25,
+    "diffTop": 0
+  },
+  "routes": {
+    "/": {
+      "status": 200,
+      "title": "StriveCode Technology - Enterprise Tech, Training & Career Acceleration",
+      "mainTagCount": 1
+    },
+    "/product": {
+      "status": 200,
+      "title": "Products | StriveCode Technology - Enterprise Technical Infrastructure",
+      "mainTagCount": 1
+    },
+    "/services": {
+      "status": 200,
+      "title": "StriveCode - Enterprise Engineering Services (Navy & Crimson Theme)",
+      "mainTagCount": 1
+    },
+    "/courses": {
+      "status": 200,
+      "title": "StriveCode Technology | Enterprise Engineering Cohorts",
+      "mainTagCount": 1
+    },
+    "/careers": {
+      "status": 200,
+      "title": "Careers | StriveCode Technology",
+      "mainTagCount": 1
+    },
+    "/mentorship": {
+      "status": 200,
+      "title": "Mentorship | StriveCode Technology",
+      "mainTagCount": 1
+    },
+    "/aboutus": {
+      "status": 200,
+      "title": "About Us — StriveCode Technology",
+      "mainTagCount": 1
+    },
+    "/contact": {
+      "status": 200,
+      "title": "Contact Us — StriveCode Technology",
+      "mainTagCount": 1
+    },
+    "/404": {
+      "status": 200,
+      "title": "404 - Page Not Found | StriveCode Technology",
+      "mainTagCount": 1
+    }
+  },
+  "errors": []
+}
