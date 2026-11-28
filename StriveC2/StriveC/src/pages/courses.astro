@@ -6,7 +6,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   title="StriveCode Technology | Enterprise Engineering Cohorts"
   description="StriveCode Technology - Enterprise Tech, Training & Career Acceleration"
   currentRoute="/courses"
-  hasGridMatrix={false}
+  hasGridMatrix={true}
   isHome={false}
 >
   <Fragment slot="head">
@@ -368,9 +368,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <button class="filter-tab bg-surface-container-lowest border border-outline-variant/60 text-primary-container font-label-md text-label-md font-semibold px-5 py-2.5 rounded-full hover:border-primary-container transition-all duration-200" data-filter="cloud">
           Cloud &amp; Cybersecurity
         </button>
-<button class="filter-tab bg-surface-container-lowest border border-outline-variant/60 text-primary-container font-label-md text-label-md font-semibold px-5 py-2.5 rounded-full hover:border-primary-container transition-all duration-200" data-filter="product">
-          UI/UX &amp; Product
-        </button>
 </div>
 <!-- 6 Spacious Flagship Program Cards (3x2 Grid) -->
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -389,10 +386,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <p class="font-body-md text-body-md text-on-surface-variant mb-5 leading-relaxed">
               Architect distributed enterprise web services with React 19, Spring Boot, and PostgreSQL.
             </p>
-<!-- Interactive Architecture Peek Bar on Hover -->
-<div class="mb-5 bg-[#041562]/5 border border-[#041562]/10 rounded-lg p-2.5 text-xs font-semibold text-[#041562] transition-all duration-300 group-hover:-translate-y-1 group-hover:bg-[#041562]/10 flex items-center gap-1.5">
-<span class="truncate">⚡ Capstone: High-Throughput Distributed Payment Mesh &amp; Event Bus</span>
-</div>
 <!-- Editorial curriculum list with minimalist vertical #041562 accent bars -->
 <div class="space-y-3 mb-6">
 <div class="flex items-center">
@@ -417,16 +410,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <img alt="Staff Mentor" class="w-7 h-7 rounded-full ring-2 ring-white object-cover" src="/assets/courses/fintech-icon.svg">
 </div>
 <span class="text-xs font-medium text-on-surface-variant">Led by Principal Architects from Cloud &amp; FinTech Giants</span>
-</div>
-<!-- Syllabus Accordion -->
-<button class="syllabus-toggle w-full bg-surface-container text-primary-container font-label-md text-label-md font-bold py-2.5 px-4 rounded-lg flex justify-between items-center transition-colors hover:bg-surface-variant mb-6">
-<span>View Full Syllabus</span>
-<span class="material-symbols-outlined text-base transition-transform accordion-arrow" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
-</button>
-<div class="syllabus-drawer hidden text-on-surface-variant font-label-sm text-label-sm bg-surface-container/50 p-4 rounded-lg mb-6 space-y-2 border border-outline-variant/30">
-<p>• Module 1: Event-Driven Microservices &amp; CQRS</p>
-<p>• Module 2: Concurrency &amp; Database Connection Pooling</p>
-<p>• Module 3: Micro-frontend Architecture in React 19</p>
 </div>
 <!-- Card Footer -->
 <div class="border-t border-surface-variant pt-5 flex items-center justify-between gap-3">
@@ -455,10 +438,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <p class="font-body-md text-body-md text-on-surface-variant mb-5 leading-relaxed">
               Master concurrency, JVM tuning, high-throughput microservices, and gRPC RPC communication.
             </p>
-<!-- Interactive Architecture Peek Bar on Hover -->
-<div class="mb-5 bg-[#041562]/5 border border-[#041562]/10 rounded-lg p-2.5 text-xs font-semibold text-[#041562] transition-all duration-300 group-hover:-translate-y-1 group-hover:bg-[#041562]/10 flex items-center gap-1.5">
-<span class="truncate">⚡ Capstone: High-Frequency Order Matching Engine &amp; Consensus Raft</span>
-</div>
 <div class="space-y-3 mb-6">
 <div class="flex items-center">
 <span class="w-1 h-3.5 rounded-full inline-block mr-2.5 bg-[#041562] flex-shrink-0"></span>
@@ -482,15 +461,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <img alt="Staff Mentor" class="w-7 h-7 rounded-full ring-2 ring-white object-cover" src="/assets/courses/fintech-icon.svg">
 </div>
 <span class="text-xs font-medium text-on-surface-variant">Led by Principal Architects from Cloud &amp; FinTech Giants</span>
-</div>
-<button class="syllabus-toggle w-full bg-surface-container text-primary-container font-label-md text-label-md font-bold py-2.5 px-4 rounded-lg flex justify-between items-center transition-colors hover:bg-surface-variant mb-6">
-<span>View Full Syllabus</span>
-<span class="material-symbols-outlined text-base transition-transform accordion-arrow" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
-</button>
-<div class="syllabus-drawer hidden text-on-surface-variant font-label-sm text-label-sm bg-surface-container/50 p-4 rounded-lg mb-6 space-y-2 border border-outline-variant/30">
-<p>• Module 1: Virtual Threads, Project Loom, Concurrency</p>
-<p>• Module 2: Raft Consensus &amp; Distributed Locking</p>
-<p>• Module 3: Protocol Buffers, gRPC &amp; Micro-benchmarking</p>
 </div>
 <div class="border-t border-surface-variant pt-5 flex items-center justify-between gap-3">
 <button class="border border-outline-variant/80 hover:bg-surface-container text-primary-container font-label-md text-label-md font-semibold px-4 py-2.5 rounded-xl transition-all">
@@ -518,10 +488,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <p class="font-body-md text-body-md text-on-surface-variant mb-5 leading-relaxed">
               Build multi-agent LLM systems, RAG pipelines, fine-tuned embedding models, and vector stores.
             </p>
-<!-- Interactive Architecture Peek Bar on Hover -->
-<div class="mb-5 bg-[#041562]/5 border border-[#041562]/10 rounded-lg p-2.5 text-xs font-semibold text-[#041562] transition-all duration-300 group-hover:-translate-y-1 group-hover:bg-[#041562]/10 flex items-center gap-1.5">
-<span class="truncate">⚡ Capstone: Multi-Agent RAG Orchestration &amp; Autonomous Evaluation Cluster</span>
-</div>
 <div class="space-y-3 mb-6">
 <div class="flex items-center">
 <span class="w-1 h-3.5 rounded-full inline-block mr-2.5 bg-[#041562] flex-shrink-0"></span>
@@ -545,15 +511,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <img alt="Staff Mentor" class="w-7 h-7 rounded-full ring-2 ring-white object-cover" src="/assets/courses/fintech-icon.svg">
 </div>
 <span class="text-xs font-medium text-on-surface-variant">Led by Principal Architects from Cloud &amp; FinTech Giants</span>
-</div>
-<button class="syllabus-toggle w-full bg-surface-container text-primary-container font-label-md text-label-md font-bold py-2.5 px-4 rounded-lg flex justify-between items-center transition-colors hover:bg-surface-variant mb-6">
-<span>View Full Syllabus</span>
-<span class="material-symbols-outlined text-base transition-transform accordion-arrow" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
-</button>
-<div class="syllabus-drawer hidden text-on-surface-variant font-label-sm text-label-sm bg-surface-container/50 p-4 rounded-lg mb-6 space-y-2 border border-outline-variant/30">
-<p>• Module 1: Graph-based Agent Architectures &amp; Evaluation</p>
-<p>• Module 2: LoRA, QLoRA Parameter Efficient Fine Tuning</p>
-<p>• Module 3: vLLM &amp; Triton Inference Server Operations</p>
 </div>
 <div class="border-t border-surface-variant pt-5 flex items-center justify-between gap-3">
 <button class="border border-outline-variant/80 hover:bg-surface-container text-primary-container font-label-md text-label-md font-semibold px-4 py-2.5 rounded-xl transition-all">
@@ -581,10 +538,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <p class="font-body-md text-body-md text-on-surface-variant mb-5 leading-relaxed">
               Construct high-throughput streaming pipelines, lakehouses, and analytics warehouses.
             </p>
-<!-- Interactive Architecture Peek Bar on Hover -->
-<div class="mb-5 bg-[#041562]/5 border border-[#041562]/10 rounded-lg p-2.5 text-xs font-semibold text-[#041562] transition-all duration-300 group-hover:-translate-y-1 group-hover:bg-[#041562]/10 flex items-center gap-1.5">
-<span class="truncate">⚡ Capstone: Real-Time Telemetry Lakehouse &amp; Petabyte Streaming Engine</span>
-</div>
 <div class="space-y-3 mb-6">
 <div class="flex items-center">
 <span class="w-1 h-3.5 rounded-full inline-block mr-2.5 bg-[#041562] flex-shrink-0"></span>
@@ -608,15 +561,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <img alt="Staff Mentor" class="w-7 h-7 rounded-full ring-2 ring-white object-cover" src="/assets/courses/fintech-icon.svg">
 </div>
 <span class="text-xs font-medium text-on-surface-variant">Led by Principal Architects from Cloud &amp; FinTech Giants</span>
-</div>
-<button class="syllabus-toggle w-full bg-surface-container text-primary-container font-label-md text-label-md font-bold py-2.5 px-4 rounded-lg flex justify-between items-center transition-colors hover:bg-surface-variant mb-6">
-<span>View Full Syllabus</span>
-<span class="material-symbols-outlined text-base transition-transform accordion-arrow" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
-</button>
-<div class="syllabus-drawer hidden text-on-surface-variant font-label-sm text-label-sm bg-surface-container/50 p-4 rounded-lg mb-6 space-y-2 border border-outline-variant/30">
-<p>• Module 1: Delta Lake and Iceberg Table Formats</p>
-<p>• Module 2: Streaming ingestion with Kafka &amp; Flink</p>
-<p>• Module 3: Data Quality &amp; Governance Frameworks</p>
 </div>
 <div class="border-t border-surface-variant pt-5 flex items-center justify-between gap-3">
 <button class="border border-outline-variant/80 hover:bg-surface-container text-primary-container font-label-md text-label-md font-semibold px-4 py-2.5 rounded-xl transition-all">
@@ -644,10 +588,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <p class="font-body-md text-body-md text-on-surface-variant mb-5 leading-relaxed">
               Automate infrastructure with Terraform, multi-cluster Kubernetes, and zero-downtime CI/CD.
             </p>
-<!-- Interactive Architecture Peek Bar on Hover -->
-<div class="mb-5 bg-[#041562]/5 border border-[#041562]/10 rounded-lg p-2.5 text-xs font-semibold text-[#041562] transition-all duration-300 group-hover:-translate-y-1 group-hover:bg-[#041562]/10 flex items-center gap-1.5">
-<span class="truncate">⚡ Capstone: Multi-Region Kubernetes GitOps Mesh &amp; Zero-Downtime Rollout</span>
-</div>
 <div class="space-y-3 mb-6">
 <div class="flex items-center">
 <span class="w-1 h-3.5 rounded-full inline-block mr-2.5 bg-[#041562] flex-shrink-0"></span>
@@ -671,15 +611,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <img alt="Staff Mentor" class="w-7 h-7 rounded-full ring-2 ring-white object-cover" src="/assets/courses/fintech-icon.svg">
 </div>
 <span class="text-xs font-medium text-on-surface-variant">Led by Principal Architects from Cloud &amp; FinTech Giants</span>
-</div>
-<button class="syllabus-toggle w-full bg-surface-container text-primary-container font-label-md text-label-md font-bold py-2.5 px-4 rounded-lg flex justify-between items-center transition-colors hover:bg-surface-variant mb-6">
-<span>View Full Syllabus</span>
-<span class="material-symbols-outlined text-base transition-transform accordion-arrow" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
-</button>
-<div class="syllabus-drawer hidden text-on-surface-variant font-label-sm text-label-sm bg-surface-container/50 p-4 rounded-lg mb-6 space-y-2 border border-outline-variant/30">
-<p>• Module 1: Helm Charts, Ingress Controllers, Service Mesh</p>
-<p>• Module 2: Multi-cloud Terraform State &amp; Vault Secrets</p>
-<p>• Module 3: Zero-downtime Blue/Green Deployments</p>
 </div>
 <div class="border-t border-surface-variant pt-5 flex items-center justify-between gap-3">
 <button class="border border-outline-variant/80 hover:bg-surface-container text-primary-container font-label-md text-label-md font-semibold px-4 py-2.5 rounded-xl transition-all">
@@ -707,10 +638,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <p class="font-body-md text-body-md text-on-surface-variant mb-5 leading-relaxed">
               Harden cloud infrastructure, automate penetration testing, and implement zero-trust security.
             </p>
-<!-- Interactive Architecture Peek Bar on Hover -->
-<div class="mb-5 bg-[#041562]/5 border border-[#041562]/10 rounded-lg p-2.5 text-xs font-semibold text-[#041562] transition-all duration-300 group-hover:-translate-y-1 group-hover:bg-[#041562]/10 flex items-center gap-1.5">
-<span class="truncate">⚡ Capstone: Automated DevSecOps Gateways &amp; Zero-Trust Perimeter Defense</span>
-</div>
 <div class="space-y-3 mb-6">
 <div class="flex items-center">
 <span class="w-1 h-3.5 rounded-full inline-block mr-2.5 bg-[#041562] flex-shrink-0"></span>
@@ -734,15 +661,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <img alt="Staff Mentor" class="w-7 h-7 rounded-full ring-2 ring-white object-cover" src="/assets/courses/fintech-icon.svg">
 </div>
 <span class="text-xs font-medium text-on-surface-variant">Led by Principal Architects from Cloud &amp; FinTech Giants</span>
-</div>
-<button class="syllabus-toggle w-full bg-surface-container text-primary-container font-label-md text-label-md font-bold py-2.5 px-4 rounded-lg flex justify-between items-center transition-colors hover:bg-surface-variant mb-6">
-<span>View Full Syllabus</span>
-<span class="material-symbols-outlined text-base transition-transform accordion-arrow" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
-</button>
-<div class="syllabus-drawer hidden text-on-surface-variant font-label-sm text-label-sm bg-surface-container/50 p-4 rounded-lg mb-6 space-y-2 border border-outline-variant/30">
-<p>• Module 1: Automated SAST/DAST Static Analysis</p>
-<p>• Module 2: SOC2 Compliance &amp; Cloud Infrastructure Auditing</p>
-<p>• Module 3: Threat Modeling &amp; Defensive System Architecture</p>
 </div>
 <div class="border-t border-surface-variant pt-5 flex items-center justify-between gap-3">
 <button class="border border-outline-variant/80 hover:bg-surface-container text-primary-container font-label-md text-label-md font-semibold px-4 py-2.5 rounded-xl transition-all">
@@ -889,25 +807,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <Fragment slot="scripts">
     <script is:inline >
 document.addEventListener('DOMContentLoaded', () => {
-      // 1. Interactive Syllabus Accordions
-      const syllabusButtons = document.querySelectorAll('.syllabus-toggle');
-      syllabusButtons.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          e.preventDefault();
-          const drawer = btn.nextElementSibling;
-          const arrow = btn.querySelector('.accordion-arrow');
-          
-          if (drawer.classList.contains('hidden')) {
-            drawer.classList.remove('hidden');
-            arrow.style.transform = 'rotate(180deg)';
-          } else {
-            drawer.classList.add('hidden');
-            arrow.style.transform = 'rotate(0deg)';
-          }
-        });
-      });
-
-      // 2. Interactive Category Filter Tabs with smooth transitions
+      // Interactive Category Filter Tabs with smooth transitions
       const filterTabs = document.querySelectorAll('.filter-tab');
       const cards = document.querySelectorAll('.program-card');
 
